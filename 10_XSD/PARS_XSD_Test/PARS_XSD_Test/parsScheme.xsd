@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="pars" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="parsInputData">
+    <xs:complexType mixed="true">
+      <xs:sequence minOccurs="0">
+        <xs:element name="Variables">
+          <xs:complexType mixed="true">
+            <xs:sequence minOccurs="0">
+              <xs:choice maxOccurs="unbounded">
+                <xs:element name="Int">
+                  <xs:complexType>
+                    <xs:simpleContent>
+                      <xs:extension base="xs:unsignedByte">
+                        <xs:attribute name="name" type="xs:string" use="required" />
+                      </xs:extension>
+                    </xs:simpleContent>
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="String">
+                  <xs:complexType>
+                    <xs:simpleContent>
+                      <xs:extension base="xs:string">
+                        <xs:attribute name="name" type="xs:string" use="required" />
+                      </xs:extension>
+                    </xs:simpleContent>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SpacialDefinitions">
+          <xs:complexType mixed="true">
+            <xs:sequence minOccurs="0">
+              <xs:choice maxOccurs="unbounded">
+                <xs:element name="PointDefinitionRobot">
+                  <xs:complexType>
+                    <xs:attribute name="name" type="xs:string" use="required" />
+                    <xs:attribute name="J1" type="xs:unsignedByte" use="required" />
+                    <xs:attribute name="J2" type="xs:unsignedByte" use="required" />
+                    <xs:attribute name="Scale" type="xs:decimal" use="required" />
+                  </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" name="PointDefinitionFix">
+                  <xs:complexType>
+                    <xs:attribute name="name" type="xs:string" use="required" />
+                    <xs:attribute name="X" type="xs:unsignedByte" use="required" />
+                    <xs:attribute name="Y" type="xs:unsignedByte" use="required" />
+                    <xs:attribute name="Z" type="xs:unsignedByte" use="required" />
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="HologramDefinitions" type="xs:string" />
+        <xs:element name="UIText" type="xs:string" />
+        <xs:element name="Events" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<parsInputData xmlns="pars">
+	<Variables>
+		<Int name="var1">0</Int>
+		<String name="var2">Some Text belongs here</String>
+		<Int name="var3">0</Int>
+	</Variables>
+	<SpacialDefinitions>
+		<PointDefinitionRobot name="Point3" J1="1" J2="2" Scale="0.4" />
+		<PointDefinitionFix name="Point1" X="1" Y="2" Z="3"/>
+		<PointDefinitionFix name="Point2" X="1" Y="2" Z="3"/>
+		<PointDefinitionRobot name="Point3" J1="1" J2="2" Scale="0.4" />
+	</SpacialDefinitions>
+	<HologramDefinitions>
+	</HologramDefinitions>
+	<UIText>
+	</UIText>
+	<Events>
+	</Events>
+</parsInputData>
