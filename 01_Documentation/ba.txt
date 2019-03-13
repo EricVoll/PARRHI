@@ -1,0 +1,8 @@
+State of the art
+Kriterienliste -> Aus State of the art schauen was andere Projekte erfüllen, Matrix vl aufstellen und dann sagen "Lücken füllen"
+Concept <- wichtgste, Warum neu?
+implementation
+discussion
+
+
+bipapo 50 Seiten

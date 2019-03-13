@@ -1,0 +1,11 @@
+1: Standardization in Desktop VR widgets 
+ - Standardization and classification for VR desktop widgets in xml based formats
+ - keywords:
+  - library for 3d widgets: it3d
+
+2: Conceptual Model and Specification Language for MR components (2005)
+ - Basically that without robots
+
+
+TUM Frau Gudrun Klinker 
+Games Engineering

@@ -1,0 +1,1 @@
+1.) Is it okey to use web sources like w3schools? (they published the xsd format and publish proposals for standards)
