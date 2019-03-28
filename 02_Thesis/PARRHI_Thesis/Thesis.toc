@@ -8,5 +8,5 @@
 \contentsline {section}{\numberline {1.1}Reasons for- and problems with Human-Robot collaboration}{1}{section.1.1}% 
 \contentsline {section}{\numberline {1.2}Parametrised development as an approach to solve AR-developer shortage}{2}{section.1.2}% 
 \contentsline {section}{\numberline {1.3}Augmented Reality in a nutshell}{2}{section.1.3}% 
-\contentsline {section}{\numberline {1.4}State of the Art AR-development}{3}{section.1.4}% 
+\contentsline {section}{\numberline {1.4}State of the Art HR-AR-Development}{3}{section.1.4}% 
 \contentsline {chapter}{\numberline {1}Bibliography}{5}{chapter.1}% 

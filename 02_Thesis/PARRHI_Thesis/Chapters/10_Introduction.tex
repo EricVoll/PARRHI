@@ -2,7 +2,7 @@
 
 \section{Reasons for- and problems with Human-Robot collaboration}
 %Bring examples of what could be fixed specifically (maintanance, dev etc.)
-Today's world is highly automated in each and every aspect of our lives. One of the most important advancements within the last 30 years where robots. They allow us to minimize costs, while maximizing output, quality and efficiency. With the rising need of agile production plants, classic robotic systems do not seem to fulfil all requirements any-more. Industrial robots do have numerous abilities but adapting to new situations easily is certainly not one of them. In contrast, the human's strength always was exactly that - to learn quickly. Thus, human robot collaboration is an inevitable step towards the future of humanity.
+Today's world is highly automated in each and every aspect of our lives. One of the most important advancements within the last 30 years where robots. They allow us to minimize costs, while maximizing output, quality and efficiency. With the rising need of agile production plants, classic robotic systems do not seem to fulfil all requirements any-more. Industrial robots do have numerous abilities but adapting to new situations easily is certainly not one of them. In contrast, the human's strength always was exactly that - to learn quickly. Thus, Human-Robot (HR) collaboration is an inevitable step towards the future of humanity.
 
 Robotics needed to adapt to the new situation where humans and robots share a perimeter, thus compliant robots where developed. For machines to feel natural it is not enough to be compliant and not hurt humans. As Gary Klein et al. stated, communicating intent is a key issue in effective collaboration within teams~\cite{klein2005common}. 
 
@@ -13,9 +13,9 @@ According to the U.S. Department of Labour, there is a massive hunt for talent i
 The lack of programming talent is also seen in the robotics industry, which requires its developers to posses an even wider set of skills, including software development, mechanical and the basics of electrical engineering. Due to the lack of developers the speed of innovation and time-to-market is slowed as stated by multiple companies worldwide. [Citation maybe?]
 
 \section{Parametrised development as an approach to solve AR-developer shortage}
-Today, most industrial robots are only parametrised and not actually programmed, which results in lower requirements for employees and thus in less time and money spent on training. Employees only set certain locations, points and actions within an easy to understand User-Interface. Applying a similar methodology to the development of Augmented Reality applications could lead to similar effects. If non-programmers could setup, configure and thus develop Human-Robot interfaces involving AR and robot controlling all by themselves, without the need to write a single line of code, the cost efficiency and speed of innovation can be improved.
+Today, most industrial robots are only parametrised and not actually programmed, which results in lower requirements for employees and thus in less time and money spent on training. Employees only set certain locations, points and actions utilizing an easy to understand User-Interface. Applying a similar methodology to the development of Augmented Reality applications could lead to similar effects. If non-programmers could setup, configure and thus develop Human-Robot interfaces involving AR and robot controlling all by themselves, without the need to write a single line of code, the cost efficiency and speed of innovation can be improved.
 
-This bachelor thesis researches the feasibility and practicability of such an abstract development environment. 
+This bachelor thesis aims to research the feasibility and practicability of such an abstract development environment. First there will be a "State of the Art" section, where current research and progress is displayed. From there some gaps will be identified, a concept proposed, implemented and tested in a real application.
 
 \section{Augmented Reality in a nutshell}
 
@@ -30,9 +30,13 @@ used as a synonym for the also commonly used expression “Mixed Reality”.
 There are various types of AR devices and principles. In this bachelor's thesis the term AR should be understood as head-mounted superimposing Augmented Reality devices, such as the Microsoft HoloLens, that actually create the illusion of three dimensional holograms being projected into the real world.
 
 
-\section{State of the Art AR-development}
+\section{State of the Art HR-AR-Development}
 
+C. Perey et. al \cite{perey2011current} examined existing standards and some best-practice methods for AR. They clearly identified some gaps in the AR value-chain. The researchers lay out numerous standards for low level implementations such as geo-graphic location tracking, image tracking, network data transmission etc. They also state, that a large number of standards only help, if the community actually accepts and uses them.
 
+Figueroa et. al \cite{figueroa2006conceptual} researched about a "Conceptual Model and Specification Language for Mixed Reality Interface Components". They want to lay a foundation for other developers to standardize 3D interface assets, for others to build upon. The team developed an xml based data structure called "3DIC" that defines the look and some smaller behaviour actions of UI control elements. Although their work goes into the right direction, it lacks certain features that robot-human AR interfaces need, and contains unwanted components like pseudo-code. "3DIC" is a specification language that cannot be fully processed automatically, since pseudo-code is not executable. 
+
+Concluding from this general overview, there does not seem to be an existing standard for HR Interfaces utilizing Augmented Reality, that allow the development of complete HR-AR-applications that can actually be processed, executed and used. 
 
 
 

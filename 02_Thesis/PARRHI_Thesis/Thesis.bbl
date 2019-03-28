@@ -139,5 +139,73 @@
     \field{journaltitle}{Presence: Teleoperators \& Virtual Environments}
     \field{year}{1997}
   \endentry
+
+  \entry{perey2011current}{incollection}{}
+    \name{author}{3}{}{%
+      {{hash=PC}{%
+         family={Perey},
+         familyi={P\bibinitperiod},
+         given={Christine},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=ET}{%
+         family={Engelke},
+         familyi={E\bibinitperiod},
+         given={Timo},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=RC}{%
+         family={Reed},
+         familyi={R\bibinitperiod},
+         given={Carl},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{PCETRC1}
+    \strng{fullhash}{PCETRC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Recent Trends of Mobile Collaborative Augmented Reality
+  Systems}
+    \field{pages}{21\bibrangedash 38}
+    \field{title}{Current status of standards for augmented reality}
+    \field{year}{2011}
+  \endentry
+
+  \entry{figueroa2006conceptual}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=FP}{%
+         family={Figueroa},
+         familyi={F\bibinitperiod},
+         given={Pablo},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=DR}{%
+         family={Dachselt},
+         familyi={D\bibinitperiod},
+         given={Raimund},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=LI}{%
+         family={Lindt},
+         familyi={L\bibinitperiod},
+         given={Irma},
+         giveni={I\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{FPDRLI1}
+    \strng{fullhash}{FPDRLI1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{VR 2006, In Proc. of the Workshop “Specification of
+  Mixed Reality User Interfaces: Approaches, Languages, Standardization}
+    \field{pages}{4\bibrangedash 11}
+    \field{title}{A conceptual model and specification language for mixed
+  reality interface components}
+    \field{year}{2006}
+  \endentry
 \enddatalist
 \endinput
