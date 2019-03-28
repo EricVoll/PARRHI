@@ -6,3 +6,13 @@ discussion
 
 
 bipapo 50 Seiten
+
+A thaught:
+Automated testing: Can some integer values actually be reached, are some events impossible etc.Prove the process of the input for workingness
+
+Research papers:
+ An open software architecture for virtual reality interaction [27]
+
+[17] Florian Ledermann and Dieter Schmalstieg. APRIL a high-level framework for creating augmented reality presentations
+
+[21] Blair MacIntyre, Maribeth Gandy, Steven Dow, and Jay David Bolter. Dart: a toolkit for rapid design exploration of augmented reality experiences.
