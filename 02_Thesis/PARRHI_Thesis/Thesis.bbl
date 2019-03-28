@@ -17,6 +17,44 @@
 \endgroup
 
 \datalist[entry]{none/global//global/global}
+  \entry{klein2005common}{article}{}
+    \name{author}{4}{}{%
+      {{hash=KG}{%
+         family={Klein},
+         familyi={K\bibinitperiod},
+         given={Gary},
+         giveni={G\bibinitperiod},
+      }}%
+      {{hash=FPJ}{%
+         family={Feltovich},
+         familyi={F\bibinitperiod},
+         given={Paul\bibnamedelima J},
+         giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=BJM}{%
+         family={Bradshaw},
+         familyi={B\bibinitperiod},
+         given={Jeffrey\bibnamedelima M},
+         giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=WDD}{%
+         family={Woods},
+         familyi={W\bibinitperiod},
+         given={David\bibnamedelima D},
+         giveni={D\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KGFPJBJM+1}
+    \strng{fullhash}{KGFPJBJMWDD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{139\bibrangedash 184}
+    \field{title}{Common ground and coordination in joint activity}
+    \field{volume}{53}
+    \field{journaltitle}{Organizational simulation}
+    \field{year}{2005}
+  \endentry
+
   \entry{laschi2016soft}{article}{}
     \name{author}{3}{}{%
       {{hash=LC}{%
@@ -76,6 +114,30 @@
     \field{urlday}{28}
     \field{urlmonth}{03}
     \field{urlyear}{2019}
+  \endentry
+
+  \entry{azuma1997survey}{article}{}
+    \name{author}{1}{}{%
+      {{hash=ART}{%
+         family={Azuma},
+         familyi={A\bibinitperiod},
+         given={Ronald\bibnamedelima T},
+         giveni={R\bibinitperiod\bibinitdelim T\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {MIT Press}%
+    }
+    \strng{namehash}{ART1}
+    \strng{fullhash}{ART1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{4}
+    \field{pages}{355\bibrangedash 385}
+    \field{title}{A survey of augmented reality}
+    \field{volume}{6}
+    \field{journaltitle}{Presence: Teleoperators \& Virtual Environments}
+    \field{year}{1997}
   \endentry
 \enddatalist
 \endinput
