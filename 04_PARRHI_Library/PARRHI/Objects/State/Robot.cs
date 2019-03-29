@@ -14,7 +14,7 @@ namespace PARRHI.Objects
         public static Robot instance { get; set; } = new Robot();
 
         //The location of all joints
-        Point[] Joints { get; set; }
+        public Point[] Joints { get; set; }
         Vector6 CurrentTarget { get; set; }
         Vector6 CurrentTCP { get; set; }
 
