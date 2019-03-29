@@ -18,6 +18,7 @@ namespace PARS_XSD_Test
             //ValidateXMLScheme();
         }
 
+        const string Basepath = @"C:\Users\ericv\Documents\TUM\BA\PARRHI\10_XSD\PARS_XSD_Test\PARS_XSD_Test\";
 
         public static void ValidateXMLScheme()
         {
@@ -29,11 +30,11 @@ namespace PARS_XSD_Test
                 bool didThrow = false;
                 try
                 {
-                    booksSettings.Schemas.Add("pars", @"C:\Users\ericv\Documents\TUM\BA\10_XSD\PARS_XSD_Test\PARS_XSD_Test\parsScheme.xsd");
+                    booksSettings.Schemas.Add("PARRHI", $"{Basepath}\\parsScheme.xsd");
                     booksSettings.ValidationType = ValidationType.Schema;
                     booksSettings.ValidationEventHandler += new ValidationEventHandler(booksSettingsValidationEventHandler);
 
-                    books = XmlReader.Create(@"C:\Users\ericv\Documents\TUM\BA\10_XSD\PARS_XSD_Test\PARS_XSD_Test\input.xml", booksSettings);
+                    books = XmlReader.Create($"{Basepath}\\input.xml", booksSettings);
 
                     while (books.Read()) { }
                 }
@@ -67,7 +68,7 @@ namespace PARS_XSD_Test
                 int counter = 0;
                 try
                 {
-                    string basePath = @"C:\Users\ericv\Documents\TUM\BA\10_XSD\PARS_XSD_Test\PARS_XSD_Test\";
+                    string basePath = Basepath;
                     while (File.Exists(Path.Combine(basePath, $"input{counter}.xml"))) xmlReader.Add(XmlReader.Create(Path.Combine(basePath, $"input{counter++}.xml")));
                     XmlSchemaSet schemaSet = new XmlSchemaSet();
                     XmlSchemaInference inference = new XmlSchemaInference();
@@ -78,9 +79,9 @@ namespace PARS_XSD_Test
                     }
 
                     // Display the refined schema.
-                    foreach (XmlSchema schema in schemaSet.Schemas("pars"))
+                    foreach (XmlSchema schema in schemaSet.Schemas("PARRHI"))
                     {
-                        FileStream file = new FileStream(@"C:\Users\ericv\Documents\TUM\BA\10_XSD\PARS_XSD_Test\PARS_XSD_Test\parsScheme.xsd", FileMode.Create, FileAccess.ReadWrite);
+                        FileStream file = new FileStream($"{Basepath}\\parsScheme.xsd", FileMode.Create, FileAccess.ReadWrite);
                         XmlTextWriter xwriter = new XmlTextWriter(file, new UTF8Encoding());
                         xwriter.Formatting = Formatting.Indented;
                         schema.Write(xwriter);

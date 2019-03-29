@@ -1,14 +1,13 @@
 <?xml version="1.0"?>
 
-<parsInputData xmlns="pars">
+<InuptData xmlns="PARRHI">
 	<Variables>
 	</Variables>
-	<SpacialDefinitions>
-	</SpacialDefinitions>
-	<HologramDefinitions>
-	</HologramDefinitions>
-	<UIText>
-	</UIText>
+	<Points>
+	</Points>
+	<Holograms>
+	</Holograms>
 	<Events>
 	</Events>
-</parsInputData>
+	<UIText/>
+</InuptData>

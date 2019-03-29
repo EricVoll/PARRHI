@@ -1,21 +1,40 @@
 <?xml version="1.0"?>
-
-<parsInputData xmlns="pars">
+<!--This is the full file with all values specified-->
+<InuptData xmlns="PARRHI">
 	<Variables>
 		<Int name="var1">0</Int>
-		<String name="var2">Some Text belongs here</String>
-		<Int name="var3">0</Int>
+		<Int name="var2">0</Int>
 	</Variables>
-	<SpacialDefinitions>
-		<PointDefinitionRobot name="Point3" J1="1" J2="2" Scale="0.4" />
-		<PointDefinitionFix name="Point1" X="1" Y="2" Z="3"/>
-		<PointDefinitionFix name="Point2" X="1" Y="2" Z="3"/>
-		<PointDefinitionRobot name="Point3" J1="1" J2="2" Scale="0.4" />
-	</SpacialDefinitions>
-	<HologramDefinitions>
-	</HologramDefinitions>
-	<UIText>
-	</UIText>
+	<Points>
+		<PointRobot name="Point3" J1="1" J2="2" Scale="0.4" />
+		<PointFix name="Point1" X="1" Y="2" Z="3"/>
+		<PointFix name="Point2" X="-1" Y="-2" Z="-3"/>
+		<PointRobot name="Point3" J1="1" J2="2" Scale="-0.4" />
+		<PointCamera name="MainCamperaPoint"/>
+	</Points>
+	<Holograms>
+		<Sphere name="Sphere1" iPoint="Point1" radius="1" />
+		<Sphere name="Sphere2" iPoint="Point1" radius="1" />
+		<Zylinder name="Zyl1" iPoint1="Point1" iPoint2="Point2" radius="1" />
+	</Holograms>
 	<Events>
+		<Trigger>
+			<TimeTrigger name="Trigger1" canTrigger='true' timeSinceActivation="123" eventHadler1="Handler1" eventHandler2="Handler2" 	/>
+			<TimeTrigger name="Trigger2" canTrigger='true' timeSinceActivation="123" eventHadler1="Handler1" 							/>
+			<DistanceTrigger name="Trigger3" canTrigger='true' iPoint1="Point1" iPoint2="Point2" distance="12.2" eventHandler1="Handler1" eventHandler2="Handler2" 	/>
+			<DistanceTrigger name="Trigger4" canTrigger='true' iPoint1="Point1" iPoint2="Point2" distance="12.2" eventHandler1="Handler1" 							/>
+			<VarTrigger name="Trigger5" canTrigger='true' varName="var1" triggerValue="2" eventHadler1="Handler1" eventHandler2="Handler2" 	 />
+			<VarTrigger name="Trigger5" canTrigger='true' varName="var1" triggerValue="2" eventHadler1="Handler1" 						 	 />
+		</Trigger>
+		<Handler>
+			<IncrementCounterEventHandler name="Hanlder1" intVar="var1"/>
+			<SetTriggerStateEventHandler name="Handler3" triggerName="Trigger1" canTrigger='true'/>
+			<ChangeUITextEventHandler name="Hanlder2" text="Tutorial step nr. 4"/>
+			<SetTriggerStateEventHandler name="Handler3" triggerName="Trigger1" canTrigger='true'/>
+			<MoveRobotEventHandler name="Handler4" ipointTCP="Point1" />
+			<SetRobotHandState name="Handler5" state="open" />
+			<SetRobotHandState name="Handler6" state="close" />
+		</Handler>
 	</Events>
-</parsInputData>
+	<UIText name="UniqueText" text="Content"/>
+</InuptData>
