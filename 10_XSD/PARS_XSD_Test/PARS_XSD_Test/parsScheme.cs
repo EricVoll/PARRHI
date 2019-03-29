@@ -194,7 +194,7 @@ public partial class InuptDataHologramsSphere {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string iPoint;
+    public string point;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -215,11 +215,11 @@ public partial class InuptDataHologramsZylinder {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string iPoint1;
+    public string point1;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string iPoint2;
+    public string point2;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -313,11 +313,11 @@ public partial class InuptDataEventsTriggerDistanceTrigger {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string iPoint1;
+    public string point1;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string iPoint2;
+    public string point2;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -430,7 +430,7 @@ public partial class InuptDataEventsHandlerMoveRobotEventHandler {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string ipointTCP;
+    public string pointTCP;
 }
 
 /// <remarks/>

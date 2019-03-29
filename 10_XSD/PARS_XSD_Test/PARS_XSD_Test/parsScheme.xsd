@@ -53,15 +53,15 @@
               <xs:element maxOccurs="unbounded" name="Sphere">
                 <xs:complexType>
                   <xs:attribute name="name" type="xs:string" use="required" />
-                  <xs:attribute name="iPoint" type="xs:string" use="required" />
+                  <xs:attribute name="point" type="xs:string" use="required" />
                   <xs:attribute name="radius" type="xs:unsignedByte" use="required" />
                 </xs:complexType>
               </xs:element>
               <xs:element name="Zylinder">
                 <xs:complexType>
                   <xs:attribute name="name" type="xs:string" use="required" />
-                  <xs:attribute name="iPoint1" type="xs:string" use="required" />
-                  <xs:attribute name="iPoint2" type="xs:string" use="required" />
+                  <xs:attribute name="point1" type="xs:string" use="required" />
+                  <xs:attribute name="point2" type="xs:string" use="required" />
                   <xs:attribute name="radius" type="xs:unsignedByte" use="required" />
                 </xs:complexType>
               </xs:element>
@@ -87,8 +87,8 @@
                       <xs:complexType>
                         <xs:attribute name="name" type="xs:string" use="required" />
                         <xs:attribute name="canTrigger" type="xs:boolean" use="required" />
-                        <xs:attribute name="iPoint1" type="xs:string" use="required" />
-                        <xs:attribute name="iPoint2" type="xs:string" use="required" />
+                        <xs:attribute name="point1" type="xs:string" use="required" />
+                        <xs:attribute name="point2" type="xs:string" use="required" />
                         <xs:attribute name="distance" type="xs:decimal" use="required" />
                         <xs:attribute name="eventHandler1" type="xs:string" use="required" />
                         <xs:attribute name="eventHandler2" type="xs:string" use="optional" />
@@ -133,7 +133,7 @@
                       <xs:element name="MoveRobotEventHandler">
                         <xs:complexType>
                           <xs:attribute name="name" type="xs:string" use="required" />
-                          <xs:attribute name="ipointTCP" type="xs:string" use="required" />
+                          <xs:attribute name="pointTCP" type="xs:string" use="required" />
                         </xs:complexType>
                       </xs:element>
                       <xs:element name="SetRobotHandState">
