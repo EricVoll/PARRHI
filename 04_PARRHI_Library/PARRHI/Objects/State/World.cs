@@ -19,6 +19,11 @@ namespace PARRHI.Objects.State
             World.Time = Time;
         }
 
+        public void SetUIText(string text)
+        {
+
+        }
+
         public Point CameraPosition { get; set; }
         public static long Time { get; set; }
     }
