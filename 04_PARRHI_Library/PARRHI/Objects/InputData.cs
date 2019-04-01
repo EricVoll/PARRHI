@@ -29,23 +29,23 @@ namespace PARRHI.Objects
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "PARRHI", IsNullable = false)]
-    public partial class InuptData
+    public partial class InputData
     {
 
         /// <remarks/>
-        public InuptDataVariables Variables;
+        public InputDataVariables Variables;
 
         /// <remarks/>
-        public InuptDataPoints Points;
+        public InputDataPoints Points;
 
         /// <remarks/>
-        public InuptDataHolograms Holograms;
+        public InputDataHolograms Holograms;
 
         /// <remarks/>
-        public InuptDataEvents Events;
+        public InputDataEvents Events;
 
         /// <remarks/>
-        public InuptDataUIText UIText;
+        public InputDataUIText UIText;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlTextAttribute()]
@@ -58,12 +58,12 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataVariables
+    public partial class InputDataVariables
     {
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Int")]
-        public InuptDataVariablesInt[] Int;
+        public InputDataVariablesInt[] Int;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlTextAttribute()]
@@ -76,7 +76,7 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataVariablesInt
+    public partial class InputDataVariablesInt
     {
 
         /// <remarks/>
@@ -94,13 +94,13 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataPoints
+    public partial class InputDataPoints
     {
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("PointCamera", typeof(InuptDataPointsPointCamera))]
-        [System.Xml.Serialization.XmlElementAttribute("PointFix", typeof(InuptDataPointsPointFix))]
-        [System.Xml.Serialization.XmlElementAttribute("PointRobot", typeof(InuptDataPointsPointRobot))]
+        [System.Xml.Serialization.XmlElementAttribute("PointCamera", typeof(InputDataPointsPointCamera))]
+        [System.Xml.Serialization.XmlElementAttribute("PointFix", typeof(InputDataPointsPointFix))]
+        [System.Xml.Serialization.XmlElementAttribute("PointRobot", typeof(InputDataPointsPointRobot))]
         public object[] Items;
 
         /// <remarks/>
@@ -114,7 +114,7 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataPointsPointCamera
+    public partial class InputDataPointsPointCamera
     {
 
         /// <remarks/>
@@ -128,7 +128,7 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataPointsPointFix
+    public partial class InputDataPointsPointFix
     {
 
         /// <remarks/>
@@ -137,15 +137,15 @@ namespace PARRHI.Objects
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public sbyte X;
+        public decimal X;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public sbyte Y;
+        public decimal Y;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public sbyte Z;
+        public decimal Z;
     }
 
     /// <remarks/>
@@ -154,7 +154,7 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataPointsPointRobot
+    public partial class InputDataPointsPointRobot
     {
 
         /// <remarks/>
@@ -180,15 +180,15 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataHolograms
+    public partial class InputDataHolograms
     {
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Sphere")]
-        public InuptDataHologramsSphere[] Sphere;
+        public InputDataHologramsSphere[] Sphere;
 
         /// <remarks/>
-        public InuptDataHologramsZylinder Zylinder;
+        public InputDataHologramsZylinder Zylinder;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlTextAttribute()]
@@ -201,7 +201,7 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataHologramsSphere
+    public partial class InputDataHologramsSphere
     {
 
         /// <remarks/>
@@ -223,7 +223,7 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataHologramsZylinder
+    public partial class InputDataHologramsZylinder
     {
 
         /// <remarks/>
@@ -249,14 +249,14 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataEvents
+    public partial class InputDataEvents
     {
 
         /// <remarks/>
-        public InuptDataEventsTrigger Trigger;
+        public InputDataEventsTrigger Trigger;
 
         /// <remarks/>
-        public InuptDataEventsHandler Handler;
+        public InputDataEventsHandler Handler;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlTextAttribute()]
@@ -269,20 +269,20 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataEventsTrigger
+    public partial class InputDataEventsTrigger
     {
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("TimeTrigger")]
-        public InuptDataEventsTriggerTimeTrigger[] TimeTrigger;
+        public InputDataEventsTriggerTimeTrigger[] TimeTrigger;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("DistanceTrigger")]
-        public InuptDataEventsTriggerDistanceTrigger[] DistanceTrigger;
+        public InputDataEventsTriggerDistanceTrigger[] DistanceTrigger;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("VarTrigger")]
-        public InuptDataEventsTriggerVarTrigger[] VarTrigger;
+        public InputDataEventsTriggerVarTrigger[] VarTrigger;
     }
 
     /// <remarks/>
@@ -291,7 +291,7 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataEventsTriggerTimeTrigger
+    public partial class InputDataEventsTriggerTimeTrigger
     {
 
         /// <remarks/>
@@ -321,7 +321,7 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataEventsTriggerDistanceTrigger
+    public partial class InputDataEventsTriggerDistanceTrigger
     {
 
         /// <remarks/>
@@ -359,7 +359,7 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataEventsTriggerVarTrigger
+    public partial class InputDataEventsTriggerVarTrigger
     {
 
         /// <remarks/>
@@ -393,15 +393,15 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataEventsHandler
+    public partial class InputDataEventsHandler
     {
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ChangeUITextEventHandler", typeof(InuptDataEventsHandlerChangeUITextEventHandler))]
-        [System.Xml.Serialization.XmlElementAttribute("IncrementCounterEventHandler", typeof(InuptDataEventsHandlerIncrementCounterEventHandler))]
-        [System.Xml.Serialization.XmlElementAttribute("MoveRobotEventHandler", typeof(InuptDataEventsHandlerMoveRobotEventHandler))]
-        [System.Xml.Serialization.XmlElementAttribute("SetRobotHandState", typeof(InuptDataEventsHandlerSetRobotHandState))]
-        [System.Xml.Serialization.XmlElementAttribute("SetTriggerStateEventHandler", typeof(InuptDataEventsHandlerSetTriggerStateEventHandler))]
+        [System.Xml.Serialization.XmlElementAttribute("ChangeUITextEventHandler", typeof(InputDataEventsHandlerChangeUITextEventHandler))]
+        [System.Xml.Serialization.XmlElementAttribute("IncrementCounterEventHandler", typeof(InputDataEventsHandlerIncrementCounterEventHandler))]
+        [System.Xml.Serialization.XmlElementAttribute("MoveRobotEventHandler", typeof(InputDataEventsHandlerMoveRobotEventHandler))]
+        [System.Xml.Serialization.XmlElementAttribute("SetRobotHandState", typeof(InputDataEventsHandlerSetRobotHandState))]
+        [System.Xml.Serialization.XmlElementAttribute("SetTriggerStateEventHandler", typeof(InputDataEventsHandlerSetTriggerStateEventHandler))]
         public object[] Items;
     }
 
@@ -411,7 +411,7 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataEventsHandlerChangeUITextEventHandler
+    public partial class InputDataEventsHandlerChangeUITextEventHandler
     {
 
         /// <remarks/>
@@ -429,7 +429,7 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataEventsHandlerIncrementCounterEventHandler
+    public partial class InputDataEventsHandlerIncrementCounterEventHandler
     {
 
         /// <remarks/>
@@ -447,7 +447,7 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataEventsHandlerMoveRobotEventHandler
+    public partial class InputDataEventsHandlerMoveRobotEventHandler
     {
 
         /// <remarks/>
@@ -465,7 +465,7 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataEventsHandlerSetRobotHandState
+    public partial class InputDataEventsHandlerSetRobotHandState
     {
 
         /// <remarks/>
@@ -483,7 +483,7 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataEventsHandlerSetTriggerStateEventHandler
+    public partial class InputDataEventsHandlerSetTriggerStateEventHandler
     {
 
         /// <remarks/>
@@ -505,7 +505,7 @@ namespace PARRHI.Objects
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InuptDataUIText
+    public partial class InputDataUIText
     {
 
         /// <remarks/>
@@ -516,6 +516,5 @@ namespace PARRHI.Objects
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string text;
     }
-
 
 }
