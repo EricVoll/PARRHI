@@ -1,4 +1,5 @@
-﻿using PARRHI.HelperClasses.XML;
+﻿using PARRHI.HelperClasses;
+using PARRHI.HelperClasses.XML;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace PARRHI.Objects
             BaseElement.Element.RegisterId = RegisterId;
         }
 
-        public const string XSDFilePath = "";
+        public const string XSDFilePath = @"C:\Users\ericv\Documents\TUM\BA\PARRHI\10_XSD\PARS_XSD_Test\PARS_XSD_Test\parsScheme.xsd";
 
         public XMLValidationResult XMLValidationResult;
 
@@ -27,7 +28,7 @@ namespace PARRHI.Objects
             if (!XMLValidationResult.DidThrowExceptionWhileValidating)
             {
                 var inputData = xmlSerializer.Deserialize<Objects.InputData>(xmlFilePath, XSDFilePath);
-                
+                var container = new InputDataToContainer(inputData).ConvertToContainer();
             }
             
         }

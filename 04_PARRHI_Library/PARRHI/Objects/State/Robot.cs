@@ -18,7 +18,7 @@ namespace PARRHI.Objects
         Vector6 CurrentTarget { get; set; }
         Vector6 CurrentTCP { get; set; }
 
-        ForwardKinematics forwardKinematics = new ForwardKinematics();
+        readonly ForwardKinematics forwardKinematics = new ForwardKinematics();
 
         public Robot()
         {
@@ -45,6 +45,19 @@ namespace PARRHI.Objects
             {
                 Output.Instance.Error($"Length of JointArray does not match existing Joint array");
             }
+        }
+
+
+
+
+        public void MoveDelta(int x, int y, int z)
+        {
+
+        }
+
+        internal void SetHand(bool state)
+        {
+
         }
     }
 }

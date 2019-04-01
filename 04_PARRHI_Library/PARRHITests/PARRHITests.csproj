@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="HelperClasses\ForwardKinematicsTests.cs" />
     <Compile Include="HelperClasses\MatrixTests.cs" />
+    <Compile Include="Objects\DataImportTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -8,24 +8,24 @@ namespace PARRHI.Objects.TriggerActions
 {
     public class RobotHandAction : TriggerAction
     {
-        public RobotHandAction(string id, string stateToSet, FanucControllerLibrary.ControllCommander commander) : base(id)
+        public RobotHandAction(string id, string stateToSet, Action<bool> SetHand) : base(id)
         {
-            Commander = commander;
+            this.SetHand = SetHand;
             StateToSet = stateToSet;
         }
 
-        FanucControllerLibrary.ControllCommander Commander { get; set; }
+        Action<bool> SetHand;
         public string StateToSet { get; set; }
 
         public override void Trigger()
         {
             base.Trigger();
-            Commander.SetHand(StateToSet == "open");
+            SetHand(StateToSet == "open");
         }
         protected override void Trigger(object param)
         {
             base.Trigger(param);
-            Commander.SetHand(StateToSet == "open");
+            SetHand(StateToSet == "open");
         }
 
     }

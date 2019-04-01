@@ -10,25 +10,25 @@ namespace PARRHI.Objects.TriggerActions
 {
     public class MoveRobotAction : TriggerAction
     {
-        public MoveRobotAction(string id, Point tcpTargetPoint, FanucControllerLibrary.ControllCommander commander) : base(id)
+        public MoveRobotAction(string id, Point tcpTargetPoint, Action<int,int,int> MoveDelta) : base(id)
         {
-            Commander = commander;
             this.tcp = tcpTargetPoint;
+            this.MoveDelta = MoveDelta;
         }
-
-        FanucControllerLibrary.ControllCommander Commander { get; set; }
+        
 
         Point tcp { get; set; }
+        readonly Action<int, int, int> MoveDelta;
 
         public override void Trigger()
         {
             base.Trigger();
-            Commander.MoveDelta((int)tcp.X, (int)tcp.Y, (int)tcp.Z, 0, 0, 0);
+            MoveDelta((int)tcp.X, (int)tcp.Y, (int)tcp.Z);
         }
         protected override void Trigger(object param)
         {
             base.Trigger(param);
-            Commander.MoveDelta((int)tcp.X, (int)tcp.Y, (int)tcp.Z, 0, 0, 0);
+            MoveDelta((int)tcp.X, (int)tcp.Y, (int)tcp.Z);
         }
 
     }

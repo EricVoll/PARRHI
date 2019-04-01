@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HelperClasses\ForwardKinematics.cs" />
+    <Compile Include="HelperClasses\InputDataToContainer.cs" />
     <Compile Include="HelperClasses\Matrix.cs" />
     <Compile Include="HelperClasses\XML\XMLSerializerClass.cs" />
     <Compile Include="HelperClasses\XML\XMLValidationError.cs" />
@@ -53,6 +54,18 @@
     <Compile Include="Objects\BaseElement\IElement.cs" />
     <Compile Include="Objects\Container.cs" />
     <Compile Include="Objects\DataImport.cs" />
+    <Compile Include="Objects\TriggerActions\ChangeUITextAction.cs" />
+    <Compile Include="Objects\TriggerActions\MoveRobotAction.cs" />
+    <Compile Include="Objects\TriggerActions\RobotHandAction.cs" />
+    <Compile Include="Objects\TriggerActions\SetTriggerStateAction.cs" />
+    <Compile Include="Objects\TriggerActions\TriggerAction.cs" />
+    <Compile Include="Objects\TriggerActions\IncrementCounterAction.cs" />
+    <Compile Include="Objects\Triggers\DistanceTrigger.cs" />
+    <Compile Include="Objects\Triggers\TimeTrigger.cs" />
+    <Compile Include="Objects\Triggers\Trigger.cs" />
+    <Compile Include="Objects\Holograms\Hologram.cs" />
+    <Compile Include="Objects\Holograms\Sphere.cs" />
+    <Compile Include="Objects\Holograms\Zylinder.cs" />
     <Compile Include="Objects\InputData.cs" />
     <Compile Include="Objects\Points\IPoint.cs" />
     <Compile Include="Objects\Points\Point.cs" />
@@ -62,6 +75,8 @@
     <Compile Include="Objects\State\Robot.cs" />
     <Compile Include="Objects\State\State.cs" />
     <Compile Include="Objects\State\World.cs" />
+    <Compile Include="Objects\Triggers\VarTrigger.cs" />
+    <Compile Include="Objects\Variables\IntVariable.cs" />
     <Compile Include="Platform\Output.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
