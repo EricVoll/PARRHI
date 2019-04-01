@@ -16,6 +16,13 @@ public class PARRHIRuntime : MonoBehaviour
     private bool ConnectionProcessStarted = false;
     private bool Connected;
 
+    public uint q1;
+    public uint q2;
+    public uint q3;
+    public uint q4;
+    public uint q5;
+    public uint q6;
+
     public GameObject[] Joints;
 
     private void Awake()
@@ -31,6 +38,9 @@ public class PARRHIRuntime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Cycle();
+        return;
+
         if (ConnectEnabled && !ConnectionProcessStarted)
         {
             ConnectionProcessStarted = true;
@@ -72,10 +82,31 @@ public class PARRHIRuntime : MonoBehaviour
         System.Console.WriteLine(msg);
     }
 
+    //private void Cycle()
+    //{
+    //    //Vector6 q = RobotController.Commander.GetJointValues();
+    //    Vector6 q = RobotController.Commander.GetForces();
+    //    state.UpdateState(q, null);
+
+    //    Point[] joints = state.Robot.Joints;
+
+    //    if (joints.Length >= 5)
+    //        UnityOutputDelegate($"TCP: X:{joints[5].X} Y:{joints[5].Y} Z:{joints[5].Z}");
+
+    //    for (int i = 0; i < joints.Length; i++)
+    //    {
+    //        Joints[i].transform.position = new Vector3((float)joints[i].X, (float)joints[i].Y, (float)joints[i].Z);
+    //    }
+
+    //}
+
+
+    // Simulate Q values
     private void Cycle()
     {
         //Vector6 q = RobotController.Commander.GetJointValues();
-        Vector6 q = RobotController.Commander.GetForces();
+        double q3temp = q3 + q2;
+        Vector6 q = new Vector6(q1, q2, q3temp, q4, q5, q6);
         state.UpdateState(q, null);
 
         Point[] joints = state.Robot.Joints;
@@ -85,7 +116,7 @@ public class PARRHIRuntime : MonoBehaviour
 
         for (int i = 0; i < joints.Length; i++)
         {
-            Joints[i].transform.position = new Vector3((float)joints[i].X, (float)joints[i].Y, (float)joints[i].Z);
+            Joints[i].transform.position = new Vector3((float)joints[i].X, (float)joints[i].Z, (float)joints[i].Y);
         }
 
     }
