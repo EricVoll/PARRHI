@@ -8,7 +8,7 @@ namespace PARRHI.Objects.Points
 {
     public class PointRobot : Point
     {
-        public PointRobot(string id, double x, double y, double z, double scalar, int j1, int j2) : base(id, x, y, z)
+        public PointRobot(string id, double scalar, int j1, int j2) : base(id)
         {
             this.Scalar = scalar;
             this.Joint1Index = j1;

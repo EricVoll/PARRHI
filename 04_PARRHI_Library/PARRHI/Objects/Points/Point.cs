@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PARRHI.Objects.BaseElement;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace PARRHI.Objects.Points
 {
-    public class Point : IPoint, IElement
+    public class Point : Element, IPoint
     {
-        public string id { get; set; }
-
         public Point(string id)
         {
             this.id = id;
