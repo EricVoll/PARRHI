@@ -13,6 +13,7 @@
 		<PointCamera name="MainCamperaPoint"/>
 	</Points>
 	<Holograms>
+		<Zylinder name="Zyl1" point1="Point1" point2="Point2" radius="1" />
 		<Sphere name="Sphere1" point="Point1" radius="1" />
 		<Sphere name="Sphere2" point="Point1" radius="1" />
 		<Zylinder name="Zyl1" point1="Point1" point2="Point2" radius="1" />

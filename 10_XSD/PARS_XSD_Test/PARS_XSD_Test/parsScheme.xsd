@@ -50,21 +50,23 @@
         <xs:element name="Holograms">
           <xs:complexType mixed="true">
             <xs:sequence minOccurs="0">
-              <xs:element maxOccurs="unbounded" name="Sphere">
-                <xs:complexType>
-                  <xs:attribute name="name" type="xs:string" use="required" />
-                  <xs:attribute name="point" type="xs:string" use="required" />
-                  <xs:attribute name="radius" type="xs:unsignedByte" use="required" />
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="Zylinder">
-                <xs:complexType>
-                  <xs:attribute name="name" type="xs:string" use="required" />
-                  <xs:attribute name="point1" type="xs:string" use="required" />
-                  <xs:attribute name="point2" type="xs:string" use="required" />
-                  <xs:attribute name="radius" type="xs:unsignedByte" use="required" />
-                </xs:complexType>
-              </xs:element>
+              <xs:choice maxOccurs="unbounded">
+                <xs:element name="Zylinder">
+                  <xs:complexType>
+                    <xs:attribute name="name" type="xs:string" use="required" />
+                    <xs:attribute name="point1" type="xs:string" use="required" />
+                    <xs:attribute name="point2" type="xs:string" use="required" />
+                    <xs:attribute name="radius" type="xs:unsignedByte" use="required" />
+                  </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" name="Sphere">
+                  <xs:complexType>
+                    <xs:attribute name="name" type="xs:string" use="required" />
+                    <xs:attribute name="point" type="xs:string" use="required" />
+                    <xs:attribute name="radius" type="xs:unsignedByte" use="required" />
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

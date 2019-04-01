@@ -169,11 +169,9 @@ public partial class InputDataPointsPointRobot {
 public partial class InputDataHolograms {
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute("Sphere")]
-    public InputDataHologramsSphere[] Sphere;
-    
-    /// <remarks/>
-    public InputDataHologramsZylinder Zylinder;
+    [System.Xml.Serialization.XmlElementAttribute("Sphere", typeof(InputDataHologramsSphere))]
+    [System.Xml.Serialization.XmlElementAttribute("Zylinder", typeof(InputDataHologramsZylinder))]
+    public object[] Items;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlTextAttribute()]
