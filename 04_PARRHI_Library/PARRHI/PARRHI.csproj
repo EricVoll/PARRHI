@@ -46,8 +46,14 @@
   <ItemGroup>
     <Compile Include="HelperClasses\ForwardKinematics.cs" />
     <Compile Include="HelperClasses\Matrix.cs" />
-    <Compile Include="Objects\IElement.cs" />
-    <Compile Include="Objects\PARRHISchemeClass.cs" />
+    <Compile Include="HelperClasses\XML\XMLSerializerClass.cs" />
+    <Compile Include="HelperClasses\XML\XMLValidationError.cs" />
+    <Compile Include="HelperClasses\XML\XMLValidationResult.cs" />
+    <Compile Include="Objects\BaseElement\Element.cs" />
+    <Compile Include="Objects\BaseElement\IElement.cs" />
+    <Compile Include="Objects\Container.cs" />
+    <Compile Include="Objects\DataImport.cs" />
+    <Compile Include="Objects\InputData.cs" />
     <Compile Include="Objects\Points\IPoint.cs" />
     <Compile Include="Objects\Points\Point.cs" />
     <Compile Include="Objects\Points\PointCamera.cs" />
@@ -59,5 +65,6 @@
     <Compile Include="Platform\Output.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

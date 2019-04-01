@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PARRHI.Objects
+namespace PARRHI.Objects.BaseElement
 {
     public interface IElement
     {
