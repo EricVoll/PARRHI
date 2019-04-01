@@ -13,6 +13,13 @@ namespace PARRHI.Objects.State
         {
 
         }
+
+        public void Update(long Time)
+        {
+            World.Time = Time;
+        }
+
         public Point CameraPosition { get; set; }
+        public static long Time { get; set; }
     }
 }

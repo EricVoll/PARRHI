@@ -1,4 +1,7 @@
-﻿using PARRHI.Objects.Points;
+﻿using PARRHI.Objects.Triggers;
+using PARRHI.Objects.Holograms;
+using PARRHI.Objects.Points;
+using PARRHI.Objects.Variables;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +17,9 @@ namespace PARRHI.Objects
 
         }
 
-        public List<IPoint> Points { get; set; }
+        public List<Point> Points { get; internal set; }
+        public List<IntVariable> Variables { get; internal set; }
+        public List<Hologram> Holograms { get; internal set; }
+        public List<Trigger> Trigger { get; internal set; }
     }
 }
