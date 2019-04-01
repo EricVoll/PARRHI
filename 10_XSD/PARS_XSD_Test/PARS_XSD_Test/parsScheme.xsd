@@ -81,8 +81,8 @@
                         <xs:attribute name="name" type="xs:string" use="required" />
                         <xs:attribute name="canTrigger" type="xs:boolean" use="required" />
                         <xs:attribute name="timeSinceActivation" type="xs:unsignedByte" use="required" />
-                        <xs:attribute name="eventHadler1" type="xs:string" use="required" />
-                        <xs:attribute name="eventHandler2" type="xs:string" use="optional" />
+                        <xs:attribute name="action1" type="xs:string" use="required" />
+                        <xs:attribute name="action2" type="xs:string" use="optional" />
                       </xs:complexType>
                     </xs:element>
                     <xs:element maxOccurs="unbounded" name="DistanceTrigger">
@@ -92,8 +92,8 @@
                         <xs:attribute name="point1" type="xs:string" use="required" />
                         <xs:attribute name="point2" type="xs:string" use="required" />
                         <xs:attribute name="distance" type="xs:decimal" use="required" />
-                        <xs:attribute name="eventHandler1" type="xs:string" use="required" />
-                        <xs:attribute name="eventHandler2" type="xs:string" use="optional" />
+                        <xs:attribute name="action1" type="xs:string" use="required" />
+                        <xs:attribute name="action2" type="xs:string" use="optional" />
                       </xs:complexType>
                     </xs:element>
                     <xs:element maxOccurs="unbounded" name="VarTrigger">
@@ -102,43 +102,43 @@
                         <xs:attribute name="canTrigger" type="xs:boolean" use="required" />
                         <xs:attribute name="varName" type="xs:string" use="required" />
                         <xs:attribute name="triggerValue" type="xs:unsignedByte" use="required" />
-                        <xs:attribute name="eventHadler1" type="xs:string" use="required" />
-                        <xs:attribute name="eventHandler2" type="xs:string" use="optional" />
+                        <xs:attribute name="action1" type="xs:string" use="required" />
+                        <xs:attribute name="action2" type="xs:string" use="optional" />
                       </xs:complexType>
                     </xs:element>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
-              <xs:element name="Handler">
+              <xs:element name="Actions">
                 <xs:complexType>
                   <xs:sequence>
                     <xs:choice maxOccurs="unbounded">
-                      <xs:element name="IncrementCounterEventHandler">
+                      <xs:element name="IncrementCounterAction">
                         <xs:complexType>
                           <xs:attribute name="name" type="xs:string" use="required" />
                           <xs:attribute name="intVar" type="xs:string" use="required" />
                         </xs:complexType>
                       </xs:element>
-                      <xs:element name="SetTriggerStateEventHandler">
+                      <xs:element name="SetTriggerStateAction">
                         <xs:complexType>
                           <xs:attribute name="name" type="xs:string" use="required" />
                           <xs:attribute name="triggerName" type="xs:string" use="required" />
                           <xs:attribute name="canTrigger" type="xs:boolean" use="required" />
                         </xs:complexType>
                       </xs:element>
-                      <xs:element name="ChangeUITextEventHandler">
+                      <xs:element name="ChangeUITextAction">
                         <xs:complexType>
                           <xs:attribute name="name" type="xs:string" use="required" />
                           <xs:attribute name="text" type="xs:string" use="required" />
                         </xs:complexType>
                       </xs:element>
-                      <xs:element name="MoveRobotEventHandler">
+                      <xs:element name="MoveRobotAction">
                         <xs:complexType>
                           <xs:attribute name="name" type="xs:string" use="required" />
                           <xs:attribute name="pointTCP" type="xs:string" use="required" />
                         </xs:complexType>
                       </xs:element>
-                      <xs:element name="SetRobotHandState">
+                      <xs:element name="SetRobotHandStateAction">
                         <xs:complexType>
                           <xs:attribute name="name" type="xs:string" use="required" />
                           <xs:attribute name="state" type="xs:string" use="required" />

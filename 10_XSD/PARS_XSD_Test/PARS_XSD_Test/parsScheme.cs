@@ -236,7 +236,7 @@ public partial class InputDataEvents {
     public InputDataEventsTrigger Trigger;
     
     /// <remarks/>
-    public InputDataEventsHandler Handler;
+    public InputDataEventsActions Actions;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlTextAttribute()]
@@ -286,11 +286,11 @@ public partial class InputDataEventsTriggerTimeTrigger {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string eventHadler1;
+    public string action1;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string eventHandler2;
+    public string action2;
 }
 
 /// <remarks/>
@@ -323,11 +323,11 @@ public partial class InputDataEventsTriggerDistanceTrigger {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string eventHandler1;
+    public string action1;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string eventHandler2;
+    public string action2;
 }
 
 /// <remarks/>
@@ -356,11 +356,11 @@ public partial class InputDataEventsTriggerVarTrigger {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string eventHadler1;
+    public string action1;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string eventHandler2;
+    public string action2;
 }
 
 /// <remarks/>
@@ -369,14 +369,14 @@ public partial class InputDataEventsTriggerVarTrigger {
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
-public partial class InputDataEventsHandler {
+public partial class InputDataEventsActions {
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute("ChangeUITextEventHandler", typeof(InputDataEventsHandlerChangeUITextEventHandler))]
-    [System.Xml.Serialization.XmlElementAttribute("IncrementCounterEventHandler", typeof(InputDataEventsHandlerIncrementCounterEventHandler))]
-    [System.Xml.Serialization.XmlElementAttribute("MoveRobotEventHandler", typeof(InputDataEventsHandlerMoveRobotEventHandler))]
-    [System.Xml.Serialization.XmlElementAttribute("SetRobotHandState", typeof(InputDataEventsHandlerSetRobotHandState))]
-    [System.Xml.Serialization.XmlElementAttribute("SetTriggerStateEventHandler", typeof(InputDataEventsHandlerSetTriggerStateEventHandler))]
+    [System.Xml.Serialization.XmlElementAttribute("ChangeUITextAction", typeof(InputDataEventsActionsChangeUITextAction))]
+    [System.Xml.Serialization.XmlElementAttribute("IncrementCounterAction", typeof(InputDataEventsActionsIncrementCounterAction))]
+    [System.Xml.Serialization.XmlElementAttribute("MoveRobotAction", typeof(InputDataEventsActionsMoveRobotAction))]
+    [System.Xml.Serialization.XmlElementAttribute("SetRobotHandStateAction", typeof(InputDataEventsActionsSetRobotHandStateAction))]
+    [System.Xml.Serialization.XmlElementAttribute("SetTriggerStateAction", typeof(InputDataEventsActionsSetTriggerStateAction))]
     public object[] Items;
 }
 
@@ -386,7 +386,7 @@ public partial class InputDataEventsHandler {
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
-public partial class InputDataEventsHandlerChangeUITextEventHandler {
+public partial class InputDataEventsActionsChangeUITextAction {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -403,7 +403,7 @@ public partial class InputDataEventsHandlerChangeUITextEventHandler {
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
-public partial class InputDataEventsHandlerIncrementCounterEventHandler {
+public partial class InputDataEventsActionsIncrementCounterAction {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -420,7 +420,7 @@ public partial class InputDataEventsHandlerIncrementCounterEventHandler {
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
-public partial class InputDataEventsHandlerMoveRobotEventHandler {
+public partial class InputDataEventsActionsMoveRobotAction {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -437,7 +437,7 @@ public partial class InputDataEventsHandlerMoveRobotEventHandler {
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
-public partial class InputDataEventsHandlerSetRobotHandState {
+public partial class InputDataEventsActionsSetRobotHandStateAction {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -454,7 +454,7 @@ public partial class InputDataEventsHandlerSetRobotHandState {
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
-public partial class InputDataEventsHandlerSetTriggerStateEventHandler {
+public partial class InputDataEventsActionsSetTriggerStateAction {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]

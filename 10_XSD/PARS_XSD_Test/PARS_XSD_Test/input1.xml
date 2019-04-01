@@ -6,36 +6,36 @@
 		<Int name="var2">0</Int>
 	</Variables>
 	<Points>
-		<PointRobot name="Point3" J1="1" J2="2" Scale="0.4" />
-		<PointFix name="Point1" X="1.2" Y="2" Z="3.2"/>
-		<PointFix name="Point2" X="-1" Y="-2.2" Z="-3"/>
-		<PointRobot name="Point3" J1="1" J2="2" Scale="-0.4" />
+		<PointRobot name="Point1" J1="1" J2="2" Scale="0.4" />
+		<PointFix name="Point2" X="1.2" Y="2" Z="3.2"/>
+		<PointFix name="Point3" X="-1" Y="-2.2" Z="-3"/>
+		<PointRobot name="Point4" J1="1" J2="2" Scale="-0.4" />
 		<PointCamera name="MainCamperaPoint"/>
 	</Points>
 	<Holograms>
 		<Zylinder name="Zyl1" point1="Point1" point2="Point2" radius="1" />
 		<Sphere name="Sphere1" point="Point1" radius="1" />
-		<Sphere name="Sphere2" point="Point1" radius="1" />
-		<Zylinder name="Zyl1" point1="Point1" point2="Point2" radius="1" />
+		<Sphere name="Sphere2" point="Point3" radius="1" />
+		<Zylinder name="Zyl2" point1="Point1" point2="Point2" radius="1" />
 	</Holograms>
 	<Events>
 		<Trigger>
-			<TimeTrigger name="Trigger1" canTrigger='true' timeSinceActivation="123" eventHadler1="Handler1" eventHandler2="Handler2" 	/>
-			<TimeTrigger name="Trigger2" canTrigger='true' timeSinceActivation="123" eventHadler1="Handler1" 							/>
-			<DistanceTrigger name="Trigger3" canTrigger='true' point1="Point1" point2="Point2" distance="12.2" eventHandler1="Handler1" eventHandler2="Handler2" 	/>
-			<DistanceTrigger name="Trigger4" canTrigger='true' point1="Point1" point2="Point2" distance="12.2" eventHandler1="Handler1" 							/>
-			<VarTrigger name="Trigger5" canTrigger='true' varName="var1" triggerValue="2" eventHadler1="Handler1" eventHandler2="Handler2" 	 />
-			<VarTrigger name="Trigger5" canTrigger='true' varName="var1" triggerValue="2" eventHadler1="Handler1" 						 	 />
+			<TimeTrigger name="Trigger1" canTrigger='true' timeSinceActivation="123" action1="Handler1" action2="Handler2" 	/>
+			<TimeTrigger name="Trigger2" canTrigger='true' timeSinceActivation="123" action1="Handler1" 							/>
+			<DistanceTrigger name="Trigger3" canTrigger='true' point1="Point1" point2="Point2" distance="12.2" action1="Handler1" action2="Handler2" 	/>
+			<DistanceTrigger name="Trigger4" canTrigger='true' point1="Point1" point2="Point2" distance="12.2" action1="Handler1" 							/>
+			<VarTrigger name="Trigger5" canTrigger='true' varName="var1" triggerValue="2" action1="Handler1" action2="Handler2" 	 />
+			<VarTrigger name="Trigger6" canTrigger='true' varName="var1" triggerValue="2" action1="Handler1" 						 	 />
 		</Trigger>
-		<Handler>
-			<IncrementCounterEventHandler name="Hanlder1" intVar="var1"/>
-			<SetTriggerStateEventHandler name="Handler3" triggerName="Trigger1" canTrigger='true'/>
-			<ChangeUITextEventHandler name="Hanlder2" text="Tutorial step nr. 4"/>
-			<SetTriggerStateEventHandler name="Handler3" triggerName="Trigger1" canTrigger='true'/>
-			<MoveRobotEventHandler name="Handler4" pointTCP="Point1" />
-			<SetRobotHandState name="Handler5" state="open" />
-			<SetRobotHandState name="Handler6" state="close" />
-		</Handler>
+		<Actions>
+			<IncrementCounterAction name="Hanlder1" intVar="var1"/>
+			<SetTriggerStateAction name="Handler2" triggerName="Trigger1" canTrigger='true'/>
+			<ChangeUITextAction name="Hanlder3" text="Tutorial step nr. 4"/>
+			<SetTriggerStateAction name="Handler4" triggerName="Trigger1" canTrigger='true'/>
+			<MoveRobotAction name="Handler5" pointTCP="Point1" />
+			<SetRobotHandStateAction name="Handler6" state="open" />
+			<SetRobotHandStateAction name="Handler7" state="close" />
+		</Actions>
 	</Events>
 	<UIText name="UniqueText" text="Content"/>
 </InputData>
