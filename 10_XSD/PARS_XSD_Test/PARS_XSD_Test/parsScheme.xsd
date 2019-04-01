@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="PARRHI" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="InuptData">
+  <xs:element name="InputData">
     <xs:complexType mixed="true">
       <xs:sequence minOccurs="0">
         <xs:element name="Variables">
@@ -33,9 +33,9 @@
                 <xs:element maxOccurs="unbounded" name="PointFix">
                   <xs:complexType>
                     <xs:attribute name="name" type="xs:string" use="required" />
-                    <xs:attribute name="X" type="xs:byte" use="required" />
-                    <xs:attribute name="Y" type="xs:byte" use="required" />
-                    <xs:attribute name="Z" type="xs:byte" use="required" />
+                    <xs:attribute name="X" type="xs:decimal" use="required" />
+                    <xs:attribute name="Y" type="xs:decimal" use="required" />
+                    <xs:attribute name="Z" type="xs:decimal" use="required" />
                   </xs:complexType>
                 </xs:element>
                 <xs:element name="PointCamera">

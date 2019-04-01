@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--This is the full file with all values specified-->
-<InuptData xmlns="PARRHI">
+<InputData xmlns="PARRHI">
 	<Variables>
 		<Int name="var1">0</Int>
 		<Int name="var2">0</Int>
@@ -37,4 +37,4 @@
 		</Handler>
 	</Events>
 	<UIText name="UniqueText" text="Content"/>
-</InuptData>
+</InputData>

@@ -13,7 +13,7 @@ l4 = [420-l3(1);0;0];
 l5 = [80;0;0];
 l6 = [150;0;0];
 
-q = [0;0;0;0;0;0];
+q = [12;0;13;5;0;4];
 
 q(3)=q(3)+q(2);
 
@@ -36,11 +36,19 @@ Phi04 = Phi03 * Phi4(q(4));
 Phi05 = Phi04 * Phi5(q(5));
 Phi06 = Phi05 * Phi6(q(6));
 
-joint1 = x6 - Phi01 *(l1+x5);
+joint1 = x6 - Phi01 * (l1 + x5);
 joint2 = x6 - Phi02 * (l2 + x4);
 joint3 = x6 - Phi03 * (l3 + x3);
 joint4 = x6 - Phi04 * (l4 + x2);
 joint5 = x6 - Phi05 * (l5 + x1);
 joint6 = x6 - Phi06 * (l6 + x0);
+
+%Alternativ -> effizienter. 1 Matrix weniger, weniger Additionen
+% joint11 = x6 - x6;
+% joint12 = x6 - Phi01 * x5;
+% joint13 = x6 - Phi02 * x4;
+% joint14 = x6 - Phi03 * x3;
+% joint15 = x6 - Phi04 * x2;
+% joint16 = x6 - Phi05 * x1;
 
 x6

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<InuptData xmlns="PARRHI">
+<InputData xmlns="PARRHI">
 	<Variables>
 	</Variables>
 	<Points>
@@ -10,4 +10,4 @@
 	<Events>
 	</Events>
 	<UIText/>
-</InuptData>
+</InputData>
