@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!--This is the full file with all values specified-->
+<InputData xmlns="PARRHI">
+	<Variables>
+		<Int name="var1">0</Int>
+	</Variables>
+	<Points>
+		<PointRobot name="Point1" J1="0" J2="1" Scale="0" />
+		<PointRobot name="Point2" J1="1" J2="2" Scale="0" />
+		<PointRobot name="Point3" J1="2" J2="3" Scale="0" />
+		<PointRobot name="Point4" J1="3" J2="4" Scale="0" />
+		<PointRobot name="Point5" J1="4" J2="5" Scale="0" />
+		<PointRobot name="Point6" J1="5" J2="5" Scale="0" />
+
+		<PointFix name="Point7" X="700" Y="0" Z = "700"/>
+		<PointFix name="Point8" X="700" Y="0" Z = "-700"/>
+		<PointFix name="Point9" X="-700" Y="0" Z = "-700"/>
+		<PointFix name="Point10" X="-700" Y="0" Z = "700"/>
+		
+		<PointFix name="Point11" X="700" Y="1400" Z = "700"/>
+		<PointFix name="Point12" X="700" Y="1400" Z = "-700"/>
+		<PointFix name="Point13" X="-700" Y="1400" Z = "-700"/>
+		<PointFix name="Point14" X="-700" Y="1400" Z = "700"/>
+	</Points>
+	<Holograms>
+		<Sphere name="Sphere1" point="Point1" radius="90" />
+		<Sphere name="Sphere2" point="Point2" radius="80" />
+		<Sphere name="Sphere3" point="Point3" radius="70" />
+		<Sphere name="Sphere4" point="Point4" radius="40" />
+		<Sphere name="Sphere5" point="Point5" radius="20" />
+		<Sphere name="Sphere6" point="Point6" radius="20" />
+		<Zylinder name="Zylinder1" point1="Point1" point2="Point2" radius="90"/>
+		<Zylinder name="Zylinder2" point1="Point2" point2="Point3" radius="70"/>
+		<Zylinder name="Zylinder3" point1="Point3" point2="Point4" radius="70"/>
+		<Zylinder name="Zylinder4" point1="Point4" point2="Point5" radius="40"/>
+		<Zylinder name="Zylinder5" point1="Point5" point2="Point6" radius="20"/>
+		
+		
+		<Zylinder name="Zylinder6" point1="Point7" point2="Point8" radius="20"/>
+		<Zylinder name="Zylinder7" point1="Point8" point2="Point9" radius="20"/>
+		<Zylinder name="Zylinder8" point1="Point9" point2="Point10" radius="20"/>
+		<Zylinder name="Zylinder9" point1="Point10" point2="Point7" radius="20"/>
+		
+		<Zylinder name="Zylinder10" point1="Point11" point2="Point12" radius="20"/>
+		<Zylinder name="Zylinder11" point1="Point12" point2="Point13" radius="20"/>
+		<Zylinder name="Zylinder12" point1="Point13" point2="Point14" radius="20"/>
+		<Zylinder name="Zylinder13" point1="Point14" point2="Point11" radius="20"/>
+		
+		<Zylinder name="Zylinder14" point1="Point7" point2="Point11" radius="20"/>
+		<Zylinder name="Zylinder15" point1="Point8" point2="Point12" radius="20"/>
+		<Zylinder name="Zylinder16" point1="Point9" point2="Point13" radius="20"/>
+		<Zylinder name="Zylinder17" point1="Point10" point2="Point14" radius="20"/>
+	</Holograms>
+	<Events>
+		<Trigger>
+			<TimeTrigger name="Trigger1" canTrigger='true' timeSinceActivation="123" action1="Handler1"/>
+		</Trigger>
+		<Actions>
+			<IncrementCounterAction name="Hanlder1" intVar="var1"/>
+		</Actions>
+	</Events>
+	<UIText name="UniqueText" text="Content"/>
+</InputData>

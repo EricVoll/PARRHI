@@ -6,39 +6,89 @@ using PARRHI.Objects.State;
 using FanucControllerLibrary;
 using FanucControllerLibrary.DataTypes;
 using PARRHI.Objects.Points;
+using PARRHI.Objects;
+using System.Linq;
+using System;
 
 public class PARRHIRuntime : MonoBehaviour
 {
 
-    State state;
-    public FanucController RobotController;
+    Container Container;
+    FanucController RobotController;
+
     public bool ConnectEnabled;
     private bool ConnectionProcessStarted = false;
     private bool Connected;
 
-    public uint q1;
-    public uint q2;
-    public uint q3;
-    public uint q4;
-    public uint q5;
-    public uint q6;
+    public GameObject MainCamera;
 
-    public GameObject[] Joints;
 
-    private void Awake()
+    public int q1;
+    public int q2;
+    public int q3;
+    public int q4;
+    public int q5;
+    public int q6;
+
+    public bool animate;
+    public bool random;
+    public bool backToNull;
+    public int q1t;
+    public int q2t;
+    public int q3t;
+    public int q4t;
+    public int q5t;
+    public int q6t;
+
+    private void Start()
     {
-        state = new State();
         RobotController = new FanucController();
-
-
         PARRHI.Output.Instance.SetOutputDelegate(UnityOutputDelegate);
         FanucControllerLibrary.Output.Instance.SetOutputDelegate(UnityOutputDelegate);
+
+        Container = new DataImport().Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\InputData.xml");
+
+        //Instantiate all holograms
+        AddHolograms(Container);
     }
 
     // Update is called once per frame
     void Update()
     {
         Cycle();
+
+        if (animate)
+        {
+            q1 += q1 > q1t ? -1 : (q1 == q1t) ? 0 : 1;
+            q2 += q2 > q2t ? -1 : (q2 == q2t) ? 0 : 1;
+            q3 += q3 > q3t ? -1 : (q3 == q3t) ? 0 : 1;
+            q4 += q4 > q4t ? -1 : (q4 == q4t) ? 0 : 1;
+            q5 += q5 > q5t ? -1 : (q5 == q5t) ? 0 : 1;
+            q6 += q6 > q6t ? -1 : (q6 == q6t) ? 0 : 1;
+        }
+
+        if (backToNull)
+        {
+            backToNull = false;
+            q1t = 0;
+            q2t = 0;
+            q3t = 0;
+            q4t = 0;
+            q5t = 0;
+            q6t = 0;
+        }
+        if (random)
+        {
+            System.Random rnd = new System.Random();
+            random = false;
+            q1t = rnd.Next(-180, 180);
+            q2t = rnd.Next(-180, 180);
+            q3t = rnd.Next(-180, 180);
+            q4t = rnd.Next(-180, 180);
+            q5t = rnd.Next(-180, 180);
+            q6t = rnd.Next(-180, 180);
+        }
+
         return;
 
         if (ConnectEnabled && !ConnectionProcessStarted)
@@ -82,42 +132,28 @@ public class PARRHIRuntime : MonoBehaviour
         System.Console.WriteLine(msg);
     }
 
-    //private void Cycle()
-    //{
-    //    //Vector6 q = RobotController.Commander.GetJointValues();
-    //    Vector6 q = RobotController.Commander.GetForces();
-    //    state.UpdateState(q, null);
-
-    //    Point[] joints = state.Robot.Joints;
-
-    //    if (joints.Length >= 5)
-    //        UnityOutputDelegate($"TCP: X:{joints[5].X} Y:{joints[5].Y} Z:{joints[5].Z}");
-
-    //    for (int i = 0; i < joints.Length; i++)
-    //    {
-    //        Joints[i].transform.position = new Vector3((float)joints[i].X, (float)joints[i].Y, (float)joints[i].Z);
-    //    }
-
-    //}
-
 
     // Simulate Q values
     private void Cycle()
     {
-        //Vector6 q = RobotController.Commander.GetJointValues();
         double q3temp = q3 + q2;
         Vector6 q = new Vector6(q1, q2, q3temp, q4, q5, q6);
-        state.UpdateState(q, null);
 
-        Point[] joints = state.Robot.Joints;
+        //Update State
+        Container.Update(q, TypeConversion.i.Vector3ToPoint(MainCamera.transform.position), (long)Time.realtimeSinceStartup);
+    }
 
-        if (joints.Length >= 5)
-            UnityOutputDelegate($"TCP: X:{joints[5].X} Y:{joints[5].Y} Z:{joints[5].Z}");
 
-        for (int i = 0; i < joints.Length; i++)
+    private void AddHolograms(Container container)
+    {
+        HologramContainer hContainer = this.GetComponentInChildren<HologramContainer>();
+        foreach (var item in container.Holograms.Where(x => x is PARRHI.Objects.Holograms.Sphere).Cast<PARRHI.Objects.Holograms.Sphere>())
         {
-            Joints[i].transform.position = new Vector3((float)joints[i].X, (float)joints[i].Z, (float)joints[i].Y);
+            hContainer.AddSphere(item);
         }
-
+        foreach (var item in container.Holograms.Where(x => x is PARRHI.Objects.Holograms.Zylinder).Cast<PARRHI.Objects.Holograms.Zylinder>())
+        {
+            hContainer.AddCylinder(item);
+        }
     }
 }
