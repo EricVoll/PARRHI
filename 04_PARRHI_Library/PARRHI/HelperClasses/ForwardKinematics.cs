@@ -63,7 +63,7 @@ namespace PARRHI.HelperClasses
         {
             get
             {
-                if(robotJointLenghts == null) robotJointLenghts = new Point[] { L1, L2, L3, L4, L5, L6 };
+                if (robotJointLenghts == null) robotJointLenghts = new Point[] { L1, L2, L3, L4, L5, L6 };
                 return robotJointLenghts;
 
             }
@@ -102,20 +102,30 @@ namespace PARRHI.HelperClasses
                 Phin[i] = Phi[i](JointAngles[i]);                                                       //Coord tranformation matrix from CoordSys n to n-1
 
             //Construct part vectors step by step
-            Point[] x = new Point[dim+1];
+            Point[] x = new Point[dim + 1];
             x[0] = new Point(0, 0, 0);
-            for (int i = 1; i < dim+1; i++)
+            for (int i = 1; i < dim + 1; i++)
                 x[i] = Phin[dim - i] * (RobotJointLenghts[dim - i] + x[i - 1]);                         //Starting from the TCP going backwards to the base and transforming each L_i vector + the "payload" we allready transformed from prev. coord systems
 
             //Construct absolute tranformation matrices
             Matrix[] phi0n = new Matrix[dim];                                                           //Coord transformation matrix from CoordSys n to 0
             phi0n[0] = Phin[0];
             for (int i = 1; i < dim; i++)
-                phi0n[i] = phi0n[i-1] * Phin[i];
+                phi0n[i] = phi0n[i - 1] * Phin[i];
 
             //Calculate joint positions by subtracting the Transformed part (in 0-coord sys) from the TCP
             for (int i = 0; i < dim; i++)
                 jointPositions[i] = x.Last() - phi0n[i] * (RobotJointLenghts[i] + x[dim - 1 - i]);
+
+            //Unity is stupid and uses y as a z axis.
+            for (int i = 0; i < dim; i++)
+            {
+                var bufferX = jointPositions[i].X;
+                var bufferZ = jointPositions[i].Z;
+                jointPositions[i].X = jointPositions[i].Y;
+                jointPositions[i].Y = bufferZ;
+                jointPositions[i].Z = bufferX;
+            }
 
             return jointPositions;
         }

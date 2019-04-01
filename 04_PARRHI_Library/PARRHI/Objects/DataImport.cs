@@ -20,7 +20,7 @@ namespace PARRHI.Objects
 
         public XMLValidationResult XMLValidationResult;
 
-        public void Import(string xmlFilePath)
+        public Container Import(string xmlFilePath)
         {
             HelperClasses.XML.XMLSerializerClass xmlSerializer = new HelperClasses.XML.XMLSerializerClass();
             XMLValidationResult = xmlSerializer.ValidateXML(xmlFilePath, XSDFilePath);
@@ -29,8 +29,10 @@ namespace PARRHI.Objects
             {
                 var inputData = xmlSerializer.Deserialize<Objects.InputData>(xmlFilePath, XSDFilePath);
                 var container = new InputDataToContainer(inputData).ConvertToContainer();
+                return container;
             }
-            
+
+            return null;
         }
 
         private List<string> Ids = new List<string>();

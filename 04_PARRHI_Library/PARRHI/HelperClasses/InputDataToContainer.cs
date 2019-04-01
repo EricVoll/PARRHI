@@ -133,32 +133,35 @@ namespace PARRHI.HelperClasses
         {
             List<Trigger> triggers = new List<Trigger>();
 
-            foreach (var item in inputData.Events.Trigger.DistanceTrigger)
-            {
-                Point p1 = container.Points.Find(x => x.id == item.point1);
-                Point p2 = container.Points.Find(x => x.id == item.point2);
-                TriggerAction t1 = container.TriggerActions.Find(x => x.id == item.action1);
-                TriggerAction t2 = container.TriggerActions.Find(x => x.id == item.action2);
-                Trigger t = new DistanceTrigger(item.name, p1, p2, (double)item.distance, t1, t2);
-                triggers.Add(t);
-            }
+            if (inputData.Events.Trigger.DistanceTrigger != null)
+                foreach (var item in inputData.Events.Trigger.DistanceTrigger)
+                {
+                    Point p1 = container.Points.Find(x => x.id == item.point1);
+                    Point p2 = container.Points.Find(x => x.id == item.point2);
+                    TriggerAction t1 = container.TriggerActions.Find(x => x.id == item.action1);
+                    TriggerAction t2 = container.TriggerActions.Find(x => x.id == item.action2);
+                    Trigger t = new DistanceTrigger(item.name, p1, p2, (double)item.distance, t1, t2);
+                    triggers.Add(t);
+                }
 
-            foreach (var item in inputData.Events.Trigger.TimeTrigger)
-            {
-                TriggerAction t1 = container.TriggerActions.Find(x => x.id == item.action1);
-                TriggerAction t2 = container.TriggerActions.Find(x => x.id == item.action2);
-                Trigger t = new TimeTrigger(item.name, item.canTrigger, item.timeSinceActivation, t1, t2);
-                triggers.Add(t);
-            }
+            if (inputData.Events.Trigger.TimeTrigger != null)
+                foreach (var item in inputData.Events.Trigger.TimeTrigger)
+                {
+                    TriggerAction t1 = container.TriggerActions.Find(x => x.id == item.action1);
+                    TriggerAction t2 = container.TriggerActions.Find(x => x.id == item.action2);
+                    Trigger t = new TimeTrigger(item.name, item.canTrigger, item.timeSinceActivation, t1, t2);
+                    triggers.Add(t);
+                }
 
-            foreach (var item in inputData.Events.Trigger.VarTrigger)
-            {
-                IntVariable var = container.Variables.Find(x => x.id == item.varName);
-                TriggerAction t1 = container.TriggerActions.Find(x => x.id == item.action1);
-                TriggerAction t2 = container.TriggerActions.Find(x => x.id == item.action2);
-                Trigger t = new VarTrigger(item.name, var, item.triggerValue, t1, t2);
-                triggers.Add(t);
-            }
+            if (inputData.Events.Trigger.VarTrigger != null)
+                foreach (var item in inputData.Events.Trigger.VarTrigger)
+                {
+                    IntVariable var = container.Variables.Find(x => x.id == item.varName);
+                    TriggerAction t1 = container.TriggerActions.Find(x => x.id == item.action1);
+                    TriggerAction t2 = container.TriggerActions.Find(x => x.id == item.action2);
+                    Trigger t = new VarTrigger(item.name, var, item.triggerValue, t1, t2);
+                    triggers.Add(t);
+                }
 
             return triggers;
         }

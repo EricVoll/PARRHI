@@ -19,9 +19,15 @@ namespace PARRHI.Objects.State
         public Robot Robot { get; set; }
         public World World { get; set; }
 
-        public void UpdateState(Vector6 jointAngles, Point CameraPosition)
+        public void UpdateState(Vector6 jointAngles, Point CameraPosition, long timeSinceStartup)
         {
             Robot.UpdateRobotPositions(jointAngles);
+            World.Update(timeSinceStartup);
+        }
+
+        public Point[] GetJointPositions()
+        {
+            return Robot.Joints;
         }
     }
 }

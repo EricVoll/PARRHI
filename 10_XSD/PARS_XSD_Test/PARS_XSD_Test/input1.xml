@@ -6,11 +6,12 @@
 		<Int name="var2">0</Int>
 	</Variables>
 	<Points>
-		<PointRobot name="Point1" J1="1" J2="2" Scale="0.4" />
-		<PointFix name="Point2" X="1.2" Y="2" Z="3.2"/>
-		<PointFix name="Point3" X="-1" Y="-2.2" Z="-3"/>
-		<PointRobot name="Point4" J1="1" J2="2" Scale="-0.4" />
-		<PointCamera name="MainCamperaPoint"/>
+		<PointRobot name="Point1" J1="1" J2="2" Scale="0" />
+		<PointRobot name="Point2" J1="2" J2="3" Scale="0" />
+		<PointRobot name="Point3" J1="3" J2="4" Scale="0" />
+		<PointRobot name="Point4" J1="4" J2="5" Scale="0" />
+		<PointRobot name="Point5" J1="5" J2="6" Scale="0" />
+		<PointRobot name="Point6" J1="6" J2="6" Scale="0" />
 	</Points>
 	<Holograms>
 		<Zylinder name="Zyl1" point1="Point1" point2="Point2" radius="1" />
