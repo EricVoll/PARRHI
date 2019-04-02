@@ -57,6 +57,7 @@
                     <xs:attribute name="point1" type="xs:string" use="required" />
                     <xs:attribute name="point2" type="xs:string" use="required" />
                     <xs:attribute name="radius" type="xs:unsignedByte" use="required" />
+                    <xs:attribute name="renderMode" type="xs:string" use="optional" />
                   </xs:complexType>
                 </xs:element>
                 <xs:element maxOccurs="unbounded" name="Sphere">
@@ -64,6 +65,7 @@
                     <xs:attribute name="name" type="xs:string" use="required" />
                     <xs:attribute name="point" type="xs:string" use="required" />
                     <xs:attribute name="radius" type="xs:unsignedByte" use="required" />
+                    <xs:attribute name="renderMode" type="xs:string" use="optional" />
                   </xs:complexType>
                 </xs:element>
               </xs:choice>

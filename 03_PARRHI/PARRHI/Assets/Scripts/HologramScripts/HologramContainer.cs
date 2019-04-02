@@ -9,6 +9,8 @@ public class HologramContainer : MonoBehaviour
     //Set by Unity editor
     public GameObject CylinderPrefab;
     public GameObject SpherePrefab;
+    public GameObject CylinderPrefabTransparent;
+    public GameObject SpherePrefabTransparent;
 
     readonly List<GameObject> Cylinders = new List<GameObject>();
     readonly List<GameObject> Spheres = new List<GameObject>();
@@ -30,17 +32,26 @@ public class HologramContainer : MonoBehaviour
 
     public void AddCylinder(Zylinder zylinder)
     {
-        var gameobj = GameObject.Instantiate(CylinderPrefab);
+        GameObject gameobj;
+        if (zylinder.RenderMode == "transparent")
+            gameobj = GameObject.Instantiate(CylinderPrefabTransparent);
+        else
+            gameobj = GameObject.Instantiate(CylinderPrefab);
+
         gameobj.transform.parent = this.transform;
-        gameobj.GetComponent<Cylinder>().Zylinder = zylinder;
+        gameobj.GetComponent<Cylinder>().SetData(zylinder);
         Cylinders.Add(gameobj);
     }
 
     public void AddSphere(PARRHI.Objects.Holograms.Sphere sphere)
     {
-        var gameobj = GameObject.Instantiate(SpherePrefab);
+        GameObject gameobj;
+        if (sphere.RenderMode == "transparent")
+            gameobj = GameObject.Instantiate(SpherePrefabTransparent);
+        else
+            gameobj = GameObject.Instantiate(SpherePrefab);
         gameobj.transform.parent = this.transform;
-        gameobj.GetComponent<Sphere>().sphere = sphere;
+        gameobj.GetComponent<Sphere>().SetData(sphere);
         Spheres.Add(gameobj);
     }
 }

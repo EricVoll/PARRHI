@@ -1245,6 +1245,10 @@ MonoBehaviour:
     type: 3}
   SpherePrefab: {fileID: 3816736032024538849, guid: f79103cb72e23884bad70608c0880070,
     type: 3}
+  CylinderPrefabTransparent: {fileID: 6222640196761884818, guid: 7304853b2e8c0b342a5be2f19116d2e5,
+    type: 3}
+  SpherePrefabTransparent: {fileID: 5194314865640022851, guid: eea7e749873be044d8ff0a61ea9f0aa5,
+    type: 3}
 --- !u!1 &1204729222
 GameObject:
   m_ObjectHideFlags: 0

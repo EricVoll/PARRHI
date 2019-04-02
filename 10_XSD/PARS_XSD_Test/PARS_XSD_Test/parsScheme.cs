@@ -197,6 +197,10 @@ public partial class InputDataHologramsSphere {
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
     public byte radius;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string renderMode;
 }
 
 /// <remarks/>
@@ -222,6 +226,10 @@ public partial class InputDataHologramsZylinder {
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
     public byte radius;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string renderMode;
 }
 
 /// <remarks/>

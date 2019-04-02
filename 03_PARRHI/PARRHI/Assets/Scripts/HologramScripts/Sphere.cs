@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Sphere : MonoBehaviour
 {
-    public PARRHI.Objects.Holograms.Sphere sphere;
+    private PARRHI.Objects.Holograms.Sphere sphere;
 
     // Update is called once per frame
     void Update()
     {
         if (!Config.i.updateHolograms) return;
         OrientateSphere();
+    }
+    public void SetData(PARRHI.Objects.Holograms.Sphere Sphere)
+    {
+        sphere = Sphere;
     }
 
     private void OrientateSphere()

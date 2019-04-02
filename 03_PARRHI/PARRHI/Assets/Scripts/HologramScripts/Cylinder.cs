@@ -8,7 +8,7 @@ public class Cylinder : MonoBehaviour
     // Start is called before the first frame update
 
 
-    public PARRHI.Objects.Holograms.Zylinder Zylinder;
+    private PARRHI.Objects.Holograms.Zylinder Zylinder;
 
     // Update is called once per frame
     void Update()
@@ -17,13 +17,17 @@ public class Cylinder : MonoBehaviour
         OrientateCylinder();
     }
 
+    public void SetData(PARRHI.Objects.Holograms.Zylinder zylinder)
+    {
+        Zylinder = zylinder;
+    }
+
     private void OrientateCylinder()
     {
         Vector3 Point1 = TypeConversion.i.PointToVector3(Zylinder.Point1);
         Vector3 Point2 = TypeConversion.i.PointToVector3(Zylinder.Point2);
         float radius = (float)Zylinder.Radius;
 
-        //this.transform.rotation = this.transform.parent.rotation;
         this.transform.LookAt(Point2, Vector3.left);
         this.transform.Rotate(new Vector3(1, 0, 0), 90);
 

@@ -104,3 +104,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ae7b09faf52244c8ad92af31e76053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TransparentMaterial: {fileID: 2100000, guid: 9d0581f97d5d71149978635b4a317411, type: 2}
