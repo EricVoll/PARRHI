@@ -55,15 +55,15 @@
 	</Holograms>
 	<Events>
 		<Trigger>
-			<TimeTrigger name="Trigger1" canTrigger='true' timeSinceActivation="123" action1="Handler1" action2="Handler2"/>
-			<DistanceTrigger name="Trigger2" canTrigger='true' point1="Point15" point2="Point6" action1="Handler2" action2="Handler2" distance="50" />
-			<TimeTrigger name="Trigger3" canTrigger='false' timeSinceActivation="5"  action1="Handler3"/>
-			<TimeTrigger name="Trigger4" canTrigger='true' timeSinceActivation="5" action1="Handler3"/>
+			<DistanceTrigger name="Trigger1" canTrigger='true' point1="Point15" point2="Point6" action1="Handler2" action2="Handler2" distance="50" />
+			<TimeTrigger name="Trigger2" canTrigger='true' timeSinceActivation="5"  action1="Handler1" action2="Handler3"/>
+			<VarTrigger name="Trigger4" canTrigger='true' varName="var1" triggerValue="2" action1="Handler2" action2="Handler4" />
 		</Trigger>
 		<Actions>
 			<IncrementCounterAction name="Handler1" intVar="var1"/>
-			<ChangeUITextAction name="Handler2" text="This Trigger was activated was invoked"/>
-			<SetTriggerStateAction name="Handler3" triggerName="Trigger3" canTrigger='true'/>
+			<ChangeUITextAction name="Handler2" text="This trigger sets the UI to this text, if the var trigger triggers"/>
+			<SetTriggerStateAction name="Handler3" triggerName="Trigger2" canTrigger='true'/>
+			<SetTriggerStateAction name="Handler4" triggerName="Trigger2" canTrigger='false'/>
 		</Actions>
 	</Events>
 	<UIText name="UniqueText" text="Content"/>

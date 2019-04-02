@@ -11,6 +11,7 @@ public class UICanvas : MonoBehaviour
     Text Text;
     public GameObject ErrorContentParent;
     public GameObject ErrorElementPrefab;
+    public GameObject CloseButton;  
 
     void Start()
     {
@@ -26,6 +27,11 @@ public class UICanvas : MonoBehaviour
         Text.text = text;
     }
 
+    public void CollapseErrorSection()
+    {
+        CloseButton.GetComponent<Button>().onClick.Invoke();
+    }
+
     public void SetErrors(List<XMLValidationError> Errors)
     {
         //Remove all existing errors
@@ -36,13 +42,20 @@ public class UICanvas : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         }
 
-        //Add new errors
-        foreach (var error in Errors)
+        if (Errors.Count > 0)
         {
-            GameObject errorGameObject = GameObject.Instantiate(ErrorElementPrefab);
-            errorGameObject.transform.parent = ErrorContentParent.transform;
-            var sc = errorGameObject.GetComponent<ErrorElementScript>();
-            sc.SetText($"Message {Errors.IndexOf(error)}: {error.Severity.ToString()}", error.Message);
+            //Add new errors
+            foreach (var error in Errors)
+            {
+                GameObject errorGameObject = GameObject.Instantiate(ErrorElementPrefab);
+                errorGameObject.transform.parent = ErrorContentParent.transform;
+                var sc = errorGameObject.GetComponent<ErrorElementScript>();
+                sc.SetText($"Message {Errors.IndexOf(error)}: {error.Severity.ToString()}", error.Message);
+            }
+        }
+        else
+        {
+            CollapseErrorSection();
         }
     }
 }
