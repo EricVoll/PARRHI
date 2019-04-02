@@ -109,7 +109,7 @@ namespace PARRHI.HelperClasses
                 {
                     Point point = Container.Points.Find(x => x.id == sphere.point);
                     CheckForNull<Sphere>(sphere.point, point);
-                    holo = new Sphere(sphere.name, point, sphere.radius);
+                    holo = new Sphere(sphere.name, point, sphere.radius, sphere.renderMode);
                 }
                 else if (zyl != null)
                 {
@@ -117,7 +117,7 @@ namespace PARRHI.HelperClasses
                     Point point2 = Container.Points.Find(x => x.id == zyl.point2);
                     CheckForNull<Zylinder>(zyl.point1, point1);
                     CheckForNull<Zylinder>(zyl.point2, point1);
-                    holo = new Zylinder(zyl.name, point1, point2, zyl.radius);
+                    holo = new Zylinder(zyl.name, point1, point2, zyl.radius, zyl.renderMode);
                 }
                 else
                 {

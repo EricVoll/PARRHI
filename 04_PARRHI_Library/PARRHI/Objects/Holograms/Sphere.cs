@@ -9,6 +9,11 @@ namespace PARRHI.Objects.Holograms
 {
     public class Sphere : Hologram
     {
+        public Sphere(string id, Point point, double radius, string renderMode) :this(id,point,radius)
+        {
+            RenderMode = renderMode;
+        }
+
         public Sphere(string id, Point point, double radius)
         {
             this.id = id;

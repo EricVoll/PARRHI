@@ -215,6 +215,10 @@ namespace PARRHI.Objects
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public byte radius;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string renderMode;
     }
 
     /// <remarks/>
@@ -241,6 +245,10 @@ namespace PARRHI.Objects
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public byte radius;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string renderMode;
     }
 
     /// <remarks/>
@@ -510,6 +518,7 @@ namespace PARRHI.Objects
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string text;
     }
+
 
 
 }
