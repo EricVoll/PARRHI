@@ -16,6 +16,8 @@ public class PARRHIRuntime : MonoBehaviour
     Container Container;
     FanucController RobotController;
 
+    UICanvas UICanvas;
+
     public bool ConnectEnabled;
     private bool ConnectionProcessStarted = false;
     private bool Connected;
@@ -43,10 +45,26 @@ public class PARRHIRuntime : MonoBehaviour
     private void Start()
     {
         RobotController = new FanucController();
-        PARRHI.Output.Instance.SetOutputDelegate(UnityOutputDelegate);
-        FanucControllerLibrary.Output.Instance.SetOutputDelegate(UnityOutputDelegate);
 
-        Container = new DataImport().Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\InputData.xml");
+        //Set all output delegates
+        PARRHI.Output.Instance.SetOutputDelegate(UnityOutputDelegate);
+        PARRHI.Output.Instance.SetLogDelegate(UnityOutputDelegate);
+        PARRHI.Output.Instance.SetErrorDelegate(UnityErrorDelegate);
+        FanucControllerLibrary.Output.Instance.SetOutputDelegate(UnityOutputDelegate);
+        FanucControllerLibrary.Output.Instance.SetLogDelegate(UnityOutputDelegate);
+        FanucControllerLibrary.Output.Instance.SetErrorDelegate(UnityErrorDelegate);
+
+        //Setup all components needed
+        UICanvas = this.transform.GetComponentInChildren<UICanvas>();
+
+        DataImport importer = new DataImport();
+        Container = importer.Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\InputData.xml");
+
+        //Setup Container Delegates
+        Container.State.World.SetUITextDelegate = UICanvas.SetUIText;
+
+        //Write Errors to UI
+        UICanvas.SetErrors(importer.XMLValidationResult.GetAllErrors());
 
         //Instantiate all holograms
         AddHolograms(Container);
@@ -131,6 +149,11 @@ public class PARRHIRuntime : MonoBehaviour
         Debug.Log(msg);
         System.Console.WriteLine(msg);
     }
+    public void UnityErrorDelegate(string msg)
+    {
+        Debug.LogError(msg);
+        Console.WriteLine("Error:"+  msg);
+    }
 
 
     // Simulate Q values
@@ -156,4 +179,6 @@ public class PARRHIRuntime : MonoBehaviour
             hContainer.AddCylinder(item);
         }
     }
+
+
 }
