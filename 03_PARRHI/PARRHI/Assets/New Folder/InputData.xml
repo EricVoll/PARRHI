@@ -45,10 +45,10 @@
 		
 		<Zylinder name="Zylinder10" point1="Point11" point2="Point12" radius="20"/>
 		<Zylinder name="Zylinder11" point1="Point12" point2="Point13" radius="20"/>
-		<Zylinder name="Zylinder12" point1="Point13" point2="Point14" radius="20"/>
-		<Zylinder name="Zylinder13" point1="Point14" point2="Point11" radius="20"/>
+		<Zylinder name="Zylinder11" point1="Point13" point2="Point14" radius="20"/>
+		<Zylinder name="Zylinder11" point1="Point14" point2="Point11" radius="20"/>
 		
-		<Zylinder name="Zylinder14" point1="Point7" point2="Point11" radius="20"/>
+		<Zylinder name="Zylinder11" point1="Point7" point2="Point11" radius="20"/>
 		<Zylinder name="Zylinder15" point1="Point8" point2="Point12" radius="20"/>
 		<Zylinder name="Zylinder16" point1="Point9" point2="Point13" radius="20"/>
 		<Zylinder name="Zylinder17" point1="Point10" point2="Point14" radius="20"/>
