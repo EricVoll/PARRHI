@@ -126,12 +126,12 @@ public class PARRHIRuntime : MonoBehaviour
                 SetDirection = false;
                 if (dir)
                 {
-                    RobotController.Commander.MoveDelta(-2, 0, 0, 0, 0, 0);
+                    RobotController.Commander.MoveAbsolute(new Vector6(685,-125,394,-166,-68,-14));
                     dir = false;
                 }
                 else
                 {
-                    RobotController.Commander.MoveDelta(2, 0, 0, 0, 0, 0);
+                    RobotController.Commander.MoveAbsolute(new Vector6(685, 397, 394, -166, -68, -14));
                     dir = true;
                 }
             }
