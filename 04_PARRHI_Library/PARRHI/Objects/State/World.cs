@@ -21,8 +21,11 @@ namespace PARRHI.Objects.State
 
         public void SetUIText(string text)
         {
-
+            Output.Instance.Log("Settings UI Text");
+            SetUITextDelegate?.Invoke(text);
         }
+
+        public Action<string> SetUITextDelegate;
 
         public Point CameraPosition { get; set; }
         public static long Time { get; set; }

@@ -20,11 +20,13 @@ namespace PARRHI.Objects.TriggerActions
         public override void Trigger()
         {
             base.Trigger();
+            Output.Instance.Write($"Executing TriggerAction {id}");
             Variable.IncrementValue();
         }
         protected override void Trigger(object param)
         {
             base.Trigger(param);
+            Output.Instance.Write($"Executing TriggerAction {id}");
             Variable.IncrementValue();
         }
 

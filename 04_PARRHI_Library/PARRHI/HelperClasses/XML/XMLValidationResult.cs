@@ -14,6 +14,8 @@ namespace PARRHI.HelperClasses.XML
 
         }
 
+        #region XSD Validation Errors
+
         private List<XMLValidationError> Errors { get; set; } = new List<XMLValidationError>();
 
         public void AddError(XMLValidationError error)
@@ -25,8 +27,21 @@ namespace PARRHI.HelperClasses.XML
             XMLValidationError error = new XMLValidationError(e);
             AddError(error);
         }
-        public List<XMLValidationError> GetErrors() { return Errors; }
+        public List<XMLValidationError> GetAllErrors() { return new List<XMLValidationError>(Errors.Union(ConversionError)); }
 
         public bool DidThrowExceptionWhileValidating { get; set; }
+
+        #endregion
+
+        #region Conversion Errors
+
+        private List<XMLValidationError> ConversionError { get; set; } = new List<XMLValidationError>();
+
+        public void AddConversionError(XMLValidationError e)
+        {
+            ConversionError.Add(e);
+        }
+
+        #endregion
     }
 }

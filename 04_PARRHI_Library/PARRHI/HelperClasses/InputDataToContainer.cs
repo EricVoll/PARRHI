@@ -10,15 +10,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PARRHI.Objects.State;
+using PARRHI.HelperClasses.XML;
 
 namespace PARRHI.HelperClasses
 {
     public class InputDataToContainer
     {
         private readonly InputData InputData;
-        public InputDataToContainer(InputData inputData)
+        private readonly XMLValidationResult Result;
+        public InputDataToContainer(InputData inputData, XMLValidationResult result)
         {
             InputData = inputData;
+            Result = result;
         }
 
         public Container ConvertToContainer()
@@ -105,12 +108,15 @@ namespace PARRHI.HelperClasses
                 if (sphere != null)
                 {
                     Point point = Container.Points.Find(x => x.id == sphere.point);
+                    AddErrorIfNull("HologramSphere:"+sphere.point, point);
                     holo = new Sphere(sphere.name, point, sphere.radius);
                 }
                 else if (zyl != null)
                 {
                     Point point1 = Container.Points.Find(x => x.id == zyl.point1);
                     Point point2 = Container.Points.Find(x => x.id == zyl.point2);
+                    AddErrorIfNull("HologramZylinder:" + zyl.point1, point1);
+                    AddErrorIfNull("HologramZylinder:" + zyl.point2, point1);
                     holo = new Zylinder(zyl.name, point1, point2, zyl.radius);
                 }
                 else
@@ -133,35 +139,41 @@ namespace PARRHI.HelperClasses
         {
             List<Trigger> triggers = new List<Trigger>();
 
-            if (inputData.Events.Trigger.DistanceTrigger != null)
-                foreach (var item in inputData.Events.Trigger.DistanceTrigger)
-                {
-                    Point p1 = container.Points.Find(x => x.id == item.point1);
-                    Point p2 = container.Points.Find(x => x.id == item.point2);
-                    TriggerAction t1 = container.TriggerActions.Find(x => x.id == item.action1);
-                    TriggerAction t2 = container.TriggerActions.Find(x => x.id == item.action2);
-                    Trigger t = new DistanceTrigger(item.name, p1, p2, (double)item.distance, t1, t2);
-                    triggers.Add(t);
-                }
+            foreach (var item in inputData.Events.Trigger.Items.Where(x => x is InputDataEventsTriggerDistanceTrigger).Cast<InputDataEventsTriggerDistanceTrigger>())
+            {
+                Point p1 = container.Points.Find(x => x.id == item.point1);
+                Point p2 = container.Points.Find(x => x.id == item.point2);
+                TriggerAction t1 = container.TriggerActions.Find(x => x.id == item.action1);
+                TriggerAction t2 = container.TriggerActions.Find(x => x.id == item.action2);
+                AddErrorIfNull("TriggerDistance:" + item.point1, p1);
+                AddErrorIfNull("TriggerDistance:" + item.point2, p2);
+                AddErrorIfNull("TriggerDistance:" + item.action1, t1);
+                AddErrorIfNull("TriggerDistance:" + item.action2, t2);
+                Trigger t = new DistanceTrigger(item.name, p1, p2, (double)item.distance, item.canTrigger, t1, t2);
+                triggers.Add(t);
+            }
 
-            if (inputData.Events.Trigger.TimeTrigger != null)
-                foreach (var item in inputData.Events.Trigger.TimeTrigger)
-                {
-                    TriggerAction t1 = container.TriggerActions.Find(x => x.id == item.action1);
-                    TriggerAction t2 = container.TriggerActions.Find(x => x.id == item.action2);
-                    Trigger t = new TimeTrigger(item.name, item.canTrigger, item.timeSinceActivation, t1, t2);
-                    triggers.Add(t);
-                }
+            foreach (var item in inputData.Events.Trigger.Items.Where(x => x is InputDataEventsTriggerTimeTrigger).Cast<InputDataEventsTriggerTimeTrigger>())
+            {
+                TriggerAction t1 = container.TriggerActions.Find(x => x.id == item.action1);
+                TriggerAction t2 = container.TriggerActions.Find(x => x.id == item.action2);
+                AddErrorIfNull("TriggerTime:" + item.action1, t1);
+                AddErrorIfNull("TriggerTime:" + item.action2, t2);
+                Trigger t = new TimeTrigger(item.name, item.canTrigger, item.timeSinceActivation, t1, t2);
+                triggers.Add(t);
+            }
 
-            if (inputData.Events.Trigger.VarTrigger != null)
-                foreach (var item in inputData.Events.Trigger.VarTrigger)
-                {
-                    IntVariable var = container.Variables.Find(x => x.id == item.varName);
-                    TriggerAction t1 = container.TriggerActions.Find(x => x.id == item.action1);
-                    TriggerAction t2 = container.TriggerActions.Find(x => x.id == item.action2);
-                    Trigger t = new VarTrigger(item.name, var, item.triggerValue, t1, t2);
-                    triggers.Add(t);
-                }
+            foreach (var item in inputData.Events.Trigger.Items.Where(x => x is InputDataEventsTriggerVarTrigger).Cast<InputDataEventsTriggerVarTrigger>())
+            {
+                IntVariable var = container.Variables.Find(x => x.id == item.varName);
+                TriggerAction t1 = container.TriggerActions.Find(x => x.id == item.action1);
+                TriggerAction t2 = container.TriggerActions.Find(x => x.id == item.action2);
+                AddErrorIfNull("TriggerVar:" + item.action1, t1);
+                AddErrorIfNull("TriggerVar:" + item.action2, t2);
+                AddErrorIfNull("TriggerVar:" + item.varName, var);
+                Trigger t = new VarTrigger(item.name, var, item.triggerValue, t1, t2);
+                triggers.Add(t);
+            }
 
             return triggers;
         }
@@ -187,6 +199,7 @@ namespace PARRHI.HelperClasses
                 if (incAc != null)
                 {
                     IntVariable var = container.Variables.Find(x => x.id == incAc.intVar);
+                    AddErrorIfNull("TriggerActionVar:" + incAc.intVar, var);
                     t = new IncrementCounterAction(incAc.name, var);
                 }
                 else if (chaAc != null)
@@ -196,6 +209,7 @@ namespace PARRHI.HelperClasses
                 else if (movAc != null)
                 {
                     Point point = container.Points.Find(x => x.id == movAc.pointTCP);
+                    AddErrorIfNull("TriggerActionMoveR:" + movAc.pointTCP, point);
                     t = new MoveRobotAction(movAc.name, point, container.State.Robot.MoveDelta);
                 }
                 else if (setAc != null)
@@ -214,6 +228,11 @@ namespace PARRHI.HelperClasses
                 actions.Add(t);
             }
             return actions;
+        }
+
+        private void AddErrorIfNull(string id, object objForNullCheck)
+        {
+            if (objForNullCheck == null) Result.AddConversionError(new XMLValidationError($"Id: {id} not found in list", System.Xml.Schema.XmlSeverityType.Error, null));
         }
 
     }

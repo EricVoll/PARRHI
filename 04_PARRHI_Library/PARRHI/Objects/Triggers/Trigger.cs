@@ -18,14 +18,14 @@ namespace PARRHI.Objects.Triggers
             this.id = id;
         }
 
-        private bool CanTrigger { get; set; } = true;
+        protected bool CanTrigger { get; set; } = true;
 
 
         /// <summary>
         /// Sets the CanTrigger flag and invokes an event
         /// </summary>
         /// <param name="value"></param>
-        public void SetCanTrigger(bool value) { CanTrigger = value; CanTriggerSet?.Invoke(); }
+        public void SetCanTrigger(bool value) { CanTrigger = value; CanTriggerSet?.Invoke(); Output.Instance.Error($"Changed CanTrigger to  {value}"); }
         public TriggerActions.TriggerAction TriggerAction1 { get; set; }
         public TriggerActions.TriggerAction TriggerAction2 { get; set; }
 
@@ -52,6 +52,7 @@ namespace PARRHI.Objects.Triggers
         {
             if (CheckTrigger.Invoke(triggerParam) && CanTrigger)
             {
+                Output.Instance.Log($"Executing Trigger {id}");
                 if (TriggerAction != null)
                     TriggerAction();
                 else DefaultTriggerAction();

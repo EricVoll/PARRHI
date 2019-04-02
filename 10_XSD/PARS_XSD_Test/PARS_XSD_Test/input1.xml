@@ -6,12 +6,15 @@
 		<Int name="var2">0</Int>
 	</Variables>
 	<Points>
+		<PointFix name="Point7" X="-1" Y="-1" Z="-1.0" />
 		<PointRobot name="Point1" J1="1" J2="2" Scale="0" />
 		<PointRobot name="Point2" J1="2" J2="3" Scale="0" />
 		<PointRobot name="Point3" J1="3" J2="4" Scale="0" />
 		<PointRobot name="Point4" J1="4" J2="5" Scale="0" />
 		<PointRobot name="Point5" J1="5" J2="6" Scale="0" />
 		<PointRobot name="Point6" J1="6" J2="6" Scale="0" />
+		<PointFix name="Point7" X="1.0" Y="1.0" Z="1.0" />
+		<PointCamera name="Point8"/>
 	</Points>
 	<Holograms>
 		<Zylinder name="Zyl1" point1="Point1" point2="Point2" radius="1" />
@@ -21,12 +24,12 @@
 	</Holograms>
 	<Events>
 		<Trigger>
+			<DistanceTrigger name="Trigger4" canTrigger='true' point1="Point1" point2="Point2" distance="12.2" action1="Handler1" 							/>
+			<VarTrigger name="Trigger6" canTrigger='true' varName="var1" triggerValue="2" action1="Handler1" 						 	 />
 			<TimeTrigger name="Trigger1" canTrigger='true' timeSinceActivation="123" action1="Handler1" action2="Handler2" 	/>
 			<TimeTrigger name="Trigger2" canTrigger='true' timeSinceActivation="123" action1="Handler1" 							/>
 			<DistanceTrigger name="Trigger3" canTrigger='true' point1="Point1" point2="Point2" distance="12.2" action1="Handler1" action2="Handler2" 	/>
-			<DistanceTrigger name="Trigger4" canTrigger='true' point1="Point1" point2="Point2" distance="12.2" action1="Handler1" 							/>
 			<VarTrigger name="Trigger5" canTrigger='true' varName="var1" triggerValue="2" action1="Handler1" action2="Handler2" 	 />
-			<VarTrigger name="Trigger6" canTrigger='true' varName="var1" triggerValue="2" action1="Handler1" 						 	 />
 		</Trigger>
 		<Actions>
 			<IncrementCounterAction name="Hanlder1" intVar="var1"/>

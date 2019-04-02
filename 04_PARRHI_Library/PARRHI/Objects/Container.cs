@@ -25,6 +25,7 @@ namespace PARRHI.Objects
 
             Point[] joints = State.GetJointPositions();
             UpdatePoints(joints, cameraPoint);
+            UpdateTrigger(timeSinceStartup);
         }
 
         public Objects.State.State State { get; set; }
@@ -48,6 +49,18 @@ namespace PARRHI.Objects
             foreach (var point in Points.Where(x => x is PointCamera).Cast<PointCamera>())
             {
                 point.UpdatePoint(cameraPoint);
+            }
+        }
+
+        /// <summary>
+        /// Update all triggers
+        /// </summary>
+        /// <param name="timeSinceStartup"></param>
+        public void UpdateTrigger(long timeSinceStartup)
+        {
+            foreach (var trigger in Trigger)
+            {
+                trigger.Check(timeSinceStartup);
             }
         }
     }

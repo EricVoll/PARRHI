@@ -28,7 +28,6 @@ namespace PARRHI.Objects.TriggerActions
         {
             base.Trigger(param);
             setUIText(textToSet);
-
         }
 
     }

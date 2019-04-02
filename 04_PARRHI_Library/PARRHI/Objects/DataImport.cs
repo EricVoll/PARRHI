@@ -18,7 +18,7 @@ namespace PARRHI.Objects
 
         public const string XSDFilePath = @"C:\Users\ericv\Documents\TUM\BA\PARRHI\10_XSD\PARS_XSD_Test\PARS_XSD_Test\parsScheme.xsd";
 
-        public XMLValidationResult XMLValidationResult;
+        public XMLValidationResult XMLValidationResult { get; set; }
 
         public Container Import(string xmlFilePath)
         {
@@ -28,7 +28,7 @@ namespace PARRHI.Objects
             if (!XMLValidationResult.DidThrowExceptionWhileValidating)
             {
                 var inputData = xmlSerializer.Deserialize<Objects.InputData>(xmlFilePath, XSDFilePath);
-                var container = new InputDataToContainer(inputData).ConvertToContainer();
+                var container = new InputDataToContainer(inputData, XMLValidationResult).ConvertToContainer();
                 return container;
             }
 

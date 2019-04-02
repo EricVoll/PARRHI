@@ -173,7 +173,7 @@ namespace PARRHI.Objects
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public decimal Scale;
+        public byte Scale;
     }
 
     /// <remarks/>
@@ -273,46 +273,10 @@ namespace PARRHI.Objects
     {
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("TimeTrigger")]
-        public InputDataEventsTriggerTimeTrigger[] TimeTrigger;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("DistanceTrigger")]
-        public InputDataEventsTriggerDistanceTrigger[] DistanceTrigger;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("VarTrigger")]
-        public InputDataEventsTriggerVarTrigger[] VarTrigger;
-    }
-
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.7.2053.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
-    public partial class InputDataEventsTriggerTimeTrigger
-    {
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string name;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool canTrigger;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public byte timeSinceActivation;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string action1;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string action2;
+        [System.Xml.Serialization.XmlElementAttribute("DistanceTrigger", typeof(InputDataEventsTriggerDistanceTrigger))]
+        [System.Xml.Serialization.XmlElementAttribute("TimeTrigger", typeof(InputDataEventsTriggerTimeTrigger))]
+        [System.Xml.Serialization.XmlElementAttribute("VarTrigger", typeof(InputDataEventsTriggerVarTrigger))]
+        public object[] Items;
     }
 
     /// <remarks/>
@@ -343,6 +307,36 @@ namespace PARRHI.Objects
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public decimal distance;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string action1;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string action2;
+    }
+
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.7.2053.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "PARRHI")]
+    public partial class InputDataEventsTriggerTimeTrigger
+    {
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string name;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool canTrigger;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public byte timeSinceActivation;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -516,5 +510,6 @@ namespace PARRHI.Objects
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string text;
     }
+
 
 }

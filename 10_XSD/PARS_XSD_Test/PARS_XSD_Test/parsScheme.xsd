@@ -22,20 +22,20 @@
           <xs:complexType mixed="true">
             <xs:sequence minOccurs="0">
               <xs:choice maxOccurs="unbounded">
-                <xs:element name="PointRobot">
-                  <xs:complexType>
-                    <xs:attribute name="name" type="xs:string" use="required" />
-                    <xs:attribute name="J1" type="xs:unsignedByte" use="required" />
-                    <xs:attribute name="J2" type="xs:unsignedByte" use="required" />
-                    <xs:attribute name="Scale" type="xs:decimal" use="required" />
-                  </xs:complexType>
-                </xs:element>
-                <xs:element maxOccurs="unbounded" name="PointFix">
+                <xs:element name="PointFix">
                   <xs:complexType>
                     <xs:attribute name="name" type="xs:string" use="required" />
                     <xs:attribute name="X" type="xs:decimal" use="required" />
                     <xs:attribute name="Y" type="xs:decimal" use="required" />
                     <xs:attribute name="Z" type="xs:decimal" use="required" />
+                  </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" name="PointRobot">
+                  <xs:complexType>
+                    <xs:attribute name="name" type="xs:string" use="required" />
+                    <xs:attribute name="J1" type="xs:unsignedByte" use="required" />
+                    <xs:attribute name="J2" type="xs:unsignedByte" use="required" />
+                    <xs:attribute name="Scale" type="xs:unsignedByte" use="required" />
                   </xs:complexType>
                 </xs:element>
                 <xs:element name="PointCamera">
@@ -76,36 +76,38 @@
               <xs:element name="Trigger">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element maxOccurs="unbounded" name="TimeTrigger">
-                      <xs:complexType>
-                        <xs:attribute name="name" type="xs:string" use="required" />
-                        <xs:attribute name="canTrigger" type="xs:boolean" use="required" />
-                        <xs:attribute name="timeSinceActivation" type="xs:unsignedByte" use="required" />
-                        <xs:attribute name="action1" type="xs:string" use="required" />
-                        <xs:attribute name="action2" type="xs:string" use="optional" />
-                      </xs:complexType>
-                    </xs:element>
-                    <xs:element maxOccurs="unbounded" name="DistanceTrigger">
-                      <xs:complexType>
-                        <xs:attribute name="name" type="xs:string" use="required" />
-                        <xs:attribute name="canTrigger" type="xs:boolean" use="required" />
-                        <xs:attribute name="point1" type="xs:string" use="required" />
-                        <xs:attribute name="point2" type="xs:string" use="required" />
-                        <xs:attribute name="distance" type="xs:decimal" use="required" />
-                        <xs:attribute name="action1" type="xs:string" use="required" />
-                        <xs:attribute name="action2" type="xs:string" use="optional" />
-                      </xs:complexType>
-                    </xs:element>
-                    <xs:element maxOccurs="unbounded" name="VarTrigger">
-                      <xs:complexType>
-                        <xs:attribute name="name" type="xs:string" use="required" />
-                        <xs:attribute name="canTrigger" type="xs:boolean" use="required" />
-                        <xs:attribute name="varName" type="xs:string" use="required" />
-                        <xs:attribute name="triggerValue" type="xs:unsignedByte" use="required" />
-                        <xs:attribute name="action1" type="xs:string" use="required" />
-                        <xs:attribute name="action2" type="xs:string" use="optional" />
-                      </xs:complexType>
-                    </xs:element>
+                    <xs:choice maxOccurs="unbounded">
+                      <xs:element name="DistanceTrigger">
+                        <xs:complexType>
+                          <xs:attribute name="name" type="xs:string" use="required" />
+                          <xs:attribute name="canTrigger" type="xs:boolean" use="required" />
+                          <xs:attribute name="point1" type="xs:string" use="required" />
+                          <xs:attribute name="point2" type="xs:string" use="required" />
+                          <xs:attribute name="distance" type="xs:decimal" use="required" />
+                          <xs:attribute name="action1" type="xs:string" use="required" />
+                          <xs:attribute name="action2" type="xs:string" use="optional" />
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="VarTrigger">
+                        <xs:complexType>
+                          <xs:attribute name="name" type="xs:string" use="required" />
+                          <xs:attribute name="canTrigger" type="xs:boolean" use="required" />
+                          <xs:attribute name="varName" type="xs:string" use="required" />
+                          <xs:attribute name="triggerValue" type="xs:unsignedByte" use="required" />
+                          <xs:attribute name="action1" type="xs:string" use="required" />
+                          <xs:attribute name="action2" type="xs:string" use="optional" />
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element maxOccurs="unbounded" name="TimeTrigger">
+                        <xs:complexType>
+                          <xs:attribute name="name" type="xs:string" use="required" />
+                          <xs:attribute name="canTrigger" type="xs:boolean" use="required" />
+                          <xs:attribute name="timeSinceActivation" type="xs:unsignedByte" use="required" />
+                          <xs:attribute name="action1" type="xs:string" use="required" />
+                          <xs:attribute name="action2" type="xs:string" use="optional" />
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:choice>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
