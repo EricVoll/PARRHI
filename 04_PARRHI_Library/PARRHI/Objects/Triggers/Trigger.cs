@@ -25,7 +25,7 @@ namespace PARRHI.Objects.Triggers
         /// Sets the CanTrigger flag and invokes an event
         /// </summary>
         /// <param name="value"></param>
-        public void SetCanTrigger(bool value) { CanTrigger = value; CanTriggerSet?.Invoke(); Output.Instance.Error($"Changed CanTrigger to  {value}"); }
+        public void SetCanTrigger(bool value) { CanTrigger = value; CanTriggerSet?.Invoke(); Output.Instance.Log($"Changed CanTrigger to  {value}, id:{id}"); }
         public TriggerActions.TriggerAction TriggerAction1 { get; set; }
         public TriggerActions.TriggerAction TriggerAction2 { get; set; }
 

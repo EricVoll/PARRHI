@@ -42,7 +42,9 @@ namespace PARRHI.Objects
         /// <param name="id"></param>
         public void RegisterId(string id)
         {
-            if (Ids.Any(x => x == id)) throw new Exception($"Duplicate id found: {id}");
+            if (Ids.Any(x => x == id)) {
+                XMLValidationResult.AddConversionError(new XMLValidationError($"Duplicate ID: {id}, nrOfElements:{Ids.Count}", System.Xml.Schema.XmlSeverityType.Error, null));
+            }
 
             Ids.Add(id);
         }

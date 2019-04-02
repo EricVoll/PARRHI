@@ -5,13 +5,27 @@ using UnityEngine;
 
 public class HologramContainer : MonoBehaviour
 {
-    // Start is called before the first frame update
 
+    //Set by Unity editor
     public GameObject CylinderPrefab;
     public GameObject SpherePrefab;
 
-    List<GameObject> Cylinders = new List<GameObject>();
-    List<GameObject> Spheres = new List<GameObject>();
+    readonly List<GameObject> Cylinders = new List<GameObject>();
+    readonly List<GameObject> Spheres = new List<GameObject>();
+
+    public void RemoveAllChildren()
+    {
+        if (transform.childCount > 0)
+        {
+            Debug.Log($"Removeing all children of {this.name}");
+            while (transform.childCount > 0)
+            {
+                var go = transform.GetChild(0);
+                go.parent = null;
+                GameObject.Destroy(go.gameObject);
+            }
+        }
+    }
 
 
     public void AddCylinder(Zylinder zylinder)

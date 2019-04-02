@@ -17,6 +17,10 @@ public class UICanvas : MonoBehaviour
         Text = this.transform.GetComponentInChildren<Text>();
     }
 
+    /// <summary>
+    /// Action to set UI Text
+    /// </summary>
+    /// <param name="text"></param>
     public void SetUIText(string text)
     {
         Text.text = text;
@@ -24,6 +28,15 @@ public class UICanvas : MonoBehaviour
 
     public void SetErrors(List<XMLValidationError> Errors)
     {
+        //Remove all existing errors
+        while (ErrorContentParent.transform.childCount > 0)
+        {
+            var child = ErrorContentParent.transform.GetChild(0);
+            child.parent = null;
+            GameObject.Destroy(child.gameObject);
+        }
+
+        //Add new errors
         foreach (var error in Errors)
         {
             GameObject errorGameObject = GameObject.Instantiate(ErrorElementPrefab);

@@ -78,7 +78,7 @@ namespace PARRHI.HelperClasses.XML
         /// <param name="e"></param>
         void booksSettingsValidationEventHandler(object sender, ValidationEventArgs e)
         {
-            Result.AddError(e);
+            Result.AddError(new XMLValidationError($"{e.Message} Line:{e.Exception.LineNumber}, Pos:{e.Exception.LinePosition}", e.Severity, e.Exception));
 
             if (e.Severity == XmlSeverityType.Warning)
             {

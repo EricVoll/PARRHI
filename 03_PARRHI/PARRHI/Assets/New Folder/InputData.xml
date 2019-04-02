@@ -38,7 +38,7 @@
 		
 		<Sphere name="Sphere7" point="Point15" radius="20" />
 		
-		<!--<Zylinder name="Zylinder6" point1="Point7" point2="Point8" radius="20"/>
+		<Zylinder name="Zylinder6" point1="Point7" point2="Point8" radius="20"/>
 		<Zylinder name="Zylinder7" point1="Point8" point2="Point9" radius="20"/>
 		<Zylinder name="Zylinder8" point1="Point9" point2="Point10" radius="20"/>
 		<Zylinder name="Zylinder9" point1="Point10" point2="Point7" radius="20"/>
@@ -51,14 +51,14 @@
 		<Zylinder name="Zylinder14" point1="Point7" point2="Point11" radius="20"/>
 		<Zylinder name="Zylinder15" point1="Point8" point2="Point12" radius="20"/>
 		<Zylinder name="Zylinder16" point1="Point9" point2="Point13" radius="20"/>
-		<Zylinder name="Zylinder17" point1="Point10" point2="Point14" radius="20"/>-->
+		<Zylinder name="Zylinder17" point1="Point10" point2="Point14" radius="20"/>
 	</Holograms>
 	<Events>
 		<Trigger>
 			<TimeTrigger name="Trigger1" canTrigger='true' timeSinceActivation="123" action1="Handler1" action2="Handler2"/>
 			<DistanceTrigger name="Trigger2" canTrigger='true' point1="Point15" point2="Point6" action1="Handler2" action2="Handler2" distance="50" />
-			<TimeTrigger name="Trigger3" canTrigger='false' timeSinceActivation="5" action1="Handler2" action2="Handler2"/>
-			<TimeTrigger name="Trigger4" canTrigger='true' timeSinceActivation="5" action1="Handler3" action2="Handler2"/>
+			<TimeTrigger name="Trigger3" canTrigger='false' timeSinceActivation="5"  action1="Handler3"/>
+			<TimeTrigger name="Trigger4" canTrigger='true' timeSinceActivation="5" action1="Handler3"/>
 		</Trigger>
 		<Actions>
 			<IncrementCounterAction name="Handler1" intVar="var1"/>
