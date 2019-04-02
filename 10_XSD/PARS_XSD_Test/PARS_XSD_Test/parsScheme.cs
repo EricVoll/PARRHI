@@ -157,7 +157,7 @@ public partial class InputDataPointsPointRobot {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public byte Scale;
+    public decimal Scale;
 }
 
 /// <remarks/>

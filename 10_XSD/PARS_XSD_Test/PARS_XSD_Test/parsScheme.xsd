@@ -35,7 +35,7 @@
                     <xs:attribute name="name" type="xs:string" use="required" />
                     <xs:attribute name="J1" type="xs:unsignedByte" use="required" />
                     <xs:attribute name="J2" type="xs:unsignedByte" use="required" />
-                    <xs:attribute name="Scale" type="xs:unsignedByte" use="required" />
+                    <xs:attribute name="Scale" type="xs:decimal" use="required" />
                   </xs:complexType>
                 </xs:element>
                 <xs:element name="PointCamera">

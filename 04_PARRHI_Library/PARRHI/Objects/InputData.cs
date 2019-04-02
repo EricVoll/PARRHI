@@ -173,7 +173,7 @@ namespace PARRHI.Objects
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public byte Scale;
+        public decimal Scale;
     }
 
     /// <remarks/>
@@ -518,7 +518,5 @@ namespace PARRHI.Objects
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string text;
     }
-
-
 
 }
