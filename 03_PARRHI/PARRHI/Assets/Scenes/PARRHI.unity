@@ -791,6 +791,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainCamera: {fileID: 1884926902}
   ConnectEnabled: 0
+  SetDirection: 0
   q1: 0
   q2: 0
   q3: 0

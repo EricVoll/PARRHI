@@ -24,23 +24,24 @@ public class PARRHIRuntime : MonoBehaviour
     public bool ConnectEnabled;
     private bool ConnectionProcessStarted = false;
     private bool Connected;
+    public bool SetDirection;
 
-    public int q1;
-    public int q2;
-    public int q3;
-    public int q4;
-    public int q5;
-    public int q6;
+    public double q1;
+    public double q2;
+    public double q3;
+    public double q4;
+    public double q5;
+    public double q6;
 
     public bool animate;
     public bool random;
     public bool backToNull;
-    public int q1t;
-    public int q2t;
-    public int q3t;
-    public int q4t;
-    public int q5t;
-    public int q6t;
+    public double q1t;
+    public double q2t;
+    public double q3t;
+    public double q4t;
+    public double q5t;
+    public double q6t;
 
     private void Awake()
     {
@@ -55,14 +56,6 @@ public class PARRHIRuntime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Cycle();
-
-        if (animate)
-        {
-            Animator();
-        }
-
-        return;
 
         if (ConnectEnabled && !ConnectionProcessStarted)
         {
@@ -70,10 +63,8 @@ public class PARRHIRuntime : MonoBehaviour
             ConnectEnabled = false;
             InitRobotController();
         }
-        if (Connected)
-        {
-            Cycle();
-        }
+
+        Cycle();
     }
 
     /// <summary>
@@ -114,25 +105,57 @@ public class PARRHIRuntime : MonoBehaviour
     }
 
     // Simulate Q values
+    private bool dir = false;
     private void Cycle()
     {
-        double q3temp = q3 + q2;
-        Vector6 q = new Vector6(q1, q2, q3temp, q4, q5, q6);
+
+        Vector6 q;
+        if (!Connected)
+        {
+            double q3temp = q3 + q2;
+            q = new Vector6(q1, q2, q3temp, q4, q5, q6);
+            if (animate)
+                Animator();
+        }
+        else
+        {
+            q = RobotController.Commander.GetJointValues();
+
+            if (SetDirection)
+            {
+                SetDirection = false;
+                if (dir)
+                {
+                    RobotController.Commander.MoveDelta(-2, 0, 0, 0, 0, 0);
+                    dir = false;
+                }
+                else
+                {
+                    RobotController.Commander.MoveDelta(2, 0, 0, 0, 0, 0);
+                    dir = true;
+                }
+            }
+        }
 
         //Update State
         Container.Update(q, TypeConversion.i.Vector3ToPoint(MainCamera.transform.position), (long)Time.realtimeSinceStartup);
     }
 
+    private bool About(double v1, double v2, double delta)
+    {
+        return (v1 >= v2 - delta && v1 < v2 + delta);
+    }
     private void Animator()
     {
         //animate q values
-
-        q1 += q1 > q1t ? -1 : (q1 == q1t) ? 0 : 1;
-        q2 += q2 > q2t ? -1 : (q2 == q2t) ? 0 : 1;
-        q3 += q3 > q3t ? -1 : (q3 == q3t) ? 0 : 1;
-        q4 += q4 > q4t ? -1 : (q4 == q4t) ? 0 : 1;
-        q5 += q5 > q5t ? -1 : (q5 == q5t) ? 0 : 1;
-        q6 += q6 > q6t ? -1 : (q6 == q6t) ? 0 : 1;
+        float v = 0.05f;
+        float d = 0.06f;
+        q1 += q1 >= q1t + d ? -v : About(q1, q1t, d) ? 0 : v;
+        q2 += q2 >= q2t + d ? -v : About(q2, q2t, d) ? 0 : v;
+        q3 += q3 >= q3t + d ? -v : About(q3, q3t, d) ? 0 : v;
+        q4 += q4 >= q4t + d ? -v : About(q4, q4t, d) ? 0 : v;
+        q5 += q5 >= q5t + d ? -v : About(q5, q5t, d) ? 0 : v;
+        q6 += q6 >= q6t + d ? -v : About(q6, q6t, d) ? 0 : v;
 
         //Move qtarget values;
         if (backToNull)
@@ -149,13 +172,17 @@ public class PARRHIRuntime : MonoBehaviour
         {
             System.Random rnd = new System.Random();
             random = false;
-            q1t = rnd.Next(-180, 180);
-            q2t = rnd.Next(-180, 180);
-            q3t = rnd.Next(-180, 180);
-            q4t = rnd.Next(-180, 180);
-            q5t = rnd.Next(-180, 180);
-            q6t = rnd.Next(-180, 180);
+            q1t = RDouble(rnd, -2 * Mathf.PI, 2 * Mathf.PI);
+            q2t = RDouble(rnd, -0.7, 1.6);
+            q3t = RDouble(rnd, -1, 1);
+            q4t = RDouble(rnd, -2 * Mathf.PI, 2 * Mathf.PI);
+            q5t = RDouble(rnd, -1.5,1.5);
+            q6t = RDouble(rnd, -2 * Mathf.PI, 2 * Mathf.PI);
         }
+    }
+    private double RDouble(System.Random rnd, double min, double max)
+    {
+        return rnd.NextDouble() * (max - min) + min;
     }
 
     public void Reset()

@@ -89,8 +89,8 @@ namespace PARRHI.HelperClasses
         /// <returns></returns>
         public Point[] CaluclateForwardKinematics(Vector6 JointAngles)
         {
-            for (int i = 0; i < 6; i++)
-                JointAngles[i] = JointAngles[i] / 180 * Math.PI;                                        //transform all values to radiants
+            //for (int i = 0; i < 6; i++)
+                //JointAngles[i] = JointAngles[i] / 180 * Math.PI;                                        //transform all values to radiants
 
             int dim = 6;
             Point[] jointPositions = new Point[dim];
