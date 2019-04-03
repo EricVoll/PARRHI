@@ -28,8 +28,8 @@ public class Cylinder : MonoBehaviour
         Vector3 Point2 = TypeConversion.i.PointToVector3(Zylinder.Point2);
         Vector3 d = (Point2 - Point1)/2f;
         float radius = (float)Zylinder.Radius;
-
-        this.transform.up = d;
+        
+        this.transform.localRotation = Quaternion.LookRotation(d) * Quaternion.Euler(90, 0, 0);
 
         this.transform.localScale = new Vector3(radius, d.magnitude, radius);
 

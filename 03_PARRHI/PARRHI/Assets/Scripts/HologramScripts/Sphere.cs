@@ -21,9 +21,10 @@ public class Sphere : MonoBehaviour
     {
         Vector3 Point1 = TypeConversion.i.PointToVector3(sphere.Point1);
         float radius = (float)sphere.Radius;
+        
 
         this.transform.localScale = Vector3.one * radius;
 
-        this.transform.position = Point1;
+        this.transform.localPosition = Point1;
     }
 }

@@ -26,11 +26,15 @@ namespace PARRHI.HelperClasses.XML
             return obj;
         }
 
-        public T Deserialize<T>(Stream xmlFileStream)
+        public T DeserializeFromContent<T>(string xmlFileContent)
         {
-            T obj = (T)new XmlSerializer(typeof(T)).Deserialize(XmlReader.Create(xmlFileStream));
+            var serializer = new XmlSerializer(typeof(T));
+            using (var reader = new System.IO.StringReader(xmlFileContent))
+            {
+                return (T)serializer.Deserialize(reader);
+            }
 
-            return obj;
+            return default(T);
         }
 
         /// <summary>

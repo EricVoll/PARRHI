@@ -22,6 +22,8 @@ public class PARRHIRuntime : MonoBehaviour
 
     //Set by Unity editor
     public GameObject MainCamera;
+    public TextAsset xmlFile;
+    public TextAsset xsdFile;
 
     public bool ConnectEnabled;
     private bool ConnectionProcessStarted = false;
@@ -94,7 +96,8 @@ public class PARRHIRuntime : MonoBehaviour
     private void InitializeSystem()
     {
         DataImport importer = new DataImport();
-        Container = importer.Import(@"Assets\New Folder\InputData.xml", @"Assets/New Folder/parrhiScheme.xsd");
+
+        Container = importer.Import(xmlFile.text);
 
         //Setup Container Delegates
         Container.State.World.SetUITextDelegate = UICanvas.SetUIText;
@@ -128,7 +131,7 @@ public class PARRHIRuntime : MonoBehaviour
                 SetDirection = false;
                 if (dir)
                 {
-                    RobotController.Commander.MoveAbsolute(new Vector6(685,-125,394,-166,-68,-14));
+                    RobotController.Commander.MoveAbsolute(new Vector6(685, -125, 394, -166, -68, -14));
                     dir = false;
                 }
                 else
@@ -178,7 +181,7 @@ public class PARRHIRuntime : MonoBehaviour
             q2t = RDouble(rnd, -0.7, 1.6);
             q3t = RDouble(rnd, -1, 1);
             q4t = RDouble(rnd, -2 * Mathf.PI, 2 * Mathf.PI);
-            q5t = RDouble(rnd, -1.5,1.5);
+            q5t = RDouble(rnd, -1.5, 1.5);
             q6t = RDouble(rnd, -2 * Mathf.PI, 2 * Mathf.PI);
         }
     }

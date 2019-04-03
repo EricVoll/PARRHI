@@ -17,5 +17,11 @@ namespace PARRHI.Objects.Tests
             //new DataImport().Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\10_XSD\PARS_XSD_Test\PARS_XSD_Test\input1.xml");
             new DataImport().Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\InputData.xml");
         }
+        [TestMethod()]
+        public void ImportTest2()
+        {
+            //new DataImport().Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\10_XSD\PARS_XSD_Test\PARS_XSD_Test\input1.xml");
+            new DataImport().Import(PARRHITests.Properties.Resources.inputxml);
+        }
     }
 }
