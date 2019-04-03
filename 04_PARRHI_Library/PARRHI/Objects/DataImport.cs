@@ -16,10 +16,28 @@ namespace PARRHI.Objects
             BaseElement.Element.RegisterId = RegisterId;
         }
 
-        public const string XSDFilePath = @"C:\Users\ericv\Documents\TUM\BA\PARRHI\10_XSD\PARS_XSD_Test\PARS_XSD_Test\parsScheme.xsd";
-
+        private string XSDFilePath = @"C:\Users\ericv\Documents\TUM\BA\PARRHI\10_XSD\PARS_XSD_Test\PARS_XSD_Test\parsScheme.xsd";
+        
         public XMLValidationResult XMLValidationResult { get; set; }
 
+        /// <summary>
+        /// Imports the PARRHI data with both files specified
+        /// </summary>
+        /// <param name="xmlFilePath"></param>
+        /// <param name="xsdFilePath"></param>
+        /// <returns></returns>
+        public Container Import(string xmlFilePath, string xsdFilePath)
+        {
+            XSDFilePath = xsdFilePath;
+            return Import(xmlFilePath);
+        }
+
+
+        /// <summary>
+        /// Imports the xml file with the default xsd file
+        /// </summary>
+        /// <param name="xmlFilePath"></param>
+        /// <returns></returns>
         public Container Import(string xmlFilePath)
         {
             HelperClasses.XML.XMLSerializerClass xmlSerializer = new HelperClasses.XML.XMLSerializerClass();
@@ -27,7 +45,7 @@ namespace PARRHI.Objects
 
             if (!XMLValidationResult.DidThrowExceptionWhileValidating)
             {
-                var inputData = xmlSerializer.Deserialize<Objects.InputData>(xmlFilePath, XSDFilePath);
+                var inputData = xmlSerializer.Deserialize<Objects.InputData>(xmlFilePath);
                 var container = new InputDataToContainer(inputData, XMLValidationResult).ConvertToContainer();
                 return container;
             }

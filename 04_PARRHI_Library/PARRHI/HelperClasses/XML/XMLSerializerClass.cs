@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,10 +19,17 @@ namespace PARRHI.HelperClasses.XML
         /// <param name="xmlFilePath"></param>
         /// <param name="xsdFilePath"></param>
         /// <returns></returns>
-        public T Deserialize<T>(string xmlFilePath, string xsdFilePath)
+        public T Deserialize<T>(string xmlFilePath)
         {
             T obj = (T)new XmlSerializer(typeof(T)).Deserialize(XmlReader.Create(xmlFilePath));
             
+            return obj;
+        }
+
+        public T Deserialize<T>(Stream xmlFileStream)
+        {
+            T obj = (T)new XmlSerializer(typeof(T)).Deserialize(XmlReader.Create(xmlFileStream));
+
             return obj;
         }
 

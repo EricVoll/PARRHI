@@ -9,6 +9,8 @@ using PARRHI.Objects.Points;
 using PARRHI.Objects;
 using System.Linq;
 using System;
+using System.IO;
+using UnityEditor;
 
 public class PARRHIRuntime : MonoBehaviour
 {
@@ -92,7 +94,7 @@ public class PARRHIRuntime : MonoBehaviour
     private void InitializeSystem()
     {
         DataImport importer = new DataImport();
-        Container = importer.Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\InputData.xml");
+        Container = importer.Import(@"Assets\New Folder\InputData.xml", @"Assets/New Folder/parrhiScheme.xsd");
 
         //Setup Container Delegates
         Container.State.World.SetUITextDelegate = UICanvas.SetUIText;

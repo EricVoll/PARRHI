@@ -46,3 +46,11 @@ if (index($result, "error") != -1) {
 else{
 
 }
+
+if(copy ("$defaultDirectory/parsScheme.xsd",'C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\parrhiScheme.xsd')){
+
+print("\n-> XSD copied to Unity asset folder");
+}
+else{
+	print("\n-> Failed to copy xsd scheme");
+}

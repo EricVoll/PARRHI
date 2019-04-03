@@ -26,13 +26,13 @@ public class Cylinder : MonoBehaviour
     {
         Vector3 Point1 = TypeConversion.i.PointToVector3(Zylinder.Point1);
         Vector3 Point2 = TypeConversion.i.PointToVector3(Zylinder.Point2);
+        Vector3 d = (Point2 - Point1)/2f;
         float radius = (float)Zylinder.Radius;
 
-        this.transform.LookAt(Point2, Vector3.left);
-        this.transform.Rotate(new Vector3(1, 0, 0), 90);
+        this.transform.up = d;
 
-        this.transform.localScale = new Vector3(radius, (Point2 - Point1).magnitude / 2, radius);
+        this.transform.localScale = new Vector3(radius, d.magnitude, radius);
 
-        this.transform.localPosition = Point1 + 0.5f * (Point2 - Point1);
+        this.transform.localPosition = Point1 + d;
     }
 }
