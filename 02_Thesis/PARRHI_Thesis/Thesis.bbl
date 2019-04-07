@@ -207,5 +207,240 @@
   reality interface components}
     \field{year}{2006}
   \endentry
+
+  \entry{hoenig2015mixed}{inproceedings}{}
+    \name{author}{6}{}{%
+      {{hash=HW}{%
+         family={Hoenig},
+         familyi={H\bibinitperiod},
+         given={Wolfgang},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=MC}{%
+         family={Milanes},
+         familyi={M\bibinitperiod},
+         given={Christina},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=SL}{%
+         family={Scaria},
+         familyi={S\bibinitperiod},
+         given={Lisa},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=PT}{%
+         family={Phan},
+         familyi={P\bibinitperiod},
+         given={Thai},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=BM}{%
+         family={Bolas},
+         familyi={B\bibinitperiod},
+         given={Mark},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=AN}{%
+         family={Ayanian},
+         familyi={A\bibinitperiod},
+         given={Nora},
+         giveni={N\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{HWMCSL+1}
+    \strng{fullhash}{HWMCSLPTBMAN1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{2015 IEEE/RSJ International Conference on Intelligent
+  Robots and Systems (IROS)}
+    \field{pages}{5382\bibrangedash 5387}
+    \field{title}{Mixed reality for robotics}
+    \field{year}{2015}
+  \endentry
+
+  \entry{chen2009mixed}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=CIYH}{%
+         family={Chen},
+         familyi={C\bibinitperiod},
+         given={Ian Yen-Hung},
+         giveni={I\bibinitperiod\bibinitdelim Y\bibinithyphendelim
+  H\bibinitperiod},
+      }}%
+      {{hash=MB}{%
+         family={MacDonald},
+         familyi={M\bibinitperiod},
+         given={Bruce},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=WB}{%
+         family={Wunsche},
+         familyi={W\bibinitperiod},
+         given={Burkhard},
+         giveni={B\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{CIYHMBWB1}
+    \strng{fullhash}{CIYHMBWB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{2009 IEEE International Conference on Robotics and
+  Automation}
+    \field{pages}{232\bibrangedash 237}
+    \field{title}{Mixed reality simulation for mobile robots}
+    \field{year}{2009}
+  \endentry
+
+  \entry{milgram1993applications}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=MP}{%
+         family={Milgram},
+         familyi={M\bibinitperiod},
+         given={Paul},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=ZS}{%
+         family={Zhai},
+         familyi={Z\bibinitperiod},
+         given={Shumin},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=DD}{%
+         family={Drascic},
+         familyi={D\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=GJ}{%
+         family={Grodski},
+         familyi={G\bibinitperiod},
+         given={Julius},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{MPZSDD+1}
+    \strng{fullhash}{MPZSDDGJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of 1993 IEEE/RSJ International Conference on
+  Intelligent Robots and Systems (IROS'93)}
+    \field{pages}{1467\bibrangedash 1472}
+    \field{title}{Applications of augmented reality for human-robot
+  communication}
+    \field{volume}{3}
+    \field{year}{1993}
+  \endentry
+
+  \entry{walker2018communicating}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=WM}{%
+         family={Walker},
+         familyi={W\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=HH}{%
+         family={Hedayati},
+         familyi={H\bibinitperiod},
+         given={Hooman},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=LJ}{%
+         family={Lee},
+         familyi={L\bibinitperiod},
+         given={Jennifer},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SD}{%
+         family={Szafir},
+         familyi={S\bibinitperiod},
+         given={Daniel},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {ACM}%
+    }
+    \strng{namehash}{WMHHLJ+1}
+    \strng{fullhash}{WMHHLJSD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of the 2018 ACM/IEEE International Conference
+  on Human-Robot Interaction}
+    \field{pages}{316\bibrangedash 324}
+    \field{title}{Communicating robot motion intent with augmented reality}
+    \field{year}{2018}
+  \endentry
+
+  \entry{parametrizedCellElectricalInductor}{article}{}
+    \name{author}{3}{}{%
+      {{hash=GV}{%
+         family={Grozdanov},
+         familyi={G\bibinitperiod},
+         given={Vladimir},
+         giveni={V\bibinitperiod},
+      }}%
+      {{hash=PD}{%
+         family={Pukneva},
+         familyi={P\bibinitperiod},
+         given={Diana},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=HM}{%
+         family={Hristov},
+         familyi={H\bibinitperiod},
+         given={M},
+         giveni={M},
+      }}%
+    }
+    \strng{namehash}{GVPDHM1}
+    \strng{fullhash}{GVPDHM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{DEVELOPMENT OF PARAMETERIZED CELL OF SPIRAL INDUCTOR USING
+  SKILL LANGUAGE}
+    \field{month}{04}
+    \field{year}{2019}
+  \endentry
+
+  \entry{stavric2011parametric}{article}{}
+    \name{author}{2}{}{%
+      {{hash=SM}{%
+         family={Stavric},
+         familyi={S\bibinitperiod},
+         given={Milena},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=MO}{%
+         family={Marina},
+         familyi={M\bibinitperiod},
+         given={Ognen},
+         giveni={O\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {North Atlantic University Union}%
+    }
+    \strng{namehash}{SMMO1}
+    \strng{fullhash}{SMMO1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{1}
+    \field{pages}{9\bibrangedash 16}
+    \field{title}{Parametric modeling for advanced architecture}
+    \field{volume}{5}
+    \field{journaltitle}{International journal of applied mathematics and
+  informatics}
+    \field{year}{2011}
+  \endentry
 \enddatalist
 \endinput
