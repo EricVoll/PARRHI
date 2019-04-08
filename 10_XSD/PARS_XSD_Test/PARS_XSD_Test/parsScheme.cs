@@ -20,82 +20,28 @@ using System.Xml.Serialization;
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="pars")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="pars", IsNullable=false)]
-public partial class parsInputData {
-    
-    private parsInputDataVariables variablesField;
-    
-    private parsInputDataSpacialDefinitions spacialDefinitionsField;
-    
-    private string hologramDefinitionsField;
-    
-    private string uITextField;
-    
-    private string eventsField;
-    
-    private string[] textField;
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+[System.Xml.Serialization.XmlRootAttribute(Namespace="PARRHI", IsNullable=false)]
+public partial class InputData {
     
     /// <remarks/>
-    public parsInputDataVariables Variables {
-        get {
-            return this.variablesField;
-        }
-        set {
-            this.variablesField = value;
-        }
-    }
+    public InputDataVariables Variables;
     
     /// <remarks/>
-    public parsInputDataSpacialDefinitions SpacialDefinitions {
-        get {
-            return this.spacialDefinitionsField;
-        }
-        set {
-            this.spacialDefinitionsField = value;
-        }
-    }
+    public InputDataPoints Points;
     
     /// <remarks/>
-    public string HologramDefinitions {
-        get {
-            return this.hologramDefinitionsField;
-        }
-        set {
-            this.hologramDefinitionsField = value;
-        }
-    }
+    public InputDataHolograms Holograms;
     
     /// <remarks/>
-    public string UIText {
-        get {
-            return this.uITextField;
-        }
-        set {
-            this.uITextField = value;
-        }
-    }
+    public InputDataEvents Events;
     
     /// <remarks/>
-    public string Events {
-        get {
-            return this.eventsField;
-        }
-        set {
-            this.eventsField = value;
-        }
-    }
+    public InputDataUIText UIText;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlTextAttribute()]
-    public string[] Text {
-        get {
-            return this.textField;
-        }
-        set {
-            this.textField = value;
-        }
-    }
+    public string[] Text;
 }
 
 /// <remarks/>
@@ -103,35 +49,16 @@ public partial class parsInputData {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="pars")]
-public partial class parsInputDataVariables {
-    
-    private object[] itemsField;
-    
-    private string[] textField;
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataVariables {
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute("Int", typeof(parsInputDataVariablesInt))]
-    [System.Xml.Serialization.XmlElementAttribute("String", typeof(parsInputDataVariablesString))]
-    public object[] Items {
-        get {
-            return this.itemsField;
-        }
-        set {
-            this.itemsField = value;
-        }
-    }
+    [System.Xml.Serialization.XmlElementAttribute("Int")]
+    public InputDataVariablesInt[] Int;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlTextAttribute()]
-    public string[] Text {
-        get {
-            return this.textField;
-        }
-        set {
-            this.textField = value;
-        }
-    }
+    public string[] Text;
 }
 
 /// <remarks/>
@@ -139,34 +66,16 @@ public partial class parsInputDataVariables {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="pars")]
-public partial class parsInputDataVariablesInt {
-    
-    private string nameField;
-    
-    private byte valueField;
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataVariablesInt {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string name {
-        get {
-            return this.nameField;
-        }
-        set {
-            this.nameField = value;
-        }
-    }
+    public string name;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlTextAttribute()]
-    public byte Value {
-        get {
-            return this.valueField;
-        }
-        set {
-            this.valueField = value;
-        }
-    }
+    public byte Value;
 }
 
 /// <remarks/>
@@ -174,34 +83,18 @@ public partial class parsInputDataVariablesInt {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="pars")]
-public partial class parsInputDataVariablesString {
-    
-    private string nameField;
-    
-    private string valueField;
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataPoints {
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string name {
-        get {
-            return this.nameField;
-        }
-        set {
-            this.nameField = value;
-        }
-    }
+    [System.Xml.Serialization.XmlElementAttribute("PointCamera", typeof(InputDataPointsPointCamera))]
+    [System.Xml.Serialization.XmlElementAttribute("PointFix", typeof(InputDataPointsPointFix))]
+    [System.Xml.Serialization.XmlElementAttribute("PointRobot", typeof(InputDataPointsPointRobot))]
+    public object[] Items;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlTextAttribute()]
-    public string Value {
-        get {
-            return this.valueField;
-        }
-        set {
-            this.valueField = value;
-        }
-    }
+    public string[] Text;
 }
 
 /// <remarks/>
@@ -209,35 +102,80 @@ public partial class parsInputDataVariablesString {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="pars")]
-public partial class parsInputDataSpacialDefinitions {
-    
-    private object[] itemsField;
-    
-    private string[] textField;
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataPointsPointCamera {
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute("PointDefinitionFix", typeof(parsInputDataSpacialDefinitionsPointDefinitionFix))]
-    [System.Xml.Serialization.XmlElementAttribute("PointDefinitionRobot", typeof(parsInputDataSpacialDefinitionsPointDefinitionRobot))]
-    public object[] Items {
-        get {
-            return this.itemsField;
-        }
-        set {
-            this.itemsField = value;
-        }
-    }
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string name;
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.7.2053.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataPointsPointFix {
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string name;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public decimal X;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public decimal Y;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public decimal Z;
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.7.2053.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataPointsPointRobot {
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string name;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public byte J1;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public byte J2;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public decimal Scale;
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.7.2053.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataHolograms {
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute("Sphere", typeof(InputDataHologramsSphere))]
+    [System.Xml.Serialization.XmlElementAttribute("Zylinder", typeof(InputDataHologramsZylinder))]
+    public object[] Items;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlTextAttribute()]
-    public string[] Text {
-        get {
-            return this.textField;
-        }
-        set {
-            this.textField = value;
-        }
-    }
+    public string[] Text;
 }
 
 /// <remarks/>
@@ -245,60 +183,24 @@ public partial class parsInputDataSpacialDefinitions {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="pars")]
-public partial class parsInputDataSpacialDefinitionsPointDefinitionFix {
-    
-    private string nameField;
-    
-    private byte xField;
-    
-    private byte yField;
-    
-    private byte zField;
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataHologramsSphere {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string name {
-        get {
-            return this.nameField;
-        }
-        set {
-            this.nameField = value;
-        }
-    }
+    public string name;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public byte X {
-        get {
-            return this.xField;
-        }
-        set {
-            this.xField = value;
-        }
-    }
+    public string point;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public byte Y {
-        get {
-            return this.yField;
-        }
-        set {
-            this.yField = value;
-        }
-    }
+    public byte radius;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public byte Z {
-        get {
-            return this.zField;
-        }
-        set {
-            this.zField = value;
-        }
-    }
+    public string renderMode;
 }
 
 /// <remarks/>
@@ -306,58 +208,282 @@ public partial class parsInputDataSpacialDefinitionsPointDefinitionFix {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="pars")]
-public partial class parsInputDataSpacialDefinitionsPointDefinitionRobot {
-    
-    private string nameField;
-    
-    private byte j1Field;
-    
-    private byte j2Field;
-    
-    private decimal scaleField;
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataHologramsZylinder {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string name {
-        get {
-            return this.nameField;
-        }
-        set {
-            this.nameField = value;
-        }
-    }
+    public string name;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public byte J1 {
-        get {
-            return this.j1Field;
-        }
-        set {
-            this.j1Field = value;
-        }
-    }
+    public string point1;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public byte J2 {
-        get {
-            return this.j2Field;
-        }
-        set {
-            this.j2Field = value;
-        }
-    }
+    public string point2;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public decimal Scale {
-        get {
-            return this.scaleField;
-        }
-        set {
-            this.scaleField = value;
-        }
-    }
+    public byte radius;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string renderMode;
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.7.2053.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataEvents {
+    
+    /// <remarks/>
+    public InputDataEventsTrigger Trigger;
+    
+    /// <remarks/>
+    public InputDataEventsActions Actions;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlTextAttribute()]
+    public string[] Text;
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.7.2053.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataEventsTrigger {
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute("DistanceTrigger", typeof(InputDataEventsTriggerDistanceTrigger))]
+    [System.Xml.Serialization.XmlElementAttribute("TimeTrigger", typeof(InputDataEventsTriggerTimeTrigger))]
+    [System.Xml.Serialization.XmlElementAttribute("VarTrigger", typeof(InputDataEventsTriggerVarTrigger))]
+    public object[] Items;
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.7.2053.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataEventsTriggerDistanceTrigger {
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string name;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public bool canTrigger;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string point1;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string point2;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public decimal distance;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string action1;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string action2;
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.7.2053.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataEventsTriggerTimeTrigger {
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string name;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public bool canTrigger;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public byte timeSinceActivation;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string action1;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string action2;
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.7.2053.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataEventsTriggerVarTrigger {
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string name;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public bool canTrigger;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string varName;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public byte triggerValue;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string action1;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string action2;
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.7.2053.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataEventsActions {
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute("ChangeUITextAction", typeof(InputDataEventsActionsChangeUITextAction))]
+    [System.Xml.Serialization.XmlElementAttribute("IncrementCounterAction", typeof(InputDataEventsActionsIncrementCounterAction))]
+    [System.Xml.Serialization.XmlElementAttribute("MoveRobotAction", typeof(InputDataEventsActionsMoveRobotAction))]
+    [System.Xml.Serialization.XmlElementAttribute("SetRobotHandStateAction", typeof(InputDataEventsActionsSetRobotHandStateAction))]
+    [System.Xml.Serialization.XmlElementAttribute("SetTriggerStateAction", typeof(InputDataEventsActionsSetTriggerStateAction))]
+    public object[] Items;
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.7.2053.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataEventsActionsChangeUITextAction {
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string name;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string text;
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.7.2053.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataEventsActionsIncrementCounterAction {
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string name;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string intVar;
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.7.2053.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataEventsActionsMoveRobotAction {
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string name;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string pointTCP;
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.7.2053.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataEventsActionsSetRobotHandStateAction {
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string name;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string state;
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.7.2053.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataEventsActionsSetTriggerStateAction {
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string name;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string triggerName;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public bool canTrigger;
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.7.2053.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataUIText {
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string name;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string text;
 }

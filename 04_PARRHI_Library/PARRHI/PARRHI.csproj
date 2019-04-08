@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{22109AD4-23F1-41B3-B191-95A15F09FA04}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PARRHI</RootNamespace>
+    <AssemblyName>PARRHI</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FanucControllerLibrary">
+      <HintPath>..\..\..\..\..\AIS\Robot\ARobot\04_FanucControllerLibrary\FanucController\FanucController\bin\Debug\FanucControllerLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HelperClasses\ForwardKinematics.cs" />
+    <Compile Include="HelperClasses\InputDataToContainer.cs" />
+    <Compile Include="HelperClasses\Matrix.cs" />
+    <Compile Include="HelperClasses\XML\XMLSerializerClass.cs" />
+    <Compile Include="HelperClasses\XML\XMLValidationError.cs" />
+    <Compile Include="HelperClasses\XML\XMLValidationResult.cs" />
+    <Compile Include="Objects\BaseElement\Element.cs" />
+    <Compile Include="Objects\BaseElement\IElement.cs" />
+    <Compile Include="Objects\Container.cs" />
+    <Compile Include="Objects\DataImport.cs" />
+    <Compile Include="Objects\TriggerActions\ChangeUITextAction.cs" />
+    <Compile Include="Objects\TriggerActions\MoveRobotAction.cs" />
+    <Compile Include="Objects\TriggerActions\RobotHandAction.cs" />
+    <Compile Include="Objects\TriggerActions\SetTriggerStateAction.cs" />
+    <Compile Include="Objects\TriggerActions\TriggerAction.cs" />
+    <Compile Include="Objects\TriggerActions\IncrementCounterAction.cs" />
+    <Compile Include="Objects\Triggers\DistanceTrigger.cs" />
+    <Compile Include="Objects\Triggers\TimeTrigger.cs" />
+    <Compile Include="Objects\Triggers\Trigger.cs" />
+    <Compile Include="Objects\Holograms\Hologram.cs" />
+    <Compile Include="Objects\Holograms\Sphere.cs" />
+    <Compile Include="Objects\Holograms\Zylinder.cs" />
+    <Compile Include="Objects\InputData.cs" />
+    <Compile Include="Objects\Points\IPoint.cs" />
+    <Compile Include="Objects\Points\Point.cs" />
+    <Compile Include="Objects\Points\PointCamera.cs" />
+    <Compile Include="Objects\Points\PointFix.cs" />
+    <Compile Include="Objects\Points\PointRobot.cs" />
+    <Compile Include="Objects\State\Robot.cs" />
+    <Compile Include="Objects\State\State.cs" />
+    <Compile Include="Objects\State\World.cs" />
+    <Compile Include="Objects\Triggers\VarTrigger.cs" />
+    <Compile Include="Objects\Variables\IntVariable.cs" />
+    <Compile Include="Platform\Output.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

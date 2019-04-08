@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="inputxml" xml:space="preserve">
+    <value>&lt;?xml version="1.0"?&gt;
+&lt;!--This is the full file with all values specified--&gt;
+&lt;InputData xmlns="PARRHI"&gt;
+	&lt;Variables&gt;
+		&lt;Int name="var1"&gt;0&lt;/Int&gt;
+	&lt;/Variables&gt;
+	&lt;Points&gt;
+		&lt;PointRobot name="Point1" J1="0" J2="1" Scale="0" /&gt;
+		&lt;PointRobot name="Point2" J1="1" J2="2" Scale="0" /&gt;
+		&lt;PointRobot name="Point3" J1="2" J2="3" Scale="0" /&gt;
+		&lt;PointRobot name="Point4" J1="3" J2="4" Scale="0" /&gt;
+		&lt;PointRobot name="Point5" J1="4" J2="5" Scale="0" /&gt;
+		&lt;PointRobot name="Point6" J1="5" J2="5" Scale="0" /&gt;
+
+		&lt;PointFix name="Point7" X="700" Y="0" Z = "700"/&gt;
+		&lt;PointFix name="Point8" X="700" Y="0" Z = "-700"/&gt;
+		&lt;PointFix name="Point9" X="-700" Y="0" Z = "-700"/&gt;
+		&lt;PointFix name="Point10" X="-700" Y="0" Z = "700"/&gt;
+		
+		&lt;PointFix name="Point11" X="700" Y="1400" Z = "700"/&gt;
+		&lt;PointFix name="Point12" X="700" Y="1400" Z = "-700"/&gt;
+		&lt;PointFix name="Point13" X="-700" Y="1400" Z = "-700"/&gt;
+		&lt;PointFix name="Point14" X="-700" Y="1400" Z = "700"/&gt;
+		&lt;PointFix name="Point15" X="0" Y="740" Z = "500"/&gt;
+		
+		&lt;PointRobot name="Point16" J1="3" J2="4" Scale="0.5" /&gt;
+	&lt;/Points&gt;
+	&lt;Holograms&gt;
+		&lt;Sphere name="Sphere1" point="Point1" radius="90"  renderMode="transparent"/&gt;
+		&lt;Sphere name="Sphere2" point="Point2" radius="80"  renderMode="transparent"/&gt;
+		&lt;Sphere name="Sphere3" point="Point3" radius="70"  renderMode="transparent"/&gt;
+		&lt;Sphere name="Sphere4" point="Point4" radius="40"  renderMode="transparent"/&gt;
+		&lt;Sphere name="Sphere5" point="Point5" radius="20"  renderMode="transparent"/&gt;
+		&lt;Sphere name="Sphere6" point="Point6" radius="20"  renderMode="transparent"/&gt;
+		
+		&lt;Zylinder name="Zylinder1" point1="Point1" point2="Point2" radius="90" renderMode="transparent"/&gt;
+		&lt;Zylinder name="Zylinder2" point1="Point2" point2="Point3" radius="70" renderMode="transparent"/&gt;
+		&lt;Zylinder name="Zylinder3" point1="Point3" point2="Point4" radius="70" renderMode="transparent"/&gt;
+		&lt;Zylinder name="Zylinder4" point1="Point4" point2="Point5" radius="40" renderMode="transparent"/&gt;
+		&lt;Zylinder name="Zylinder5" point1="Point5" point2="Point6" radius="20" renderMode="transparent"/&gt;
+		
+		&lt;Sphere name="Sphere7" point="Point16" radius="100"/&gt;
+		
+		&lt;Zylinder name="Zylinder6" point1="Point7" point2="Point8" radius="20"/&gt;
+		&lt;Zylinder name="Zylinder7" point1="Point8" point2="Point9" radius="20"/&gt;
+		&lt;Zylinder name="Zylinder8" point1="Point9" point2="Point10" radius="20"/&gt;
+		&lt;Zylinder name="Zylinder9" point1="Point10" point2="Point7" radius="20"/&gt;
+		
+		&lt;Zylinder name="Zylinder10" point1="Point11" point2="Point12" radius="20"/&gt;
+		&lt;Zylinder name="Zylinder11" point1="Point12" point2="Point13" radius="20"/&gt;
+		&lt;Zylinder name="Zylinder12" point1="Point13" point2="Point14" radius="20"/&gt;
+		&lt;Zylinder name="Zylinder13" point1="Point14" point2="Point11" radius="20"/&gt;
+		
+		&lt;Zylinder name="Zylinder14" point1="Point7" point2="Point11" radius="20"/&gt;
+		&lt;Zylinder name="Zylinder15" point1="Point8" point2="Point12" radius="20"/&gt;
+		&lt;Zylinder name="Zylinder16" point1="Point9" point2="Point13" radius="20"/&gt;
+		&lt;Zylinder name="Zylinder17" point1="Point10" point2="Point14" radius="20"/&gt;
+	&lt;/Holograms&gt;
+	&lt;Events&gt;
+		&lt;Trigger&gt;
+			&lt;DistanceTrigger name="Trigger1" canTrigger='true' point1="Point15" point2="Point6" action1="Handler2" action2="Handler2" distance="50" /&gt;
+			&lt;TimeTrigger name="Trigger2" canTrigger='true' timeSinceActivation="5"  action1="Handler1" action2="Handler3"/&gt;
+			&lt;VarTrigger name="Trigger4" canTrigger='true' varName="var1" triggerValue="2" action1="Handler2" action2="Handler4" /&gt;
+		&lt;/Trigger&gt;
+		&lt;Actions&gt;
+			&lt;IncrementCounterAction name="Handler1" intVar="var1"/&gt;
+			&lt;ChangeUITextAction name="Handler2" text="This trigger sets the UI to this text, if the var trigger triggers"/&gt;
+			&lt;SetTriggerStateAction name="Handler3" triggerName="Trigger2" canTrigger='true'/&gt;
+			&lt;SetTriggerStateAction name="Handler4" triggerName="Trigger2" canTrigger='false'/&gt;
+		&lt;/Actions&gt;
+	&lt;/Events&gt;
+	&lt;UIText name="UniqueText" text="Content"/&gt;
+&lt;/InputData&gt;</value>
+  </data>
+</root>
