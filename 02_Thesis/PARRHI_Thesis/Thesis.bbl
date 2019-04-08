@@ -442,5 +442,29 @@
   informatics}
     \field{year}{2011}
   \endentry
+
+  \entry{bara}{online}{}
+    \name{author}{1}{}{%
+      {{hash=ABAR}{%
+         family={Associtation},
+         familyi={A\bibinitperiod},
+         given={British Automation &\bibnamedelima Robot},
+         giveni={B\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim
+  \bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{ABAR1}
+    \strng{fullhash}{ABAR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Robot Programming Methods}
+    \verb{url}
+    \verb http://www.bara.org.uk/robots/robot-programming-methods.html
+    \endverb
+    \field{year}{2018}
+    \field{urlday}{07}
+    \field{urlmonth}{04}
+    \field{urlyear}{2019}
+  \endentry
 \enddatalist
 \endinput
