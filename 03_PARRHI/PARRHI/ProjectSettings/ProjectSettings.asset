@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: TUM
   productName: PARRHI
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -125,7 +125,7 @@ PlayerSettings:
   m_HolographicPauseOnTrackingLoss: 1
   xboxOneDisableKinectGpuReservation: 1
   xboxOneEnable7thCore: 1
-  isWsaHolographicRemotingEnabled: 0
+  isWsaHolographicRemotingEnabled: 1
   vrSettings:
     cardboard:
       depthFormat: 0
@@ -139,7 +139,7 @@ PlayerSettings:
       maximumSupportedHeadTracking: 1
     hololens:
       depthFormat: 1
-      depthBufferSharingEnabled: 1
+      depthBufferSharingEnabled: 0
     oculus:
       sharedDepthBuffer: 1
       dashSupport: 1
