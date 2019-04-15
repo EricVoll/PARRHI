@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="MarkerTracker" size="180.000000 203.530396" />
+    <ImageTarget name="TUM_Tracker" size="0.180000 0.203530" />
   </Tracking>
 </QCARConfig>
