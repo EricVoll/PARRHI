@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.6960 64-bit) (preloaded format=pdflatex 2019.3.13)  7 APR 2019 16:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.6960 64-bit) (preloaded format=pdflatex 2019.3.13)  14 APR 2019 11:55
 entering extended mode
 **./Thesis.tex
 (Thesis.tex
@@ -704,6 +704,25 @@ File: pgfmodulematrix.code.tex 2019/02/02 v3.1.1 (3.1.1)
 r/tikz/libraries\tikzlibrarytopaths.code.tex"
 File: tikzlibrarytopaths.code.tex 2019/02/02 v3.1.1 (3.1.1)
 )))
+("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tikz-3dplot\tikz-3
+dplot.sty"
+("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/frontendlaye
+r/tikz/libraries\tikzlibrarycalc.code.tex"
+File: tikzlibrarycalc.code.tex 2019/02/02 v3.1.1 (3.1.1)
+)
+("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/frontendlaye
+r/tikz/libraries\tikzlibrary3d.code.tex"
+File: tikzlibrary3d.code.tex 2019/02/02 v3.1.1 (3.1.1)
+)
+("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/frontendlaye
+r/tikz/libraries\tikzlibraryarrows.code.tex"
+File: tikzlibraryarrows.code.tex 2019/02/02 v3.1.1 (3.1.1)
+
+("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/libraries\pg
+flibraryarrows.code.tex"
+File: pgflibraryarrows.code.tex 2019/02/02 v3.1.1 (3.1.1)
+\arrowsize=\dimen159
+)))
 ("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/frontendlaye
 r/tikz/libraries\tikzlibrarypatterns.code.tex"
 File: tikzlibrarypatterns.code.tex 2019/02/02 v3.1.1 (3.1.1)
@@ -712,10 +731,6 @@ File: tikzlibrarypatterns.code.tex 2019/02/02 v3.1.1 (3.1.1)
 flibrarypatterns.code.tex"
 File: pgflibrarypatterns.code.tex 2019/02/02 v3.1.1 (3.1.1)
 ))
-("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/frontendlaye
-r/tikz/libraries\tikzlibrarycalc.code.tex"
-File: tikzlibrarycalc.code.tex 2019/02/02 v3.1.1 (3.1.1)
-)
 ("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/frontendlaye
 r/tikz/libraries\tikzlibraryfadings.code.tex"
 File: tikzlibraryfadings.code.tex 2019/02/02 v3.1.1 (3.1.1)
@@ -730,14 +745,14 @@ r/tikz/libraries\tikzlibrarydecorations.pathreplacing.code.tex"
 r/tikz/libraries\tikzlibrarydecorations.code.tex"
 ("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/modules\pgfm
 oduledecorations.code.tex"
-\pgfdecoratedcompleteddistance=\dimen159
-\pgfdecoratedremainingdistance=\dimen160
-\pgfdecoratedinputsegmentcompleteddistance=\dimen161
-\pgfdecoratedinputsegmentremainingdistance=\dimen162
-\pgf@decorate@distancetomove=\dimen163
+\pgfdecoratedcompleteddistance=\dimen160
+\pgfdecoratedremainingdistance=\dimen161
+\pgfdecoratedinputsegmentcompleteddistance=\dimen162
+\pgfdecoratedinputsegmentremainingdistance=\dimen163
+\pgf@decorate@distancetomove=\dimen164
 \pgf@decorate@repeatstate=\count121
-\pgfdecorationsegmentamplitude=\dimen164
-\pgfdecorationsegmentlength=\dimen165
+\pgfdecorationsegmentamplitude=\dimen165
+\pgfdecorationsegmentlength=\dimen166
 )
 \tikz@lib@dec@box=\box48
 )
@@ -750,15 +765,6 @@ File: tikzlibraryshapes.arrows.code.tex 2019/02/02 v3.1.1 (3.1.1)
 ("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/libraries/sh
 apes\pgflibraryshapes.arrows.code.tex"
 File: pgflibraryshapes.arrows.code.tex 2019/02/02 v3.1.1 (3.1.1)
-))
-("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/frontendlaye
-r/tikz/libraries\tikzlibraryarrows.code.tex"
-File: tikzlibraryarrows.code.tex 2019/02/02 v3.1.1 (3.1.1)
-
-("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/libraries\pg
-flibraryarrows.code.tex"
-File: pgflibraryarrows.code.tex 2019/02/02 v3.1.1 (3.1.1)
-\arrowsize=\dimen166
 ))
 ("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/frontendlaye
 r/tikz/libraries\tikzlibrarychains.code.tex"
@@ -966,7 +972,7 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)+ FMi change
 \c@LT@chunks=\count133
 \LT@p@ftn=\toks42
 )
-Class scrbook Info: longtable captions redefined on input line 52.
+Class scrbook Info: longtable captions redefined on input line 53.
  ("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tabu\tabu.sty"
 Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
 
@@ -1963,7 +1969,7 @@ Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 )
 Package scrkbase Info: You've told me to redefine the font selection of the
 (scrkbase)             element `sectioning' that is an alias of element
-(scrkbase)             `disposition' on input line 131.
+(scrkbase)             `disposition' on input line 132.
 ) (DimlessGroups.tex)
 
 Package biblatex Warning: File 'english-ieee.lbx' not found!
@@ -1983,7 +1989,8 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 \@quotelevel=\count479
 \@quotereset=\count480
 (Thesis.aux (Chapters/10_Introduction.aux) (Chapters/15_StateOfTheArt.aux)
-(Chapters/90_Bibliography.aux) (Chapters/99_Statement.aux))
+(Chapters/20_Concept.aux) (Chapters/90_Bibliography.aux)
+(Chapters/99_Statement.aux))
 \openout1 = `Thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
@@ -2188,23 +2195,55 @@ chapter 2.
 
 
 ] [4] [5] [6]) [7]
-\openout2 = `Chapters/90_Bibliography.aux'.
+\openout2 = `Chapters/20_Concept.aux'.
 
- (Chapters/90_Bibliography.tex [8
+ (Chapters/20_Concept.tex [8
 
 
 
 
 ]
 chapter 3.
+LaTeX Font Info:    Try loading font information for TS1+aer on input line 14.
+LaTeX Font Info:    No file TS1aer.fd. on input line 14.
+
+LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
+(Font)              using `TS1/cmr/m/n' instead
+(Font)              for symbol `textbullet' on input line 14.
+
+[9]
+<Figures/PARRHIConcept01.png, id=179, 610.9224pt x 356.532pt>
+File: Figures/PARRHIConcept01.png Graphic file (type png)
+<use Figures/PARRHIConcept01.png>
+Package pdftex.def Info: Figures/PARRHIConcept01.png  used on input line 45.
+(pdftex.def)             Requested size: 330.76328pt x 193.03578pt.
+ [10]
+Overfull \hbox (5.68982pt too wide) in paragraph at lines 71--81
+ [][] 
+ []
+
+(Figures/PointFix.tex [11 <./Figures/PARRHIConcept01.png>])
+(Figures/PointRobot.tex) [12]) [13] [14
+
+
+
+]
+\openout2 = `Chapters/90_Bibliography.aux'.
+
+ (Chapters/90_Bibliography.tex
+chapter 4.
 LaTeX Font Info:    Try loading font information for T1+aett on input line 2.
 ("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ae\t1aett.fd"
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
-[9]) [10] [11
+[15
 
 
-] [12
+
+]) [16] [17
+
+
+] [18
 
 
 
@@ -2216,7 +2255,7 @@ Overfull \hbox (3.61714pt too wide) in paragraph at lines 25--97
 []|  \T1/aer/m/n/10.95 Mu-nich, De-cem-ber 1, 2016 | [] |  
  []
 
-[13
+[19
 
 
 
@@ -2224,36 +2263,43 @@ Overfull \hbox (3.61714pt too wide) in paragraph at lines 25--97
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 100.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 100.
  (Thesis.aux (Chapters/10_Introduction.aux) (Chapters/15_StateOfTheArt.aux) (Ch
-apters/90_Bibliography.aux) (Chapters/99_Statement.aux))
+apters/20_Concept.aux) (Chapters/90_Bibliography.aux)
+(Chapters/99_Statement.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 100.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 100.
 Package rerunfilecheck Info: File `Thesis.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 100.
 Package logreq Info: Writing requests to 'Thesis.run.xml'.
 \openout1 = `Thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 55941 strings out of 492946
- 1291194 string characters out of 3126266
- 1747433 words of memory out of 3000000
- 58925 multiletter control sequences out of 15000+200000
- 565571 words of font info for 95 fonts, out of 3000000 for 9000
+ 56489 strings out of 492946
+ 1300942 string characters out of 3126266
+ 1755940 words of memory out of 3000000
+ 59411 multiletter control sequences out of 15000+200000
+ 571540 words of font info for 105 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,19n,136p,9102b,2090s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/ericv/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmbx10.pfb><C:/Users/ericv/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmbx12.pfb><C:/Users/ericv/AppData/Local/Programs/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/ericv/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/ericv/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsl10.pfb><C:/Users/eric
-v/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><
-C:/Users/ericv/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmtt10.pfb>
-Output written on Thesis.pdf (17 pages, 838690 bytes).
+ 80i,20n,136p,9102b,2146s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\ericv\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
+tcrm1095.pk><C:/Users/ericv/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmbx10.pfb><C:/Users/ericv/AppData/Local/Programs/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/ericv/AppData/Local/Programs/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/ericv/AppData/Loca
+l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/ericv/
+AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/
+Users/ericv/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+sl10.pfb><C:/Users/ericv/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmti10.pfb><C:/Users/ericv/AppData/Local/Programs/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmtt10.pfb>
+Output written on Thesis.pdf (23 pages, 895923 bytes).
 PDF statistics:
- 259 PDF objects out of 1000 (max. 8388607)
- 49 named destinations out of 1000 (max. 500000)
- 234 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 374 PDF objects out of 1000 (max. 8388607)
+ 78 named destinations out of 1000 (max. 500000)
+ 319 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -21,9 +21,10 @@
 		<PointFix name="Point12" X="700" Y="1400" Z = "-700"/>
 		<PointFix name="Point13" X="-700" Y="1400" Z = "-700"/>
 		<PointFix name="Point14" X="-700" Y="1400" Z = "700"/>
-		<PointFix name="Point15" X="0" Y="740" Z = "500"/>
 		
-		<PointRobot name="Point16" J1="3" J2="4" Scale="0.5" />
+		
+		<PointFix name="Point15" X="0" Y="740" Z = "500"/>
+		<PointRobot name="Point16" J1="3" J2="4" Scale="0.75" />
 	</Points>
 	<Holograms>
 		<Sphere name="Sphere1" point="Point1" radius="90"  renderMode="transparent"/>
@@ -39,7 +40,7 @@
 		<Zylinder name="Zylinder4" point1="Point4" point2="Point5" radius="40" renderMode="transparent"/>
 		<Zylinder name="Zylinder5" point1="Point5" point2="Point6" radius="20" renderMode="transparent"/>
 		
-		<Sphere name="Sphere7" point="Point16" radius="100"/>
+		<Sphere name="Sphere7" point="Point15" radius="100" renderMode="transparent"/>
 		
 		<Zylinder name="Zylinder6" point1="Point7" point2="Point8" radius="20"/>
 		<Zylinder name="Zylinder7" point1="Point8" point2="Point9" radius="20"/>

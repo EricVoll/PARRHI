@@ -466,5 +466,35 @@
     \field{urlmonth}{04}
     \field{urlyear}{2019}
   \endentry
+
+  \entry{vmodell}{article}{}
+    \name{author}{2}{}{%
+      {{hash=BM}{%
+         family={Broy},
+         familyi={B\bibinitperiod},
+         given={Manfred},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=RA}{%
+         family={Rausch},
+         familyi={R\bibinitperiod},
+         given={Andreas},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{BMRA1}
+    \strng{fullhash}{BMRA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{3}
+    \field{pages}{220\bibrangedash 229}
+    \field{title}{Das neue v-modell{\textregistered} xt}
+    \field{volume}{28}
+    \field{journaltitle}{Informatik-Spektrum}
+    \field{year}{2005}
+  \endentry
 \enddatalist
 \endinput
