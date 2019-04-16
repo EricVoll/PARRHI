@@ -12,7 +12,7 @@
 		<PointRobot name="Point5" J1="4" J2="5" Scale="0" />
 		<PointRobot name="Point6" J1="5" J2="5" Scale="0" />
 
-		<!--Fence joints-->
+		<!--Fence points-->
 		<PointFix name="Point7" X="700" Y="0" Z = "700"/>
 		<PointFix name="Point8" X="700" Y="0" Z = "-700"/>
 		<PointFix name="Point9" X="-700" Y="0" Z = "-700"/>
@@ -67,6 +67,11 @@
 		<!--3. At some point var1 Reaches the VarTrigger's triggerValue, which then triggers. It stops the timer and sets the ui text to "Step 2"-->
 		
 			<!--Distance Trigger Demo-->
+			<TimeTrigger name="TimeTrigger0" canTrigger='true' timeSinceActivation="0"  action1="IntroAction0"/>
+			<TimeTrigger name="TimeTrigger1" canTrigger='true' timeSinceActivation="30"  action1="IntroAction1"/>
+			<TimeTrigger name="TimeTrigger2" canTrigger='true' timeSinceActivation="35"  action1="IntroAction2"/>
+			<TimeTrigger name="TimeTrigger3" canTrigger='true' timeSinceActivation="40"  action1="IntroAction3"/>
+			
 			<DistanceTrigger name="Trigger1" canTrigger='true' point1="Point15" point2="Point6" action1="Handler1" action2="Handler2" distance="50" />
 			
 			<TimeTrigger name="Trigger2" canTrigger='false' timeSinceActivation="5"  action1="Handler2" action2="Handler3"/>
@@ -79,6 +84,11 @@
 			<IncrementCounterAction name="Handler3" intVar="var1"/>
 			<ChangeUITextAction name="Handler4" text="Step2:\nTime trigger triggered twice, now the varTrigger set this text and disabled the timer"/>
 			<SetTriggerStateAction name="Handler5" triggerName="Trigger2" canTrigger='false'/>
+			
+			<ChangeUITextAction name="IntroAction0" text="Hello, Please get ready for your tutorial! I am just waiting for the HoloLens to load"/>
+			<ChangeUITextAction name="IntroAction1" text="Step 1:\nWait for a few seconds and then move the robot."/>
+			<ChangeUITextAction name="IntroAction2" text="Step 2:\nNow try to look at the robot itself and do something with it."/>
+			<ChangeUITextAction name="IntroAction3" text="Step 3:\nOh you where too slow!"/>
 			
 			
 			<!--<IncrementCounterAction name="Handler1" intVar="var1"/>

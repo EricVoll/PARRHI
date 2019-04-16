@@ -24,6 +24,7 @@ public class PARRHIRuntime : MonoBehaviour
     public GameObject MainCamera;
     public TextAsset xmlFile;
     public TextAsset xsdFile;
+    public GameObject UICanvasGO;
 
     public bool ConnectEnabled;
     private bool ConnectionProcessStarted = false;
@@ -87,7 +88,7 @@ public class PARRHIRuntime : MonoBehaviour
         FanucControllerLibrary.Output.Instance.SetErrorDelegate(UnityErrorDelegate);
 
         //Setup all components needed
-        UICanvas = this.transform.GetComponentInChildren<UICanvas>();
+        UICanvas = UICanvasGO.transform.GetComponentInChildren<UICanvas>();
     }
 
     /// <summary>
