@@ -30,7 +30,7 @@ namespace PARRHI.Objects
         public Container Import(string xmlFilePath, string xsdFilePath)
         {
             XSDFilePath = xsdFilePath;
-            return Import(xmlFilePath);
+            return Import(xmlFilePath, false);
         }
 
 

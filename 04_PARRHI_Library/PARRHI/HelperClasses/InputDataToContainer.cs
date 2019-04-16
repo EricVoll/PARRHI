@@ -204,6 +204,8 @@ namespace PARRHI.HelperClasses
                 }
                 else if (chaAc != null)
                 {
+                    chaAc.text = System.Text.RegularExpressions.Regex.Unescape(chaAc.text);
+
                     t = new ChangeUITextAction(chaAc.name, chaAc.text, container.State.World.SetUIText);
                 }
                 else if (movAc != null)
