@@ -11,6 +11,7 @@ using System.Linq;
 using System;
 using System.IO;
 using UnityEditor;
+using UnityEngine.UI;
 
 public class PARRHIRuntime : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class PARRHIRuntime : MonoBehaviour
     public TextAsset xmlFile;
     public TextAsset xsdFile;
     public GameObject UICanvasGO;
+    public GameObject DevConsoleTextGameObject;
+    private Text DevConsoleText;
 
     public bool ConnectEnabled;
     private bool ConnectionProcessStarted = false;
@@ -89,6 +92,7 @@ public class PARRHIRuntime : MonoBehaviour
 
         //Setup all components needed
         UICanvas = UICanvasGO.transform.GetComponentInChildren<UICanvas>();
+        DevConsoleText = DevConsoleTextGameObject.GetComponent<Text>();
     }
 
     /// <summary>
@@ -231,14 +235,15 @@ public class PARRHIRuntime : MonoBehaviour
     public IEnumerator RobotConnectingCoRoutine()
     {
         int attempts = 0;
-        for (int x = 0; x <= 100; x++)
+        for (int x = 0; x <= 15; x++)
         {
             bool success = RobotController.ConnectToRobotInSteps(ref attempts);
-            if (success == false)
+            if (!success)
                 yield return new WaitForSeconds(0.1f);
             else
             {
                 Connected = true;
+
                 UnityOutputDelegate("Connected Successfully");
                 yield break;
             }
@@ -274,16 +279,45 @@ public class PARRHIRuntime : MonoBehaviour
 
     #region Output Delegates
 
+
     public void UnityOutputDelegate(string msg)
     {
+
+        AddMsgToDevConsole(msg);
+
         Debug.Log(msg);
         System.Console.WriteLine(msg);
     }
     public void UnityErrorDelegate(string msg)
     {
+        AddMsgToDevConsole("Error:" + msg);
+
         Debug.LogError(msg);
         Console.WriteLine("Error:" + msg);
     }
+
+    #region DevConsole
+
+    public List<string> outputs = new List<string>();
+    private int counter = 0;
+    private void AddMsgToDevConsole(string msg)
+    {
+        counter++;
+        outputs.Add(msg);
+        while(outputs.Count >= 9)
+            outputs.RemoveAt(0);
+        if(DevConsoleText != null)
+        {
+            string txt = "Dev Console Output:";
+            for (int i = 0; i < outputs.Count; i++)
+            {
+                txt += $"\n{counter-outputs.Count + i}{outputs[i]}";
+            }
+            DevConsoleText.text = txt;
+        }
+    }
+    #endregion
+
     #endregion
 
 
