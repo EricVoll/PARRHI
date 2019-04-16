@@ -124,8 +124,6 @@ public class PARRHIRuntime : MonoBehaviour
         {
             double q3temp = q3 + q2;
             q = new Vector6(q1, q2, q3temp, q4, q5, q6);
-            if (animate)
-                Animator();
         }
         else
         {
@@ -146,6 +144,8 @@ public class PARRHIRuntime : MonoBehaviour
                 }
             }
         }
+        if (true)
+            Animator();
 
         //Update State
         Container.Update(q, TypeConversion.i.Vector3ToPoint(MainCamera.transform.position), (long)Time.realtimeSinceStartup);
@@ -224,8 +224,15 @@ public class PARRHIRuntime : MonoBehaviour
     /// </summary>
     public void InitRobotController()
     {
-        RobotController = new FanucController();
-        StartCoroutine(RobotConnectingCoRoutine());
+        if (!Connected)
+        {
+            RobotController = new FanucController();
+            StartCoroutine(RobotConnectingCoRoutine());
+        }
+        else
+        {
+            RobotController.Commander.Exit();
+        }
     }
 
     /// <summary>
