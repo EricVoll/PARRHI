@@ -22,12 +22,16 @@ public class PARRHIRuntime : MonoBehaviour
     UICanvas UICanvas;
 
     //Set by Unity editor
-    public GameObject MainCamera;
+    public GameObject ARCamera;
     public TextAsset xmlFile;
     public TextAsset xsdFile;
+
     public GameObject UICanvasGO;
     public GameObject DevConsoleTextGameObject;
     private Text DevConsoleText;
+
+    public GameObject RobotTrackerGO;
+    public GameObject HologramContainer;
 
     public bool ConnectEnabled;
     private bool ConnectionProcessStarted = false;
@@ -117,6 +121,7 @@ public class PARRHIRuntime : MonoBehaviour
 
     // Simulate Q values
     private bool dir = false;
+    Point p;
     private void Cycle()
     {
 
@@ -149,11 +154,27 @@ public class PARRHIRuntime : MonoBehaviour
         if (Animate || Connected)
             Animator();
 
+        //Calculate cam pos vector
+        Vector3 ImageToCam = ARCamera.transform.position - RobotTrackerGO.transform.position;
+        float a = RobotTrackerGO.transform.localScale[0];
+        float b = this.transform.localScale[0];
+        float scale = 1 / (a * b);
+        ImageToCam.Scale(new Vector3(scale,scale,scale));
+        ImageToCam -= HologramContainer.transform.localPosition;
+        //ImageToCam = Quaternion.AngleAxis(-180, Vector3.up) * ImageToCam;
 
+
+        Point camPoint = TypeConversion.i.Vector3ToPoint(ImageToCam);
+
+        //Debug print camera position
+        if (p == null) p = Container.Points.Find(x => x is PointCamera);
+        UnityOutputDelegate($"AR: X:{ARCamera.transform.position.x}|Y:{ARCamera.transform.position.y}|Z:{ARCamera.transform.position.z}\nMain: X:{ p.X}| Y:{ p.Y}| Z:{ p.Z}");
+        
+
+        //Update State
         q[0] *= -1;
         q[3] *= -1;
-        //Update State
-        Container.Update(q, TypeConversion.i.Vector3ToPoint(MainCamera.transform.position), (long)Time.realtimeSinceStartup);
+        Container.Update(q, camPoint, (long)Time.realtimeSinceStartup);
     }
 
     private bool About(double v1, double v2, double delta)
