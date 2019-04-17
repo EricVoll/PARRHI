@@ -201,6 +201,14 @@ public partial class InputDataHologramsSphere {
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
     public string renderMode;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public bool active;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool activeSpecified;
 }
 
 /// <remarks/>
@@ -226,6 +234,14 @@ public partial class InputDataHologramsZylinder {
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
     public byte radius;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public bool active;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool activeSpecified;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -377,6 +393,7 @@ public partial class InputDataEventsActions {
     [System.Xml.Serialization.XmlElementAttribute("ChangeUITextAction", typeof(InputDataEventsActionsChangeUITextAction))]
     [System.Xml.Serialization.XmlElementAttribute("IncrementCounterAction", typeof(InputDataEventsActionsIncrementCounterAction))]
     [System.Xml.Serialization.XmlElementAttribute("MoveRobotAction", typeof(InputDataEventsActionsMoveRobotAction))]
+    [System.Xml.Serialization.XmlElementAttribute("SetHologramStateAction", typeof(InputDataEventsActionsSetHologramStateAction))]
     [System.Xml.Serialization.XmlElementAttribute("SetRobotHandStateAction", typeof(InputDataEventsActionsSetRobotHandStateAction))]
     [System.Xml.Serialization.XmlElementAttribute("SetTriggerStateAction", typeof(InputDataEventsActionsSetTriggerStateAction))]
     public object[] Items;
@@ -431,6 +448,27 @@ public partial class InputDataEventsActionsMoveRobotAction {
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
     public string pointTCP;
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.7.2053.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="PARRHI")]
+public partial class InputDataEventsActionsSetHologramStateAction {
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string name;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public bool state;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public string holograms;
 }
 
 /// <remarks/>

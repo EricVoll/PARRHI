@@ -15,13 +15,18 @@ namespace PARRHI.Objects.Tests
         public void ImportTest()
         {
             //new DataImport().Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\10_XSD\PARS_XSD_Test\PARS_XSD_Test\input1.xml");
-            new DataImport().Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\InputData.xml");
+            Assert.IsNotNull(new DataImport().Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\InputData.xml", false));
         }
         [TestMethod()]
         public void ImportTest2()
         {
             //new DataImport().Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\10_XSD\PARS_XSD_Test\PARS_XSD_Test\input1.xml");
-            new DataImport().Import(PARRHITests.Properties.Resources.inputxml);
+            Assert.IsNotNull(new DataImport().Import(PARRHITests.Properties.Resources.inputxml));
+        }
+        [TestMethod()]
+        public void ImportTest3()
+        {
+            Assert.IsNotNull(new DataImport().Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\10_XSD\PARS_XSD_Test\PARS_XSD_Test\input1.xml", false));
         }
     }
 }

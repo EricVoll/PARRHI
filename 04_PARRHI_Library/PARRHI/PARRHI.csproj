@@ -57,6 +57,7 @@
     <Compile Include="Objects\TriggerActions\ChangeUITextAction.cs" />
     <Compile Include="Objects\TriggerActions\MoveRobotAction.cs" />
     <Compile Include="Objects\TriggerActions\RobotHandAction.cs" />
+    <Compile Include="Objects\TriggerActions\SetHoloStateAction.cs" />
     <Compile Include="Objects\TriggerActions\SetTriggerStateAction.cs" />
     <Compile Include="Objects\TriggerActions\TriggerAction.cs" />
     <Compile Include="Objects\TriggerActions\IncrementCounterAction.cs" />
