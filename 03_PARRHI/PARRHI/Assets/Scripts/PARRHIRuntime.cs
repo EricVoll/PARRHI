@@ -122,6 +122,7 @@ public class PARRHIRuntime : MonoBehaviour
     // Simulate Q values
     private bool dir = false;
     Point p;
+    Vector3 correctionDelta = new Vector3(0f,0f,0f);
     private void Cycle()
     {
 
@@ -155,21 +156,19 @@ public class PARRHIRuntime : MonoBehaviour
             Animator();
 
         //Calculate cam pos vector
-        Vector3 ImageToCam = ARCamera.transform.position - RobotTrackerGO.transform.position;
-        float a = RobotTrackerGO.transform.localScale[0];
-        float b = this.transform.localScale[0];
-        float scale = 1 / (a * b);
-        ImageToCam.Scale(new Vector3(scale,scale,scale));
-        ImageToCam -= HologramContainer.transform.localPosition;
-        //ImageToCam = Quaternion.AngleAxis(-180, Vector3.up) * ImageToCam;
+        
+        Vector3 ImageToCam = ARCamera.transform.localPosition - RobotTrackerGO.transform.localPosition + correctionDelta;
+
+        ImageToCam = HologramContainer.transform.InverseTransformPoint(ImageToCam);
+
+        //Feedback loop and correcting some values
+        var v = ARCamera.transform.position - HologramContainer.transform.TransformPoint(ImageToCam);
+        correctionDelta += v*0.2f;
 
 
         Point camPoint = TypeConversion.i.Vector3ToPoint(ImageToCam);
+        //UnityOutputDelegate($"Transformed Camera: X:{ camPoint.X}| Y:{ camPoint.Y}| Z:{ camPoint.Z}");
 
-        //Debug print camera position
-        if (p == null) p = Container.Points.Find(x => x is PointCamera);
-        UnityOutputDelegate($"AR: X:{ARCamera.transform.position.x}|Y:{ARCamera.transform.position.y}|Z:{ARCamera.transform.position.z}\nMain: X:{ p.X}| Y:{ p.Y}| Z:{ p.Z}");
-        
 
         //Update State
         q[0] *= -1;
@@ -337,14 +336,14 @@ public class PARRHIRuntime : MonoBehaviour
     {
         counter++;
         outputs.Add(msg);
-        while(outputs.Count >= 9)
+        while (outputs.Count >= 9)
             outputs.RemoveAt(0);
-        if(DevConsoleText != null)
+        if (DevConsoleText != null)
         {
             string txt = "Dev Console Output:";
             for (int i = 0; i < outputs.Count; i++)
             {
-                txt += $"\n{counter-outputs.Count + i}{outputs[i]}";
+                txt += $"\n{counter - outputs.Count + i}{outputs[i]}";
             }
             DevConsoleText.text = txt;
         }

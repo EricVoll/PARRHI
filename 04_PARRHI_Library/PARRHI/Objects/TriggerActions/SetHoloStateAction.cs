@@ -13,7 +13,6 @@ namespace PARRHI.Objects.TriggerActions
 
         public SetHoloStateAction(string id, List<Hologram> holograms, bool stateToSet ) : base(id)
         {
-            this.id = id;
             Holograms = holograms;
             StateToSet = stateToSet;
         }
