@@ -149,6 +149,9 @@ public class PARRHIRuntime : MonoBehaviour
         if (Animate || Connected)
             Animator();
 
+
+        q[0] *= -1;
+        q[3] *= -1;
         //Update State
         Container.Update(q, TypeConversion.i.Vector3ToPoint(MainCamera.transform.position), (long)Time.realtimeSinceStartup);
     }
