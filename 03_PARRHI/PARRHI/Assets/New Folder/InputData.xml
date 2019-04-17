@@ -73,6 +73,7 @@
 			<TimeTrigger name="TimeTrigger3" canTrigger='true' timeSinceActivation="40"  action1="IntroAction3"/>
 			
 			<DistanceTrigger name="Trigger1" canTrigger='true' point1="Point15" point2="Point6" action1="Handler1" action2="Handler2" distance="50" />
+			<DistanceTrigger name="Trigger4" canTrigger='true' point1="Point15" point2="Point6" action1="HoloStateAction0" distance="50" />
 			
 			<TimeTrigger name="Trigger2" canTrigger='false' timeSinceActivation="5"  action1="Handler2" action2="Handler3"/>
 			<VarTrigger name="Trigger3" canTrigger='true' varName="var1" triggerValue="3" action1="Handler4" action2="Handler5" />
@@ -89,6 +90,8 @@
 			<ChangeUITextAction name="IntroAction1" text="Step 1:\nWait for a few seconds and then move the robot."/>
 			<ChangeUITextAction name="IntroAction2" text="Step 2:\nNow try to look at the robot itself and do something with it."/>
 			<ChangeUITextAction name="IntroAction3" text="Step 3:\nOh you where too slow!"/>
+			
+			<SetHologramStateAction name="HoloStateAction0" holograms="Sphere7" state='false'/>
 			
 			
 			<!--<IncrementCounterAction name="Handler1" intVar="var1"/>

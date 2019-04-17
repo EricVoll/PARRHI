@@ -33,6 +33,7 @@ public class PARRHIRuntime : MonoBehaviour
     private bool ConnectionProcessStarted = false;
     private bool Connected;
     public bool SetDirection;
+    public bool Animate;
 
     public double q1;
     public double q2;
@@ -128,6 +129,7 @@ public class PARRHIRuntime : MonoBehaviour
         else
         {
             q = RobotController.Commander.GetJointValues();
+            q[2] = q[2] + q[1]; //Fanuc handles Joint 1 in a funny way
 
             if (SetDirection)
             {
@@ -144,7 +146,7 @@ public class PARRHIRuntime : MonoBehaviour
                 }
             }
         }
-        if (true)
+        if (Animate || Connected)
             Animator();
 
         //Update State

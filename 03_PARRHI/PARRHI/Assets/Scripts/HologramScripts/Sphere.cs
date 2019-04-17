@@ -11,6 +11,7 @@ public class Sphere : MonoBehaviour
     {
         if (!Config.i.updateHolograms) return;
         OrientateSphere();
+        this.gameObject.SetActive(sphere.Active);
     }
     public void SetData(PARRHI.Objects.Holograms.Sphere Sphere)
     {
