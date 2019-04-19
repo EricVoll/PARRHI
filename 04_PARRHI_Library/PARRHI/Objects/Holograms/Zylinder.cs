@@ -9,11 +9,11 @@ namespace PARRHI.Objects.Holograms
 {
     public class Zylinder : Hologram
     {
-        public Zylinder(string id, Point point1, Point point2, double radius, string renderMode) : this (id, point1, point2, radius)
+        public Zylinder(string id, Point point1, Point point2, double radius, string renderMode, bool active = true) : this (id, point1, point2, radius, active)
         {
             RenderMode = renderMode;
         }
-        public Zylinder(string id, Point point1, Point point2, double radius)
+        public Zylinder(string id, Point point1, Point point2, double radius, bool active = true)
         {
             this.id = id;
             Point1 = point1;

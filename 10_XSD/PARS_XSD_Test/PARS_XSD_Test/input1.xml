@@ -17,8 +17,8 @@
 		<PointCamera name="Point8"/>
 	</Points>
 	<Holograms>
-		<Zylinder name="Zyl1" point1="Point1" point2="Point2" radius="1" />
-		<Sphere name="Sphere1" point="Point1" radius="1" renderMode="transparent"/>
+		<Zylinder name="Zyl1" point1="Point1" point2="Point2" radius="1" active='false'/>
+		<Sphere name="Sphere1" point="Point1" radius="1" renderMode="transparent" active='true'/>
 		<Sphere name="Sphere2" point="Point3" radius="1" />
 		<Zylinder name="Zyl2" point1="Point1" point2="Point2" radius="1" renderMode="transparent" />
 	</Holograms>
@@ -32,6 +32,7 @@
 			<VarTrigger name="Trigger5" canTrigger='true' varName="var1" triggerValue="2" action1="Handler1" action2="Handler2" 	 />
 		</Trigger>
 		<Actions>
+			<SetHologramStateAction name="Handler0" state='true' holograms="Zyl1 Sphere1 Sphere2 Zyl2"/>
 			<IncrementCounterAction name="Hanlder1" intVar="var1"/>
 			<SetTriggerStateAction name="Handler2" triggerName="Trigger1" canTrigger='true'/>
 			<ChangeUITextAction name="Hanlder3" text="Tutorial step nr. 4"/>
@@ -39,6 +40,7 @@
 			<MoveRobotAction name="Handler5" pointTCP="Point1" />
 			<SetRobotHandStateAction name="Handler6" state="open" />
 			<SetRobotHandStateAction name="Handler7" state="close" />
+			<SetHologramStateAction name="Handler8" state='true' holograms="Zyl1 Sphere1 Sphere2 Zyl2"/>
 		</Actions>
 	</Events>
 	<UIText name="UniqueText" text="Content"/>

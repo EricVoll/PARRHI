@@ -1,7 +1,6 @@
 
-
 \tdplotsetmaincoords{60}{120} 
-\begin{tikzpicture} [scale=0.05, tdplot_main_coords, axis/.style={->, black, thin}, 
+\begin{tikzpicture}  [scale=0.03, tdplot_main_coords, axis/.style={->, black, thin}, 
 vector/.style={-stealth,green,very thick}, 
 robot/.style={green, very thick},
 vector guide/.style={dashed,gray,thin}]
@@ -13,7 +12,7 @@ vector guide/.style={dashed,gray,thin}]
 
 
 \pgfmathsetmacro{\axSize}{100}
-\pgfmathsetmacro{\jointRadius}{30}
+\pgfmathsetmacro{\jointRadius}{50}
 
 %Robot Points in cm (mm too large dimensions for library)
 \coordinate (P0) at (0,0,0);
@@ -23,7 +22,7 @@ vector guide/.style={dashed,gray,thin}]
 \coordinate (P4) at (47, 0, 100.5);
 \coordinate (P5) at (55, 0, 100.5);
 \coordinate (P6) at (63, 0, 100.5);
-\coordinate (Point) at (5, 0 , 55);
+\coordinate (Point) at (5, 0 , 60);
 
 
 %draw coordinate system axes
@@ -48,9 +47,9 @@ at (P1){(Joint 1)};
 \node[tdplot_main_coords,anchor=west]
 at (P2){(Joint 2)};
 \node[tdplot_main_coords,anchor=west]
-at (Point){(Point scalar = 0.5)};
-%\node[tdplot_main_coords,anchor=west]
-%at (0,\ay,50){(0, \ay, 0)};
-%\node[tdplot_main_coords,anchor=south]
-%at (0,0,\az+50){(0, 0, \az)};
+at (Point){(Point scalar = 0.6)};
+
+
+
+
 \end{tikzpicture}

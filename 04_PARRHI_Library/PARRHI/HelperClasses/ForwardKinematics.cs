@@ -36,6 +36,7 @@ namespace PARRHI.HelperClasses
             return new Matrix(new double[,] { { 1, 0, 0 }, { 0, cos(q6), sin(q6) }, { 0, -sin(q6), cos(q6) } });
         }
 
+
         private Point L1 => new Point(50, 0, 330);
         private Point L2 => new Point(0, 0, 440);
         private Point L3 => new Point(100, 0, 35);

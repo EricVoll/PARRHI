@@ -11,6 +11,7 @@ using System.Linq;
 using System;
 using System.IO;
 using UnityEditor;
+using UnityEngine.UI;
 
 public class PARRHIRuntime : MonoBehaviour
 {
@@ -21,14 +22,22 @@ public class PARRHIRuntime : MonoBehaviour
     UICanvas UICanvas;
 
     //Set by Unity editor
-    public GameObject MainCamera;
+    public GameObject ARCamera;
     public TextAsset xmlFile;
     public TextAsset xsdFile;
+
+    public GameObject UICanvasGO;
+    public GameObject DevConsoleTextGameObject;
+    private Text DevConsoleText;
+
+    public GameObject RobotTrackerGO;
+    public GameObject HologramContainer;
 
     public bool ConnectEnabled;
     private bool ConnectionProcessStarted = false;
     private bool Connected;
     public bool SetDirection;
+    public bool Animate;
 
     public double q1;
     public double q2;
@@ -87,7 +96,8 @@ public class PARRHIRuntime : MonoBehaviour
         FanucControllerLibrary.Output.Instance.SetErrorDelegate(UnityErrorDelegate);
 
         //Setup all components needed
-        UICanvas = this.transform.GetComponentInChildren<UICanvas>();
+        UICanvas = UICanvasGO.transform.GetComponentInChildren<UICanvas>();
+        DevConsoleText = DevConsoleTextGameObject.GetComponent<Text>();
     }
 
     /// <summary>
@@ -111,6 +121,8 @@ public class PARRHIRuntime : MonoBehaviour
 
     // Simulate Q values
     private bool dir = false;
+    Point p;
+    Vector3 correctionDelta = new Vector3(0f,0f,0f);
     private void Cycle()
     {
 
@@ -119,12 +131,11 @@ public class PARRHIRuntime : MonoBehaviour
         {
             double q3temp = q3 + q2;
             q = new Vector6(q1, q2, q3temp, q4, q5, q6);
-            if (animate)
-                Animator();
         }
         else
         {
             q = RobotController.Commander.GetJointValues();
+            q[2] = q[2] + q[1]; //Fanuc handles Joint 1 in a funny way
 
             if (SetDirection)
             {
@@ -141,9 +152,28 @@ public class PARRHIRuntime : MonoBehaviour
                 }
             }
         }
+        if (Animate || Connected)
+            Animator();
+
+        //Calculate cam pos vector
+        
+        Vector3 ImageToCam = ARCamera.transform.localPosition - RobotTrackerGO.transform.localPosition + correctionDelta;
+
+        ImageToCam = HologramContainer.transform.InverseTransformPoint(ImageToCam);
+
+        //Feedback loop and correcting some values
+        var v = ARCamera.transform.position - HologramContainer.transform.TransformPoint(ImageToCam);
+        correctionDelta += v*0.2f;
+
+
+        Point camPoint = TypeConversion.i.Vector3ToPoint(ImageToCam);
+        //UnityOutputDelegate($"Transformed Camera: X:{ camPoint.X}| Y:{ camPoint.Y}| Z:{ camPoint.Z}");
+
 
         //Update State
-        Container.Update(q, TypeConversion.i.Vector3ToPoint(MainCamera.transform.position), (long)Time.realtimeSinceStartup);
+        q[0] *= -1;
+        q[3] *= -1;
+        Container.Update(q, camPoint, (long)Time.realtimeSinceStartup);
     }
 
     private bool About(double v1, double v2, double delta)
@@ -219,8 +249,15 @@ public class PARRHIRuntime : MonoBehaviour
     /// </summary>
     public void InitRobotController()
     {
-        RobotController = new FanucController();
-        StartCoroutine(RobotConnectingCoRoutine());
+        if (!Connected)
+        {
+            RobotController = new FanucController();
+            StartCoroutine(RobotConnectingCoRoutine());
+        }
+        else
+        {
+            RobotController.Commander.Exit();
+        }
     }
 
     /// <summary>
@@ -230,14 +267,15 @@ public class PARRHIRuntime : MonoBehaviour
     public IEnumerator RobotConnectingCoRoutine()
     {
         int attempts = 0;
-        for (int x = 0; x <= 100; x++)
+        for (int x = 0; x <= 15; x++)
         {
             bool success = RobotController.ConnectToRobotInSteps(ref attempts);
-            if (success == false)
+            if (!success)
                 yield return new WaitForSeconds(0.1f);
             else
             {
                 Connected = true;
+
                 UnityOutputDelegate("Connected Successfully");
                 yield break;
             }
@@ -273,16 +311,45 @@ public class PARRHIRuntime : MonoBehaviour
 
     #region Output Delegates
 
+
     public void UnityOutputDelegate(string msg)
     {
+
+        AddMsgToDevConsole(msg);
+
         Debug.Log(msg);
         System.Console.WriteLine(msg);
     }
     public void UnityErrorDelegate(string msg)
     {
+        AddMsgToDevConsole("Error:" + msg);
+
         Debug.LogError(msg);
         Console.WriteLine("Error:" + msg);
     }
+
+    #region DevConsole
+
+    public List<string> outputs = new List<string>();
+    private int counter = 0;
+    private void AddMsgToDevConsole(string msg)
+    {
+        counter++;
+        outputs.Add(msg);
+        while (outputs.Count >= 9)
+            outputs.RemoveAt(0);
+        if (DevConsoleText != null)
+        {
+            string txt = "Dev Console Output:";
+            for (int i = 0; i < outputs.Count; i++)
+            {
+                txt += $"\n{counter - outputs.Count + i}{outputs[i]}";
+            }
+            DevConsoleText.text = txt;
+        }
+    }
+    #endregion
+
     #endregion
 
 

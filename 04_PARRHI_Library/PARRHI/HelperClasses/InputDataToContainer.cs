@@ -109,7 +109,7 @@ namespace PARRHI.HelperClasses
                 {
                     Point point = Container.Points.Find(x => x.id == sphere.point);
                     CheckForNull<Sphere>(sphere.point, point);
-                    holo = new Sphere(sphere.name, point, sphere.radius, sphere.renderMode);
+                    holo = new Sphere(sphere.name, point, sphere.radius, sphere.renderMode, sphere.activeSpecified ? sphere.active : true);
                 }
                 else if (zyl != null)
                 {
@@ -117,7 +117,7 @@ namespace PARRHI.HelperClasses
                     Point point2 = Container.Points.Find(x => x.id == zyl.point2);
                     CheckForNull<Zylinder>(zyl.point1, point1);
                     CheckForNull<Zylinder>(zyl.point2, point1);
-                    holo = new Zylinder(zyl.name, point1, point2, zyl.radius, zyl.renderMode);
+                    holo = new Zylinder(zyl.name, point1, point2, zyl.radius, zyl.renderMode, zyl.activeSpecified ? zyl.active : true);
                 }
                 else
                 {
@@ -195,6 +195,7 @@ namespace PARRHI.HelperClasses
                 var movAc = item as InputDataEventsActionsMoveRobotAction;
                 var setAc = item as InputDataEventsActionsSetRobotHandStateAction;
                 var triAc = item as InputDataEventsActionsSetTriggerStateAction;
+                var holAc = item as InputDataEventsActionsSetHologramStateAction;
 
                 if (incAc != null)
                 {
@@ -222,10 +223,26 @@ namespace PARRHI.HelperClasses
                 {
                     t = new SetTriggerStateAction(triAc.name, triAc.triggerName, triAc.canTrigger, container);
                 }
+                else if (holAc != null)
+                {
+                    string[] names = holAc.holograms.Split(' ');
+                    List<Hologram> holograms = new List<Hologram>();
+                    foreach (var name in names)
+                    {
+                        var holo = container.Holograms.FirstOrDefault(x => x.id == name);
+                        CheckForNull<SetHoloStateAction>(holAc.name, holo);
+
+                        if (holo != null)
+                            holograms.Add(holo);
+                    }
+
+                    t = new SetHoloStateAction(holAc.name, holograms, holAc.state);
+                }
                 else
                 {
                     throw new Exception($"The type {item.GetType()} could not be converted into a valid action");
                 }
+
 
                 actions.Add(t);
             }

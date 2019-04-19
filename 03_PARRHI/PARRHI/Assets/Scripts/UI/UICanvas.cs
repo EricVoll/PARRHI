@@ -11,11 +11,12 @@ public class UICanvas : MonoBehaviour
     Text Text;
     public GameObject ErrorContentParent;
     public GameObject ErrorElementPrefab;
-    public GameObject CloseButton;  
+    public GameObject CloseButton;
+    public GameObject UITextGO;
 
     void Start()
     {
-        Text = this.transform.GetComponentInChildren<Text>();
+        Text = UITextGO.transform.GetComponentInChildren<Text>();
     }
 
     /// <summary>

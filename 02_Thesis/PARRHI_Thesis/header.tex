@@ -176,3 +176,6 @@ pdfborderstyle={/S/U/W 1}]{hyperref}
 %#############################################################################
 % Misc and special packages and commands
 %#############################################################################
+%Custom definded environments to reduze spacing globally
+\newenvironment{shortItemize}{\itemize\addtolength{\itemsep}{-10pt}}{\enditemize}
+\newenvironment{shortEnumerate}{\enumerate\addtolength{\itemsep}{-10pt}}{\enumerate}

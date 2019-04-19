@@ -15,6 +15,7 @@ public class Cylinder : MonoBehaviour
     {
         if (!Config.i.updateHolograms) return;
         OrientateCylinder();
+        this.gameObject.SetActive(Zylinder.Active);
     }
 
     public void SetData(PARRHI.Objects.Holograms.Zylinder zylinder)
