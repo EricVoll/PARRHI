@@ -1,4 +1,4 @@
-\chapter{CONCEPT}\label{Chap:Concept}
+\chapter{Concept}\label{Chap:Concept}
 
 For further reading the to be built system will be called "Parametrised Augmented Reality Robot Human Interface" (\textit{PARRHI}).
 
@@ -128,13 +128,13 @@ A Sphere's centre is always set to the point it was defined with, whereas a cyli
 Holograms have an attribute called \textit{renderMode}, which if set to "transparent", renders the hologram in a half transparent way, allowing holograms to be used for boundary or zone visualizations. Furthermore the visibility of holograms can be changed by actions as described in section~\ref{Section:Events}.
 
 \subsubsection{Events}\label{Section:Events}
-All previous elements (variables, points and holograms) exist to define the scene and to set up assets that can be utilized by events, which now actually describe the application's workflow. To do so, there are two subtypes in this category. There are event-triggers and event-actions (or short \textit{triggers} and \textit{actions}). Triggers have some kind of a boolean expression, which is checked periodically. As soon as the boolean expression evaluates to \textit{true}, the attached actions will be executed. 
+All previous elements (variables, points and holograms) exist to define the scene and to set up assets that can be utilized by events, which now actually describe the application's workflow. To do so, there are two subtypes in this category. There are event-triggers and event-actions (or short \textit{triggers} and \textit{actions}). Triggers have a boolean expression, which is checked periodically. As soon as the boolean expression evaluates to \textit{true}, the attached actions will be executed and the trigger will be disabled, avoiding multiple executions. One could say that if triggers the \textit{PARRHI's} sensors, actions are its tools to act on the augmentation. 
 
 Triggers can be enabled and disabled, either from the beginning on, or toggled by an action. Every trigger has at least one action as a payload. To reach a reasonably capability numerous different but easy to understand triggers are available for the application's developer. In table~\ref{Table:Triggers} is a complete list of all defined triggers. \textit{(Note, that the enabled/disabled flag and actions are omitted in this table)}
 
  
  \begin{table}
- 	\caption{Types of triggers}
+ 	\caption{Event Triggers}
  	\label{Table:Triggers}
  	\centering
  	\begin{tabular}{lll}
@@ -150,9 +150,49 @@ Triggers can be enabled and disabled, either from the beginning on, or toggled b
 
 \textbf{Distance trigger} can be used for two main purposes. First the application can use the robot's movement as an input using a \textit{Robot-Point}. An action could be triggered as soon as the user jogged the robot's TCP into wished position by using a \textit{Fix-Point} an waiting for them to come close to each other or to monitor the robot's configuration in Joint-Space by using two \textit{Robot-Points} as input parameters. Second the user's movement can be monitored by utilizing a \textit{Camera-Point} as an input. The application can thus ask the user to move to a specific location.
 
-With \textbf{Variable triggers} the application is able to use defined variables as triggers. One could implement a counter for certain events, and trigger an action when a threshold value is reached. It can also be used for workflows that need states or steps.
+With \textbf{Variable triggers} the application is able to use defined variables as triggers. One could implement a counter for certain events, and trigger an action when a threshold value is reached. It can also be used for workflows that need states or steps. Finally the \textbf{Time trigger} allows the application to involve timers. The user could be given a maximum time for a task or holograms can be hidden after a few seconds.
 
-Finally the \textbf{Time trigger} allows the application to involve timers. The user could be given a maximum time for a task or holograms can be hidden after a few seconds.
+Whenever a trigger's boolean expression evaluates to true, its actions are invoked and the trigger gets disabled. Since actions are the only way \textit{PARRHI} can influence the augmentation, there are numerous different types of actions - each serving a general purpose to fulfil the defined requirements (see section~\ref{Section:SystemRequirements}).
+
+As with triggers, actions have a set of input parameters they need to fulfil their task. As with all other input data objects discussed so far, actions have a unique ID. The table~\ref{Table:Actions} gives a quick overview about all actions that \textit{PARRHI} currently supports.
+
+\begin{table}
+	\caption{Event Actions}
+	\label{Table:Actions}
+	\centering
+	\begin{tabular}{lll}
+		\toprule
+		Action Name & Input Parameter		& Explanation	\\		
+		\midrule
+		Increment Counter  	& Variable $v$					& Increments the value of $v$ by 1 \\
+		Set Hologram State 	& Hologram-IDs, State to set	& Enables/disables all specified holograms \\
+		Set Trigger State  	& Trigger-IDs, State to set    	& Enables/disables all specified triggers \\
+		Change UI Text	  	& Text to set					& Sets the UI Text\\
+		Move Robot			& Point $P$						& Moves the robot to $P$ \\
+		Set robot-hand State & State to set (open/close)		& Opens or closes the robot's gripper \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\textbf{Increment-counter actions} increment their integer variable by 1. If a developer wanted to count the number of times a user jogged the robot into a specific region, an Increment-counter action could be used as a payload of a Distance trigger. After a threshold value is reached, a Variable trigger could change the UI text and display a hint.
+
+The \textbf{Set-Hologram-State action} enables hiding and showing holograms at runtime. If a hologram represents a region for a tutorial step, it can be hidden after the user's task is completed. The new scene can then be setup by displaying new holograms that guide the user's way. Another possible use would be, to display a warning boundary, if the user moves into a forbidden zone. This can be achieved by combining Distance trigger and Set-Hologram-State actions.
+
+When using \textit{PARRHI} the user is presented a GUI that shows text and some other few options. The \textbf{Change-UI-Text action} allows to change this displayed text. There are numerous obvious use-cases where this is useful. Whenever it is of value to inform the user about something that cannot be achieved by holograms, this is a simple way to do so.
+
+To create meaningful and longer applications, enabling and disabling triggers is an essential tool. This is what the \textbf{Set-Trigger-State action} is for. Triggers can only invoke their payload actions, if they are active. Triggers can either be defined as disabled from the beginning on, or get disabled by triggering as described above. The Set-Trigger-State action has the ability to (re)activate disabled triggers. There is a speciality in the case of \textit{Time triggers}. Their inner timer starts ticking, whenever they get enabled. This allows for timers to be used   
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
