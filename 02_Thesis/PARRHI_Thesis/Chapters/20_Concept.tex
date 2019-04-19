@@ -1,4 +1,4 @@
-\chapter{Concept}\label{Chap:Concept}
+\chapter{CONCEPT}\label{Chap:Concept}
 
 For further reading the to be built system will be called "Parametrised Augmented Reality Robot Human Interface" (\textit{PARRHI}).
 
@@ -39,16 +39,17 @@ Deriving from the previous chapter the System should:
 	\item be as platform independent as possible
 \end{enumerate}
 
+\clearpage
 \section{PARRHI Concept}
-\begin{figure}
+
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.75\textwidth]{Figures/PARRHIConcept01.png}
 	\caption{PARRHI general concept}
 	\label{Fig:PARRHIConcept}
 \end{figure}
 
-
-\textit{PARRHI} basically consists of three components (see Fig. ~\ref{Fig:PARRHIConcept}):
+\textit{PARRHI} basically consists of three components (see Fig.~\ref{Fig:PARRHIConcept}):
 \begin{enumerate}
 	\setlength\itemsep{-1em}
 	\item Input Data
@@ -60,11 +61,12 @@ Deriving from the previous chapter the System should:
 
 The \textit{PARRHI Engine} interprets the input data and acts on its behalf. After validating the input data against certain schemes the engine imports all contents and sets up its internal states, before entering a cyclic mode - ready for operation.
 
+\clearpage
 \subsection{Input Data}
 
 The Input Data is hierarchically structured in four main parts, each containing different sub-elements to further specify their function. 
 
-\begin{table}
+\begin{table}[ht]
 	\caption{\textit{Input Data} structure}
 	\label{Tab:InputDataStructure}
 	\centering
@@ -81,18 +83,76 @@ The Input Data is hierarchically structured in four main parts, each containing 
 \end{table}
 
 \subsubsection{Variables}\label{Section:Variables}
-\textit{PARRHI's} variables can be used to create different steps in one's application. Variables can be the source of an event's trigger or the target of an event's action. To see how events work, see \ref{Section:Events}.
+\textit{PARRHI's} variables can be used to create different steps in one's application. Variables can be the source of an event's trigger or the target of an event's action (see section~\ref{Section:Events}).
 
 \subsubsection{Points}\label{Section:Points}
-Points are a three dimensional vectors that can be defined in three different ways. There is a \textit{Fix-Point} that has static coordinates. It could be used to setup holograms that visualize certain spacial environmental constraints or for different steps in a \textit{PARRHI} AR-HR-Interface application. 
-\input{Figures/PointFix}
+Points are a three dimensional vectors that can be defined in three different ways. 
+\begin{enumerate}
+	\setlength\itemsep{-1em}
+	\item Fix-Point
+	\item Robot-Point
+	\item Camera-Point
+\end{enumerate}
 
-To interact with the robot \textit{PARRHI} needs a way to read and display data from the robot. For that, there are \textit{Robot-Points} that are defined by the index of two joints and a scalar value that defines the exact location (linear interpolation) between them.
-\input{Figures/PointRobot}
+The \textbf{Fix-Point} has static coordinates. It could be used to setup holograms that visualize certain spacial environmental constraints or for different steps in a \textit{PARRHI} AR-HR-Interface application (see figure \ref{InputData:PointFix}).
+
+To interact with the robot, \textit{PARRHI} needs a way to read and display data from the robot. For that, there are \textbf{Robot-Points} that are defined by two indexes of the robot's joints and one scalar value that defines the exact location between them (see figure \ref{InputData:PointRobot}). The position is calculated as follows (with s being the scalar value and J\textsubscript{n} the position vector of Joint \textit{n}):
+\begin{equation}
+\boldsymbol{P} = \boldsymbol{J_1} + (\boldsymbol{J_2}-\boldsymbol{J_1}) * s
+\end{equation}
+
+\textbf{Camera-Points} are a way to involve the user's position into the application. Its coordinates are periodically updated with the AR-Device's spacial position in each cycle.
+
+
+\begin{figure}
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\input{Figures/PointFix}
+		\caption{Fix-Point example}
+		\label{InputData:PointFix}
+	\end{minipage}\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\input{Figures/PointRobot}
+		\caption{Robot-Point example}
+		\label{InputData:PointRobot}
+	\end{minipage}
+\end{figure}
+
 
 \subsubsection{Holograms}\label{Section:Holograms}
-\subsubsection{Events}\label{Section:Events}
+To actually augment the reality \textit{PARRHI} needs holograms. These elements have a number of attributes. Holograms can be active (respectively also inactive), have a render-mode, a geometric definition and of course a location. The locations are defined by a certain number of points - depending on the hologram's geometry. Currently the \textit{PARRHI} supports two types of holograms. There are spheres and cylinders, respectively taking one or two points and a radius as input values to define its size and position.
 
+A Sphere's centre is always set to the point it was defined with, whereas a cylinder always connects the two points of its definition. As input points, all described types in section~\ref{Section:Points} can be used. With a given radius and point the three dimensional figure is completely defined.
+
+Holograms have an attribute called \textit{renderMode}, which if set to "transparent", renders the hologram in a half transparent way, allowing holograms to be used for boundary or zone visualizations. Furthermore the visibility of holograms can be changed by actions as described in section~\ref{Section:Events}.
+
+\subsubsection{Events}\label{Section:Events}
+All previous elements (variables, points and holograms) exist to define the scene and to set up assets that can be utilized by events, which now actually describe the application's workflow. To do so, there are two subtypes in this category. There are event-triggers and event-actions (or short \textit{triggers} and \textit{actions}). Triggers have some kind of a boolean expression, which is checked periodically. As soon as the boolean expression evaluates to \textit{true}, the attached actions will be executed. 
+
+Triggers can be enabled and disabled, either from the beginning on, or toggled by an action. Every trigger has at least one action as a payload. To reach a reasonably capability numerous different but easy to understand triggers are available for the application's developer. In table~\ref{Table:Triggers} is a complete list of all defined triggers. \textit{(Note, that the enabled/disabled flag and actions are omitted in this table)}
+
+ 
+ \begin{table}
+ 	\caption{Types of triggers}
+ 	\label{Table:Triggers}
+ 	\centering
+ 	\begin{tabular}{lll}
+ 		\toprule
+ 		Name & Input Parameter		& Trigger expression	\\		
+ 		\midrule
+ 		Distance trigger & Two Points $\boldsymbol{P_1}, \boldsymbol{P_2}$, distance $d$		&  $|\boldsymbol{P_2}-\boldsymbol{P_1}| \le d$ \\
+		Variable trigger & Variable $v$, trigger value $v_{\text{tr}}$ 		& $v = v_{\text{tr}}$	 \\
+		Time trigger & trigger time $t_{\text{tr}}$, time since enabling $t_{\text{enabled}}$ & $t_{\text{tr}} \geq t_{\text{enabled}}$\\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+\textbf{Distance trigger} can be used for two main purposes. First the application can use the robot's movement as an input using a \textit{Robot-Point}. An action could be triggered as soon as the user jogged the robot's TCP into wished position by using a \textit{Fix-Point} an waiting for them to come close to each other or to monitor the robot's configuration in Joint-Space by using two \textit{Robot-Points} as input parameters. Second the user's movement can be monitored by utilizing a \textit{Camera-Point} as an input. The application can thus ask the user to move to a specific location.
+
+With \textbf{Variable triggers} the application is able to use defined variables as triggers. One could implement a counter for certain events, and trigger an action when a threshold value is reached. It can also be used for workflows that need states or steps.
+
+Finally the \textbf{Time trigger} allows the application to involve timers. The user could be given a maximum time for a task or holograms can be hidden after a few seconds.
 
 
 
