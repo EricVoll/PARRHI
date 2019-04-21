@@ -72,10 +72,10 @@
 		<!--3. At some point var1 Reaches the VarTrigger's triggerValue, which then triggers. It stops the timer and sets the ui text to "Step 2"-->
 		
 			<!--Distance Trigger Demo-->
-			<TimeTrigger name="TimeTrigger0" canTrigger='false' timeSinceActivation="0"  action1="IntroAction0"/>
-			<TimeTrigger name="TimeTrigger1" canTrigger='false' timeSinceActivation="30"  action1="IntroAction1"/>
-			<TimeTrigger name="TimeTrigger2" canTrigger='false' timeSinceActivation="35"  action1="IntroAction2"/>
-			<TimeTrigger name="TimeTrigger3" canTrigger='false' timeSinceActivation="40"  action1="IntroAction3"/>
+			<TimeTrigger name="TimeTrigger0" canTrigger='true' timeSinceActivation="0"  action1="IntroAction0"/>
+			<TimeTrigger name="TimeTrigger1" canTrigger='true' timeSinceActivation="10"  action1="IntroAction1"/>
+			<TimeTrigger name="TimeTrigger2" canTrigger='true' timeSinceActivation="20"  action1="IntroAction2"/>
+			<TimeTrigger name="TimeTrigger3" canTrigger='true' timeSinceActivation="30"  action1="IntroAction3"/>
 			
 			<DistanceTrigger name="Trigger1" canTrigger='true' point1="Point15" point2="Point6" action1="Handler1" action2="Handler2" distance="50" />
 			<DistanceTrigger name="DistanceTrigger2" canTrigger='true' point1="Camera" point2="MoveToStartPoint" action1="IntroAction4" action2="Handler6" distance="100" />

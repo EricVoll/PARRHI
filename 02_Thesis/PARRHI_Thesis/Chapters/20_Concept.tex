@@ -42,6 +42,17 @@ Deriving from the previous chapter the System should:
 \clearpage
 \section{PARRHI Concept}
 
+As discussed parametrising workflows grants a multitude of benefits (see section~\ref{Section:ParametricDesignIntoduction}). Maintainability and Reusability are just some of them. By giving a system knowledge about the real world, users are relieved from some portion of the workload. In \textit{PARRHI's} case, this could mean include information about the robot's kinematics. Both, the developer of PARRHI-Applications and the end user do not have to understand robot kinematics in order to build and use costly AR applications. 
+
+First, \textit{PARRHI} possesses a predefined model knowledge about the real world and the Fanuc Robot. The system furthermore has ways to receive information from and act on the augmented and real world. Its information input during runtime is the robot's momentary configuration and the AR-Device's position. \textit{PARRHI} uses the received information in combination with all its existing knowledge for its parametrised input data. The programmed behaviour uses its parametrised objects to generate some output, which can either be some augmented holograms presented to the user, or actual physical acts like directly commanding the robot.
+
+Of course the instructions to the user and commands into the physical world my directly influence the AR space due to the feedback loops in the system. If something triggers a command that moves the robot, its movement can and will be tracked by the system's ability to receive external information.
+
+How do I mean parametrised?
+How is the system built (basic level)?
+What is parametrised in my specific case?
+How does the system interact with the real world?
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.75\textwidth]{Figures/PARRHIConcept01.png}
@@ -64,11 +75,13 @@ The \textit{PARRHI Engine} interprets the input data and acts on its behalf. Aft
 \clearpage
 \subsection{Input Data}
 
-The Input Data is hierarchically structured in four main parts, each containing different sub-elements to further specify their function. 
+The Input data is the document, which the end user of the \textit{PARRHI} system constructs. It contains parametrised, hierarchically structured data, that defines the behaviour, feel and look of the final AR-HR-application. The following chapters explain the set of tools that are available to the developer, how the work and interconnect.
+
+Table~\ref{Table:InputDataStructure} displays the top level structure and its main parts, where Variables, Points and Holograms define Utilities that Events can work with. 
 
 \begin{table}[ht]
 	\caption{\textit{Input Data} structure}
-	\label{Tab:InputDataStructure}
+	\label{Table:InputDataStructure}
 	\centering
 	\begin{tabular}{lcl}
 		\toprule
@@ -180,8 +193,9 @@ The \textbf{Set-Hologram-State action} enables hiding and showing holograms at r
 
 When using \textit{PARRHI} the user is presented a GUI that shows text and some other few options. The \textbf{Change-UI-Text action} allows to change this displayed text. There are numerous obvious use-cases where this is useful. Whenever it is of value to inform the user about something that cannot be achieved by holograms, this is a simple way to do so.
 
-To create meaningful and longer applications, enabling and disabling triggers is an essential tool. This is what the \textbf{Set-Trigger-State action} is for. Triggers can only invoke their payload actions, if they are active. Triggers can either be defined as disabled from the beginning on, or get disabled by triggering as described above. The Set-Trigger-State action has the ability to (re)activate disabled triggers. There is a speciality in the case of \textit{Time triggers}. Their inner timer starts ticking, whenever they get enabled. This allows for timers to be used   
+To create meaningful and longer applications, enabling and disabling triggers is an essential tool. This is what the \textbf{Set-Trigger-State action} is for. Triggers can only invoke their payload actions, if they are active. Triggers can either be defined as disabled from the beginning on, or get disabled by triggering as described above. The Set-Trigger-State action has the ability to (re)activate disabled triggers. There is a speciality in the case of \textit{Time triggers}. Their inner timer starts ticking, whenever they get enabled. This allows for timers to be used in the middle of applications, relative to other events.
 
+\subsection{Interpreter}
 
 
 

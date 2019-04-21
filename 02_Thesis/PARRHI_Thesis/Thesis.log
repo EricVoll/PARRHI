@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.6960 64-bit) (preloaded format=pdflatex 2019.3.13)  19 APR 2019 14:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.6960 64-bit) (preloaded format=pdflatex 2019.3.13)  21 APR 2019 13:50
 entering extended mode
 **./Thesis.tex
 (Thesis.tex
@@ -2212,40 +2212,49 @@ LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
 (Font)              for symbol `textbullet' on input line 14.
 
 [9] [10]
-<Figures/PARRHIConcept01.png, id=190, 610.9224pt x 356.532pt>
+<Figures/PARRHIConcept01.png, id=193, 610.9224pt x 356.532pt>
 File: Figures/PARRHIConcept01.png Graphic file (type png)
 <use Figures/PARRHIConcept01.png>
-Package pdftex.def Info: Figures/PARRHIConcept01.png  used on input line 47.
+Package pdftex.def Info: Figures/PARRHIConcept01.png  used on input line 58.
 (pdftex.def)             Requested size: 330.76328pt x 193.03578pt.
- [11
 
- <./Figures/PARRHIConcept01.png>]
-Overfull \hbox (5.68982pt too wide) in paragraph at lines 73--83
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[11
+
+] [12 <./Figures/PARRHIConcept01.png>]
+Overfull \hbox (5.68982pt too wide) in paragraph at lines 86--96
  [][] 
  []
 
-LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 101.
-LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 101.
-[12
+[13
 
-] (Figures/PointFix.tex)
-Overfull \hbox (68.07455pt too wide) in paragraph at lines 111--111
+]
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 114.
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 114.
+ (Figures/PointFix.tex)
+Overfull \hbox (68.07455pt too wide) in paragraph at lines 124--124
 [] [] 
  []
 
 (Figures/PointRobot.tex)
-Overfull \hbox (68.07455pt too wide) in paragraph at lines 117--117
+Overfull \hbox (68.07455pt too wide) in paragraph at lines 130--130
 [] [] 
  []
 
-[13] [14]
-Overfull \hbox (16.03645pt too wide) in paragraph at lines 163--175
+[14] [15]
+Overfull \hbox (16.03645pt too wide) in paragraph at lines 176--188
  [][] 
  []
 
-[15]) [16]
+[16]) [17] [18
+
+
+
+]
 \openout2 = `Chapters/90_Bibliography.aux'.
 
  (Chapters/90_Bibliography.tex
@@ -2254,17 +2263,14 @@ LaTeX Font Info:    Try loading font information for T1+aett on input line 2.
 ("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ae\t1aett.fd"
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
-[17
+[19
 
 
 
+]) [20] [21
 
 
-
-]) [18] [19
-
-
-] [20
+] [22
 
 
 
@@ -2276,7 +2282,7 @@ Overfull \hbox (3.61714pt too wide) in paragraph at lines 25--97
 []|  \T1/aer/m/n/10.95 Mu-nich, De-cem-ber 1, 2016 | [] |  
  []
 
-[21
+[23
 
 
 
@@ -2300,13 +2306,13 @@ Package logreq Info: Writing requests to 'Thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 56530 strings out of 492946
- 1301420 string characters out of 3126266
+ 56538 strings out of 492946
+ 1301515 string characters out of 3126266
  1756974 words of memory out of 3000000
- 59435 multiletter control sequences out of 15000+200000
+ 59437 multiletter control sequences out of 15000+200000
  577148 words of font info for 116 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,20n,136p,9102b,2124s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 80i,20n,136p,9102b,2130s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\ericv\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 tcrm1095.pk><C:/Users/ericv/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
 c/amsfonts/cm/cmbx10.pfb><C:/Users/ericv/AppData/Local/Programs/MiKTeX 2.9/font
@@ -2323,9 +2329,9 @@ grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ericv/AppD
 ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Use
 rs/ericv/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt1
 0.pfb>
-Output written on Thesis.pdf (25 pages, 943858 bytes).
+Output written on Thesis.pdf (27 pages, 948423 bytes).
 PDF statistics:
- 415 PDF objects out of 1000 (max. 8388607)
- 87 named destinations out of 1000 (max. 500000)
- 319 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 430 PDF objects out of 1000 (max. 8388607)
+ 90 named destinations out of 1000 (max. 500000)
+ 327 words of extra memory for PDF output out of 10000 (max. 10000000)
 
