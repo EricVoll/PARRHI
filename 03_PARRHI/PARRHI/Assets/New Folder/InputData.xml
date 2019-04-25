@@ -94,7 +94,7 @@
 			<ChangeUITextAction name="IntroAction0" text="Hello, Please get ready for your tutorial! I am just waiting for the HoloLens to load"/>
 			<ChangeUITextAction name="IntroAction1" text="Step 1:\nWait for a few seconds and then move the robot."/>
 			<ChangeUITextAction name="IntroAction2" text="Step 2:\nNow try to look at the robot itself and do something with it."/>
-			<ChangeUITextAction name="IntroAction3" text="Step 3:\nOh you where too slow!"/>
+			<ChangeUITextAction name="IntroAction3" text="Step 3:\nOh you were too slow!"/>
 			<ChangeUITextAction name="IntroAction4" text="Step 4:\nYou reached your starting point. The tutorial can now begin!"/>
 			
 			

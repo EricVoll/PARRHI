@@ -89,6 +89,27 @@
     \field{year}{2016}
   \endentry
 
+  \entry{ARCommunicationBenefits}{article}{}
+    \name{author}{1}{}{%
+      {{hash=BM}{%
+         family={Billinghurst},
+         familyi={B\bibinitperiod},
+         given={Mark},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BM1}
+    \strng{fullhash}{BM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{5}
+    \field{pages}{1\bibrangedash 5}
+    \field{title}{Augmented reality in education}
+    \field{volume}{12}
+    \field{journaltitle}{New horizons for learning}
+    \field{year}{2002}
+  \endentry
+
   \entry{blsGov}{online}{}
     \name{author}{1}{}{%
       {{hash=BoLSUDoL}{%
@@ -116,6 +137,31 @@
     \field{urlyear}{2019}
   \endentry
 
+  \entry{devShortageHackernoon}{online}{}
+    \name{author}{1}{}{%
+      {{hash=BHJ}{%
+         family={Baker},
+         familyi={B\bibinitperiod},
+         given={Hackernoon.com\bibnamedelima Justin},
+         giveni={H\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BHJ1}
+    \strng{fullhash}{BHJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{2018's Software Engineering Talent Shortage — It’s
+  quality, not just quantity}
+    \verb{url}
+    \verb https://hackernoon.com/2018s-software-engineering-talent-shortage-its
+    \verb -quality-not-just-quantity-6bdfa366b899
+    \endverb
+    \field{year}{2017}
+    \field{urlday}{25}
+    \field{urlmonth}{04}
+    \field{urlyear}{2019}
+  \endentry
+
   \entry{azuma1997survey}{article}{}
     \name{author}{1}{}{%
       {{hash=ART}{%
@@ -138,6 +184,53 @@
     \field{volume}{6}
     \field{journaltitle}{Presence: Teleoperators \& Virtual Environments}
     \field{year}{1997}
+  \endentry
+
+  \entry{ARProudcersVariety}{online}{}
+    \name{author}{1}{}{%
+      {{hash=MA}{%
+         family={Minds},
+         familyi={M\bibinitperiod},
+         given={Augmented},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MA1}
+    \strng{fullhash}{MA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Endgeräte für AR \/ MR}
+    \verb{url}
+    \verb https://www.augmented-minds.com/de/erweiterte-realitaet/augmented-rea
+    \verb lity-hardware-endgeraete/
+    \endverb
+    \field{year}{2019}
+    \field{urlday}{25}
+    \field{urlmonth}{04}
+    \field{urlyear}{2019}
+  \endentry
+
+  \entry{MSHoloLens}{online}{}
+    \name{author}{1}{}{%
+      {{hash=IM}{%
+         family={Inc.},
+         familyi={I\bibinitperiod},
+         given={Microsoft},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{IM1}
+    \strng{fullhash}{IM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Microsoft HoloLens}
+    \verb{url}
+    \verb https://www.microsoft.com/de-de/hololens
+    \endverb
+    \field{year}{2019}
+    \field{urlday}{25}
+    \field{urlmonth}{04}
+    \field{urlyear}{2019}
   \endentry
 
   \entry{perey2011current}{incollection}{}
@@ -295,6 +388,29 @@
     \field{pages}{232\bibrangedash 237}
     \field{title}{Mixed reality simulation for mobile robots}
     \field{year}{2009}
+  \endentry
+
+  \entry{RoboticsScienceMag}{online}{}
+    \name{author}{1}{}{%
+      {{hash=MRS}{%
+         family={Magazine},
+         familyi={M\bibinitperiod},
+         given={Robotics\bibnamedelima Science},
+         giveni={R\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MRS1}
+    \strng{fullhash}{MRS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{The grand challenges of Science Robotics}
+    \verb{url}
+    \verb https://robotics.sciencemag.org/content/3/14/eaar7650
+    \endverb
+    \field{year}{2018}
+    \field{urlday}{25}
+    \field{urlmonth}{04}
+    \field{urlyear}{2019}
   \endentry
 
   \entry{milgram1993applications}{inproceedings}{}

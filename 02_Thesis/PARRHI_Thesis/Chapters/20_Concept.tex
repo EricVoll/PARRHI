@@ -41,36 +41,27 @@ Deriving from the previous chapter the System should:
 
 \clearpage
 \section{PARRHI Concept}
+As discussed, parametrising workflows grants a multitude of benefits (see section~\ref{Section:ParametricDesignIntoduction}). Disclosing implicitly known and automatically retrieved information to the application program via parameters, mitigates the development effort substantially by simplifying the developer's code-base, which increases the maintainability and reusability. 
 
-As discussed parametrising workflows grants a multitude of benefits (see section~\ref{Section:ParametricDesignIntoduction}). Maintainability and Reusability are just some of them. By giving a system knowledge about the real world, users are relieved from some portion of the workload. In \textit{PARRHI's} case, this could mean include information about the robot's kinematics. Both, the developer of PARRHI-Applications and the end user do not have to understand robot kinematics in order to build and use costly AR applications. 
+To offer these parameters in a meaningful format, \textit{PARRHI} needs a profound model about its surroundings (see (1) in Fig. \ref{Fig:PARRHIConcept}). The model then allows to extract helpful information from complicated environments. In \textit{PARRHI's} case, this model exemplary involves the robot's forward kinematics. The application program may now for example use the robots joint positions via parameters (e.g. \textit{joint1}) without understanding the mathematics itself, and \textit{PARRHI} will retrieve, calculate and update these parameters at runtime, "filling in the gaps".
 
-First, \textit{PARRHI} possesses a predefined model knowledge about the real world and the Fanuc Robot. The system furthermore has ways to receive information from and act on the augmented and real world. Its information input during runtime is the robot's momentary configuration and the AR-Device's position. \textit{PARRHI} uses the received information in combination with all its existing knowledge for its parametrised input data. The programmed behaviour uses its parametrised objects to generate some output, which can either be some augmented holograms presented to the user, or actual physical acts like directly commanding the robot.
+The parametrised program is an exchangeable document, provided by the application developer (see (2) in Fig. \ref{Fig:PARRHIConcept}). Here the application's workflow and output is defined using the afore mentioned parameters and an additional set of tools for logic operations. The Core Routine (object (3)) then interprets the program and generates the output, which may act on both the virtual and real world. The latter is manipulated by (e.g.) commanding the robot in some way, whereas the virtual space may be changed by displaying UI, holograms or even sounds. 
 
-Of course the instructions to the user and commands into the physical world my directly influence the AR space due to the feedback loops in the system. If something triggers a command that moves the robot, its movement can and will be tracked by the system's ability to receive external information.
+Actions in both the real and virtual space may influence the other in some way. A hologram hinting the user to move their location, originated in the virtual space but directly influenced the user - a real world object. Also the other way round, if a hologram is parametrised to cover the robot, the machine's movement also influences the virtual space because the parameters are updated constantly.
 
+[Meta: These are the questions that I want to answer with the paragraphs above. "The Skeleton"]
 How do I mean parametrised?
 How is the system built (basic level)?
 What is parametrised in my specific case?
-How does the system interact with the real world?
+How does the system interact with the real/virtual world?
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.75\textwidth]{Figures/PARRHIConcept01.png}
+	\includegraphics[width=0.75\textwidth]{Figures/PARRHIConcept03.jpg}
 	\caption{PARRHI general concept}
 	\label{Fig:PARRHIConcept}
 \end{figure}
 
-\textit{PARRHI} basically consists of three components (see Fig.~\ref{Fig:PARRHIConcept}):
-\begin{enumerate}
-	\setlength\itemsep{-1em}
-	\item Input Data
-	\item PARRHI Engine
-	\item the "real world"
-\end{enumerate}
-
-\textit{Input Data} file, which is created by the application's developer, represents \textit{PARRHI's} only input. It contains a set of definitions, commands and behaviour rules that are necessary to create AR Interfaces that is able to fulfil the defined requirements in \ref{Section:SystemRequirements}.
-
-The \textit{PARRHI Engine} interprets the input data and acts on its behalf. After validating the input data against certain schemes the engine imports all contents and sets up its internal states, before entering a cyclic mode - ready for operation.
 
 \clearpage
 \subsection{Input Data}
