@@ -559,6 +559,120 @@
     \field{year}{2011}
   \endentry
 
+  \entry{seichterDigitalDesignArch}{article}{}
+    \name{author}{2}{}{%
+      {{hash=SH}{%
+         family={Seichter},
+         familyi={S\bibinitperiod},
+         given={Hartmut},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=SMA}{%
+         family={Schnabel},
+         familyi={S\bibinitperiod},
+         given={Marc\bibnamedelima Aurel},
+         giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {CUMINCAD}%
+    }
+    \strng{namehash}{SHSMA1}
+    \strng{fullhash}{SHSMA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Digital and tangible sensation: an augmented reality urban
+  design studio}
+    \field{year}{2005}
+  \endentry
+
+  \entry{salimSystemArchMR}{article}{}
+    \name{author}{3}{}{%
+      {{hash=SFD}{%
+         family={Salim},
+         familyi={S\bibinitperiod},
+         given={Flora\bibnamedelima Dilys},
+         giveni={F\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+      {{hash=MH}{%
+         family={Mulder},
+         familyi={M\bibinitperiod},
+         given={Hugo},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=BJ}{%
+         family={Burry},
+         familyi={B\bibinitperiod},
+         given={Jane},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {CUMINCAD}%
+    }
+    \strng{namehash}{SFDMHBJ1}
+    \strng{fullhash}{SFDMHBJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{A system for form fostering: Parametric modeling of
+  responsive forms in mixed reality}
+    \field{year}{2010}
+  \endentry
+
+  \entry{wangFrameworkMXBIM}{article}{}
+    \name{author}{6}{}{%
+      {{hash=WX}{%
+         family={Wang},
+         familyi={W\bibinitperiod},
+         given={Xiangyu},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=LPE}{%
+         family={Love},
+         familyi={L\bibinitperiod},
+         given={Peter\bibnamedelima ED},
+         giveni={P\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=KMJ}{%
+         family={Kim},
+         familyi={K\bibinitperiod},
+         given={Mi\bibnamedelima Jeong},
+         giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=PCS}{%
+         family={Park},
+         familyi={P\bibinitperiod},
+         given={Chan-Sik},
+         giveni={C\bibinithyphendelim S\bibinitperiod},
+      }}%
+      {{hash=SCP}{%
+         family={Sing},
+         familyi={S\bibinitperiod},
+         given={Chun-Pong},
+         giveni={C\bibinithyphendelim P\bibinitperiod},
+      }}%
+      {{hash=HL}{%
+         family={Hou},
+         familyi={H\bibinitperiod},
+         given={Lei},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{WXLPEKMJ+1}
+    \strng{fullhash}{WXLPEKMJPCSSCPHL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{37\bibrangedash 44}
+    \field{title}{A conceptual framework for integrating building information
+  modeling with augmented reality}
+    \field{volume}{34}
+    \field{journaltitle}{Automation in Construction}
+    \field{year}{2013}
+  \endentry
+
   \entry{bara}{online}{}
     \name{author}{1}{}{%
       {{hash=ABAR}{%
@@ -581,6 +695,114 @@
     \field{urlday}{07}
     \field{urlmonth}{04}
     \field{urlyear}{2019}
+  \endentry
+
+  \entry{DiegmannBenefitsAREdu}{article}{}
+    \name{author}{4}{}{%
+      {{hash=DP}{%
+         family={Diegmann},
+         familyi={D\bibinitperiod},
+         given={Phil},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=SKM}{%
+         family={Schmidt-Kraepelin},
+         familyi={S\bibinithyphendelim K\bibinitperiod},
+         given={Manuel},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=ES}{%
+         family={Eynden},
+         familyi={E\bibinitperiod},
+         given={Sven},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=BD}{%
+         family={Basten},
+         familyi={B\bibinitperiod},
+         given={Dirk},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{DPSKMES+1}
+    \strng{fullhash}{DPSKMESBD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{6}
+    \field{pages}{1542\bibrangedash 1556}
+    \field{title}{Benefits of augmented reality in educational environments-a
+  systematic literature review}
+    \field{volume}{3}
+    \field{journaltitle}{Benefits}
+    \field{year}{2015}
+  \endentry
+
+  \entry{SalaminBenefitsAR}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=SP}{%
+         family={Salamin},
+         familyi={S\bibinitperiod},
+         given={Patrick},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=TD}{%
+         family={Thalmann},
+         familyi={T\bibinitperiod},
+         given={Daniel},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=VF}{%
+         family={Vexo},
+         familyi={V\bibinitperiod},
+         given={Fr{\'e}d{\'e}ric},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \list{organization}{1}{%
+      {ACM}%
+    }
+    \strng{namehash}{SPTDVF1}
+    \strng{fullhash}{SPTDVF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Proceedings of the ACM symposium on Virtual reality
+  software and technology}
+    \field{pages}{27\bibrangedash 30}
+    \field{title}{The benefits of third-person perspective in virtual and
+  augmented reality?}
+    \field{year}{2006}
+  \endentry
+
+  \entry{ARInMilRepair}{article}{}
+    \name{author}{2}{}{%
+      {{hash=HS}{%
+         family={Henderson},
+         familyi={H\bibinitperiod},
+         given={Steven},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=FS}{%
+         family={Feiner},
+         familyi={F\bibinitperiod},
+         given={Steven},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IEEE}%
+    }
+    \strng{namehash}{HSFS1}
+    \strng{fullhash}{HSFS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{10}
+    \field{pages}{1355\bibrangedash 1368}
+    \field{title}{Exploring the benefits of augmented reality documentation for
+  maintenance and repair}
+    \field{volume}{17}
+    \field{journaltitle}{IEEE transactions on visualization and computer
+  graphics}
+    \field{year}{2011}
   \endentry
 
   \entry{vmodell}{article}{}

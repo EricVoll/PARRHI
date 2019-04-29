@@ -1,6 +1,6 @@
 \chapter{Concept}\label{Chap:Concept}
 
-For further reading the to be built system will be called "Parametrised Augmented Reality Robot Human Interface" (\textit{PARRHI}).
+This chapter will explain what requirements were defined for the to be built system and how it will be designed and setup. For further reading the system will be called "Parametrised Augmented Reality Robot Human Interface" (\textit{PARRHI}).
 
 \section{Goal}
 As described in section \ref{Section:PARRHIApproach} this thesis presents a possible approach to solve the previously described problems (see section \ref{Section:ProblemDescription}). It is the main target of this bachelor's thesis to remove the necessity of high software engineering skills to develop reasonably complex Augmented Reality Robot Human Interface applications, maintaining the quality of the outcome and even increasing the degree of resuability. This might result in lower development costs, lower struggle to gather software engineering talent and even in a shorter time to market.
@@ -30,24 +30,26 @@ Having an idea of the end-user, the user-requirements can be defined. The user w
 Deriving from the previous chapter the System should:
 \begin{enumerate}
 	\setlength\itemsep{-1em}
-	\item have input data in a non-code format.
-	\item have readable and intuitive feedback on the input data.
+	\item have user input in a simple and intuitive format to allow for non-software engineers.
+	\item have readable and intuitive feedback on every user input.
 	\item achieve reusablity by having an input in non-binary text format that allows copy and paste reproduction.
 	\item support building for hand held mobile devices and head mounted Augmented Reality glasses.
-	\item allow bidirectional communication (Sending commands and receiving data) with the robot's controller 
-	\item allow documentation of the applications workflow
+	\item allow bidirectional communication with the real and virtual world in different formats
+	\item allow documentation of the application's workflow
 	\item be as platform independent as possible
 \end{enumerate}
 
 \clearpage
 \section{PARRHI Concept}
-As discussed, parametrising workflows grants a multitude of benefits (see section~\ref{Section:ParametricDesignIntoduction}). Disclosing implicitly known and automatically retrieved information to the application program via parameters, mitigates the development effort substantially by simplifying the developer's code-base, which increases the maintainability and reusability. 
+As discussed, parametrising workflows grants a multitude of benefits (see section~\ref{Section:ParametricDesignIntoduction}). Disclosing pre-processed information to the application program via parameters, mitigates the development effort substantially by simplifying the developer's code-base, complexity and workload.  
 
-To offer these parameters in a meaningful format, \textit{PARRHI} needs a profound model about its surroundings (see (1) in Fig. \ref{Fig:PARRHIConcept}). The model then allows to extract helpful information from complicated environments. In \textit{PARRHI's} case, this model exemplary involves the robot's forward kinematics. The application program may now for example use the robots joint positions via parameters (e.g. \textit{joint1}) without understanding the mathematics itself, and \textit{PARRHI} will retrieve, calculate and update these parameters at runtime, "filling in the gaps".
+To offer these parameters in a meaningful format, \textit{PARRHI} needs a decent model about its surroundings (see (1) in Fig. \ref{Fig:PARRHIConcept}). The model then allows to extract helpful information from complicated environments. In \textit{PARRHI's} case, this model includes the robot's forward kinematics. The developer may now use this implicitly known and automatically retrieved information in the application program (2) without necessarily understanding the source's background and mathematics. \textit{PARRHI} will retrieve, calculate and update these parameters at runtime, "filling in the gaps".
 
-The parametrised program is an exchangeable document, provided by the application developer (see (2) in Fig. \ref{Fig:PARRHIConcept}). Here the application's workflow and output is defined using the afore mentioned parameters and an additional set of tools for logic operations. The Core Routine (object (3)) then interprets the program and generates the output, which may act on both the virtual and real world. The latter is manipulated by (e.g.) commanding the robot in some way, whereas the virtual space may be changed by displaying UI, holograms or even sounds. 
+The parametrised program (2) is an exchangeable document, provided by the application developer. Here, the application's workflow and output is defined using the afore mentioned placeholders and an additional set of tools for logic operations, also utilizing parameters. The Core Routine (3) then interprets the parametrised program and generates the output, which may act on both the virtual and real world via the Output Module (4). The real world is manipulated by (e.g.) commanding the robot in some way, whereas the virtual space may be changed by displaying UI, holograms or other augmentations. The Input Module (5) finally closes the feedback loop by sensing the environment. Information from the real world (user's position) and the robot's joint-configuration are fed into the Real World Model (1) before being combined with data about the virtual space (position and state of holograms), thereby contributing to the implicit knowledge about the environment.
 
-Actions in both the real and virtual space may influence the other in some way. A hologram hinting the user to move their location, originated in the virtual space but directly influenced the user - a real world object. Also the other way round, if a hologram is parametrised to cover the robot, the machine's movement also influences the virtual space because the parameters are updated constantly.
+Actions in both the real and virtual space may influence the other in some way. A hologram hinting the user to move their location originated in the virtual space but directly influenced the user - a real world object. Also the other way round, if a hologram is parametrised to cover the robot, the machine's movement also influences the virtual space because the parameters are updated constantly.
+
+
 
 [Meta: These are the questions that I want to answer with the paragraphs above. "The Skeleton"]
 How do I mean parametrised?
@@ -64,11 +66,11 @@ How does the system interact with the real/virtual world?
 
 
 \clearpage
-\subsection{Input Data}
+\subsection{Parametrised Program}
 
-The Input data is the document, which the end user of the \textit{PARRHI} system constructs. It contains parametrised, hierarchically structured data, that defines the behaviour, feel and look of the final AR-HR-application. The following chapters explain the set of tools that are available to the developer, how the work and interconnect.
+The Parametrised Program is the document, which the end user of the \textit{PARRHI} system crafts. It contains parametrised, hierarchically structured data, that defines the behaviour, feel and look of the final AR-HR-application. All instructions and definitions can make use of the previously explained parameters offered by \textit{PARRHI}. Since this is the actual document that a developer writes, its syntax and structure has to be as simple as possible to fulfil the requirements from section~\ref{Section:SystemRequirements} without limiting the user's creativity. To achieve this, a rather natural way of describing the wanted behaviour was chosen. 
 
-Table~\ref{Table:InputDataStructure} displays the top level structure and its main parts, where Variables, Points and Holograms define Utilities that Events can work with. 
+The following chapters explain the set of tools that are available to the developer, how the work and interconnect. Table~\ref{Table:InputDataStructure} displays the top level structure and its main parts, where Variables, Points and Holograms define assets that Events can work with. 
 
 \begin{table}[ht]
 	\caption{\textit{Input Data} structure}
@@ -87,10 +89,12 @@ Table~\ref{Table:InputDataStructure} displays the top level structure and its ma
 \end{table}
 
 \subsubsection{Variables}\label{Section:Variables}
-\textit{PARRHI's} variables can be used to create different steps in one's application. Variables can be the source of an event's trigger or the target of an event's action (see section~\ref{Section:Events}).
+Variables are storage locations for numbers and have a symbolic name. They can be used to create different steps in one's application. When using Variables as parameters, they can be the source of an event's trigger or the target of an event's action (see section~\ref{Section:Events}) and thus take part in the application's logic. With the help of Variables an application could keep track of something by counting events, or also implement state machines that jump between modes. Variables are internal knowledge, meaning, that they are managed by the \textit{PARRHI} system and are not imported/external information.
 
 \subsubsection{Points}\label{Section:Points}
-Points are a three dimensional vectors that can be defined in three different ways. 
+Points probably are the best example of parametrised information in the \textit{PARRHI} system. At runtime the data from the Real World Model (see (1) in fig.~\ref{Fig:PARRHIConcept}) is directly fed into the definition of all points that use the according parameters. Thus, the system updates these objects repeatedly with Real World information, that was fed through the Real World Model.
+ 
+Despite being parametrised themselves, Points can be used as parameters later on in the application. They essentially are a three dimensional vectors ($X$, $Y$, $Z$) that can be defined in three different ways. 
 \begin{enumerate}
 	\setlength\itemsep{-1em}
 	\item Fix-Point
@@ -100,12 +104,12 @@ Points are a three dimensional vectors that can be defined in three different wa
 
 The \textbf{Fix-Point} has static coordinates. It could be used to setup holograms that visualize certain spacial environmental constraints or for different steps in a \textit{PARRHI} AR-HR-Interface application (see figure \ref{InputData:PointFix}).
 
-To interact with the robot, \textit{PARRHI} needs a way to read and display data from the robot. For that, there are \textbf{Robot-Points} that are defined by two indexes of the robot's joints and one scalar value that defines the exact location between them (see figure \ref{InputData:PointRobot}). The position is calculated as follows (with s being the scalar value and J\textsubscript{n} the position vector of Joint \textit{n}):
+\textbf{Robot-Points} that are defined by two indexes of the robot's joints and one scalar value that defines the exact location between them (see figure \ref{InputData:PointRobot}). This is one example, where parametrised information comes into play. The application's developer does not have to understand the robot's kinematics and simply uses the joint-indexes as parameters. At runtime, the \textit{PARRHI} system retrieves the robot's joint configuration, uses the Real World Model to calculate each joint's position and then feeds this data into the Robot-Points. The final point's position is calculated as follows (with s being the scalar value and J\textsubscript{n} the position vector of Joint \textit{n} which is an output of the Real World Model):
 \begin{equation}
 \boldsymbol{P} = \boldsymbol{J_1} + (\boldsymbol{J_2}-\boldsymbol{J_1}) * s
 \end{equation}
 
-\textbf{Camera-Points} are a way to involve the user's position into the application. Its coordinates are periodically updated with the AR-Device's spacial position in each cycle.
+\textbf{Camera-Points} are a way to involve the user's position in the application. Similarly to the Robot-Points, the \textit{PARRHI} system retrieves the cameras coordinates via the Input Module, feeds it through the Real World Model to map it into the internal coordinate systems and finally periodically updates the Camera-Points with the new location data of the head mounted AR-Device.
 
 
 \begin{figure}
@@ -125,7 +129,7 @@ To interact with the robot, \textit{PARRHI} needs a way to read and display data
 
 
 \subsubsection{Holograms}\label{Section:Holograms}
-To actually augment the reality \textit{PARRHI} needs holograms. These elements have a number of attributes. Holograms can be active (respectively also inactive), have a render-mode, a geometric definition and of course a location. The locations are defined by a certain number of points - depending on the hologram's geometry. Currently the \textit{PARRHI} supports two types of holograms. There are spheres and cylinders, respectively taking one or two points and a radius as input values to define its size and position.
+To actually augment the reality \textit{PARRHI} needs holograms. These elements have a number of attributes. Holograms can be active (respectively also inactive), have a render-mode, a geometric definition and of course a location. The locations are defined by a certain number of points - depending on the hologram's geometry. Currently the \textit{PARRHI} supports two types of holograms. There are spheres and cylinders, respectively taking one or two points and a radius as input parameters to define its size and position.
 
 A Sphere's centre is always set to the point it was defined with, whereas a cylinder always connects the two points of its definition. As input points, all described types in section~\ref{Section:Points} can be used. With a given radius and point the three dimensional figure is completely defined.
 
