@@ -12,14 +12,16 @@
 \contentsline {section}{\numberline {2.4}Current methods programming industrial robots}{6}{section.2.4}% 
 \contentsline {section}{\numberline {2.5}Parametrised AR in Robotic applications}{7}{section.2.5}% 
 \contentsline {chapter}{\numberline {3}Concept}{9}{chapter.3}% 
-\contentsline {section}{\numberline {3.1}Goal}{9}{section.3.1}% 
-\contentsline {section}{\numberline {3.2}User Requirements}{9}{section.3.2}% 
-\contentsline {section}{\numberline {3.3}System Requirements}{10}{section.3.3}% 
-\contentsline {section}{\numberline {3.4}PARRHI Concept}{11}{section.3.4}% 
-\contentsline {subsection}{\numberline {3.4.1}Parametrised Program}{13}{subsection.3.4.1}% 
-\contentsline {subsubsection}{\numberline {3.4.1.1}Variables}{13}{subsubsection.3.4.1.1}% 
-\contentsline {subsubsection}{\numberline {3.4.1.2}Points}{14}{subsubsection.3.4.1.2}% 
-\contentsline {subsubsection}{\numberline {3.4.1.3}Holograms}{15}{subsubsection.3.4.1.3}% 
-\contentsline {subsubsection}{\numberline {3.4.1.4}Events}{15}{subsubsection.3.4.1.4}% 
-\contentsline {subsection}{\numberline {3.4.2}Interpreter}{18}{subsection.3.4.2}% 
-\contentsline {chapter}{\numberline {4}Bibliography}{19}{chapter.4}% 
+\contentsline {section}{\numberline {3.1}Goal and Requirements}{9}{section.3.1}% 
+\contentsline {subsection}{\numberline {3.1.1}User Requirements}{9}{subsection.3.1.1}% 
+\contentsline {subsection}{\numberline {3.1.2}System Requirements}{10}{subsection.3.1.2}% 
+\contentsline {section}{\numberline {3.2}PARRHI Concept}{11}{section.3.2}% 
+\contentsline {subsection}{\numberline {3.2.1}Preparation of Parameters}{13}{subsection.3.2.1}% 
+\contentsline {subsection}{\numberline {3.2.2}Parametrised Program}{15}{subsection.3.2.2}% 
+\contentsline {subsubsection}{\numberline {3.2.2.1}Variables}{15}{subsubsection.3.2.2.1}% 
+\contentsline {subsubsection}{\numberline {3.2.2.2}Points}{16}{subsubsection.3.2.2.2}% 
+\contentsline {subsubsection}{\numberline {3.2.2.3}Holograms}{17}{subsubsection.3.2.2.3}% 
+\contentsline {subsubsection}{\numberline {3.2.2.4}Events}{17}{subsubsection.3.2.2.4}% 
+\contentsline {subsection}{\numberline {3.2.3}Core Routine}{20}{subsection.3.2.3}% 
+\contentsline {subsection}{\numberline {3.2.4}I/O Modules}{20}{subsection.3.2.4}% 
+\contentsline {chapter}{\numberline {4}Bibliography}{21}{chapter.4}% 

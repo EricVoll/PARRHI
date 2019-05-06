@@ -1,0 +1,62 @@
+Thesis structure:
+
+1.) Introduction
+1.1) Reasons for- and problems with Human-Robot collaboration
+ - Describe current problems in the robotics industry (robot communication, dev-shortage)
+1.2) Parametrised development as an approach to solve AR-developer shortage
+ - Short explanation of what this thesis is about (solve problems from 1.1 via parametrisation)
+
+2.) State of the Art
+ - How and why will I explain exactly these technologies/principles
+2.1) Augmented Reality and its standardisations
+ - ...
+2.2) AR in Robotic applications
+2.2.1) AR during development and testing
+ - ...
+2.2.2) Operating robotic systems with AR support
+ - ...
+2.3) Parametrised Development
+ - Parametrised Dev in other industries (electrical engineering CAD and architecture)
+2.4) Current methods programming industrial robots
+ - ...
+2.5) parametrised AR in Robotic applications
+ - Bring together the advanteges of the previous chapters and derive the principle of PARRHI
+
+3) Concept
+3.1) Goal and Requirements
+ - Goal: What exactly do I want to achieve with PARRHI? (Bullet points)
+3.1.1) User Requirements
+ - What are the user's requirements to achive the goal? (Bullet points)
+3.1.2) System Requirements
+ - What are the system's (PARRHI's) requirements to fulfil the user requirements? (Bullet points)
+[This strucure is based on the "V-Modell". A Vorgehensmodell, which is loved by my institute]
+3.2) PARRHI Concept 
+ - Introduction: Super general overview "Left -> Dev, Middle -> System, Right -> AR/Real World"
+ - Concept Picture
+ - Explain the components
+  - Explain "Parameters" while explaining Parametrised Program or the "real world model"
+ - Explain the Information/Work flow between the components
+  (- Includes: Interaction between AR and Real World)
+
+[The following chapters will explain each component very detailled]
+3.2.1) Preparation of Parameters
+ - Collecting data through sensors, processing them via models, extracting parameters about real world
+3.2.2) Parametrised Program
+ - Explain structure and program componentes in detail
+ - How does each component use parameters and act as a parameter for other components
+3.2.2.1) Variables
+3.2.2.2) Points
+3.2.2.3) Holograms
+3.2.2.4) Events
+3.2.3) Core Routine
+ - The actual routine that interprets the "Parametrised Program" with its parameters
+3.2.4) I/O Modules
+ - How does PARRHI communicate with the robot
+ - How does PARRHI communicate with the AR space
+ - How does PARRHI collect data for the parameter preperation
+
+4) Implementation
+4.1) XML/XSD structure and generator 
+4.2) Unity	
+4.2.1) Image tracking
+4.2.2) AR-Toolkit 
