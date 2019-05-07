@@ -30,6 +30,7 @@ Thesis structure:
 3.1.2) System Requirements
  - What are the system's (PARRHI's) requirements to fulfil the user requirements? (Bullet points)
 [This strucure is based on the "V-Modell". A Vorgehensmodell, which is loved by my institute]
+3.1.3) Example Use-Cases
 3.2) PARRHI Concept 
  - Introduction: Super general overview "Left -> Dev, Middle -> System, Right -> AR/Real World"
  - Concept Picture
