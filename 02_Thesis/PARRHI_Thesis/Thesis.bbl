@@ -834,5 +834,233 @@
     \field{journaltitle}{Informatik-Spektrum}
     \field{year}{2005}
   \endentry
+
+  \entry{HoloLens}{online}{}
+    \name{author}{1}{}{%
+      {{hash=CM}{%
+         family={Corporation},
+         familyi={C\bibinitperiod},
+         given={Microsoft},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CM1}
+    \strng{fullhash}{CM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Microsoft HoloLens}
+    \verb{url}
+    \verb https://www.microsoft.com/en-us/hololens
+    \endverb
+    \field{year}{2019}
+    \field{urlday}{15}
+    \field{urlmonth}{05}
+    \field{urlyear}{2019}
+  \endentry
+
+  \entry{Fanuc}{online}{}
+    \name{author}{1}{}{%
+      {{hash=LF}{%
+         family={Ltd.},
+         familyi={L\bibinitperiod},
+         given={Fanuc},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{LF1}
+    \strng{fullhash}{LF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Fanuc}
+    \verb{url}
+    \verb https://www.fanuc.eu/uk/en
+    \endverb
+    \field{year}{2019}
+    \field{urlday}{15}
+    \field{urlmonth}{05}
+    \field{urlyear}{2019}
+  \endentry
+
+  \entry{FanucCR7}{online}{}
+    \name{author}{1}{}{%
+      {{hash=LF}{%
+         family={Ltd.},
+         familyi={L\bibinitperiod},
+         given={Fanuc},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{LF1}
+    \strng{fullhash}{LF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Fanuc CR-7iA/L}
+    \verb{url}
+    \verb https://www.fanuc.eu/de/en/robots/robot-filter-page/collaborative-rob
+    \verb ots/collaborative-cr7ial
+    \endverb
+    \field{year}{2019}
+    \field{urlday}{15}
+    \field{urlmonth}{05}
+    \field{urlyear}{2019}
+  \endentry
+
+  \entry{FanucR30iB}{online}{}
+    \name{author}{1}{}{%
+      {{hash=LF}{%
+         family={Ltd.},
+         familyi={L\bibinitperiod},
+         given={Fanuc},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{LF1}
+    \strng{fullhash}{LF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Fanuc R-30iB}
+    \verb{url}
+    \verb https://www.fanuc.eu/de/en/robots/accessories/robot-controller-and-co
+    \verb nnectivity
+    \endverb
+    \field{year}{2019}
+    \field{urlday}{15}
+    \field{urlmonth}{05}
+    \field{urlyear}{2019}
+  \endentry
+
+  \entry{SchunkGripper}{online}{}
+    \name{author}{1}{}{%
+      {{hash=S}{%
+         family={Schunk},
+         familyi={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{S1}
+    \strng{fullhash}{S1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Schung gripper Co-act EGP-C}
+    \verb{url}
+    \verb https://schunk.com/shop/de/de/Greifsysteme/SCHUNK-Greifer/Parallelgre
+    \verb ifer/Co-act-EGP-C/c/PGR_3995
+    \endverb
+    \field{year}{2019}
+    \field{urlday}{15}
+    \field{urlmonth}{05}
+    \field{urlyear}{2019}
+  \endentry
+
+  \entry{NETFramework}{online}{}
+    \name{author}{1}{}{%
+      {{hash=CM}{%
+         family={Corporation},
+         familyi={C\bibinitperiod},
+         given={Microsoft},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CM1}
+    \strng{fullhash}{CM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Microsoft .NET framework}
+    \verb{url}
+    \verb https://docs.microsoft.com/en-us/dotnet/framework/
+    \endverb
+    \field{year}{2019}
+    \field{urlday}{15}
+    \field{urlmonth}{05}
+    \field{urlyear}{2019}
+  \endentry
+
+  \entry{CSharp}{online}{}
+    \name{author}{1}{}{%
+      {{hash=CM}{%
+         family={Corporation},
+         familyi={C\bibinitperiod},
+         given={Microsoft},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CM1}
+    \strng{fullhash}{CM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Microsoft C-Sharp}
+    \verb{url}
+    \verb https://docs.microsoft.com/en-us/dotnet/csharp/
+    \endverb
+    \field{year}{2019}
+    \field{urlday}{15}
+    \field{urlmonth}{05}
+    \field{urlyear}{2019}
+  \endentry
+
+  \entry{ClassLibrary}{online}{}
+    \name{author}{1}{}{%
+      {{hash=CM}{%
+         family={Corporation},
+         familyi={C\bibinitperiod},
+         given={Microsoft},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CM1}
+    \strng{fullhash}{CM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Microsoft .NET Class Library}
+    \verb{url}
+    \verb https://docs.microsoft.com/en-us/dotnet/core/tutorials/library-with-v
+    \verb isual-studio
+    \endverb
+    \field{year}{2019}
+    \field{urlday}{15}
+    \field{urlmonth}{05}
+    \field{urlyear}{2019}
+  \endentry
+
+  \entry{xmlW3C}{online}{}
+    \name{author}{1}{}{%
+      {{hash=W}{%
+         family={W3C},
+         familyi={W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{W1}
+    \strng{fullhash}{W1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{XML Specification}
+    \verb{url}
+    \verb https://www.w3.org/TR/xml/
+    \endverb
+    \field{year}{2008}
+    \field{urlday}{15}
+    \field{urlmonth}{05}
+    \field{urlyear}{2019}
+  \endentry
+
+  \entry{xsdW3C}{online}{}
+    \name{author}{1}{}{%
+      {{hash=W}{%
+         family={W3C},
+         familyi={W\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{W1}
+    \strng{fullhash}{W1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{XSD Specification}
+    \verb{url}
+    \verb https://www.immagic.com/eLibrary/ARCHIVES/TECH/W3C/W090430S.pdf
+    \endverb
+    \field{year}{2009}
+    \field{urlday}{15}
+    \field{urlmonth}{05}
+    \field{urlyear}{2019}
+  \endentry
 \enddatalist
 \endinput

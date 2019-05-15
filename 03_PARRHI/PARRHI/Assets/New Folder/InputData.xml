@@ -49,7 +49,7 @@
 		<Sphere name="MoveToStartSphere" point="MoveToStartPoint" radius="100"/>
 		
 		<!--Uncomment this to demonstrate Zylinder placement-->
-		<!--
+		
 		<Zylinder name="Zylinder6" point1="Point7" point2="Point8" radius="20"/>
 		<Zylinder name="Zylinder7" point1="Point8" point2="Point9" radius="20"/>
 		<Zylinder name="Zylinder8" point1="Point9" point2="Point10" radius="20"/>
@@ -63,7 +63,7 @@
 		<Zylinder name="Zylinder14" point1="Point7" point2="Point11" radius="20"/>
 		<Zylinder name="Zylinder15" point1="Point8" point2="Point12" radius="20"/>
 		<Zylinder name="Zylinder16" point1="Point9" point2="Point13" radius="20"/>
-		<Zylinder name="Zylinder17" point1="Point10" point2="Point14" radius="20"/>-->
+		<Zylinder name="Zylinder17" point1="Point10" point2="Point14" radius="20"/>
 	</Holograms>
 	<Events>
 		<Trigger>
@@ -78,7 +78,7 @@
 			<TimeTrigger name="TimeTrigger3" canTrigger='true' timeSinceActivation="30"  action1="IntroAction3"/>
 			
 			<DistanceTrigger name="Trigger1" canTrigger='true' point1="Point15" point2="Point6" action1="Handler1" action2="Handler2" distance="50" />
-			<DistanceTrigger name="DistanceTrigger2" canTrigger='true' point1="Camera" point2="MoveToStartPoint" action1="IntroAction4" action2="Handler6" distance="100" />
+			<DistanceTrigger name="DistanceTrigger2" canTrigger='true' point1="Point6" point2="Point15" action1="IntroAction4" action2="Handler6" distance="50" />
 			
 			<TimeTrigger name="Trigger2" canTrigger='false' timeSinceActivation="5"  action1="Handler2" action2="Handler3"/>
 			<VarTrigger name="Trigger3" canTrigger='true' varName="var1" triggerValue="3" action1="Handler4" action2="Handler5" />

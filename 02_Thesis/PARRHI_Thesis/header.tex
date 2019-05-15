@@ -5,6 +5,26 @@
 \documentclass[a4paper, 11pt, fleqn, parskip, twoside, bibliography=totocnumbered, english, numbers=noenddot,headheight=17pt]{scrbook}
 
 %#########################################################################
+
+%#########################################################################
+%Custom packages
+%#########################################################################
+\usepackage{listings}
+\lstset
+{ %Formatting for code in appendix
+	language=xml,
+	basicstyle=\footnotesize,
+	numbers=left,
+	stepnumber=1,
+	showstringspaces=false,
+	tabsize=1,
+	breaklines=true,
+	breakatwhitespace=false,
+}
+
+% used to create wrapping images/text
+\usepackage{wrapfig }
+
 %#########################################################################
 %Important packages
 %#########################################################################

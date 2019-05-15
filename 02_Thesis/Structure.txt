@@ -57,7 +57,44 @@ Thesis structure:
  - How does PARRHI collect data for the parameter preperation
 
 4) Implementation
-4.1) XML/XSD structure and generator 
-4.2) Unity	
-4.2.1) Image tracking
-4.2.2) AR-Toolkit 
+ - Introduction into the implementation, Main language
+4.1) PARRHI System and setup
+ - Generally: Some things in library, some things in Unity
+4.2) PARRHI Library
+ - Build up, workflow, interesting things
+4.3) Unity structure
+ - What is unity?
+4.3.1) General Setup
+ - How is library implemented
+4.3.2) Image Tracking
+ - Vuforia Engine
+4.3.3) AR-Toolkit
+ - AR Toolkit explanation and usage
+4.4) Robot Protocol
+ - Strucutre, languages, problems, solutions
+4.5) Parametrised Program Validation and Definition
+ - XML leads to C# classes etc.
+4.4.1) XML Structure
+ - Give XML Tags
+4.4.2) XSD generation and validation#
+ - Auto generate xsd and c# classes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

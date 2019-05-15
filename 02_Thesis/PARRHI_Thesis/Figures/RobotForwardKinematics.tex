@@ -1,0 +1,81 @@
+
+\tdplotsetmaincoords{60}{120} 
+\begin{tikzpicture}  [scale=0.08, tdplot_main_coords, axis/.style={->, black, thin}, 
+vector/.style={-stealth,green,very thick}, 
+robot/.style={green, very thick},
+vector guide/.style={dashed,gray,thin}]
+
+\usetikzlibrary{calc}
+
+%standard tikz coordinate definition using x, y, z coords
+\coordinate (O) at (0,0,0);
+
+%tikz-3dplot coordinate definition using x, y, z coords
+
+
+\pgfmathsetmacro{\axSize}{100}
+\pgfmathsetmacro{\saxSize}{10}
+\pgfmathsetmacro{\jointRadius}{30}
+
+%Robot Points in cm (mm too large dimensions for library)
+\coordinate (P0) at (0,0,0);
+\coordinate (P1) at (5,0,33);
+\coordinate (P2) at (5, 0, 77);
+\coordinate (P25) at (10, 0, 100.5);
+\coordinate (P3) at (15, 0, 100.5);
+\coordinate (P4) at (47, 0, 100.5);
+\coordinate (P5) at (55, 0, 100.5);
+\coordinate (P6) at (63, 0, 100.5);
+
+
+%draw coordinate system axes
+%\draw[axis] (0,0,0) -- (\axSize,0,0) node[anchor=north east]{$x$};
+%\draw[axis] (0,0,0) -- (0,\axSize,0) node[anchor=north west]{$y$};
+%\draw[axis] (0,0,0) -- (0,0,\axSize) node[anchor=south]{$z$};
+
+
+\draw[axis] (P0) -- (\saxSize,0,0) node[anchor=north east]{$x_0$};
+\draw[axis] (P0) -- (0,\saxSize,0) node[anchor=north west]{$y_0$};
+\draw[axis] (P0) -- (0,0,\saxSize) node[anchor=west]{$z_0$};
+
+\draw[axis] (P1) -- ($ (P1) + (\saxSize,0,0)$) node[anchor=north east]{$x_1$};
+\draw[axis] (P1) -- ($ (P1) + (0,\saxSize,0)$) node[anchor=north west]{$y_1$};
+\draw[axis] (P1) -- ($ (P1) + (0,0,\saxSize)$) node[anchor=west]{$z_1$};
+
+\draw[axis] (P2) -- ($ (P2) + (\saxSize,0,0)$) node[anchor=north east]{$x_2$};
+\draw[axis] (P2) -- ($ (P2) + (0,\saxSize,0)$) node[anchor=north]{$y_2$};
+\draw[axis] (P2) -- ($ (P2) + (0,0,\saxSize)$) node[anchor=south]{$z_2$};
+
+\draw[axis] (P3) -- ($ (P3) + (\saxSize,0,0)$) node[anchor=south east]{$x_3$};
+\draw[axis] (P3) -- ($ (P3) + (0,\saxSize,0)$) node[anchor=north west]{$y_3$};
+\draw[axis] (P3) -- ($ (P3) + (0,0,\saxSize)$) node[anchor=south]{$z_3$};
+
+\draw[axis] (P4) -- ($ (P4) + (\saxSize,0,0)$) node[anchor=south east]{$x_4$};
+\draw[axis] (P4) -- ($ (P4) + (0,\saxSize,0)$) node[anchor=south west]{$y_4$};
+\draw[axis] (P4) -- ($ (P4) + (0,0,\saxSize)$) node[anchor=south]{$z_4$};
+
+\draw[axis] (P5) -- ($ (P5) + (\saxSize,0,0)$) node[anchor=north east]{$x_5$};
+\draw[axis] (P5) -- ($ (P5) + (0,\saxSize,0)$) node[anchor=north east]{$y_5$};
+\draw[axis] (P5) -- ($ (P5) + (0,0,\saxSize)$) node[anchor=south]{$z_5$};
+
+%draw the robot's joints and axes
+\draw[robot] (P0) -- (P1); \fill[fill=gray] (P0) circle (\jointRadius pt);
+\draw[robot] (P1) -- (P2); \fill[fill=gray] (P1) circle (\jointRadius pt);
+\draw[robot] (P2) -- (P25); \fill[fill=gray] (P2) circle (\jointRadius pt);
+\draw[robot] (P25) -- (P3); 
+\draw[robot] (P3) -- (P4); \fill[fill=gray] (P3) circle (\jointRadius pt);
+\draw[robot] (P4) -- (P5); \fill[fill=gray] (P4) circle (\jointRadius pt);
+\draw[robot] (P5) -- (P6); \fill[fill=gray] (P5) circle (\jointRadius pt);
+
+%draw the 
+\node[tdplot_main_coords,anchor=east] at ($(P0) + (10,0,15)$){$\vec{l_0}$};
+\node[tdplot_main_coords,anchor=east] at ($(P1) + (5,0,20)$){$\vec{l_1}$};
+\node[tdplot_main_coords,anchor=east] at ($(P2) + (-12,0,00)$){$\vec{l_2}$};
+\node[tdplot_main_coords,anchor=east] at ($(P3) + (10,0,10)$){$\vec{l_3}$};
+\node[tdplot_main_coords,anchor=south east] at ($(P4) + (-1,1,0)$){$\vec{l_4}$};
+\node[tdplot_main_coords,anchor=north] at ($(P5) + (0,0,0)$){$\vec{l_5}$};
+
+
+
+
+\end{tikzpicture}
