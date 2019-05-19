@@ -1062,5 +1062,114 @@
     \field{urlmonth}{05}
     \field{urlyear}{2019}
   \endentry
+
+  \entry{murray2017mathematical}{book}{}
+    \name{author}{1}{}{%
+      {{hash=MRM}{%
+         family={Murray},
+         familyi={M\bibinitperiod},
+         given={Richard\bibnamedelima M},
+         giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {CRC press}%
+    }
+    \strng{namehash}{MRM1}
+    \strng{fullhash}{MRM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{A mathematical introduction to robotic manipulation}
+    \field{year}{2017}
+  \endentry
+
+  \entry{Unity}{online}{}
+    \name{author}{1}{}{%
+      {{hash=DU}{%
+         family={3D},
+         familyi={D\bibinitperiod},
+         given={Unity},
+         giveni={U\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{DU1}
+    \strng{fullhash}{DU1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Unity Game Engine}
+    \verb{url}
+    \verb https://unity3d.com/unity
+    \endverb
+    \field{year}{2019}
+    \field{urlday}{18}
+    \field{urlmonth}{05}
+    \field{urlyear}{2019}
+  \endentry
+
+  \entry{Vuforia}{online}{}
+    \name{author}{1}{}{%
+      {{hash=V}{%
+         family={Vuforia},
+         familyi={V\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{V1}
+    \strng{fullhash}{V1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Vuforia AR Engine}
+    \verb{url}
+    \verb https://developer.vuforia.com/
+    \endverb
+    \field{year}{2019}
+    \field{urlday}{19}
+    \field{urlmonth}{05}
+    \field{urlyear}{2019}
+  \endentry
+
+  \entry{MicrosoftMRToolkit}{online}{}
+    \name{author}{1}{}{%
+      {{hash=CM}{%
+         family={Corporation},
+         familyi={C\bibinitperiod},
+         given={Mircosoft},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CM2}
+    \strng{fullhash}{CM2}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Microsoft Mixed Reality Toolkit}
+    \verb{url}
+    \verb https://github.com/microsoft/MixedRealityToolkit-Unity
+    \endverb
+    \field{year}{2019}
+    \field{urlday}{19}
+    \field{urlmonth}{05}
+    \field{urlyear}{2019}
+  \endentry
+
+  \entry{FanucKarel}{online}{}
+    \name{author}{1}{}{%
+      {{hash=F}{%
+         family={Fanuc},
+         familyi={F\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{F1}
+    \strng{fullhash}{F1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Fanuc KAREL Programming language}
+    \verb{url}
+    \verb https://www.fanucamerica.com/support-services/robotics-training/Cours
+    \verb eDetails.aspx?CourseNumber=KAREL-OP
+    \endverb
+    \field{year}{2019}
+    \field{urlday}{19}
+    \field{urlmonth}{05}
+    \field{urlyear}{2019}
+  \endentry
 \enddatalist
 \endinput

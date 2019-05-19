@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.6960 64-bit) (preloaded format=pdflatex 2019.3.13)  15 MAY 2019 18:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.6960 64-bit) (preloaded format=pdflatex 2019.3.13)  19 MAY 2019 23:31
 entering extended mode
 **./Thesis.tex
 (Thesis.tex
@@ -192,6 +192,10 @@ y"
 \WF@box=\box31
 \WF@everypar=\toks16
 Package: wrapfig 2003/01/31  v 3.6
+)
+("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/latex/placeins\placeins.
+sty"
+Package: placeins 2005/04/18  v 2.2
 )
 ("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/generic/babel\babel.sty"
 Package: babel 2018/11/13 3.27 The Babel package
@@ -1017,7 +1021,7 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)+ FMi change
 \c@LT@chunks=\count142
 \LT@p@ftn=\toks44
 )
-Class scrbook Info: longtable captions redefined on input line 73.
+Class scrbook Info: longtable captions redefined on input line 74.
  ("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tabu\tabu.sty"
 Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
 
@@ -2016,7 +2020,7 @@ Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 )
 Package scrkbase Info: You've told me to redefine the font selection of the
 (scrkbase)             element `sectioning' that is an alias of element
-(scrkbase)             `disposition' on input line 152.
+(scrkbase)             `disposition' on input line 153.
 ) (DimlessGroups.tex)
 
 Package biblatex Warning: File 'english-ieee.lbx' not found!
@@ -2259,7 +2263,7 @@ LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
 (Font)              for symbol `textbullet' on input line 14.
 
 [9] [10] [11]
-<Figures/PARRHIConcept03.jpg, id=247, 1014.79124pt x 374.90062pt>
+<Figures/PARRHIConcept03.jpg, id=245, 1014.79124pt x 374.90062pt>
 File: Figures/PARRHIConcept03.jpg Graphic file (type jpg)
 <use Figures/PARRHIConcept03.jpg>
 Package pdftex.def Info: Figures/PARRHIConcept03.jpg  used on input line 59.
@@ -2297,7 +2301,7 @@ Overfull \hbox (29.264pt too wide) in paragraph at lines 246--258
  []
 
 [21] [22]
-<Figures/CoreRoutine.jpg, id=366, 901.86937pt x 166.37157pt>
+<Figures/CoreRoutine.jpg, id=364, 901.86937pt x 166.37157pt>
 File: Figures/CoreRoutine.jpg Graphic file (type jpg)
 <use Figures/CoreRoutine.jpg>
 Package pdftex.def Info: Figures/CoreRoutine.jpg  used on input line 300.
@@ -2320,7 +2324,7 @@ chapter 4.
 
 
 ]
-<Figures/Implementation_SystemSetup.jpg, id=391, 435.12563pt x 141.52875pt>
+<Figures/Implementation_SystemSetup.jpg, id=389, 435.12563pt x 141.52875pt>
 File: Figures/Implementation_SystemSetup.jpg Graphic file (type jpg)
 <use Figures/Implementation_SystemSetup.jpg>
 Package pdftex.def Info: Figures/Implementation_SystemSetup.jpg  used on input 
@@ -2341,10 +2345,22 @@ Overfull \hbox (68.07455pt too wide) in paragraph at lines 57--57
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-) [27] [28]
+[27] [28] [29]
+<Figures/RobotArchitecture.jpg, id=435, 837.88031pt x 255.20343pt>
+File: Figures/RobotArchitecture.jpg Graphic file (type jpg)
+<use Figures/RobotArchitecture.jpg>
+Package pdftex.def Info: Figures/RobotArchitecture.jpg  used on input line 110.
+
+(pdftex.def)             Requested size: 441.01772pt x 134.32648pt.
+ [30] [31 <./Figures/RobotArchitecture.jpg>]) [32] [33] [34
+
+
+
+]
 \openout2 = `Chapters/90_Bibliography.aux'.
 
- (Chapters/90_Bibliography.tex
+
+(Chapters/90_Bibliography.tex
 chapter 5.
 LaTeX Font Info:    Try loading font information for T1+aett on input line 2.
 ("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ae\t1aett.fd"
@@ -2355,20 +2371,21 @@ Overfull \hbox (2.06834pt too wide) in paragraph at lines 2--2
 reality -[] hardware -[] endgeraete/$[]
  []
 
-[29
+[35
 
 
 
-
-
-
-] [30]
+] [36]
 Overfull \hbox (4.18915pt too wide) in paragraph at lines 2--2
 []\T1/aer/m/n/10.95 , (2019). Mi-crosoft .net class li-brary, [On-line]. Avai
 l-able: []$\T1/aett/m/n/10.95 https : / / docs . microsoft .
  []
 
-) [31] [32
+[37]) [38] [39
+
+
+] [40
+
 
 
 ]
@@ -2379,10 +2396,7 @@ Overfull \hbox (3.61714pt too wide) in paragraph at lines 25--100
 []|  \T1/aer/m/n/10.95 Mu-nich, De-cem-ber 1, 2016 | [] |  
  []
 
-[33
-
-
-
+[41
 
 
 
@@ -2409,10 +2423,10 @@ Package logreq Info: Writing requests to 'Thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 58478 strings out of 492946
- 1329369 string characters out of 3126266
- 1833489 words of memory out of 3000000
- 61250 multiletter control sequences out of 15000+200000
+ 58534 strings out of 492946
+ 1330669 string characters out of 3126266
+ 1835629 words of memory out of 3000000
+ 61280 multiletter control sequences out of 15000+200000
  585122 words of font info for 137 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  80i,20n,136p,9102b,3031s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -2434,15 +2448,16 @@ ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users
 b><C:/Users/ericv/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
 /cm/cmsl10.pfb><C:/Users/ericv/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmsy10.pfb><C:/Users/ericv/AppData/Local/Programs/MiKTeX 2.9/f
-onts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/ericv/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/ericv/AppData/Lo
-cal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/Users/eric
-v/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><
-C:/Users/ericv/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/sy
-mbols/msbm10.pfb>
-Output written on Thesis.pdf (37 pages, 1315220 bytes).
+onts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/ericv/AppData/Local/Programs/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/ericv/AppData/Loc
+al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/eric
+v/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti9.pfb><C
+:/Users/ericv/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmtt10.pfb><C:/Users/ericv/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
+/amsfonts/symbols/msbm10.pfb>
+Output written on Thesis.pdf (45 pages, 1429116 bytes).
 PDF statistics:
- 706 PDF objects out of 1000 (max. 8388607)
- 167 named destinations out of 1000 (max. 500000)
- 465 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 773 PDF objects out of 1000 (max. 8388607)
+ 188 named destinations out of 1000 (max. 500000)
+ 462 words of extra memory for PDF output out of 10000 (max. 10000000)
 
