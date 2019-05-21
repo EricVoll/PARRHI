@@ -1171,5 +1171,52 @@
     \field{urlmonth}{05}
     \field{urlyear}{2019}
   \endentry
+
+  \entry{xsdExe}{online}{}
+    \name{author}{1}{}{%
+      {{hash=CM}{%
+         family={Corporation},
+         familyi={C\bibinitperiod},
+         given={Microsoft},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CM1}
+    \strng{fullhash}{CM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{XML Scheme document tool}
+    \verb{url}
+    \verb https://docs.microsoft.com/en-us/dotnet/standard/serialization/xml-sc
+    \verb hema-definition-tool-xsd-exe
+    \endverb
+    \field{year}{2019}
+    \field{urlday}{20}
+    \field{urlmonth}{05}
+    \field{urlyear}{2019}
+  \endentry
+
+  \entry{perl}{online}{}
+    \name{author}{1}{}{%
+      {{hash=oP}{%
+         family={organisation},
+         familyi={o\bibinitperiod},
+         given={Perl},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{oP1}
+    \strng{fullhash}{oP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Perl programming language}
+    \verb{url}
+    \verb https://www.perl.org/
+    \endverb
+    \field{year}{2019}
+    \field{urlday}{20}
+    \field{urlmonth}{05}
+    \field{urlyear}{2019}
+  \endentry
 \enddatalist
 \endinput

@@ -1,0 +1,17 @@
+\chapter{Evaluation}\label{Chap:Evaluation}
+
+Having developed the PARRHI system it is now time to ask, whether or not the end goal was actually achieved. For that, I will shortly summarize the requirements collected in section~\ref{Section:SystemRequirements}. The Developer (the person that uses the PARRHI system to create applications) has no to little software engineering skills but some knowledge about the robot industry. The person would like to reuse their previous work and create Augmented Reality Applications for other people to use. The application should transfer some knowledge, or give instructions on how to achieve a certain task.
+
+I will first define a use case for the evaluation and then actually develop such a AR application. Then, I will code it without the PARRHI system, programming everything manually. For future reference, this run will be called "\textit{Manual attempt}" Then I will attempt to achieve the same goal by using the PARRHI system. This run will be called "\textit{PARRHI attempt} Both attempts will be timed and afterwards I will compare the Pros and Cons of each approach.
+
+\section{Evaluation Use Case Definition}
+The following use case will be the base of my thesis' evaluation. As a context, I will use the same factory as explained in section~\ref{Section:UseCaseDefinition}. 
+
+The task, which will be supported by an Augmented Reality Robot Human Interface is the following. First, the employee using the PARRHI system approaches the robot work cell within a range of about 15 meters and will then be commanded to walk over to a specific point, that is in a safe distance from the robot. After that, the person has to move the robot's TCP close to his position, so that they can touch the robot's tip. The user will be asked to remove the item in the robot's gripper and jog the robot back into its starting position. Having reached this position, the user will be told to move away into a marked area. The robot will then drive into his "zero" position, where all joint angles are 0 degrees. 
+
+This task involves multiple objects in the robot factory, including the robot itself, the user's position, jogging the robot and walking round. To keep the scope of this evaluation at a reasonable level, I will allow myself to reuse the Robot-Library and the image recognition parts for the \textit{Manual attempt}.
+
+\section{Evaluation Manual Attempt}
+
+
+

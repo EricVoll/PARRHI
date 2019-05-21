@@ -62,6 +62,7 @@ To calculate $f$, I first defined local Cartesian coordinate systems after each 
 		Repeating this process from $n = 5$ to $n = 0$, results in the robot's TCP position relative to the coordinate system $\vec{O}$, which is what we wanted. One has to remember, that only the matrices $\phi_{i}$ are variables, since they depend on $q_i$. The vectors $\vec{l}_i$ are constants. This means, that for each iteration one only has to calculate all matrices $\phi_i$ and can then calculate the positions $(x_i, y_i, z_i)$ of each coordinate system relative to the base system $\vec{O}$.
 	\end{minipage}
 \end{figure}
+
 \FloatBarrier
 
 Since the $C\#$ implementation of this algorithm is only about 20 lines of code (excluding the definitions of the matrices $\phi_i$ and the vectors $\vec{l}_i$), takes only about 4ns to run, and the end results are all joint positions in Cartesian coordinates relative to a base system, I am quite happy with the outcome. If one wanted to add multiple robots into this framework, it could be done quite easily by adding one additional world-coordinate system, where all robot base systems are embedded into.
@@ -119,13 +120,13 @@ The Robot Library is responsible for the communication between any system that i
 	\item WLAN Router: Standard WLan Router, which is connected to the controller via a CAT cable.
 	\item Network Socket Server: Standard Network Socket, where the Controller represents the server.
 	\item KAREL Host: A programm written in KAREL~\cite{FanucKarel} that receives commands from the network socket, parses them according to the defined protocol and returns the requested data or executes the requested commands.
-	\item Register: A storage that is firstly used to command the Teach Pendant (TP) Loop, which also has access to this storage location. Some registers are used to set different modes like coordinate systems, absolute versus relative and so on, and six registers are used to transfer vectors, that the TP program should process according to the set mode.
+	\item Register: A storage that is used to command the Teach Pendant (TP) Loop, which also has access to this storage location. Some registers are used to set different modes like coordinate systems, absolute versus relative and so on, and six registers are used to transfer vectors, that the TP program should process according to the set mode.
 	\item TP Loop: A program written in TP that scans the Register (7) each cycle, and controls the robot accordingly.
 \end{enumerate}
 
 Since researching the difference between KAREL and TP programmes on the internet is rather hard, because one simply does not find a lot of information about it, I would like to summarise our current knowledge about that. KAREL is a programming language, that is similar to Fortran. It was developed by Fanuc itself, and is used internally for alot of components in the controller. Nowadays, KAREL is most often used for managing tasks like communication, synchronisation, data handling and so on. Teach pendant programmes on the other hand, are specialised on actually commanding the robot's movement and behaviour. TP supports numerous methods to control a robot, that the KAREL language simply does not offer. This is why, we chose to split up the controller-side software in these two programming components.
 
-Now the information flow happens as follows: First, the Application (1), which wants to send a command to the robot has to call into the Robot Library (2). Besides managing the Network Socket Connection (3), this library offers about 10 commands to the Application. A command could be the wish to fetch the robot's joint position, or to move the robot into a certain position. The Robot Library (2) then sends the command to the Network Socket (3), which is connected to the controllers server-endpoint. It is important, that the communication between the HoloLens (or a Laptop for instance) is wireless. The controller is connected to the WLAN Router (4) via a CAT cable using the Ethernet protocol. There, the Network Socket Server (5) receives the command, and passes it on to the KAREL Host (6). 
+Now the information flow happens as follows: First, the Application (1), which wants to send a command to the robot has to call into the Robot Library (2). Besides managing the Network Socket Connection (3), this library offers about 10 commands to the Application. A command could be the wish to fetch the robot's joint position, or to move the robot into a certain position. The Robot Library (2) then sends the command to the Network Socket (3), which is connected to the controllers server-endpoint. It is important, that the communication between the HoloLens (or a Laptop for instance) is wireless in order to stay mobile. The controller is connected to the WLAN Router (4) via a cable using the Ethernet protocol. There, the Network Socket Server (5) receives the command, and passes it on to the KAREL Host (6). 
 
 At this point the command is only a string following a very specific syntax that we defined. The Karel Host (6) then parses the command and acts on its instructions. If the command is a simple "Fetch Command", the Karel Host (6) collects the needed data, constructs the message and sends it back via the network. If the command is targeted at the robot itself, the Karel Host (6) fills the Register (7) with all necessary data that the TP Loop (8) needs to execute the movement command. This data is a six dimensional vector (TCP coordinates in task space) and the mode whether the vector should be interpreted absolute or relatively to the momentary position.
 
@@ -136,15 +137,99 @@ To finish this chapter off, I would like to shortly explain what the system is c
 %4.5) Parametrised Program Validation and Definition
 \section{Parametrised Program Implementation and Validation}
 %- XML leads to C# classes etc.
+One last interesting component in the PARRHI implementation is the Parametrised Program. It was clear quite early on, that the document needs a hierarchical structure and must be validated, since the PARRHI system has some presupposed assumptions about the document.  
 
+XML~\cite{xmlW3C} immediately comes into mind here. XML documents are strictly hierarchically and have the big benefit of being human and machine readable. In PARRHI's case this is exactly what the document in question should be. Written by a human with limited software engineering skills, but interpreted by a machine.
 
 
 %4.4.1) XML Structure
-\subsection{XML Structure}
+\subsection{Parametrised Program XML Structure}
 %%- Give XML Tags
+The content of the Parametrised Program was thoroughly discussed in section~\ref{Section:ParametrisedProgram}. In this section, I would like to present the actual implementation and how a Parametrised Program written in XML would look like.
 
+XML documents must have one root element. In PARRHI's case this is the "<PProgram/>" tag. Similarly to the conceptual train of thought, the actual implementation contains four sub elements.
 
+\begin{lstlisting}
+<?xml version="1.0"?>
+<PProgram xmlns="PARRHI">
+	<Variables>...</Variables>
+	<Points>...</Points>
+	<Holograms>...</Holograms>
+	<Events>
+		<Trigger>...</Trigger>
+		<Actions>...</Actions>
+	</Events>
+</PProgram>
+\end{lstlisting}
+
+Each child element of PProgram can now take their object definitions directly. Only the "Events" element categorises its content in two sub elements "Triggers" and "Actions". It is important to know, that every object defined in the Parametrised Program has to have a unique name attribute to identify it in other parts of the application. 
+
+The following block of code exemplary defines each object once. Please note, that this program is not written to actually do something meaningful, it only presents all ways to define objects in the Parametrised Program. Of course the Developer could use every object multiple times and also create multiple instances of the same object types, as long as their name is unique.
+
+\begin{lstlisting}
+<?xml version="1.0"?>
+<PProgram xmlns="PARRHI">
+	<Variables>
+		<Int name="Variable0">0</Int>
+	</Variables>
+	<Points>
+		<PointCamera name="CamPoint"/>
+		<PointFix name="FixPoint0" X="200" Y="-300" Z="300" />
+		<PointRobot name="RobotPoint0" J1="1" J2="2" Scale="0.6" />
+	</Points>
+	<Holograms>
+		<Cylinder name="Cyl0" point1="CamPoint" point2="FixPoint0" radius="10" active='false'/>
+		<Sphere name="Sphere0" point="RobotPoint0" radius="25" renderMode="transparent" active='true'/>
+	</Holograms>
+	<Events>
+		<Trigger>
+			<DistanceTrigger name="DistanceTrigger0" canTrigger='true' point1="CamPoint" point2="RobotPoint0" distance="15.5" action1="HoloStateAction0"/>
+			<VarTrigger name="VariableTrigger0" canTrigger='true' varName="Variable0" triggerValue="2" action1="IncrVarAction0"/>
+			<TimeTrigger name="TimeTrigger0" canTrigger='true' timeSinceActivation="120" action1="TriggerStateAction0" action2="ChangeUITextAction0"/>
+		</Trigger>
+		<Actions>
+			<IncrementCounterAction name="IncrVarAction0" intVar="Variable0"/>
+			<SetHologramStateAction name="HoloStateAction0" state='true' holograms="Zyl1 Sphere1 Sphere2 Zyl2"/>
+			<SetTriggerStateAction name="TriggerStateAction0" triggerName="Trigger1" canTrigger='true'/>
+			<ChangeUITextAction name="ChangeUITextAction0" text="Tutorial step nr. 4"/>
+			<MoveRobotAction name="MoveRobotAction0" pointTCP="FixPoint0" />
+			<SetRobotHandStateAction name="SetRobotHandAction0" state="open" />
+		</Actions>
+	</Events>
+</PProgram>
+\end{lstlisting}
+
+It does not matter in which sequence all the elements occur. Only the hierarchically structure has to be kept exactly as the example document above. The PARRHI library will at some point deserialise the Parametrised Program using a standard .NET Framework XML library. For this deserialisation a validation should be performed, in order to find flaws beforehand.
 
 %4.4.2) XSD generation and validation#
 \subsection{XSD generation and validation}
 %- Auto generate xsd and c# classes
+The hierarchy of XML documents can be specified very detailed in XML-scheme documents, which are also called XSD files~\cite{xsdW3C}. These documents define which element can or must occur at witch location in the XML document, which attributes these elements can or must have and so on. The XSD file can even specify minimum and maximum values, data types and much more.
+
+Hence, an XSD document is an essential part in the importing / validation process. Since writing these documents can be enormously work intensive, Microsoft has developed ways to generate XML schemes from a set of XML documents. Especially, when the underlying XML document may change repeatedly, it can be very exhausting to update the XSD file every time. For that I wrote a small $C\#$ application, that takes multiple .xml documents as an input, and outputs one XSD document that defines rules, which fit to all input XML files. 
+
+Another application developed by Microsoft called "xsd.exe"~\cite{xsdExe} allows to convert XSD documents into $C\#$ class definitions. During the development of this bachelor's thesis, I automated the process of generating the XSD file and from that the $C\#$ class definition, using the programming language Perl~\cite{perl}.
+
+This means, that whenever I wanted to add an attribute to some xml element in the Parametrised Program, I only had to add these attributes in one of my example input xml documents and execute the Perl script, which would then output new XSD documents and a $C\#$ class to deserialise the Parametrised Program. 
+
+One huge advantage of XSD documents and their validator is, that the latter can output exact error messages with what went wrong in the input xml document. This includes the type of error, line and column numbers, and (depending on the error type) suggests how to fix it. For the PARRHI system this means, that very exact feedback can be printed to the user if any errors occur. This makes it easier for non software engineers to accomplish their task.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
