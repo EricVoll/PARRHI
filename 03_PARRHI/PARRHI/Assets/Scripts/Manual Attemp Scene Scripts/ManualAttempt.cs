@@ -28,6 +28,7 @@ public class ManualAttempt : MonoBehaviour
     private Text DevConsoleText;
     private Robot Robot;
     public GameObject RobotGO;
+    public GameObject TaskObjects;
 
     public bool ConnectEnabled;
     private bool ConnectionProcessStarted = false;
@@ -41,7 +42,7 @@ public class ManualAttempt : MonoBehaviour
     public double q4;
     public double q5;
     public double q6;
-    
+
     public bool random;
     public bool backToNull;
     public double q1t;
@@ -205,7 +206,7 @@ public class ManualAttempt : MonoBehaviour
         ConnectEnabled = false;
         Connected = false;
         ConnectionProcessStarted = false;
-        
+
     }
 
 
@@ -250,7 +251,7 @@ public class ManualAttempt : MonoBehaviour
 
 
     #endregion
-    
+
 
     #region Output Delegates
 
@@ -296,11 +297,15 @@ public class ManualAttempt : MonoBehaviour
     #endregion
 
 
-    private int step = 0;
+    private int step = -1;
     private void PerformTaskStep()
     {
         var stepFinished = StepCompleted(step);
-        if (stepFinished) step++;
+        if (stepFinished)
+        {
+            step++;
+            StepChange(step);
+        }
         DoStep(step);
     }
 
@@ -308,10 +313,13 @@ public class ManualAttempt : MonoBehaviour
     {
         switch (index)
         {
+            case -1:
+                return true;
             case 0:
-                return false;
+                return Time.timeSinceLevelLoad > 5;
                 break;
             case 1:
+                return Time.timeSinceLevelLoad > 10;
                 break;
             case 2:
                 break;
@@ -353,4 +361,27 @@ public class ManualAttempt : MonoBehaviour
         }
     }
 
+    private void StepChange(int index)
+    {
+        var children = FindChildren(TaskObjects.transform, $"Step{index}");
+        var childrenNotInStep = FindChildrenNotInStep(TaskObjects.transform, $"Step{index}");
+        foreach (var item in children)
+        {
+            item.gameObject.SetActive(true);
+        }
+        foreach (var item in childrenNotInStep)
+        {
+            item.gameObject.SetActive(false);
+        }
+    }
+
+    private List<Transform> FindChildrenNotInStep(Transform transform, string nameToSearch)
+    {
+        return transform.GetComponentsInChildren<Transform>(true).Where(t => !t.name.StartsWith(nameToSearch) && t.name.StartsWith("Step")).ToList();
+    }
+
+    public List<Transform> FindChildren(Transform transform, string nameToSearch)
+    {
+        return transform.GetComponentsInChildren<Transform>(true).Where(t => t.name.StartsWith(nameToSearch)).ToList();
+    }
 }
