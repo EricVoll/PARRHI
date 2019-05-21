@@ -41,8 +41,7 @@ public class ManualAttempt : MonoBehaviour
     public double q4;
     public double q5;
     public double q6;
-
-    public bool animate;
+    
     public bool random;
     public bool backToNull;
     public double q1t;
@@ -68,7 +67,11 @@ public class ManualAttempt : MonoBehaviour
             InitRobotController();
         }
 
+        UICanvasGO.transform.LookAt(-1 * ARCamera.transform.position);
+
         Cycle();
+
+        PerformTaskStep();
     }
 
     /// <summary>
@@ -90,6 +93,11 @@ public class ManualAttempt : MonoBehaviour
         UICanvas = UICanvasGO.transform.GetComponentInChildren<UICanvas>();
         DevConsoleText = DevConsoleTextGameObject.GetComponent<Text>();
         Robot = RobotGO.GetComponent<Robot>();
+
+        ARCamera.transform.localPosition = new Vector3(860, 860, 0);
+        ARCamera.transform.localRotation = Quaternion.Euler(new Vector3(31.1f, -90, 1.29f));
+
+        AddMsgToDevConsole("Init finished");
     }
 
 
@@ -242,19 +250,7 @@ public class ManualAttempt : MonoBehaviour
 
 
     #endregion
-
-
-    #region Holograms
-    /// <summary>
-    /// Passes on all hologram objects to the respective container
-    /// </summary>
-    /// <param name="container"></param>
-    private void AddHolograms(Container container)
-    {
-
-    }
-    #endregion
-
+    
 
     #region Output Delegates
 
@@ -299,5 +295,62 @@ public class ManualAttempt : MonoBehaviour
 
     #endregion
 
+
+    private int step = 0;
+    private void PerformTaskStep()
+    {
+        var stepFinished = StepCompleted(step);
+        if (stepFinished) step++;
+        DoStep(step);
+    }
+
+    private bool StepCompleted(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                return false;
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+        }
+        return true;
+    }
+
+    private void DoStep(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                UICanvas.SetUIText("Step 1: Move into the marked starting position");
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+        }
+    }
 
 }
