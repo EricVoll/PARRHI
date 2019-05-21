@@ -29,6 +29,7 @@ public class ManualAttempt : MonoBehaviour
     private Robot Robot;
     public GameObject RobotGO;
     public GameObject TaskObjects;
+    public GameObject UITextCanvasObject;
 
     public bool ConnectEnabled;
     private bool ConnectionProcessStarted = false;
@@ -52,11 +53,13 @@ public class ManualAttempt : MonoBehaviour
     public double q5t;
     public double q6t;
 
+
     private void Awake()
     {
         InstantiateSystem();
     }
 
+    bool should_continue = true;
     // Update is called once per frame
     void Update()
     {
@@ -72,7 +75,8 @@ public class ManualAttempt : MonoBehaviour
 
         Cycle();
 
-        PerformTaskStep();
+        if (should_continue)
+            should_continue = PerformTaskStep();
     }
 
     /// <summary>
@@ -124,6 +128,14 @@ public class ManualAttempt : MonoBehaviour
             joints_v3.Add(point_vector3);
         }
         Robot.UpdateJoints(joints_v3.ToArray());
+
+        Joints = joints_v3;
+
+        JointAngles = new double[6];
+        JointAngles = q.Values.Cast<double>().ToArray();
+
+        CameraPoint = TypeConversion.i.Vector3ToPoint(ARCamera.transform.localPosition);
+        CameraPointV3 = ARCamera.transform.localPosition;
     }
 
     private Vector6 GetRobotJointPosition()
@@ -148,10 +160,18 @@ public class ManualAttempt : MonoBehaviour
     {
         return (v1 >= v2 - delta && v1 < v2 + delta);
     }
+    private bool About(Vector3 v1, Vector3 v2, double delta)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (About(v1[i], v2[i], delta) == false) return false;
+        }
+        return true;
+    }
     private void Animator()
     {
         //animate q values
-        float v = 0.05f;
+        float v = 0.01f;
         float d = 0.06f;
         q1 += q1 >= q1t + d ? -v : About(q1, q1t, d) ? 0 : v;
         q2 += q2 >= q2t + d ? -v : About(q2, q2t, d) ? 0 : v;
@@ -188,26 +208,6 @@ public class ManualAttempt : MonoBehaviour
         return rnd.NextDouble() * (max - min) + min;
     }
 
-    public void Reset()
-    {
-        Container = null;
-        q1 = 0;
-        q2 = 0;
-        q3 = 0;
-        q4 = 0;
-        q5 = 0;
-        q6 = 0;
-        q1t = 0;
-        q2t = 0;
-        q3t = 0;
-        q4t = 0;
-        q5t = 0;
-        q6t = 0;
-        ConnectEnabled = false;
-        Connected = false;
-        ConnectionProcessStarted = false;
-
-    }
 
 
     #region RobotInit
@@ -297,16 +297,36 @@ public class ManualAttempt : MonoBehaviour
     #endregion
 
 
+    #region Step Mechanics
+
+
+    //Variables available for program execution
+    Point CameraPoint;
+    Vector3 CameraPointV3;
+    List<Vector3> Joints;
+    double[] JointAngles;
+    private float timeSinceStepActivation { get { return Time.timeSinceLevelLoad - timeOfStepActivation; } }
+    //End of variables
+
+
     private int step = -1;
-    private void PerformTaskStep()
+    private float timeOfStepActivation = 0;
+
+    /// <summary>
+    /// Performs one step in the application logic
+    /// </summary>
+    /// <returns></returns>
+    private bool PerformTaskStep()
     {
         var stepFinished = StepCompleted(step);
         if (stepFinished)
         {
+            AddMsgToDevConsole($"Step {step} finished");
+            timeOfStepActivation = Time.timeSinceLevelLoad;
             step++;
             StepChange(step);
         }
-        DoStep(step);
+        return DoStep(step);
     }
 
     private bool StepCompleted(int index)
@@ -316,20 +336,19 @@ public class ManualAttempt : MonoBehaviour
             case -1:
                 return true;
             case 0:
-                return Time.timeSinceLevelLoad > 5;
-                break;
+                return About(CameraPointV3, FindGOPos("Step0_UserTarget"), 200);
             case 1:
-                return Time.timeSinceLevelLoad > 10;
-                break;
+                return About(FindGOPos("Joint (5)"), FindGOPos("Step1_RobotTCPTarget"), 50);
             case 2:
-                break;
+                return About(FindGOPos("Joint (5)"), FindGOPos("Step2_RobotTCPTarget"), 50);
             case 3:
-                break;
+                return About(CameraPointV3, FindGOPos("Step3_UserTarget"), 200);
             case 4:
-                break;
+                return timeSinceStepActivation > 5;
             case 5:
-                break;
+                return JointAngles.All(x => About(x, 0, 0.1));
             case 6:
+                return timeSinceStepActivation > 5;
                 break;
             case 7:
                 break;
@@ -337,28 +356,43 @@ public class ManualAttempt : MonoBehaviour
         return true;
     }
 
-    private void DoStep(int index)
+    private bool DoStep(int index)
     {
         switch (index)
         {
             case 0:
-                UICanvas.SetUIText("Step 1: Move into the marked starting position");
+                SetUIText("Move to the marked safety area marked in blue");
                 break;
             case 1:
+                SetUIText("Good!\nNow Switch on the robot, and hit the connect button.\nWhen you are done, jog the robot to the area marked by the blue sphere");
                 break;
             case 2:
+                SetUIText("Good!\nNow carefully take out the part that is gripped by the robot and then jog it into the far away area marked by the green sphere");
                 break;
             case 3:
+                SetUIText("Ok.\nNow move away into the area marked with the blue sphere. We will then move the robot via the Robot Library!");
                 break;
             case 4:
+                SetUIText("Since you are here now, we will wait for you to turn around and in a few seconds the library will take over the robot :) ");
                 break;
             case 5:
+                SetUIText("Here we go! Lets move the robot back into his zero-position");
+                MoveRobot(new double[] { 0, 0, 0, 0, 0, 0 });
                 break;
             case 6:
+                SetUIText("Ok cool. Robot is in its home position.");
                 break;
             case 7:
+                SetUIText("Very well done. You may now close the HoloLens application!");
                 break;
         }
+        return index <= 7;
+    }
+
+    private void SetUIText(string msg)
+    {
+        UICanvas.SetUIText($"Step {step}: {msg}");
+        UITextCanvasObject.GetComponent<Text>().text = $"Step {step}: {msg}";
     }
 
     private void StepChange(int index)
@@ -375,6 +409,9 @@ public class ManualAttempt : MonoBehaviour
         }
     }
 
+    #region Helpers
+
+
     private List<Transform> FindChildrenNotInStep(Transform transform, string nameToSearch)
     {
         return transform.GetComponentsInChildren<Transform>(true).Where(t => !t.name.StartsWith(nameToSearch) && t.name.StartsWith("Step")).ToList();
@@ -384,4 +421,44 @@ public class ManualAttempt : MonoBehaviour
     {
         return transform.GetComponentsInChildren<Transform>(true).Where(t => t.name.StartsWith(nameToSearch)).ToList();
     }
+
+    Dictionary<string, GameObject> objects = new Dictionary<string, GameObject>();
+    public GameObject FindGO(string name)
+    {
+        if (objects.Any(x => x.Key == name)) return objects[name];
+        else
+        {
+            var obj = GameObject.Find(name);
+            objects[name] = obj;
+            return obj;
+        }
+    }
+    public Vector3 FindGOPos(string name)
+    {
+        return FindGO(name).transform.localPosition;
+    }
+
+    #endregion
+    #endregion
+
+
+    #region Robot Libaray
+    public void MoveRobot(double[] jointAngles)
+    {
+        if (Connected)
+        {
+            RobotController.Commander.MoveAbsolute(new Vector6(jointAngles));
+        }
+        else
+        {
+            Animate = true;
+            q1t = jointAngles[0];
+            q2t = jointAngles[1];
+            q3t = jointAngles[2];
+            q4t = jointAngles[3];
+            q5t = jointAngles[4];
+            q6t = jointAngles[5];
+        }
+    }
+    #endregion
 }
