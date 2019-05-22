@@ -15,29 +15,87 @@ using UnityEngine.UI;
 
 public class PARRHIRuntime : MonoBehaviour
 {
-
+    /// <summary>
+    /// Instance of Container used for the PARRHI system. Responsible for the calls into the PARRHI library
+    /// </summary>
     Container Container;
+
+    /// <summary>
+    /// The Controller that will handle the communication with the robot
+    /// </summary>
     FanucController RobotController;
 
     UICanvas UICanvas;
 
     //Set by Unity editor
-    public GameObject ARCamera;
+
+    /// <summary>
+    /// XML File to import
+    /// </summary>
     public TextAsset xmlFile;
+
+    /// <summary>
+    /// XSD File to use for validation
+    /// </summary>
     public TextAsset xsdFile;
 
+    /// <summary>
+    /// Camera GameObject used for Camera Point
+    /// </summary>
+    public GameObject ARCamera;
+
+    /// <summary>
+    /// User UI Canvas GameObject. Used for PARRHI UI output
+    /// </summary>
     public GameObject UICanvasGO;
+
+    #region Backend GameObjects
+
+    /// <summary>
+    /// Dev Console output GameObject.
+    /// </summary>
     public GameObject DevConsoleTextGameObject;
+    /// <summary>
+    /// Dev Console Text object to write content to
+    /// </summary>
     private Text DevConsoleText;
 
+    /// <summary>
+    /// GameObject of the Robot's marker image
+    /// </summary>
     public GameObject RobotTrackerGO;
+
+    /// <summary>
+    /// GameObject that will contain all PARRHI Holograms
+    /// </summary>
     public GameObject HologramContainer;
 
+    #endregion
     public bool ConnectEnabled;
-    private bool ConnectionProcessStarted = false;
+
+    /// <summary>
+    /// True if the FanucController is connected to the robot's network socket
+    /// </summary>
     private bool Connected;
-    public bool SetDirection;
+
+
+    #region Simulation & Animation variables
+
+
+    /// <summary>
+    /// If true, then simulated values will be animated in steps
+    /// </summary>
     public bool Animate;
+
+    /// <summary>
+    /// Selectes random values for qit
+    /// </summary>
+    public bool Random;
+
+    /// <summary>
+    /// Sets 0 for all qit
+    /// </summary>
+    public bool BackToNull;
 
     public double q1;
     public double q2;
@@ -46,15 +104,14 @@ public class PARRHIRuntime : MonoBehaviour
     public double q5;
     public double q6;
 
-    public bool animate;
-    public bool random;
-    public bool backToNull;
     public double q1t;
     public double q2t;
     public double q3t;
     public double q4t;
     public double q5t;
     public double q6t;
+
+    #endregion
 
     private void Awake()
     {
@@ -69,15 +126,17 @@ public class PARRHIRuntime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (ConnectEnabled && !ConnectionProcessStarted)
+        //Used to connect to robot in Unity devloper runtime
+        if (ConnectEnabled && !Connected)
         {
-            ConnectionProcessStarted = true;
+            //Reset checkbox
             ConnectEnabled = false;
             InitRobotController();
         }
 
-        Cycle();
+        //If container is null, we dont have to start because nothing would work
+        if (Container != null)
+            Cycle();
     }
 
     /// <summary>
@@ -105,24 +164,27 @@ public class PARRHIRuntime : MonoBehaviour
     /// </summary>
     private void InitializeSystem()
     {
-        DataImport importer = new DataImport();
+        DataImport importer = new DataImport(); 
 
-        Container = importer.Import(xmlFile.text);
+        //Container = importer.Import(xmlFile.text);
+        Container = importer.Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\ParametrisedProgam_Evaluation.xml", @"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\parrhiScheme.xsd");
 
-        //Setup Container Delegates
-        Container.State.World.SetUITextDelegate = UICanvas.SetUIText;
+        if (Container != null)
+        {
+            //Setup Container Delegates
+            Container.State.World.SetUITextDelegate = UICanvas.SetUIText;
+
+            //Instantiate all holograms
+            AddHolograms(Container);
+        }
 
         //Write Errors to UI
         UICanvas.SetErrors(importer.XMLValidationResult.GetAllErrors());
 
-        //Instantiate all holograms
-        AddHolograms(Container);
     }
 
     // Simulate Q values
-    private bool dir = false;
-    Point p;
-    Vector3 correctionDelta = new Vector3(0f,0f,0f);
+    Vector3 correctionDelta = new Vector3(0f, 0f, 0f);
     private void Cycle()
     {
 
@@ -136,38 +198,22 @@ public class PARRHIRuntime : MonoBehaviour
         {
             q = RobotController.Commander.GetJointValues();
             q[2] = q[2] + q[1]; //Fanuc handles Joint 1 in a funny way
-
-            if (SetDirection)
-            {
-                SetDirection = false;
-                if (dir)
-                {
-                    RobotController.Commander.MoveAbsolute(new Vector6(685, -125, 394, -166, -68, -14));
-                    dir = false;
-                }
-                else
-                {
-                    RobotController.Commander.MoveAbsolute(new Vector6(685, 397, 394, -166, -68, -14));
-                    dir = true;
-                }
-            }
         }
         if (Animate || Connected)
             Animator();
 
         //Calculate cam pos vector
-        
+
         Vector3 ImageToCam = ARCamera.transform.localPosition - RobotTrackerGO.transform.localPosition + correctionDelta;
 
         ImageToCam = HologramContainer.transform.InverseTransformPoint(ImageToCam);
 
         //Feedback loop and correcting some values
         var v = ARCamera.transform.position - HologramContainer.transform.TransformPoint(ImageToCam);
-        correctionDelta += v*0.2f;
+        correctionDelta += v * 0.2f;
 
 
         Point camPoint = TypeConversion.i.Vector3ToPoint(ImageToCam);
-        //UnityOutputDelegate($"Transformed Camera: X:{ camPoint.X}| Y:{ camPoint.Y}| Z:{ camPoint.Z}");
 
 
         //Update State
@@ -193,9 +239,9 @@ public class PARRHIRuntime : MonoBehaviour
         q6 += q6 >= q6t + d ? -v : About(q6, q6t, d) ? 0 : v;
 
         //Move qtarget values;
-        if (backToNull)
+        if (BackToNull)
         {
-            backToNull = false;
+            BackToNull = false;
             q1t = 0;
             q2t = 0;
             q3t = 0;
@@ -203,10 +249,10 @@ public class PARRHIRuntime : MonoBehaviour
             q5t = 0;
             q6t = 0;
         }
-        if (random)
+        if (Random)
         {
             System.Random rnd = new System.Random();
-            random = false;
+            Random = false;
             q1t = RDouble(rnd, -2 * Mathf.PI, 2 * Mathf.PI);
             q2t = RDouble(rnd, -0.7, 1.6);
             q3t = RDouble(rnd, -1, 1);
@@ -237,7 +283,6 @@ public class PARRHIRuntime : MonoBehaviour
         q6t = 0;
         ConnectEnabled = false;
         Connected = false;
-        ConnectionProcessStarted = false;
 
         InitializeSystem();
     }
@@ -271,12 +316,16 @@ public class PARRHIRuntime : MonoBehaviour
         {
             bool success = RobotController.ConnectToRobotInSteps(ref attempts);
             if (!success)
+            {
+                AddMsgToDevConsole($"Connection failed. Attempt {attempts}");
                 yield return new WaitForSeconds(0.1f);
+            }
             else
             {
                 Connected = true;
 
                 UnityOutputDelegate("Connected Successfully");
+                AddMsgToDevConsole($"Connected Successfully");
                 yield break;
             }
         }
@@ -354,3 +403,12 @@ public class PARRHIRuntime : MonoBehaviour
 
 
 }
+
+
+/*
+ 
+    To real points for the robot to drive to
+     685, -125, 394, -166, -68, -14
+     685, 397, 394, -166, -68, -14
+     
+     */

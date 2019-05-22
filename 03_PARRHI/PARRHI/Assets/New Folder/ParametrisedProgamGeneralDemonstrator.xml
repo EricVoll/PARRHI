@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<InputData xmlns="PARRHI">
+<PProgram xmlns="PARRHI">
 	<Variables>
 		<Int name="var1">0</Int>
 	</Variables>
@@ -24,13 +24,10 @@
 		<PointFix name="Point14" X="-700" Y="1400" Z = "700"/>
 		
 		
-		<PointFix name="Point15" X="0" Y="740" Z = "500"/>
-		
-		
-		<PointFix name="MoveToStartPoint" X="0" Y="1200" Z = "800"/>
 		<PointCamera name="Camera"/>
 	</Points>
 	<Holograms>
+		<!-- Robot Start -->
 		<Sphere name="Sphere1" point="Point1" radius="90"/>
 		<Sphere name="Sphere2" point="Point2" radius="80"/>
 		<Sphere name="Sphere3" point="Point3" radius="70"/>
@@ -43,13 +40,9 @@
 		<Zylinder name="Zylinder3" point1="Point3" point2="Point4" radius="70"/>
 		<Zylinder name="Zylinder4" point1="Point4" point2="Point5" radius="40"/>
 		<Zylinder name="Zylinder5" point1="Point5" point2="Point6" radius="20"/>
-		
-		<Sphere name="Sphere7" point="Point15" radius="50" renderMode="transparent"/>
-		<Sphere name="Sphere8" point="Camera" radius="50" renderMode="transparent"/>
-		<Sphere name="MoveToStartSphere" point="MoveToStartPoint" radius="100"/>
+		<!-- Robot End -->
 		
 		<!--Uncomment this to demonstrate Zylinder placement-->
-		
 		<Zylinder name="Zylinder6" point1="Point7" point2="Point8" radius="20"/>
 		<Zylinder name="Zylinder7" point1="Point8" point2="Point9" radius="20"/>
 		<Zylinder name="Zylinder8" point1="Point9" point2="Point10" radius="20"/>
@@ -64,9 +57,10 @@
 		<Zylinder name="Zylinder15" point1="Point8" point2="Point12" radius="20"/>
 		<Zylinder name="Zylinder16" point1="Point9" point2="Point13" radius="20"/>
 		<Zylinder name="Zylinder17" point1="Point10" point2="Point14" radius="20"/>
+		<!--Cylinder Placement finished-->
 	</Holograms>
 	<Events>
-		<Trigger>
+		<Triggers>
 		<!--1. Distance Trigger activates the Time trigger and sets the ui Text to "Step 1"-->
 		<!--2. Time Trigger triggers after 5 seconds and resets itself and increments var1-->
 		<!--3. At some point var1 Reaches the VarTrigger's triggerValue, which then triggers. It stops the timer and sets the ui text to "Step 2"-->
@@ -82,7 +76,7 @@
 			
 			<TimeTrigger name="Trigger2" canTrigger='false' timeSinceActivation="5"  action1="Handler2" action2="Handler3"/>
 			<VarTrigger name="Trigger3" canTrigger='true' varName="var1" triggerValue="3" action1="Handler4" action2="Handler5" />
-		</Trigger>
+		</Triggers>
 		<Actions>
 			<!--Demo of Distance trigger-->
 			<ChangeUITextAction name="Handler1" text="Step1:\nThis trigger sets the UI to this text, if the distance trigger triggers"/>
@@ -107,6 +101,4 @@
 			<SetTriggerStateAction name="Handler4" triggerName="Trigger2" canTrigger='false'/>-->
 		</Actions>
 	</Events>
-	<!--Remove this to demonstrate XML Validation-->
-	<UIText name="UniqueText" text="Content"/>
-</InputData>
+</PProgram>
