@@ -109,7 +109,10 @@ namespace PARRHI.HelperClasses
                 {
                     Point point = Container.Points.Find(x => x.id == sphere.point);
                     CheckForNull<Sphere>(sphere.point, point);
-                    holo = new Sphere(sphere.name, point, sphere.radius, sphere.renderMode, sphere.activeSpecified ? sphere.active : true);
+                    bool active = true;
+                    if(sphere.visibility == "hidden")
+                        active = false;
+                    holo = new Sphere(sphere.name, point, sphere.radius, sphere.renderMode,  active);
                 }
                 else if (zyl != null)
                 {
@@ -117,7 +120,10 @@ namespace PARRHI.HelperClasses
                     Point point2 = Container.Points.Find(x => x.id == zyl.point2);
                     CheckForNull<Zylinder>(zyl.point1, point1);
                     CheckForNull<Zylinder>(zyl.point2, point1);
-                    holo = new Zylinder(zyl.name, point1, point2, zyl.radius, zyl.renderMode, zyl.activeSpecified ? zyl.active : true);
+                    bool active = true;
+                    if (zyl.visibility == "hidden")
+                        active = false;
+                    holo = new Zylinder(zyl.name, point1, point2, zyl.radius, zyl.renderMode, active);
                 }
                 else
                 {
@@ -204,9 +210,7 @@ namespace PARRHI.HelperClasses
                 }
                 else if (movAc != null)
                 {
-                    Point point = container.Points.Find(x => x.id == movAc.pointTCP);
-                    CheckForNull<MoveRobotAction>(movAc.pointTCP, point);
-                    t = new MoveRobotAction(movAc.name, point, container.State.Robot.MoveDelta);
+                    t = ConstructAction(container, movAc);
                 }
                 else if (setAc != null)
                 {
@@ -248,8 +252,8 @@ namespace PARRHI.HelperClasses
                     throw new Exception($"The type {item.GetType()} could not be converted into a valid action");
                 }
 
-
-                actions.Add(t);
+                if (t != null)
+                    actions.Add(t);
             }
             return actions;
         }
@@ -268,7 +272,12 @@ namespace PARRHI.HelperClasses
                 Result.AddConversionError(new XMLValidationError($"Id: \"{id}\" not found in list. Type:{typeof(T)}", System.Xml.Schema.XmlSeverityType.Error, null));
         }
 
-
+        /// <summary>
+        /// Parses a string with ids of actions and returns the list of action refernces
+        /// </summary>
+        /// <param name="container"></param>
+        /// <param name="actions"></param>
+        /// <returns></returns>
         private List<TriggerAction> FindAllActions(Container container, string actions)
         {
             string[] triggerActionNames = actions.Split(' ');
@@ -283,5 +292,60 @@ namespace PARRHI.HelperClasses
             return actionList;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        private MoveRobotAction ConstructAction(Container container, PProgramEventsActionsMoveRobotAction item)
+        {
+            string target = item.target;
+
+            string[] targetData = target.Split(' ');
+
+            if (targetData.Length == 6 || targetData.Length == 3)
+            {
+                FanucControllerLibrary.DataTypes.Vector6 vector = new FanucControllerLibrary.DataTypes.Vector6();
+                //Vector6 Mode
+                for (int i = 0; i < targetData.Length; i++)
+                {
+                    if (Double.TryParse(targetData[i], out double nr))
+                    {
+                        vector[i] = nr;
+                    }
+                    else
+                    {
+                        Result.AddConversionError(new XMLValidationError($"{item.name}: Target Data ({targetData[i]}) cannot be parsed into a valid double number.", System.Xml.Schema.XmlSeverityType.Error, null));
+                        return null;
+                    }
+                }
+                if (targetData.Length == 3)
+                {
+                    vector[3] = 0;
+                    vector[4] = 0;
+                    vector[5] = 0;
+                }
+                if (item.mode != 0 && item.mode != 1)
+                {
+                    Result.AddConversionError(new XMLValidationError($"{item.name}: Mode ({item.mode}) is not a valid number. Either 0 or 1.", System.Xml.Schema.XmlSeverityType.Error, null));
+                    return null;
+                }
+
+                return new MoveRobotAction(item.name, container, vector, item.mode);
+            }
+
+            if (targetData.Length == 1)
+            {
+                Point p = container.Points.Find(x => x.id == item.target);
+                CheckForNull<MoveRobotAction>(item.name, p);
+                if (p == null) return null;
+                else return new MoveRobotAction(item.name, container, p);
+            }
+
+
+            Result.AddConversionError(new XMLValidationError($"{item.name}: Target Data ({target}) cannot be parsed into a valid object.", System.Xml.Schema.XmlSeverityType.Error, null));
+            return null;
+        }
     }
 }

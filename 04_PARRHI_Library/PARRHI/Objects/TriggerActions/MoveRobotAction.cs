@@ -1,4 +1,5 @@
 ﻿using FanucControllerLibrary.ControllCommanderClasses;
+using FanucControllerLibrary.DataTypes;
 using PARRHI.Objects.Points;
 using System;
 using System.Collections.Generic;
@@ -10,26 +11,61 @@ namespace PARRHI.Objects.TriggerActions
 {
     public class MoveRobotAction : TriggerAction
     {
-        public MoveRobotAction(string id, Point tcpTargetPoint, Action<int,int,int> MoveDelta) : base(id)
+        /// <summary>
+        /// Target the given point in task space
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="MoveDelta"></param>
+        /// <param name="targetCoordinates"></param>
+        public MoveRobotAction(string id, Container container, Point targetCoordinates) : this(id, container)
         {
-            this.tcp = tcpTargetPoint;
-            this.MoveDelta = MoveDelta;
+            TargetTCPPoint = targetCoordinates;
+            Mode = 0;
         }
-        
+        /// <summary>
+        /// target the given coordinates either in joint or in task space
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="MoveDelta"></param>
+        /// <param name="targetCoordinates"></param>
+        /// <param name="mode">0 = taskSpace, 1 = joint space</param>
+        public MoveRobotAction(string id, Container container, Vector6 targetCoordinates, int mode) : this(id, container)
+        {
+            TargetTCPCoordinates = targetCoordinates;
+            Mode = mode;
+        }
+        public MoveRobotAction(string id, Container container) : base(id)
+        {
+            Container = container;
+        }
 
-        Point tcp { get; set; }
-        readonly Action<int, int, int> MoveDelta;
+        Vector6 TargetTCPCoordinates;
+        Point TargetTCPPoint;
+        int Mode;
+
+
+        private Container Container;
 
         public override void Trigger()
         {
             base.Trigger();
-            MoveDelta((int)tcp.X, (int)tcp.Y, (int)tcp.Z);
+            TriggerAction();
         }
         protected override void Trigger(object param)
         {
             base.Trigger(param);
-            MoveDelta((int)tcp.X, (int)tcp.Y, (int)tcp.Z);
+            TriggerAction();
         }
+
+        private void TriggerAction()
+        {
+            if (TargetTCPPoint != null)
+            {
+                TargetTCPCoordinates = new Vector6(TargetTCPPoint[0], TargetTCPPoint[1], TargetTCPPoint[2], 0, 0, 0);
+            }
+            Container.State.Robot.MoveDelta(TargetTCPCoordinates, Mode);
+        }
+
 
     }
 }

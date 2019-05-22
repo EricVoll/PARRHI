@@ -219,11 +219,7 @@ namespace PARRHI.Objects
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool active;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool activeSpecified;
+        public string visibility;
     }
 
     /// <remarks/>
@@ -253,11 +249,7 @@ namespace PARRHI.Objects
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool active;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool activeSpecified;
+        public string visibility;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -460,7 +452,15 @@ namespace PARRHI.Objects
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string pointTCP;
+        public string target;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public byte mode;
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool modeSpecified;
     }
 
     /// <remarks/>
@@ -524,6 +524,5 @@ namespace PARRHI.Objects
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public bool canTrigger;
     }
-
 
 }

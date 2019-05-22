@@ -201,11 +201,7 @@ public partial class PProgramHologramsSphere {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public bool active;
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool activeSpecified;
+    public string visibility;
 }
 
 /// <remarks/>
@@ -234,11 +230,7 @@ public partial class PProgramHologramsZylinder {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public bool active;
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool activeSpecified;
+    public string visibility;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -432,7 +424,15 @@ public partial class PProgramEventsActionsMoveRobotAction {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public string pointTCP;
+    public string target;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlAttributeAttribute()]
+    public byte mode;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool modeSpecified;
 }
 
 /// <remarks/>

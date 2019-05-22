@@ -13,9 +13,8 @@ namespace PARRHI.Objects.Holograms
         {
             RenderMode = renderMode;
         }
-        public Zylinder(string id, Point point1, Point point2, double radius, bool active = true)
+        public Zylinder(string id, Point point1, Point point2, double radius, bool active = true) : base(id, active)
         {
-            this.id = id;
             Point1 = point1;
             Point2 = point2;
             Radius = radius;

@@ -42,5 +42,29 @@ namespace PARRHI.Objects.Tests
         {
             Assert.IsNotNull(new DataImport().Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\10_XSD\PARS_XSD_Test\PARS_XSD_Test\input1.xml", @"C:\Users\ericv\Documents\TUM\BA\PARRHI\10_XSD\PARS_XSD_Test\PARS_XSD_Test\parsScheme.xsd"));
         }
+
+        [TestMethod()]
+        public void Test3()
+        {
+            t = new Test2(() => { return -1; });
+            var b = t.ac();
+            t.ac = () => { return 1; };
+            var a = t.ac();
+        }
+
+        Test2 t;
+
+        class Test2
+        {
+            public Test2(Func<int> test)
+            {
+                ac = test;
+            }
+            public Func<int> ac;
+            private int action ()
+            {
+                return 0;
+            }
+        }
     }
 }

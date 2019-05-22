@@ -11,8 +11,6 @@ namespace PARRHI.Objects
 {
     public class Robot
     {
-        public static Robot instance { get; set; } = new Robot();
-
         //The location of all joints
         public Point[] Joints { get; set; }
         Vector6 CurrentTarget { get; set; }
@@ -23,6 +21,9 @@ namespace PARRHI.Objects
         public Robot()
         {
             Joints = new Point[6];
+
+            MoveDelta = (vector, mode) => Output.Instance.Error($"Warning: Missing Robot Delegate Action. Robot go to ({vector.ToString()} with mode being {mode})"); 
+            SetHand = (a) => Output.Instance.Error($"Warning: Missing Robot Delegate. Robot set hand to {a}");
         }
 
         /// <summary>
@@ -49,15 +50,14 @@ namespace PARRHI.Objects
 
 
 
+        private Action<Vector6, int> moveDelta;
 
-        public void MoveDelta(int x, int y, int z)
+        public Action<Vector6, int> MoveDelta
         {
-
+            get { return moveDelta; }
+            set { moveDelta = value; Output.Instance.Log("Move Delta Set!"); }
         }
-
-        internal void SetHand(bool state)
-        {
-
-        }
+        
+        public Action<bool> SetHand;
     }
 }
