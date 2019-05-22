@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--This is the full file with all values specified-->
-<InputData xmlns="PARRHI">
+<PProgram xmlns="PARRHI">
 	<Variables>
 		<Int name="var1">0</Int>
 		<Int name="var2">0</Int>
@@ -23,16 +23,16 @@
 		<Zylinder name="Zyl2" point1="Point1" point2="Point2" radius="1" renderMode="transparent" />
 	</Holograms>
 	<Events>
-		<Trigger>
-			<DistanceTrigger name="Trigger4" canTrigger='true' point1="Point1" point2="Point2" distance="12.2" action1="Handler1" 							/>
-			<VarTrigger name="Trigger6" canTrigger='true' varName="var1" triggerValue="2" action1="Handler1" 						 	 />
-			<TimeTrigger name="Trigger1" canTrigger='true' timeSinceActivation="123" action1="Handler1" action2="Handler2" 	/>
-			<TimeTrigger name="Trigger2" canTrigger='true' timeSinceActivation="123" action1="Handler1" 							/>
-			<DistanceTrigger name="Trigger3" canTrigger='true' point1="Point1" point2="Point2" distance="12.2" action1="Handler1" action2="Handler2" 	/>
-			<VarTrigger name="Trigger5" canTrigger='true' varName="var1" triggerValue="2" action1="Handler1" action2="Handler2" 	 />
-		</Trigger>
+		<Triggers>
+			<DistanceTrigger name="Trigger4" canTrigger='true' point1="Point1" point2="Point2" distance="12.2" actions="Handler1 Handler2"						/>
+			<VarTrigger name="Trigger6" canTrigger='true' varName="var1" triggerValue="2" actions="Handler1 Handler2"						 	 />
+			<TimeTrigger name="Trigger1" canTrigger='true' timeSinceActivation="123" actions="Handler1 Handler2"	 	/>
+			<TimeTrigger name="Trigger2" canTrigger='true' timeSinceActivation="123" actions="Handler1 Handler2"								/>
+			<DistanceTrigger name="Trigger3" canTrigger='true' point1="Point1" point2="Point2" distance="12.2" actions="Handler1 Handler2"/>
+			<VarTrigger name="Trigger5" canTrigger='true' varName="var1" triggerValue="2" actions="Handler1 Handler2"	 />
+		</Triggers>
 		<Actions>
-			<SetHologramStateAction name="Handler0" state='true' holograms="Zyl1 Sphere1 Sphere2 Zyl2"/>
+			<SetHologramStateAction name="Handler0" onHolograms="Sphere1 Zyl1" offHolograms="Zyl2"/>
 			<IncrementCounterAction name="Hanlder1" intVar="var1"/>
 			<SetTriggerStateAction name="Handler2" triggerName="Trigger1" canTrigger='true'/>
 			<ChangeUITextAction name="Hanlder3" text="Tutorial step nr. 4"/>
@@ -40,8 +40,8 @@
 			<MoveRobotAction name="Handler5" pointTCP="Point1" />
 			<SetRobotHandStateAction name="Handler6" state="open" />
 			<SetRobotHandStateAction name="Handler7" state="close" />
-			<SetHologramStateAction name="Handler8" state='true' holograms="Zyl1 Sphere1 Sphere2 Zyl2"/>
+			<SetHologramStateAction name="Handler8" onHolograms="Sphere1 Zyl1"/>
+			<SetHologramStateAction name="Handler8" offHolograms="Sphere1 Zyl1"/>
 		</Actions>
 	</Events>
-	<UIText name="UniqueText" text="Content"/>
-</InputData>
+</PProgram>

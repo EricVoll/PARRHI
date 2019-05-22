@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="PARRHI" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="InputData">
+  <xs:element name="PProgram">
     <xs:complexType mixed="true">
       <xs:sequence minOccurs="0">
         <xs:element name="Variables">
@@ -77,7 +77,7 @@
         <xs:element name="Events">
           <xs:complexType mixed="true">
             <xs:sequence minOccurs="0">
-              <xs:element name="Trigger">
+              <xs:element name="Triggers">
                 <xs:complexType>
                   <xs:sequence>
                     <xs:choice maxOccurs="unbounded">
@@ -88,8 +88,7 @@
                           <xs:attribute name="point1" type="xs:string" use="required" />
                           <xs:attribute name="point2" type="xs:string" use="required" />
                           <xs:attribute name="distance" type="xs:decimal" use="required" />
-                          <xs:attribute name="action1" type="xs:string" use="required" />
-                          <xs:attribute name="action2" type="xs:string" use="optional" />
+                          <xs:attribute name="actions" type="xs:string" use="required" />
                         </xs:complexType>
                       </xs:element>
                       <xs:element name="VarTrigger">
@@ -98,8 +97,7 @@
                           <xs:attribute name="canTrigger" type="xs:boolean" use="required" />
                           <xs:attribute name="varName" type="xs:string" use="required" />
                           <xs:attribute name="triggerValue" type="xs:unsignedByte" use="required" />
-                          <xs:attribute name="action1" type="xs:string" use="required" />
-                          <xs:attribute name="action2" type="xs:string" use="optional" />
+                          <xs:attribute name="actions" type="xs:string" use="required" />
                         </xs:complexType>
                       </xs:element>
                       <xs:element maxOccurs="unbounded" name="TimeTrigger">
@@ -107,8 +105,7 @@
                           <xs:attribute name="name" type="xs:string" use="required" />
                           <xs:attribute name="canTrigger" type="xs:boolean" use="required" />
                           <xs:attribute name="timeSinceActivation" type="xs:unsignedByte" use="required" />
-                          <xs:attribute name="action1" type="xs:string" use="required" />
-                          <xs:attribute name="action2" type="xs:string" use="optional" />
+                          <xs:attribute name="actions" type="xs:string" use="required" />
                         </xs:complexType>
                       </xs:element>
                     </xs:choice>
@@ -122,8 +119,8 @@
                       <xs:element name="SetHologramStateAction">
                         <xs:complexType>
                           <xs:attribute name="name" type="xs:string" use="required" />
-                          <xs:attribute name="state" type="xs:boolean" use="required" />
-                          <xs:attribute name="holograms" type="xs:string" use="required" />
+                          <xs:attribute name="onHolograms" type="xs:string" use="optional" />
+                          <xs:attribute name="offHolograms" type="xs:string" use="optional" />
                         </xs:complexType>
                       </xs:element>
                       <xs:element name="IncrementCounterAction">
@@ -162,12 +159,6 @@
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="UIText">
-          <xs:complexType>
-            <xs:attribute name="name" type="xs:string" use="optional" />
-            <xs:attribute name="text" type="xs:string" use="optional" />
           </xs:complexType>
         </xs:element>
       </xs:sequence>

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<InputData xmlns="PARRHI">
+<PProgram xmlns="PARRHI">
 	<Variables>
 	</Variables>
 	<Points>
@@ -9,5 +9,4 @@
 	</Holograms>
 	<Events>
 	</Events>
-	<UIText/>
-</InputData>
+</PProgram>
