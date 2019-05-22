@@ -65,10 +65,12 @@ namespace PARRHI.HelperClasses.XML
 
                 while (books.Read()) { /*Don't do anything*/ }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
+                Result.AddError(new XMLValidationError($"{e.Message} Source:{e.Source}, Data dump:{e.Data}", XmlSeverityType.Error, null));
+
                 Result.DidThrowExceptionWhileValidating = true;
-                Output.Instance.Error(ex.Message);
+                Output.Instance.Error(e.Message);
             }
             finally
             {

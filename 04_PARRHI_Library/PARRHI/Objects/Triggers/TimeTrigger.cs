@@ -10,13 +10,9 @@ namespace PARRHI.Objects.Triggers
 {
     public class TimeTrigger : Trigger
     {
-        public TimeTrigger(string id, bool canTrigger, long triggertime, TriggerAction triggerAction1, TriggerAction triggerAction2) : this(id, canTrigger, triggertime, triggerAction1)
+        public TimeTrigger(string id, bool canTrigger, long triggertime, List<TriggerAction> triggerActions) : this(id, canTrigger, triggertime)
         {
-            TriggerAction2 = triggerAction2;
-        }
-        public TimeTrigger(string id, bool canTrigger, long triggertime, TriggerAction triggerAction1) : this(id, canTrigger, triggertime)
-        {
-            TriggerAction1 = triggerAction1;
+            TriggerActions = triggerActions;
         }
         public TimeTrigger(string id, bool canTrigger, long triggertime) : base(id, canTrigger)
         {

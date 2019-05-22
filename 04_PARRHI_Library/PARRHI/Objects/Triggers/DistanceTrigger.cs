@@ -10,13 +10,9 @@ namespace PARRHI.Objects.Triggers
 {
     public class DistanceTrigger : Trigger
     {
-        public DistanceTrigger(string id, Point point1, Point point2, double distance, bool canTrigger, TriggerAction triggerAction1, TriggerAction triggerAction2) : this(id, point1, point2, distance, canTrigger, triggerAction1)
+        public DistanceTrigger(string id, Point point1, Point point2, double distance, bool canTrigger, List<TriggerAction> triggerActions) : this(id, point1, point2, distance, canTrigger)
         {
-            TriggerAction2 = triggerAction2;
-        }
-        public DistanceTrigger(string id, Point point1, Point point2, double distance, bool canTrigger, TriggerAction triggerAction1) : this(id, point1, point2, distance, canTrigger)
-        {
-            TriggerAction1 = triggerAction1;
+            TriggerActions = triggerActions;
         }
         public DistanceTrigger(string id, Point point1, Point point2, double distance, bool canTrigger) : base(id, canTrigger)
         {

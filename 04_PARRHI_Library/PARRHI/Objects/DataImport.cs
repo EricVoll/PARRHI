@@ -44,6 +44,7 @@ namespace PARRHI.Objects
             HelperClasses.XML.XMLSerializerClass xmlSerializer = new HelperClasses.XML.XMLSerializerClass();
             if (!skipValidation)
             {
+                Output.Instance.Log("Validating XML document");
                 XMLValidationResult = xmlSerializer.ValidateXML(xmlFilePath, XSDFilePath);
             }
             else
@@ -53,8 +54,9 @@ namespace PARRHI.Objects
 
             if (!XMLValidationResult.DidThrowExceptionWhileValidating)
             {
-                var inputData = xmlSerializer.Deserialize<Objects.InputData>(xmlFilePath);
-                var container = new InputDataToContainer(inputData, XMLValidationResult).ConvertToContainer();
+                Output.Instance.Log("Deserialising XML document");
+                var pProgram = xmlSerializer.Deserialize<Objects.PProgram>(xmlFilePath);
+                var container = new PProgramToContainer(pProgram, XMLValidationResult).ConvertToContainer();
                 return container;
             }
 
@@ -70,8 +72,8 @@ namespace PARRHI.Objects
 
             if (!XMLValidationResult.DidThrowExceptionWhileValidating)
             {
-                var inputData = xmlSerializer.DeserializeFromContent<Objects.InputData>(xmlContent);
-                var container = new InputDataToContainer(inputData, XMLValidationResult).ConvertToContainer();
+                var pProgram = xmlSerializer.DeserializeFromContent<Objects.PProgram>(xmlContent);
+                var container = new PProgramToContainer(pProgram, XMLValidationResult).ConvertToContainer();
                 return container;
             }
 

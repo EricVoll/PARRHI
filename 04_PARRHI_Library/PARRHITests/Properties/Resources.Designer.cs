@@ -63,18 +63,18 @@ namespace PARRHITests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
         ///&lt;!--This is the full file with all values specified--&gt;
-        ///&lt;InputData xmlns=&quot;PARRHI&quot;&gt;
+        ///&lt;PProgram xmlns=&quot;PARRHI&quot;&gt;
         ///	&lt;Variables&gt;
         ///		&lt;Int name=&quot;var1&quot;&gt;0&lt;/Int&gt;
+        ///		&lt;Int name=&quot;var2&quot;&gt;0&lt;/Int&gt;
         ///	&lt;/Variables&gt;
         ///	&lt;Points&gt;
-        ///		&lt;PointRobot name=&quot;Point1&quot; J1=&quot;0&quot; J2=&quot;1&quot; Scale=&quot;0&quot; /&gt;
-        ///		&lt;PointRobot name=&quot;Point2&quot; J1=&quot;1&quot; J2=&quot;2&quot; Scale=&quot;0&quot; /&gt;
-        ///		&lt;PointRobot name=&quot;Point3&quot; J1=&quot;2&quot; J2=&quot;3&quot; Scale=&quot;0&quot; /&gt;
-        ///		&lt;PointRobot name=&quot;Point4&quot; J1=&quot;3&quot; J2=&quot;4&quot; Scale=&quot;0&quot; /&gt;
-        ///		&lt;PointRobot name=&quot;Point5&quot; J1=&quot;4&quot; J2=&quot;5&quot; Scale=&quot;0&quot; /&gt;
-        ///		&lt;PointRobot name=&quot;Point6&quot; J1=&quot;5&quot; J2=&quot;5&quot; Scale=&quot;0&quot; /&gt;
-        ///        /// [rest of string was truncated]&quot;;.
+        ///		&lt;PointFix name=&quot;Point7&quot; X=&quot;-1&quot; Y=&quot;-1&quot; Z=&quot;-1.0&quot; /&gt;
+        ///		&lt;PointRobot name=&quot;Point1&quot; J1=&quot;1&quot; J2=&quot;2&quot; Scale=&quot;0&quot; /&gt;
+        ///		&lt;PointRobot name=&quot;Point2&quot; J1=&quot;2&quot; J2=&quot;3&quot; Scale=&quot;0&quot; /&gt;
+        ///		&lt;PointRobot name=&quot;Point3&quot; J1=&quot;3&quot; J2=&quot;4&quot; Scale=&quot;0&quot; /&gt;
+        ///		&lt;PointRobot name=&quot;Point4&quot; J1=&quot;4&quot; J2=&quot;5&quot; Scale=&quot;0&quot; /&gt;
+        ///		&lt;PointRobot name=&quot;Point5&quot; J1=&quot;5 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string inputxml {
             get {

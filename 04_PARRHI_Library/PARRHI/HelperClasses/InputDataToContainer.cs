@@ -14,13 +14,13 @@ using PARRHI.HelperClasses.XML;
 
 namespace PARRHI.HelperClasses
 {
-    public class InputDataToContainer
+    public class PProgramToContainer
     {
-        private readonly InputData InputData;
+        private readonly PProgram PProgram;
         private readonly XMLValidationResult Result;
-        public InputDataToContainer(InputData inputData, XMLValidationResult result)
+        public PProgramToContainer(PProgram pProgram, XMLValidationResult result)
         {
-            InputData = inputData;
+            PProgram = pProgram;
             Result = result;
         }
 
@@ -28,11 +28,11 @@ namespace PARRHI.HelperClasses
         {
             var Container = new Container();
 
-            Container.Variables = ExtractVariables(InputData);
-            Container.Points = ExtractPoints(InputData);
-            Container.Holograms = ExtractHolograms(InputData, Container);
-            Container.TriggerActions = ExtractTriggerActions(InputData, Container);
-            Container.Trigger = ExtractTrigger(InputData, Container);
+            Container.Variables = ExtractVariables(PProgram);
+            Container.Points = ExtractPoints(PProgram);
+            Container.Holograms = ExtractHolograms(PProgram, Container);
+            Container.TriggerActions = ExtractTriggerActions(PProgram, Container);
+            Container.Trigger = ExtractTrigger(PProgram, Container);
 
             return Container;
         }
@@ -40,12 +40,12 @@ namespace PARRHI.HelperClasses
         /// <summary>
         /// Converts all Variables to their specific class
         /// </summary>
-        /// <param name="inputData"></param>
+        /// <param name="PProgram"></param>
         /// <returns></returns>
-        private List<IntVariable> ExtractVariables(InputData inputData)
+        private List<IntVariable> ExtractVariables(PProgram PProgram)
         {
             List<IntVariable> variables = new List<IntVariable>();
-            foreach (var item in inputData.Variables.Int)
+            foreach (var item in PProgram.Variables.Int)
             {
                 IntVariable var = new IntVariable(item.name, item.Value);
                 variables.Add(var);
@@ -54,20 +54,20 @@ namespace PARRHI.HelperClasses
         }
 
         /// <summary>
-        /// Converts all InputDataPoints to IPoint objects of their specific implementation
+        /// Converts all PProgramPoints to IPoint objects of their specific implementation
         /// </summary>
-        /// <param name="inputData"></param>
+        /// <param name="PProgram"></param>
         /// <returns></returns>
-        private List<Point> ExtractPoints(InputData inputData)
+        private List<Point> ExtractPoints(PProgram PProgram)
         {
-            object[] points = inputData.Points.Items;
+            object[] points = PProgram.Points.Items;
             List<Point> importedPoints = new List<Point>();
             foreach (var item in points)
             {
                 Point point;
-                var camPoint = item as InputDataPointsPointCamera;
-                var robPoint = item as InputDataPointsPointRobot;
-                var fixPoint = item as InputDataPointsPointFix;
+                var camPoint = item as PProgramPointsPointCamera;
+                var robPoint = item as PProgramPointsPointRobot;
+                var fixPoint = item as PProgramPointsPointFix;
                 if (camPoint != null)
                 {
                     point = new PointCamera(camPoint.name);
@@ -92,18 +92,18 @@ namespace PARRHI.HelperClasses
         }
 
         /// <summary>
-        /// Extracts the Holorams from the InputData field and initializes them with their respective points
+        /// Extracts the Holorams from the PProgram field and initializes them with their respective points
         /// </summary>
-        /// <param name="inputData"></param>
+        /// <param name="PProgram"></param>
         /// <param name="Container"></param>
         /// <returns></returns>
-        private List<Hologram> ExtractHolograms(InputData inputData, Container Container)
+        private List<Hologram> ExtractHolograms(PProgram PProgram, Container Container)
         {
             List<Hologram> holograms = new List<Hologram>();
-            foreach (var item in inputData.Holograms.Items)
+            foreach (var item in PProgram.Holograms.Items)
             {
-                var sphere = item as InputDataHologramsSphere;
-                var zyl = item as InputDataHologramsZylinder;
+                var sphere = item as PProgramHologramsSphere;
+                var zyl = item as PProgramHologramsZylinder;
                 Hologram holo;
                 if (sphere != null)
                 {
@@ -132,46 +132,41 @@ namespace PARRHI.HelperClasses
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="inputData"></param>
+        /// <param name="PProgram"></param>
         /// <param name="container"></param>
         /// <returns></returns>
-        private List<Trigger> ExtractTrigger(InputData inputData, Container container)
+        private List<Trigger> ExtractTrigger(PProgram PProgram, Container container)
         {
             List<Trigger> triggers = new List<Trigger>();
 
-            foreach (var item in inputData.Events.Trigger.Items.Where(x => x is InputDataEventsTriggerDistanceTrigger).Cast<InputDataEventsTriggerDistanceTrigger>())
+            foreach (var item in PProgram.Events.Triggers.Items.Where(x => x is PProgramEventsTriggersDistanceTrigger).Cast<PProgramEventsTriggersDistanceTrigger>())
             {
                 Point p1 = container.Points.Find(x => x.id == item.point1);
                 Point p2 = container.Points.Find(x => x.id == item.point2);
-                TriggerAction t1 = container.TriggerActions.Find(x => x.id == item.action1);
-                TriggerAction t2 = container.TriggerActions.Find(x => x.id == item.action2);
+
+                List<TriggerAction> actions = FindAllActions(container, item.actions);
+
                 CheckForNull<DistanceTrigger>(item.point1, p1);
                 CheckForNull<DistanceTrigger>(item.point2, p2);
-                CheckForNull<DistanceTrigger>(item.action1, t1);
-                CheckForNull<DistanceTrigger>(item.action2, t2);
-                Trigger t = new DistanceTrigger(item.name, p1, p2, (double)item.distance, item.canTrigger, t1, t2);
+                Trigger t = new DistanceTrigger(item.name, p1, p2, (double)item.distance, item.canTrigger, actions);
                 triggers.Add(t);
             }
 
-            foreach (var item in inputData.Events.Trigger.Items.Where(x => x is InputDataEventsTriggerTimeTrigger).Cast<InputDataEventsTriggerTimeTrigger>())
+            foreach (var item in PProgram.Events.Triggers.Items.Where(x => x is PProgramEventsTriggersTimeTrigger).Cast<PProgramEventsTriggersTimeTrigger>())
             {
-                TriggerAction t1 = container.TriggerActions.Find(x => x.id == item.action1);
-                TriggerAction t2 = container.TriggerActions.Find(x => x.id == item.action2);
-                CheckForNull<TimeTrigger>(item.action1, t1);
-                CheckForNull<TimeTrigger>(item.action2, t2);
-                Trigger t = new TimeTrigger(item.name, item.canTrigger, item.timeSinceActivation, t1, t2);
+                List<TriggerAction> actions = FindAllActions(container, item.actions);
+                Trigger t = new TimeTrigger(item.name, item.canTrigger, item.timeSinceActivation, actions);
                 triggers.Add(t);
             }
 
-            foreach (var item in inputData.Events.Trigger.Items.Where(x => x is InputDataEventsTriggerVarTrigger).Cast<InputDataEventsTriggerVarTrigger>())
+            foreach (var item in PProgram.Events.Triggers.Items.Where(x => x is PProgramEventsTriggersVarTrigger).Cast<PProgramEventsTriggersVarTrigger>())
             {
                 IntVariable var = container.Variables.Find(x => x.id == item.varName);
-                TriggerAction t1 = container.TriggerActions.Find(x => x.id == item.action1);
-                TriggerAction t2 = container.TriggerActions.Find(x => x.id == item.action2);
-                CheckForNull<VarTrigger>(item.action1, t1);
-                CheckForNull<VarTrigger>(item.action2, t2);
+
+                List<TriggerAction> actions = FindAllActions(container, item.actions);
+
                 CheckForNull<VarTrigger>(item.varName, var);
-                Trigger t = new VarTrigger(item.name, var, item.triggerValue, t1, t2);
+                Trigger t = new VarTrigger(item.name, var, item.triggerValue, actions);
                 triggers.Add(t);
             }
 
@@ -179,23 +174,23 @@ namespace PARRHI.HelperClasses
         }
 
         /// <summary>
-        /// Extracts all Actions from the InputData 
+        /// Extracts all Actions from the PProgram 
         /// </summary>
-        /// <param name="inputdata"></param>
+        /// <param name="PProgram"></param>
         /// <param name="container"></param>
         /// <returns></returns>
-        private List<TriggerAction> ExtractTriggerActions(InputData inputdata, Container container)
+        private List<TriggerAction> ExtractTriggerActions(PProgram PProgram, Container container)
         {
             List<TriggerAction> actions = new List<TriggerAction>();
-            foreach (var item in inputdata.Events.Actions.Items)
+            foreach (var item in PProgram.Events.Actions.Items)
             {
                 TriggerAction t = null;
-                var incAc = item as InputDataEventsActionsIncrementCounterAction;
-                var chaAc = item as InputDataEventsActionsChangeUITextAction;
-                var movAc = item as InputDataEventsActionsMoveRobotAction;
-                var setAc = item as InputDataEventsActionsSetRobotHandStateAction;
-                var triAc = item as InputDataEventsActionsSetTriggerStateAction;
-                var holAc = item as InputDataEventsActionsSetHologramStateAction;
+                var incAc = item as PProgramEventsActionsIncrementCounterAction;
+                var chaAc = item as PProgramEventsActionsChangeUITextAction;
+                var movAc = item as PProgramEventsActionsMoveRobotAction;
+                var setAc = item as PProgramEventsActionsSetRobotHandStateAction;
+                var triAc = item as PProgramEventsActionsSetTriggerStateAction;
+                var holAc = item as PProgramEventsActionsSetHologramStateAction;
 
                 if (incAc != null)
                 {
@@ -223,18 +218,30 @@ namespace PARRHI.HelperClasses
                 }
                 else if (holAc != null)
                 {
-                    string[] names = holAc.holograms.Split(' ');
-                    List<Hologram> holograms = new List<Hologram>();
-                    foreach (var name in names)
-                    {
-                        var holo = container.Holograms.FirstOrDefault(x => x.id == name);
-                        CheckForNull<SetHoloStateAction>(holAc.name, holo);
 
-                        if (holo != null)
-                            holograms.Add(holo);
+                    List<Hologram> GetHologram(string names)
+                    {
+                        List<Hologram> holograms = new List<Hologram>();
+                        if (names != null)
+                        {
+                            string[] nameList = names.Split(' ');
+                            foreach (var name in nameList)
+                            {
+                                var holo = container.Holograms.FirstOrDefault(x => x.id == name);
+                                CheckForNull<SetHoloStateAction>(holAc.name, holo);
+
+                                if (holo != null)
+                                    holograms.Add(holo);
+                            }
+                        }
+                        return holograms;
                     }
 
-                    t = new SetHoloStateAction(holAc.name, holograms, holAc.state);
+
+                    List<Hologram> onHolograms = GetHologram(holAc.onHolograms);
+                    List<Hologram> offHolograms = GetHologram(holAc.offHolograms);
+
+                    t = new SetHoloStateAction(holAc.name, onHolograms, offHolograms);
                 }
                 else
                 {
@@ -259,6 +266,21 @@ namespace PARRHI.HelperClasses
                 return;
             if (objForNullCheck == null)
                 Result.AddConversionError(new XMLValidationError($"Id: \"{id}\" not found in list. Type:{typeof(T)}", System.Xml.Schema.XmlSeverityType.Error, null));
+        }
+
+
+        private List<TriggerAction> FindAllActions(Container container, string actions)
+        {
+            string[] triggerActionNames = actions.Split(' ');
+            List<TriggerAction> actionList = new List<TriggerAction>();
+            foreach (var triggerActionName in triggerActionNames)
+            {
+                TriggerAction action = container.TriggerActions.Find(x => x.id == triggerActionName);
+                CheckForNull<DistanceTrigger>(triggerActionName, action);
+                if (action != null)
+                    actionList.Add(action);
+            }
+            return actionList;
         }
 
     }

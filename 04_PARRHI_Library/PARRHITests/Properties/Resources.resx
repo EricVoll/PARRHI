@@ -120,76 +120,49 @@
   <data name="inputxml" xml:space="preserve">
     <value>&lt;?xml version="1.0"?&gt;
 &lt;!--This is the full file with all values specified--&gt;
-&lt;InputData xmlns="PARRHI"&gt;
+&lt;PProgram xmlns="PARRHI"&gt;
 	&lt;Variables&gt;
 		&lt;Int name="var1"&gt;0&lt;/Int&gt;
+		&lt;Int name="var2"&gt;0&lt;/Int&gt;
 	&lt;/Variables&gt;
 	&lt;Points&gt;
-		&lt;PointRobot name="Point1" J1="0" J2="1" Scale="0" /&gt;
-		&lt;PointRobot name="Point2" J1="1" J2="2" Scale="0" /&gt;
-		&lt;PointRobot name="Point3" J1="2" J2="3" Scale="0" /&gt;
-		&lt;PointRobot name="Point4" J1="3" J2="4" Scale="0" /&gt;
-		&lt;PointRobot name="Point5" J1="4" J2="5" Scale="0" /&gt;
-		&lt;PointRobot name="Point6" J1="5" J2="5" Scale="0" /&gt;
-
-		&lt;PointFix name="Point7" X="700" Y="0" Z = "700"/&gt;
-		&lt;PointFix name="Point8" X="700" Y="0" Z = "-700"/&gt;
-		&lt;PointFix name="Point9" X="-700" Y="0" Z = "-700"/&gt;
-		&lt;PointFix name="Point10" X="-700" Y="0" Z = "700"/&gt;
-		
-		&lt;PointFix name="Point11" X="700" Y="1400" Z = "700"/&gt;
-		&lt;PointFix name="Point12" X="700" Y="1400" Z = "-700"/&gt;
-		&lt;PointFix name="Point13" X="-700" Y="1400" Z = "-700"/&gt;
-		&lt;PointFix name="Point14" X="-700" Y="1400" Z = "700"/&gt;
-		&lt;PointFix name="Point15" X="0" Y="740" Z = "500"/&gt;
-		
-		&lt;PointRobot name="Point16" J1="3" J2="4" Scale="0.5" /&gt;
+		&lt;PointFix name="Point7" X="-1" Y="-1" Z="-1.0" /&gt;
+		&lt;PointRobot name="Point1" J1="1" J2="2" Scale="0" /&gt;
+		&lt;PointRobot name="Point2" J1="2" J2="3" Scale="0" /&gt;
+		&lt;PointRobot name="Point3" J1="3" J2="4" Scale="0" /&gt;
+		&lt;PointRobot name="Point4" J1="4" J2="5" Scale="0" /&gt;
+		&lt;PointRobot name="Point5" J1="5" J2="6" Scale="0" /&gt;
+		&lt;PointRobot name="Point6" J1="6" J2="6" Scale="0.1" /&gt;
+		&lt;PointFix name="Point7" X="1.0" Y="1.0" Z="1.0" /&gt;
+		&lt;PointCamera name="Point8"/&gt;
 	&lt;/Points&gt;
 	&lt;Holograms&gt;
-		&lt;Sphere name="Sphere1" point="Point1" radius="90"  renderMode="transparent"/&gt;
-		&lt;Sphere name="Sphere2" point="Point2" radius="80"  renderMode="transparent"/&gt;
-		&lt;Sphere name="Sphere3" point="Point3" radius="70"  renderMode="transparent"/&gt;
-		&lt;Sphere name="Sphere4" point="Point4" radius="40"  renderMode="transparent"/&gt;
-		&lt;Sphere name="Sphere5" point="Point5" radius="20"  renderMode="transparent"/&gt;
-		&lt;Sphere name="Sphere6" point="Point6" radius="20"  renderMode="transparent"/&gt;
-		
-		&lt;Zylinder name="Zylinder1" point1="Point1" point2="Point2" radius="90" renderMode="transparent"/&gt;
-		&lt;Zylinder name="Zylinder2" point1="Point2" point2="Point3" radius="70" renderMode="transparent"/&gt;
-		&lt;Zylinder name="Zylinder3" point1="Point3" point2="Point4" radius="70" renderMode="transparent"/&gt;
-		&lt;Zylinder name="Zylinder4" point1="Point4" point2="Point5" radius="40" renderMode="transparent"/&gt;
-		&lt;Zylinder name="Zylinder5" point1="Point5" point2="Point6" radius="20" renderMode="transparent"/&gt;
-		
-		&lt;Sphere name="Sphere7" point="Point16" radius="100"/&gt;
-		
-		&lt;Zylinder name="Zylinder6" point1="Point7" point2="Point8" radius="20"/&gt;
-		&lt;Zylinder name="Zylinder7" point1="Point8" point2="Point9" radius="20"/&gt;
-		&lt;Zylinder name="Zylinder8" point1="Point9" point2="Point10" radius="20"/&gt;
-		&lt;Zylinder name="Zylinder9" point1="Point10" point2="Point7" radius="20"/&gt;
-		
-		&lt;Zylinder name="Zylinder10" point1="Point11" point2="Point12" radius="20"/&gt;
-		&lt;Zylinder name="Zylinder11" point1="Point12" point2="Point13" radius="20"/&gt;
-		&lt;Zylinder name="Zylinder12" point1="Point13" point2="Point14" radius="20"/&gt;
-		&lt;Zylinder name="Zylinder13" point1="Point14" point2="Point11" radius="20"/&gt;
-		
-		&lt;Zylinder name="Zylinder14" point1="Point7" point2="Point11" radius="20"/&gt;
-		&lt;Zylinder name="Zylinder15" point1="Point8" point2="Point12" radius="20"/&gt;
-		&lt;Zylinder name="Zylinder16" point1="Point9" point2="Point13" radius="20"/&gt;
-		&lt;Zylinder name="Zylinder17" point1="Point10" point2="Point14" radius="20"/&gt;
+		&lt;Zylinder name="Zyl1" point1="Point1" point2="Point2" radius="1" active='false'/&gt;
+		&lt;Sphere name="Sphere1" point="Point1" radius="1" renderMode="transparent" active='true'/&gt;
+		&lt;Sphere name="Sphere2" point="Point3" radius="1" /&gt;
+		&lt;Zylinder name="Zyl2" point1="Point1" point2="Point2" radius="1" renderMode="transparent" /&gt;
 	&lt;/Holograms&gt;
 	&lt;Events&gt;
-		&lt;Trigger&gt;
-			&lt;DistanceTrigger name="Trigger1" canTrigger='true' point1="Point15" point2="Point6" action1="Handler2" action2="Handler2" distance="50" /&gt;
-			&lt;TimeTrigger name="Trigger2" canTrigger='true' timeSinceActivation="5"  action1="Handler1" action2="Handler3"/&gt;
-			&lt;VarTrigger name="Trigger4" canTrigger='true' varName="var1" triggerValue="2" action1="Handler2" action2="Handler4" /&gt;
-		&lt;/Trigger&gt;
+		&lt;Triggers&gt;
+			&lt;DistanceTrigger name="Trigger4" canTrigger='true' point1="Point1" point2="Point2" distance="12.2" action1="Handler1" 							/&gt;
+			&lt;VarTrigger name="Trigger6" canTrigger='true' varName="var1" triggerValue="2" action1="Handler1" 						 	 /&gt;
+			&lt;TimeTrigger name="Trigger1" canTrigger='true' timeSinceActivation="123" action1="Handler1" action2="Handler2" 	/&gt;
+			&lt;TimeTrigger name="Trigger2" canTrigger='true' timeSinceActivation="123" action1="Handler1" 							/&gt;
+			&lt;DistanceTrigger name="Trigger3" canTrigger='true' point1="Point1" point2="Point2" distance="12.2" action1="Handler1" action2="Handler2" 	/&gt;
+			&lt;VarTrigger name="Trigger5" canTrigger='true' varName="var1" triggerValue="2" action1="Handler1" action2="Handler2" 	 /&gt;
+		&lt;/Triggers&gt;
 		&lt;Actions&gt;
-			&lt;IncrementCounterAction name="Handler1" intVar="var1"/&gt;
-			&lt;ChangeUITextAction name="Handler2" text="This trigger sets the UI to this text, if the var trigger triggers"/&gt;
-			&lt;SetTriggerStateAction name="Handler3" triggerName="Trigger2" canTrigger='true'/&gt;
-			&lt;SetTriggerStateAction name="Handler4" triggerName="Trigger2" canTrigger='false'/&gt;
+			&lt;SetHologramStateAction name="Handler0" state='true' holograms="Zyl1 Sphere1 Sphere2 Zyl2"/&gt;
+			&lt;IncrementCounterAction name="Hanlder1" intVar="var1"/&gt;
+			&lt;SetTriggerStateAction name="Handler2" triggerName="Trigger1" canTrigger='true'/&gt;
+			&lt;ChangeUITextAction name="Hanlder3" text="Tutorial step nr. 4"/&gt;
+			&lt;SetTriggerStateAction name="Handler4" triggerName="Trigger1" canTrigger='true'/&gt;
+			&lt;MoveRobotAction name="Handler5" pointTCP="Point1" /&gt;
+			&lt;SetRobotHandStateAction name="Handler6" state="open" /&gt;
+			&lt;SetRobotHandStateAction name="Handler7" state="close" /&gt;
+			&lt;SetHologramStateAction name="Handler8" state='true' holograms="Zyl1 Sphere1 Sphere2 Zyl2"/&gt;
 		&lt;/Actions&gt;
 	&lt;/Events&gt;
-	&lt;UIText name="UniqueText" text="Content"/&gt;
-&lt;/InputData&gt;</value>
+&lt;/PProgram&gt;</value>
   </data>
 </root>

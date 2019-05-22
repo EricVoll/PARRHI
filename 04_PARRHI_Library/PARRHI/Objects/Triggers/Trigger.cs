@@ -26,8 +26,8 @@ namespace PARRHI.Objects.Triggers
         /// </summary>
         /// <param name="value"></param>
         public void SetCanTrigger(bool value) { CanTrigger = value; CanTriggerSet?.Invoke(); Output.Instance.Log($"Changed CanTrigger to  {value}, id:{id}"); }
-        public TriggerActions.TriggerAction TriggerAction1 { get; set; }
-        public TriggerActions.TriggerAction TriggerAction2 { get; set; }
+
+        public List<TriggerActions.TriggerAction> TriggerActions { get; set; }
 
         /// <summary>
         /// Event to be overriden by children classes to notify that CanTrigger was set
@@ -65,8 +65,10 @@ namespace PARRHI.Objects.Triggers
         void DefaultTriggerAction()
         {
             CanTrigger = false;
-            TriggerAction1?.Trigger();
-            TriggerAction2?.Trigger();
+            foreach (var trigger in TriggerActions)
+            {
+                trigger.Trigger();
+            }
         }
     }
 }

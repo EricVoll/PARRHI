@@ -11,31 +11,37 @@ namespace PARRHI.Objects.TriggerActions
     {
         readonly Container containerReference;
 
-        public SetHoloStateAction(string id, List<Hologram> holograms, bool stateToSet ) : base(id)
+        public SetHoloStateAction(string id, List<Hologram> onHolograms, List<Hologram> offHolograms) : base(id)
         {
-            Holograms = holograms;
-            StateToSet = stateToSet;
+            this.onHolograms = onHolograms;
+            this.offHolograms = offHolograms;
         }
 
-
-        readonly bool StateToSet;
-        readonly List<Hologram> Holograms;
+        
+        readonly List<Hologram> onHolograms;
+        readonly List<Hologram> offHolograms;
 
 
         public override void Trigger()
         {
             base.Trigger();
-            foreach (var hologram in Holograms)
-            {
-                hologram.Active = StateToSet;
-            }
+            Action();
         }
         protected override void Trigger(object param)
         {
             base.Trigger(param);
-            foreach (var hologram in Holograms)
+            Action();
+        }
+
+        private void Action()
+        {
+            foreach (var hologram in onHolograms)
             {
-                hologram.Active = StateToSet;
+                hologram.Active = true;
+            }
+            foreach (var hologram in offHolograms)
+            {
+                hologram.Active = false;
             }
         }
     }

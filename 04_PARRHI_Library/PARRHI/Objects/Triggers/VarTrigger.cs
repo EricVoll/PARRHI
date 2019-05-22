@@ -10,14 +10,10 @@ namespace PARRHI.Objects.Triggers
 {
     public class VarTrigger : Trigger
     {
-        public VarTrigger(string id, IntVariable variable, int triggerValue, TriggerAction triggerAction1, TriggerAction triggerAction2) : this(id, variable, triggerValue, triggerAction1)
-        {
-            TriggerAction2 = triggerAction2;
-        }
 
-        public VarTrigger(string id, IntVariable variable, int triggerValue, TriggerAction triggerAction1) : this(id, variable, triggerValue)
+        public VarTrigger(string id, IntVariable variable, int triggerValue, List<TriggerAction> triggerActions) : this(id, variable, triggerValue)
         {
-            TriggerAction1 = triggerAction1;
+            TriggerActions = triggerActions;
         }
 
         public VarTrigger(string id, IntVariable variable, int triggerValue) : base(id)
