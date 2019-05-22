@@ -173,6 +173,8 @@ public class PARRHIRuntime : MonoBehaviour
         {
             //Setup Container Delegates
             Container.State.World.SetUITextDelegate = UICanvas.SetUIText;
+            Container.State.Robot.MoveDelta = MoveDelta;
+            Container.State.Robot.SetHand = SetHand;
 
             //Instantiate all holograms
             AddHolograms(Container);
@@ -401,6 +403,38 @@ public class PARRHIRuntime : MonoBehaviour
 
     #endregion
 
+    #region Robot Controller
+    private void MoveDelta(Vector6 targetCoordinates, int mode)
+    {
+        if (Connected)
+        {
+            RobotController.Commander.MoveAbsolute(targetCoordinates);
+        }
+        else
+        {
+            if (mode != 1)
+            {
+                AddMsgToDevConsole("Cannot execute tcp move absolute in simulation.");
+            }
+            else
+            {
+                Animate = true;
+                q1t = targetCoordinates[0];
+                q2t = targetCoordinates[1];
+                q3t = targetCoordinates[2];
+                q4t = targetCoordinates[3];
+                q5t = targetCoordinates[4];
+                q6t = targetCoordinates[5];
+            }
+        }
+    }
+
+    private void SetHand(bool state)
+    {
+
+    }
+
+    #endregion
 
 }
 
