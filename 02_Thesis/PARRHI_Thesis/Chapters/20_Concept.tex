@@ -5,15 +5,16 @@ This chapter will explain what requirements were defined for the to be built sys
 \section{Goal, Requirements and Use Cases}
 As described in section \ref{Section:PARRHIApproach} this thesis presents a possible approach to solve the previously described problems (see section \ref{Section:ProblemDescription}). It is the main target of this bachelor's thesis to remove the necessity of high software engineering skills to develop reasonably complex Augmented Reality Robot Human Interface applications, maintaining the quality of the outcome and even increasing the degree of resuability. This might result in lower development costs, lower struggle to gather software engineering talent and even in a shorter time to market.
 
-To succeed in this goal, a specific set of requirements has to be defined and documented in a formal way. To gather these requirements the V-Model developed by the Federal Republic of Germany was used~\cite{vmodell}.
+To succeed in achieving this goal, a specific set of requirements has to be defined and documented in a formal way. To gather these requirements the V-Model developed by the Federal Republic of Germany was used~\cite{vmodell}. 
 
 \subsection{User Requirements}
-Before defining the User Requirements the system's end user has to be defined. The characteristics of the actual end-user of \textit{PARRHI} might be someone who:
+Before defining the User Requirements the system's end user has to be defined first. The characteristics of the actual end-user of \textit{PARRHI} might be someone who:
 \begin{itemize}
 	\setlength\itemsep{-1em}
 	\item Knows the basics of text editing software,
-	\item has no qualifications in software engineering,
-	\item wants to develop one or multiple AR applications for professionals that collaborate with industrial robots in a shared perimeter.
+	\item has no to little skills in software engineering,
+	\item is a knowledgable employee in bigger factories
+	\item has the goal to develop AR applications for easier collaboration with industrial robots.
 \end{itemize}
 It is to mention, that the end user will later be called "Developer", since this person develops AR-applications with the \textit{PARRHI} system. Having an idea of the end-user, the user-requirements can be defined. The user wants to:
 \begin{itemize}
@@ -22,37 +23,38 @@ It is to mention, that the end user will later be called "Developer", since this
 	\item Have the tools necessary to create medium complex applications for use cases such as tutorials, maintenance instructions or other teaching purposes
 	\item Build upon other people's work or projects
 	\item Launch the AR-application on a suitable device
-	\item Possibly use the same system on different types and brands of robots
+	\item Possibly use the same development framework on different types and brands of robots
 \end{itemize}
 
 \subsection{System Requirements}\label{Section:SystemRequirements}
-Deriving from the previous chapter the system should:
+Deriving from the user requirements, one can define what the system should be capable of doing:
 \begin{enumerate}
 	\setlength\itemsep{-1em}
-	\item have user input in a simple and intuitive format to allow for non-software engineers.
+	\item allow programming in a simple and intuitive format.
 	\item have readable and intuitive feedback on every user input.
-	\item achieve reusablity by having an input in non-binary text format that allows copy and paste reproduction.
+	\item have a programming input in a non-binary text format that allows copy and paste reproduction.
 	\item support building for hand held mobile devices and head mounted Augmented Reality glasses.
-	\item allow bidirectional communication with the real and virtual world in different formats
+	\item allow bidirectional communication with the real (robot...) and virtual world
 	\item allow documentation of the application's workflow
-	\item be as platform independent as possible
 \end{enumerate}
 
+These basic requirements should be a guideline for further conceptualisation and therefore for the implementation. The next section will visualise one possible use case of the PARRHI System and why it might be interesting to utilise it here.
+
 \subsection{Possible Use-Case: Factory Maintenance}\label{Section:UseCaseDefinition}
-This section depicts a possible use case example for the PARRHI system, emphasising how and why it could be used. To first establish a context, one could imagine a huge auto mobile factory with hundreds of industrial robots assembling certain parts of a car. A factory like this, might want to repeatedly check on their robotic infrastructure to recognise problems and thus avoid any future downtime. The difficulties here are, that one generally does not want a robot to not be in operation due to the high opportunity costs of it, but on the other hand non-collaborative robots are dangerous and can inflict damage on humans and other materialistic property, which means that the robot should be switched off or at least in a safety mode while humans are around. In conclusion, the operator should be quick and precise in their task without letting down their security safe guard.
+This section depicts a possible use case example for the PARRHI system, emphasising how and why it could be used. To first establish a context, one could imagine a huge auto mobile factory with hundreds of industrial robots assembling certain parts of a car. A factory like this, might want to repeatedly check on their robotic infrastructure to recognise problems and thus avoid any future downtime. The difficulties here are, that one generally does not want a robot to not be in operation, due to the high opportunity costs of it, but on the other hand non-collaborative robots are dangerous and can inflict damage on humans and other materialistic property, which means that the robot should be switched off or at least in a safety mode while humans are around. In conclusion, the operator should be quick and precise in their task without letting down their security safe guard.
 
-Despite being expensive, finding employees that have the necessary skills is not an easy task. Hence it would be interesting to teach new personnel how to succeed in these very specific cases. An Augmented Reality application might be the right approach for cases like these. For every specific maintenance task an employee knowledgable enough could develop AR applications, which lead a small army of less-skilled workers through their tasks step by step without ever compromising their safety.
+Despite being expensive, finding employees that have the necessary skills is not an easy task. Hence it would be interesting to quickly teach new personnel how to succeed in these very specific cases. An Augmented Reality application might be the right approach for cases like these. For every specific maintenance task an employee knowledgable enough could develop AR applications, which lead a group of less-skilled workers through their tasks step by step without ever compromising their safety.
 
-Developing such a high number of AR-applications is not really plausible with current frameworks. Despite the knowledgable employee probably not having enough programming skill, it simply might be too expensive, slow and too hard to adapt to changes. A system like PARRHI would allow the skilled employee to write these applications themself without the need of software engineers. Since many tasks might be similar to one another, the employee could re-use most of the applications program over and over again - further increasing development speed. PARRHI applications will be able to involve the Real World's data in their workflow, which allows the application to know where the robot currently is located and command the maintenance worker to move away. Having the possibility to also influence the Real World, the application could hinder the robot from moving, while the employee is in a certain danger area. All that, while showing instruction steps in Augmented Reality to easily understand and complete the task quickly.
+Developing such a high number of AR-applications is not really plausible with current frameworks. Despite the knowledgable employee probably not having enough programming skills, it simply might be too expensive, slow and too hard to adapt to changes. A system like PARRHI would allow the skilled employee to write these applications themself without the need of software engineers. Since many tasks might be similar to one another, the employee could re-use most of the applications program again. 
 
-The newly centrally developed applications could then be distributed to numerous other personnel, who, in theory, 
+PARRHI applications will be able to involve the Real World's data in their workflow, which allows the application to know where the robot currently is located and command the maintenance worker to move away. Having the possibility to also influence the Real World, the application could hinder the robot from moving, while the employee is in a certain danger area. All that, while showing instructions in AR to easily understand and complete the task.
 
-In essence, using systems like PARRHI might reduce the development costs of AR-applications substantially, which could open a wide set of use cases, that were untouched before due to the high costs. This might allow for a much better economically usage and a much wider set of real world applications for Augmented Reality apps. 
+The newly centrally developed applications could then be distributed to numerous other personnel, who can then fulfil their tasks with less training in a shorter time. In essence, using systems like PARRHI might reduce the development costs of AR-applications substantially, which could open a wide set of use cases, that were untouched before due to the high costs. This might allow for a much better economically usage and a much wider set of real world applications for Augmented Reality apps. 
 
 \clearpage
 \section{PARRHI Concept}
 
-The following chapter will now explain the concept of the PARRHI system and show one possible approach to reach the previously mentioned requirements.
+The following chapter will now explain the concept of the PARRHI system. I will first start with a general overview of the concept, before shortly explaining each component. After that, the information flow in the system will be clarified.
 
 \begin{figure}[h]
 	\centering
@@ -66,14 +68,14 @@ Fig. \ref{Fig:PARRHIConcept} depicts PARRHI's concept, which consists of three m
 \begin{enumerate}
 	\addtocounter{enumi}{-1}
 	\setlength\itemsep{-1em}
-	\item Input Module: The Input Module (0) is responsible for collecting data needed for the PARRHI system from the real world. In this specific case, it  receives the robot's (6) joint angles and the user's (7) position.
+	\item Input Module: The Input Module (0) is responsible for collecting data needed from the real world. In this specific case, it  receives the robot's (6) joint angles and the user's (7) position.
 	\item Real World Model: In order to utilize data from the Input Module (0) it has to be processed. The Real World Model (1) has a deeper understanding about the real world and helps to extract useful information from the data inflow. In this specific case, its outputs are the robot's (6) joint positions and the user's (7) location represented as parameters that are available for the Parametrised Program (2).
-	\item Parametrised Program: This is a document that defines the AR application's behaviour and workflow. Its syntax is parametrised, meaning, that it makes use of placeholders (parameters) whose actual value is managed by PARRHI itself at runtime. There are two types of parameters. First, there are the ones that are provided by the Real World Model (1) (for example the discussed robot's (6) joint positions and the user's (7) location) and secondly any object defined in the Parametrised Program itself (2) can act as a parameter for other objects in the program. These objects can be 3D AR-Hologram definitions, logical instructions or a variety of events and actions. For a more thorough explanation of the Parametrised Program see section \ref{Chap:ParametrisedProgram}.
-	\item Core Routine: The Core Routine (3) is an interpreter for the Parametrised Program (2), and acts on its instructions. It generates the output of the application, which can either be commands to the robot (6) and thus real world, or instructions for the AR-World (5).
+	\item Parametrised Program: This is a document that defines the AR application's behaviour and workflow. Its syntax is parametrised, meaning, that it makes use of placeholders (parameters) whose actual value is managed by PARRHI itself at runtime. There are two types of parameters. First, there are the ones that are provided by the Real World Model (1) (for example the discussed robot's (6) joint positions) and secondly any object defined in the Parametrised Program itself (2) can act as a parameter for other objects in the program. These objects can be 3D AR-Hologram definitions, logical instructions or a variety of events and actions. For a more thorough explanation of the Parametrised Program see section \ref{Chap:ParametrisedProgram}.
+	\item Core Routine: The Core Routine (3) is an interpreter for the Parametrised Program (2), and acts on its instructions. It generates the output of the application, which can either be commands to the robot (6) and thus real world, or instructions for the AR-World~(5).
 	\item Output Module: This component manages the outgoing communication with PARRHI's environment. 
-	\item AR-World: The Augmented Reality World is the space, where a part of PARRHI's output is displayed. It can display holograms like spheres and cylinders, but also written text for instructions. The AR-World (5) augments the Real World and is thereby seen by the User (7) through an AR Device.
+	\item AR-World: The Augmented Reality World is the space, where the AR part of PARRHI's output is displayed. It can create holograms like spheres and cylinders, but also written text for instructions. The AR-World (5) augments the Real World and is thereby seen by the User (7) through an AR Device.
 	\item Robot: It is a Real World object that can be controlled by the User (7) themselves, or by the PARRHI system.
-	\item User: This is the person that would use the finished application to fulfil their task, which could for example be to do some work following instructions, or to simply learn different aspects about the robot/working environment.
+	\item User: This is the person that would use the finished application to fulfil their task, which could for example be to do some work following instructions.
 	\item Developer: This person develops the application's workflow and behaviour. Their output is the Parametrised Program (2) as a text-based document, which is validated before being fed into the PARRHI system.
 \end{enumerate}
 
@@ -81,7 +83,9 @@ It should now be clearer what each component is responsible for. After having la
 
 After having defined what the AR-HR-Interface application should achieve, the Developer (8) crafts the Parametrised Program (2). At this point, the Developer pours his knowledge and expertise into the system, so that other people like the User (7) can profit from it. The text-based hierarchically built document will be validated first, before it is granted access into the PARRHI system. If the validation fails, the Developer (8) receives error messages accordingly an can reiterate over their document until it validates successfully and behaves as the Developer (8) wants it to.
 
-The runtime loop starts with the Input Module (0). It not only collects the robot's (6) joint angles, location and gripper-state but also the User's (7) position. This input data is then fed into the Real World Model (1), which uses its Real World understanding to extract/calculate more useful information. In this specific case, it applies forward kinematics onto the robot's (6) joint angles to calculate their 3D position and transforms the User's (7) location coordinates into PARRHI's internal coordinate system. After transforming the input data into a usable format, the Parametrised Program (2), which is written using placeholders (parameters) comes into play. The latter are now filled with information by the PARRHI system. For example, the Parametrised Program (2) could use the robot's tool centre point (TCP) for a definition of some AR-holograms, without knowing where exactly the TCP is during development. At runtime, PARRHI inserts this information it received from the Real World Model (1) into the parameters. 
+The runtime loop starts with the Input Module (0). It not only collects the robot's (6) joint angles, location and gripper-state but also the User's (7) position. This input data is then fed into the Real World Model (1), which uses its Real World understanding to extract/calculate more useful information. In this specific case, it applies forward kinematics onto the robot's (6) joint angles to calculate their 3D position and transforms the User's (7) location coordinates into PARRHI's internal coordinate system. 
+
+After transforming the input data into a usable format, the Parametrised Program (2), which is written using placeholders (parameters), comes into play. The latter are now filled with information by the PARRHI system. For example, the Parametrised Program (2) could use the robot's tool centre point (TCP) for a definition of some AR-holograms, without knowing where exactly the TCP is during development. At runtime, PARRHI inserts this information it received from the Real World Model (1) into the parameters. 
 
 The Core Routine (3) then interprets the now-filled-in Program (2). It first updates its internal state with the new parameters, before updating all AR-Holograms. At last it evaluates all events, and triggers their actions if needed. These actions might be commands for the AR-World (5) (for example to show or hide holograms, or to change UI text) or commands for the Real World Robot (6) (e.g. to move or stop the robot). These commands are passed into the Output Module (4), which is responsible for executing them. It has the required tools to communicate with the Robot (6) and with the AR - World (5). 
 
@@ -93,21 +97,23 @@ The preceding paragraphs should give a relative detailed overview about the conc
 
 
 \subsection{Preparation of Parameters}
-One main strength of the \textit{PARRHI} concept is its disclosure of its knowledge of the outside world to its inner components via parameters. Two steps are necessary to do that. First, an Input Module (0) has to automatically retrieve real world information. Since the latter is hard to comprehend for computer programs and might not be usable for the Developer's purpose, some model knowledge (1) should be implemented to process the input data in some way. Generally, models are a more abstract version of the object it is supposed to describe. Next to being easier to understand, one benefit is, that models can often be explained in a mathematical way, which is of course perfect for computer programs. 
+One main strength of the \textit{PARRHI} concept is its disclosure of its knowledge of the outside world to its inner components via parameters. Two steps are necessary to do that. First, an Input Module (0) has to automatically retrieve real world information. Since the latter is hard to comprehend for computer programs and might not be usable for the Developer's purpose, some model knowledge (1) should be implemented to process the input data in some way. Generally, models are a more abstract version of the object it is supposed to describe. Besides being easier to understand, models can often be explained in a mathematical way, which is of course perfect for computer programs. 
 
 The complexity of collecting Real World data strongly depends on the use case. I decided to limit my scope to the collection of three information pieces, since it is not the main focus of this thesis. These three pieces are the user's position, the robot's joint angles and it's gripper state. 
 
-Gathering the user's position relative to the robot is the first step. For AR applications, it is utterly important for the AR device to know its six dimensional orientation (position and rotation). Otherwise superimposed holograms would not make any sense to the viewer, since they appear misplaced. As soon as misplacements of visual augmentations happen, they are more a distraction than an assistance. To get this relative position, the robot's position has be received first. This could be done via image tracking. To synchronise all coordinate systems, the centre of origin for \textit{PARRHI} applications is always the robot's base. From this vector (user to robot) PARRHI calculate the user's location in the robot's coordinate frame with its Model of the Real World.
+Gathering the user's position relative to the robot is the first step. For AR applications, it is utterly important for the AR device to know its six dimensional orientation (position and rotation). Otherwise superimposed holograms would not make any sense to the viewer, since they appear misplaced. As soon as misplacements of visual augmentations happen, they are more a distraction than an assistance. To get this relative position, the robot's position has to be received first. This could be done via image tracking. To synchronise all coordinate systems, the centre of origin for \textit{PARRHI} applications is always the robot's base. From this vector (user to robot) PARRHI calculates the user's location in the robot's coordinate frame with its Model of the Real World.
 
-Then of course the robot's joint positions are needed for the application program to offer the possibility to fully integrate the robot in the application's workflow. Since most robots do not offer their individual joint positions in 3D vectors via some interface but only their joint angles, a corresponding robot model is needed to calculate each joint's position from their joint angles. This is called forward kinematics, an old problem in robotics with known mathematical tools and ways to solve it. In principle, one can calculate a robot's tool point via every joint angle and some knowledge about the robot's configuration. The latter is specified by the types of joints (degrees of freedom (DOF)) and the distance between consecutive joints. A mathematical model then outputs each joint's three dimensional location, which is offered to the Application Program (2) via parameters. To get an example of how the joint's position might be used in a parametrised way see section~\ref{Section:Points}.
+Then of course the robot's joint positions are needed for the application program to offer the possibility to fully integrate the robot in the application's workflow. Since most robots do not offer their individual joint positions in 3D vectors via some interface, but only their joint angles, a corresponding robot model is needed to calculate each joint's position from their joint angles. This is called forward kinematics, an old problem in robotics with known mathematical tools and ways to solve it (at least in the case of basic industrial robots). In principle, one can calculate a robot's tool point via every joint angle and some knowledge about the robot's configuration. The latter is specified by the types of joints (degrees of freedom (DOF)) and the distance between consecutive joints. A mathematical model then outputs each joint's three dimensional location, which is offered to the Application Program (2) via parameters. To get an example of how the joint's position might be used in a parametrised way see section~\ref{Section:Points}.
 
 \subsection{Parametrised Program}
 \label{Section:ParametrisedProgram}
-The Parametrised Program is the document, which the Developer ((8) in Fig. \ref{Fig:PARRHIConcept}) of the \textit{PARRHI} system crafts. It contains parametrised, hierarchically structured data, that defines the behaviour, feel and look of the final AR-HR-application. All instructions and definitions can make use of the previously explained parameters offered by the Real World Model. Since this is the actual document that a developer writes, its syntax and structure should be as simple as possible to fulfil the requirements from section~\ref{Section:SystemRequirements} without limiting the developer's creativity. To achieve this, a rather natural way of describing the wanted behaviour was chosen. 
+The Parametrised Program is the document, which the Developer ((8) in Fig. \ref{Fig:PARRHIConcept}) of the \textit{PARRHI} system crafts. It contains parametrised, hierarchically structured data, that defines the behaviour, feel and look of the final AR-HR-application. 
 
-The following chapters explain the set of tools that are available to the developer, how they work and interconnect. Table~\ref{Table:InputDataStructure} displays the top level structure and its main parts. Variables, Points and Holograms define assets that Events can work with. Each section will describe what exactly is parametrised in their definition and how they can be used as parameters to define other program parts.
+%All instructions and definitions can make use of the previously explained parameters offered by the Real World Model. Since this is the actual document that a developer writes, its syntax and structure should be as simple as possible to fulfil the requirements from section~\ref{Section:SystemRequirements} without limiting the developer's creativity. To achieve this, a rather natural way of describing the wanted behaviour was chosen. 
 
-There are some things that all objects in the Parametrised Program have in common. Every defined object has a required \textit{name} field, which is used to reference it for other object's definitions as parameters. These names have to be unique.
+The Parametrised Program contains instructions and definitions which from now on will all be called to "objects". All these objects have a certain set of parameters that are needed to fully define their function, visual appearance or behaviour. These parameters can either be previously defined objects, data from the Real World Model or constant values. By using other objects as parameters, one can create an interconnected program with links to other components, where instructions might be able to manipulate other objects in the program at runtime. To reference these other objects, every single object has to have a unique name.
+
+The following chapters explain the set of tools that are available to the developer, how they work and interconnect. Table~\ref{Table:InputDataStructure} displays the different categories of objects. Each section will describe what exactly is parametrised in their definition and how they can be used as parameters to define other program parts.
 
 \begin{table}[ht]
 	\caption{\textit{Input Data} structure}
@@ -126,11 +132,11 @@ There are some things that all objects in the Parametrised Program have in commo
 \end{table}
 
 \subsubsection{Variables}\label{Section:Variables}
-Variables are storage locations for numbers and have a symbolic name. When using Variables as parameters, they can be the source of an event's trigger or the target of an event's action (see section~\ref{Section:Events}) and thus take part in the application's logic. With the help of Variables an application could keep track of something by counting events, or also implement state machines that jump between modes. Variables are internal knowledge, meaning, that they are managed by the \textit{PARRHI} system and do not origin from the Input Module information.
+Variables are storage locations for numbers and have a symbolic name. When using Variables as parameters, they can be the input and target for instructions and thus take part in the application's logic. With the help of Variables an application could keep track of something by counting events, or also implement state machines that jump between modes.
 
 \subsubsection{Points}\label{Section:Points}
  
-Points essentially are a three dimensional vectors ($X$, $Y$, $Z$), with their coordinates being defined using parameters. Depending on the type of Point, different parameters for the definitions are used. There are three types of point definitions, with the difference between them being, what values are inserted into the $X$, $Y$ and $Z$ fields.
+Points essentially are a three dimensional vectors ($X$, $Y$, $Z$), with their coordinates being defined using parameters. Depending on the type of Point, different parameters for the definitions are used. There are three types of Points.
 \begin{enumerate}
 	\setlength\itemsep{-1em}
 	\item Fix-Point
@@ -140,17 +146,19 @@ Points essentially are a three dimensional vectors ($X$, $Y$, $Z$), with their c
 
 Points are probably the best example of parametrised information in the \textit{PARRHI} system. At runtime the data from the Real World Model (see (1) in fig.~\ref{Fig:PARRHIConcept}) is directly fed into the definition of all points that use the according parameters. Thus, the system updates these objects repeatedly with Real World information, that was fed through the Real World Model. Although points are defined using parameters in some way, points themselves are parameters to other objects in the Parametrised Program.
 
-The \textbf{Fix-Point} has static coordinates and thus fixed values are used to define their coordinate parameters (see figure \ref{InputData:PointFix}). It could be used to setup holograms that visualize certain spacial environmental constraints that do not move.
+The \textbf{Fix-Point} has static coordinates and thus fixed values are used to define their coordinate parameters (see figure \ref{InputData:PointFix}). It could be used to setup holograms that visualize certain spacial environmental constraints that do not move.\\Definition Parameters: \textit{name : string, X : float, Y : float, Z : float}.
 
-\textbf{Robot-Points} are defined by two indexes of the robot's joints and one scalar value that linearly interpolates between them (see figure~\ref{InputData:PointRobot}). The application's developer does not have to understand the robot's kinematics and simply uses the joint-indexes as parameters. At runtime, the \textit{PARRHI} system retrieves the robot's joint position, uses the Real World Model to calculate each joint's position ($J_0 - J_5$) and then feeds this data into the Robot-Points. The final point's position is calculated as follows (with s being the scalar value and $J_n$ the position vector of Joint $n$):
+\textbf{Robot-Points} are defined by two indexes of the robot's joints and one scalar value that will be explained later (see figure~\ref{InputData:PointRobot}). The application's developer does not have to understand the robot's kinematics and simply uses the joint-indexes as parameters. At runtime, the \textit{PARRHI} system retrieves the robot's joint position, uses the Real World Model to calculate each joint's position ($J_0 - J_5$) and then feeds this data into the Robot-Points. The final point's position is calculated as follows (with s being the scalar value and $J_n$ the position vector of Joint $n$):
 \begin{equation}
 \boldsymbol{P} = \boldsymbol{J_1} + (\boldsymbol{J_2}-\boldsymbol{J_1}) * s
 \end{equation}
 
-\textbf{Camera-Points} are a way to involve the user's position in the application. Similarly to the Robot-Points, the \textit{PARRHI} system retrieves the cameras coordinates via the Input Module, feeds it through the Real World Model to map it onto the internal coordinate systems and finally periodically updates the Camera-Points with the new location data of the head mounted AR-Device.
+As it can be seen, the scalar value linearly interpolates between the two joint positions and thus allows for a wider variety of Robot-Points.\\Definition Parameters: \textit{name : string, J1 : int, J2 : int, Scale : float}.
+
+\textbf{Camera-Points} are a way to involve the user's position in the application. Similarly to the Robot-Points, the \textit{PARRHI} system retrieves the camera's coordinates via the Input Module, feeds it through the Real World Model to map it onto the internal coordinate systems and finally periodically updates the Camera-Points with the new location data of the head mounted AR-Device. Since there is only one Camera in the PARRHI system, its only parameter is the point's \textit{name : string}.
 
 
-\begin{figure}[h!]
+\begin{figure}[!h]
 	\begin{minipage}{0.45\textwidth}
 		\centering
 		\input{Figures/PointFix}
@@ -165,11 +173,10 @@ The \textbf{Fix-Point} has static coordinates and thus fixed values are used to 
 	\end{minipage}
 \end{figure}
 
-
 \subsubsection{Holograms}\label{Section:Holograms}
-One of the main output channels of \textit{PARRHI} is the Augmented Reality World. The AR World can be filled with numerous objects (generally called holograms). In the Parametrised Program these Holograms are defined using parameters. In this case, Points from section~\ref{Section:Points} are used to define the Hologram's location and orientation. Since Points are parametrised themselves, and are thus updated by the data from the Real World model, holograms are indirectly also updated regularly.
+The AR World can be filled with numerous holograms. In the Parametrised Program these holograms are defined using parameters. In this case, Points from section~\ref{Section:Points} are used to define the Hologram's location and orientation. Since Points are parametrised themselves, and are thus updated by the data from the Real World model, holograms are indirectly also updated regularly.
 
-Holograms in the PARRHI system have a number of attributes (see table~\ref{Table:HologramAttributes}). Currently \textit{PARRHI} supports two types of holograms. There are spheres and cylinders, respectively taking one or two points and a radius as input parameters to define its size and position. Other attributes describe its visual appearance or are meta-information.
+Holograms in the PARRHI system have a number of attributes (see table~\ref{Table:HologramAttributes}). Currently \textit{PARRHI} supports two types of holograms. There are spheres and cylinders, respectively taking one or two points and a radius as input parameters to define its size and position. Other attributes describe its visual appearance.
 
 \begin{table}[!htbp]
 	\caption{Hologram attributes}
@@ -180,8 +187,8 @@ Holograms in the PARRHI system have a number of attributes (see table~\ref{Table
 		Attribute & Possible values		& Explanation	\\		
 		\midrule
 		name & any text & Used to identify the object \\
-		active & true, false		& \parbox[t]{10cm}{If false, the hologram is not visible\\If true, it is visible}  \\
-		render-mode& normal, transparent & \parbox[t]{10cm}{ normal: Hologram is rendered as a solid object \\ transparent: Hologram is rendered translucent}\\
+		visibility & visible, hidden & Sets the hologram's visibility \\
+		renderMode & normal, transparent & \parbox[t]{10cm}{ normal: Hologram is rendered as a solid object \\ transparent: Hologram is rendered translucent}\\
 		radius & number & The radius of the sphere or cylinder \\
 		point1 & name of any defined point & Used for the holograms position definition \\
 		point2 & name of any defined point & \parbox[t]{10cm}{ Used for the cylinder's position definition \\ (not available for spheres)} \\
@@ -189,14 +196,14 @@ Holograms in the PARRHI system have a number of attributes (see table~\ref{Table
 	\end{tabular}
 \end{table}
 
-A Sphere's centre is always set to the point it was defined with (point1), whereas a cylinder always connects the two points of its definition (point1 and point2). All described types of points in section~\ref{Section:Points} can be used as input parameters for the location.
+A Sphere's centre is always set to the point it was defined with (point1), whereas a cylinder always connects the two points of its definition (point1 and point2). All described types of points in section~\ref{Section:Points} can be used as input parameters for the location. This is the first example of Parametrised Program internal use of objects as parameters.
 
 Holograms have an attribute called \textit{renderMode}, which if set to "transparent", renders the hologram in a half transparent way, allowing holograms to be used for boundary or zone visualizations. Furthermore the visibility of holograms can be changed by setting the \textit{active} parameter, which is done by actions as described in section~\ref{Section:Events}.
 
 \subsubsection{Events}\label{Section:Events}
-All previous elements (variables, points and holograms) exist to define the scene and to set up assets that can be utilized by events, which now actually describe the application's workflow. To do so, there are two subtypes in this category. There are event-triggers and event-actions (or short \textit{triggers} and \textit{actions}). Triggers have a boolean expression, which is checked each cycle. As soon as the boolean expression evaluates to \textit{true}, the attached actions will be executed and the trigger will be disabled, avoiding multiple executions. One could say that if triggers the \textit{PARRHI's} sensors, actions are its tools to act on the augmentation.
+All previous elements (variables, points and holograms) exist to define the scene and to set up assets that can be utilized by events, which now actually describe the application's workflow. There are two subtypes in this category. There are event-triggers and event-actions (or short \textit{triggers} and \textit{actions}). Triggers have a boolean expression, which is checked each cycle. As soon as the boolean expression evaluates to \textit{true}, the attached actions will be executed and the trigger will be disabled, avoiding multiple executions. One could say that if triggers are \textit{PARRHI's} sensors, then actions are its actuators.
 
-Although there are different types of triggers, all definitions of these contain multiple attributes, which are listed in the table~\ref{Table:TriggerAttributes}.
+Although there are different types of triggers, all definitions of them have some attributes in common, which are listed in the table~\ref{Table:TriggerAttributes}. Of course, specific trigger types have additional parameters to define their function. Almost all trigger need other objects as parameters for their definition.
 
  \begin{table}[!h]
  	\caption{Trigger attributes}
@@ -208,12 +215,12 @@ Although there are different types of triggers, all definitions of these contain
  		\midrule
  		name & any text & Used to identify the object \\
  		canTrigger & true, false		& Enables/Disables the trigger \\
- 		action & multiple names of actions & Defines the payload of the trigger \\
+ 		actions & multiple names of actions & Defines the payload of the trigger \\
  		\bottomrule
  	\end{tabular}
  \end{table}
 
-To reach a reasonably capability numerous different but easy to understand triggers are available for the application's developer. In table~\ref{Table:Triggers} is a complete list of all defined triggers. \textit{(Note, that the enabled/disabled flag and actions are omitted in this table)}
+To reach a reasonably capability numerous different but easy to understand triggers are available for the application's developer. In table~\ref{Table:Triggers} is a complete list of all defined triggers.
 
  
  \begin{table}
@@ -225,19 +232,19 @@ To reach a reasonably capability numerous different but easy to understand trigg
  		Name & Input Parameter		& Trigger expression	\\		
  		\midrule
  		Distance trigger & Two Points $\boldsymbol{P_1}, \boldsymbol{P_2}$, distance $d$		&  $|\boldsymbol{P_2}-\boldsymbol{P_1}| \le d$ \\
-		Variable trigger & Variable $v$, trigger value $v_{\text{tr}}$ 		& $v = v_{\text{tr}}$	 \\
-		Time trigger & trigger time $t_{\text{tr}}$, time since enabling $t_{\text{enabled}}$ & $t_{\text{tr}} \geq t_{\text{enabled}}$\\
+		Variable trigger & Variable $v$, trigger value $v_{tr}$ 		& $v = v_{tr}$	 \\
+		Time trigger & trigger time $t_{tr}$, time since enabling $t_{enabled}$ & $t_{tr} \geq t_{enabled}$\\
 		\bottomrule
 	\end{tabular}
 \end{table}
 
-\textbf{Distance trigger} are mainly defined using two Points and a distance value. They trigger, as soon as their euclidean distance is below the distance parameter. They can be used for two main purposes. First the application can use the robot's movement as an input using a \textit{Robot-Point}. An action could be triggered as soon as the user jogged the robot's TCP into a wished position by using a \textit{Fix-Point} an waiting for them to come close to each other. Second the user's movement can be monitored by utilizing a \textit{Camera-Point} as an input parameter. The application can thus ask the user to move to a specific location (e.g. a safe-zone).
+\textbf{Distance trigger} are mainly defined using two Points and a distance value. They trigger, as soon as the euclidean distance of the two points is below the distance parameter. They can be used for two main purposes. First the application can use the robot's movement as an input using a \textit{Robot-Point}. An action could be triggered as soon as the user jogged the robot's TCP into a wished position by using a \textit{Fix-Point} an waiting for them to come close to each other. Second the user's movement can be monitored by utilizing a \textit{Camera-Point} as an input parameter. The application can thus ask the user to move to a specific location (e.g. a safe-zone).\\Definition Parameters: \textit{name:string, canTrigger:bool, point1:Point, point2:Point, distance:float, actions:[Action] }
 
-\textbf{Variable triggers} are defined using a variable parameter, and one \textit{trigger value} parameter. They trigger, as soon as the given variable equals the \textit{trigger variable}. One could implement a counter for certain events, and trigger an action when a threshold value is reached. It can also be used for workflows that need states or steps. 
+\textbf{Variable triggers} are defined using a variable parameter, and one \textit{trigger value} parameter. They trigger, as soon as the given variable equals the \textit{trigger variable}. One could implement a counter for certain events, and trigger an action when a threshold value is reached. It can also be used for workflows that need states or steps. \\Definition Parameters: \textit{name:string, canTrigger:bool, varName:Variable, triggerValue:int, actions:[Action]}
 
-Finally the \textbf{Time trigger} allows the application to involve timers. These triggers are defined using a \textit{timeSinceActivation} parameter and trigger, as soon as the time passed since setting \textit{canTrigger} to true is equal or greater than the \textit{timeSinceActivation} value. If \textit{canTrigger} is true from the beginning on, the timer starts immediately. If \textit{canTrigger} is set to \textit{true} the passes time is reset. The user could be given a maximum time for a task or holograms can be hidden after a few seconds.
+Finally the \textbf{Time trigger} allows the application to involve timers. These triggers are defined using a \textit{timeSinceActivation} parameter and trigger, as soon as the time passed since setting \textit{canTrigger} to true is equal or greater than the \textit{timeSinceActivation} value. If \textit{canTrigger} is true from the beginning on, the timer starts immediately. The user could be given a maximum time for a task or holograms can be hidden after a few seconds.\\Definition Parameters: \textit{name:string, canTrigger:bool, timeSinceActivation:int, actions:[Action]}
 
-Whenever a trigger's boolean expression evaluates to true, its actions are invoked and the trigger gets disabled (\textit{canTrigger} set to false). There are numerous different types of actions - each serving a general purpose to fulfil the defined requirements (see section~\ref{Section:SystemRequirements}). As with triggers, actions have a set of input parameters they need to fulfil their task and to be completely defined. The table~\ref{Table:Actions} gives a quick overview about all actions that \textit{PARRHI} currently supports.
+Whenever a trigger's boolean expression evaluates to true, its actions are invoked and the trigger gets disabled. There are numerous different types of actions - each serving a specific purpose. As with triggers, actions have a set of input parameters they need to fulfil their task and to be completely defined. The table~\ref{Table:Actions} gives a quick overview about all actions that \textit{PARRHI} currently supports.
 
 \begin{table}
 	\caption{Event Actions}
@@ -257,13 +264,13 @@ Whenever a trigger's boolean expression evaluates to true, its actions are invok
 	\end{tabular}
 \end{table}
 
-\textbf{Increment-counter actions} increment the value of the Variable parameter by 1. If a developer wanted to count the number of times a user jogged the robot into a specific region, an Increment-counter action could be used as a payload of a Distance trigger. After a threshold value is reached, a Variable trigger could change the UI text and display a hint.
+\textbf{Increment-counter actions} increment the value of the Variable parameter by 1. If a developer wanted to count the number of times a user jogged the robot into a specific region, an Increment-counter action could be used as a payload of a Distance trigger. After a threshold value is reached, a Variable trigger could change the UI text and display a hint.\\Definition Parameters: \textit{name:string, intVar:Variable}
 
-The \textbf{Set-Hologram-State action} enables setting the visibility of holograms at runtime. If a hologram represents a region for a tutorial step, it can be hidden after the user's task is completed. The new scene can then be setup by displaying new holograms that guide the user's way. Another possible scenario would be, to display a warning boundary, if the user moves into a forbidden zone. This can be achieved by combining Distance trigger and Set-Hologram-State actions.
+The \textbf{Set-Hologram-State action} enables setting the visibility of holograms at runtime. If a hologram represents a region for a tutorial step, it can be hidden after the user's task is completed. The new scene can then be setup by displaying new holograms that guide the user's way. Another possible scenario would be, to display a warning boundary, if the user moves into a forbidden zone. This can be achieved by combining Distance trigger and Set-Hologram-State actions.\\Definition Parameters: \textit{name:string, onHolograms:[Hologram], offHologram=[Hologram]}
 
-When using \textit{PARRHI} the user is presented a GUI that shows text and some other few options. The \textbf{Change-UI-Text action} allows to change this displayed text. There are numerous obvious use-cases where this is useful. Whenever it is of value to inform the user about something that cannot be achieved by holograms, this is a simple way to do so.
+When using \textit{PARRHI} the user is presented a GUI that shows text and some other few options. The \textbf{Change-UI-Text action} allows to change this displayed text. There are numerous obvious use-cases where this is useful. Whenever it is of value to inform the user about something that cannot be achieved by holograms, this is a simple way to do so.\\Definition Parameters: \textit{name:string, text:string}
 
-To create meaningful and longer applications, enabling and disabling triggers is an essential tool. This is what the \textbf{Set-Trigger-State action} is for. Triggers can only invoke their payload actions, if their attribute \textit{canTrigger} is true. Triggers can either be defined as disabled from the beginning on, or get disabled by triggering as described above. The Set-Trigger-State action has the ability to (re)activate disabled triggers. There is a speciality in the case of \textit{Time triggers}. Their inner timer starts ticking, whenever they get enabled. This allows for timers to be used in the middle of applications, relative to other events.
+To create meaningful and longer applications, enabling and disabling triggers is an essential tool. This is what the \textbf{Set-Trigger-State action} is for. Triggers can only invoke their payload actions, if their attribute \textit{canTrigger} is true. Triggers can either be defined as disabled from the beginning on, or get disabled by triggering as described above. The Set-Trigger-State action has the ability to (re)activate disabled triggers. There is a speciality in the case of \textit{Time triggers}. Their inner timer starts ticking, whenever they get enabled. This allows for timers to be used in the middle of applications, relative to other events.\\Definition Parameters: \textit{name:string, triggerName:Trigger, canTrigger:bool}
 
 \subsubsection{Program example}
 To further explain the parametrised program, I want to give a short example of how such a small program might be set up. The following program will wait for the user to move the robot's tool centre point (\textit{TCP\_Point}, line 3) to the \textit{Target\_Point} (line 2) at some static coordinates and visualise both points with Sphere holograms (lines 6,7). Upon reaching the target with a certain tolerance (line 10), it will display a success message to the user (line 14).
@@ -271,25 +278,22 @@ To further explain the parametrised program, I want to give a short example of h
 \begin{lstlisting}
 <!-- Define Points -->
 <PointFix name="Target_Point" X="200" Y="200" Z="200" />
-<PointRobot name="TCP_Point" J1="6" J2="6" scale="1"/>
+<PointRobot name="TCP_Point" J1="6" J2="6" scale="0"/>
 
 <!-- Define Holgorams -->
-<Sphere name="Target_Area" active="true" radius="15" point="Target_Point"/>
-<Sphere name="TCP_Area" active="true" radius="15" point="TCP_Point"/>
+<Sphere name="Target_Area" radius="15" point="Target_Point"/>
+<Sphere name="TCP_Area" radius="15" point="TCP_Point"/>
 
 <!-- Define Trigger -->
-<DistanceTrigger name="d_trigger" point1="TCP_Point" point2="Target_Point" 
-	action1="SetUI_Success" distance="15"/>
+<DistanceTrigger name="d_trigger" point1="TCP_Point" point2="Target_Point" actions="SetUI_Success" distance="15"/>
 	
 <!-- Define Action -->
-<ChangeUITextAction name="SetUI_Success" 
-	text="You have reached your target successfully!"/>
+<ChangeUITextAction name="SetUI_Success" text="You have reached your target successfully!"/>
 \end{lstlisting}
 
 
 \subsection{Core Routine}
-The Core Routine's responsibility is, to interpret and execute the Parametrised Program. It's input is the Parametrised Program with all data from the Real World Model already set, and it's outputs are commands to the Real World or to the AR World. At the very beginning of each cycle in the Core Routine, all Parameters are resolved (see (0) in fig.~\ref{Fig:CoreRoutine}). This means, that the interpreter finds all parameters that are used in the Parametrised Program, and inserts all values from the referenced objects. For example, if a Hologram is defined using a Point object, the interpreter looks for it, and fetches its momentary coordinates to fully define the hologram. Similarly, all other parameters are found and processed.
-
+The Core Routine's responsibility is, to interpret and execute the Parametrised Program. It's input is the Parametrised Program with all data from the Real World Model already set, and it's outputs are commands to the Real or AR World. At the very beginning of each cycle in the Core Routine, all Parameters are resolved (see (0) in fig.~\ref{Fig:CoreRoutine}). This means, that the interpreter finds all parameters that are used in the Parametrised Program, and inserts all values from the referenced objects. For example, if a Hologram is defined using a Point object, the interpreter looks for the point, and fetches its momentary coordinates to fully define the hologram. Similarly, all other parameters are found and processed.
 
 After that, the Core Routine updates its inner state (1). This means, that it updates all Holograms and Triggers with newly received data. Holograms are moved to their new position, and Triggers receive their new input values depending on the Trigger type. Distance Triggers for example receive their new coordinates, that they have to monitor.
 
@@ -306,9 +310,9 @@ With all new values set, it can now check all Triggers whether or not their bool
 
 The last step in the PARRHI runtime cycle is to send all generated commands to their receivers. As described, there are two types of commands. Firstly, there are the ones that are directed to the AR-World and secondly there are commands that a directed towards the Real World. I will now shortly explain the difference in their nature, and why AR-commands are much easier to process conceptually than Real World commands.
 
-The AR-World is \textit{only} software that runs on the same device, that hosts the complete PARRHI system. That means, that sending commands to the AR-World is as simple as actually calling some methods in the Back-End. Real World commands on the other hand, are much more complex because they have to be sent to other hardware devices, with possibly different operating systems (OS) that run on different programming languages. This is why, some network protocols have to be defined to communicate with these Real World objects. In my case, the Robot (see (6) in fig.~\ref{Fig:PARRHIConcept}) is the only Real World object.
+The AR-World is \textit{only} software that runs on the same device, that hosts the complete PARRHI system. That means, that sending commands to the AR-World is as simple as actually calling some methods in the Back-End. Real World commands on the other hand, are much more complex because they have to be sent to other hardware devices, with possibly different operating systems (OS) that run on different programming languages. This is why, some network protocols have to be defined to communicate with these Real World objects. 
 
-As I said, the Robot does not run on the same OS as the AR-Device. This means, that a OS neutral protocol has to be defined for this type of communication. In addition to that, operating systems on Robots tend to be sealed towards the outer world making at safe against unwanted access but at the same time hard to interconnect to other systems. This is why, Florian Leitner (a colleague at TUM) and I defined the following protocol for the bidirectional communication between the PARRHI system and the Real World Robot. To get more information about the implemented protocol and system to communicate between PARRHI and the Robot, refer to section~\ref{Section:Protocol}.
+In my case, the Robot (see (6) in fig.~\ref{Fig:PARRHIConcept}) is the only Real World object, that does not run on the same OS as the AR-Device. This means, that a OS neutral protocol has to be defined for this type of communication. In addition to that, operating systems on Robots tend to be sealed towards the outer world making at safe against unwanted access but at the same time hard to interconnect to other systems. This is why, Florian Leitner (a colleague at TUM) and I defined a custom protocol for the bidirectional communication between the PARRHI system and the Real World Robot. To get more information about the implemented protocol and system to communicate between PARRHI and the Robot, refer to section~\ref{Section:RobotLibrary}.
 
 
 

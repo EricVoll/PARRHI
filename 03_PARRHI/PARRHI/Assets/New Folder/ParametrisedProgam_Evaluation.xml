@@ -13,7 +13,7 @@
 		<PointRobot name="RobotTCP" J1="5" J2="5" Scale="0" />
 
 		<!--Fence points-->
-		<PointFix name="Point7" X="700" Y="0" Z = "700"/>
+		<!--<PointFix name="Point7" X="700" Y="0" Z = "700"/>
 		<PointFix name="Point8" X="700" Y="0" Z = "-700"/>
 		<PointFix name="Point9" X="-700" Y="0" Z = "-700"/>
 		<PointFix name="Point10" X="-700" Y="0" Z = "700"/>
@@ -21,7 +21,7 @@
 		<PointFix name="Point11" X="700" Y="1400" Z = "700"/>
 		<PointFix name="Point12" X="700" Y="1400" Z = "-700"/>
 		<PointFix name="Point13" X="-700" Y="1400" Z = "-700"/>
-		<PointFix name="Point14" X="-700" Y="1400" Z = "700"/>
+		<PointFix name="Point14" X="-700" Y="1400" Z = "700"/>-->
 		<!-- Fence Points Finished -->
 		
 		<!-- Task Points -->
@@ -51,7 +51,7 @@
 		<!-- Robot End -->
 		
 		<!--Uncomment this to demonstrate Zylinder placement-->
-		<Zylinder name="Zylinder6" point1="Point7" point2="Point8" radius="20"/>
+		<!--<Zylinder name="Zylinder6" point1="Point7" point2="Point8" radius="20"/>
 		<Zylinder name="Zylinder7" point1="Point8" point2="Point9" radius="20"/>
 		<Zylinder name="Zylinder8" point1="Point9" point2="Point10" radius="20"/>
 		<Zylinder name="Zylinder9" point1="Point10" point2="Point7" radius="20"/>
@@ -64,7 +64,7 @@
 		<Zylinder name="Zylinder14" point1="Point7" point2="Point11" radius="20"/>
 		<Zylinder name="Zylinder15" point1="Point8" point2="Point12" radius="20"/>
 		<Zylinder name="Zylinder16" point1="Point9" point2="Point13" radius="20"/>
-		<Zylinder name="Zylinder17" point1="Point10" point2="Point14" radius="20"/>
+		<Zylinder name="Zylinder17" point1="Point10" point2="Point14" radius="20"/>-->
 		<!--Cylinder Placement finished-->
 		
 		

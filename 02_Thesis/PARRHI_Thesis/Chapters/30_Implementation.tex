@@ -3,13 +3,13 @@
 In this chapter I will write about some implementation aspects that were interesting or problematic during the development of the PARRHI system. For that, I will use a bottom down strategy, meaning, that I will talk about the general setup of the implemented system, and then drill down into the components. I will explain what software was used, why I made these decisions and whether or not they where good or bad in hindsight.
 
 \section{PARRHI Hardware}
-For the Augmented Reality purposes, I decided to use the first version of Microsoft's Augmented Reality glass called HoloLens~\cite{HoloLens}. The HoloLans has all needed capabilities like cameras for image and environment tracking, simple hand gesture recognition, a reasonably good field of view and was programmable with the 3D game engine Unity. The TUM chair of "Automation and Information Systems (AIS)" thankfully supplied me with this product.
+For the Augmented Reality purposes, I decided to use the first version of Microsoft's Augmented Reality glass called HoloLens~\cite{HoloLens}. The HoloLans has all needed capabilities like cameras for image and environment tracking, simple hand gesture recognition, a reasonably good field of view and was programmable with the 3D game engine Unity. Thankfully, the TUM chair of "Automation and Information Systems (AIS)" supplied me with this product.
 
 The second main hardware component in the PARRHI system is the Robot. The robot manufacturing company Fanuc~\cite{Fanuc} was gracious enough to gift the TUM chair "Automation and Information Systems (AIS)" a free CR-7iA/L collaborative, 6 DOF, industrial robot~\cite{FanucCR7} and a R-30iB controller~\cite{FanucR30iB}. The R-30iB controller can either be programmed in Fanuc's TP-Language or in Fanuc's KAREL language. KAREL offers many possibilities with network sockets, reading and writing data from and to the robot's controller, whereas TP programmes are fit for moving and steering the robot.
 
 The last component is a gripper provided by SCHUNK. The company gifted us a collaborative Co-act EGP-C~\cite{SchunkGripper}, that seamlessly integrated into the Fanuc robot with a hardware interface for exactly that purpose. 
 
-At this point I would like to thank both Fanuc and Schunk massively for their supplies, so that this bachelor's thesis could be realised.
+At this point I would like to thank Fanuc, Schunk and the AIS massively for their supplies, so that this bachelor's thesis could be realised.
 
 %4) Implementation
 %- Introduction into the implementation, Main language
@@ -58,7 +58,7 @@ To calculate $f$, I first defined local Cartesian coordinate systems after each 
 		\label{Fig:ForwardKinematics}
 	\end{minipage}\hfill
 	\begin{minipage}{0.45\textwidth}
-		The matrix ($\phi_{n+1}$) allows the conversion from vectors expressed in the coordinate system $n + 1$ to the expression in system $n$, with $\vec{l}_{n+1,n} = \phi_{n+1}(q_{n+1}) * \vec{l}_{n+1,n+1}$. After transforming the vector $\vec{l}_{n+1}$ one can add the vector $\vec{l}_{n,n}$ because they are both defined in the same coordinate system. Meaning, that the position of the tip of the vector $\vec{l}_{n+1}$ relative to the origin of the coordinate system $n$ is, $\vec{l}_{n+1,n} = \phi_{n+1}(q_{n+1}) * \vec{l}_{n+1,n+1} + \vec{l}_{n,n} $.\\
+		The matrix ($\phi_{n+1}$) allows the conversion from vectors expressed in the coordinate system $n + 1$ to the expression in system $n$, with $\vec{l}_{n+1,n} = \phi_{n+1}(q_{n+1}) * \vec{l}_{n+1,n+1}$. After transforming the vector $\vec{l}_{n+1}$ one can add the vector $\vec{l}_{n,n}$ because they are both defined in the same coordinate system. Meaning, that the position of the tip of the vector $\vec{l}_{n+1}$ relative to the origin of the coordinate system $n$ is, $\vec{x}_{n+1,n} = \phi_{n+1}(q_{n+1}) * \vec{l}_{n+1,n+1} + \vec{l}_{n,n} $.\\
 		Repeating this process from $n = 5$ to $n = 0$, results in the robot's TCP position relative to the coordinate system $\vec{O}$, which is what we wanted. One has to remember, that only the matrices $\phi_{i}$ are variables, since they depend on $q_i$. The vectors $\vec{l}_i$ are constants. This means, that for each iteration one only has to calculate all matrices $\phi_i$ and can then calculate the positions $(x_i, y_i, z_i)$ of each coordinate system relative to the base system $\vec{O}$.
 	\end{minipage}
 \end{figure}
@@ -67,7 +67,7 @@ To calculate $f$, I first defined local Cartesian coordinate systems after each 
 
 Since the $C\#$ implementation of this algorithm is only about 20 lines of code (excluding the definitions of the matrices $\phi_i$ and the vectors $\vec{l}_i$), takes only about 4ns to run, and the end results are all joint positions in Cartesian coordinates relative to a base system, I am quite happy with the outcome. If one wanted to add multiple robots into this framework, it could be done quite easily by adding one additional world-coordinate system, where all robot base systems are embedded into.
 	
-Adjusting this model to other types of robots would be easy. If the adjusted joints are all 1 DOF and rotational, then only the rotation matrix $\phi_i$ has to be adjusted, and $\vec{l}_i$ still stays constant. If one included translational, linear joints, the vector $\vec{l}_i$ would depend on some variable and thus not be constant any more, but the mathematical process would stay the same.
+Adjusting this model to other types of robots would be easy. If the adjusted joints are all 1 DOF and rotational, then only the rotation matrix $\phi_i$ has to be adjusted, and $\vec{l}_i$ still stays constant. If one included translational, linear joints, the vector $\vec{l}_i$ would depend on some variable, but the mathematical process would stay the same.
 
 Implementation wise one interesting fact is, that Unity (the game engine which hosts the PARRHI library) uses a left-hand coordinate system, whereas my robot forward kinematics was done in a right handed system since that is how I learned it the past few years. This means, that the last step in the forward kinematics is, to transform all produced vectors into Unity's coordinate system, which is rather easy. I only needed to swap the $z$ and $y$ coordinates of each joint position.
 
@@ -100,7 +100,7 @@ Interacting with Augmented Reality objects is an essential part of AR environmen
 
 
 %4.4) Robot Protocol
-\section{Robot Library}
+\section{Robot Library}\label{Section:RobotLibrary}
 %- Strucutre, languages, problems, solutions
 Next to the PARRHI library and Unity, the Robot library is the big third component in the PARRHI implementation. The following chapter will explain how we accessed the controller's data, transferred the data to the HoloLens and generally communicated with the robot. The whole Robot library was built together with Florian Leitner, who is currently writing his bachelor's thesis about a virtual programming environment of industrial robots at the same chair as I am. Since his thesis is being written at this very moment, I cannot reference to any source of his.
 
