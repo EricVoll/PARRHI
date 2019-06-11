@@ -30,13 +30,91 @@ Software Implementation wise, the PARRHI system is split up in three big compone
 %4.2) PARRHI Library
 \section{PARRHI Library}
 %- Build up, workflow, interesting things
-The PARRHI system was programmed in Microsoft's .NET framework version 4.6.1~\cite{NETFramework} using $C\#$ \cite{CSharp}. Besides being my personal preference, this decision was made because the Unity game engine is used with the language $C\#$. The PARRHI library itself is a \textit{Class Library} project~\cite{ClassLibrary} and has three main tasks.
+The PARRHI system was programmed in Microsoft's .NET framework version 4.6.1~\cite{NETFramework} using $C\#$ \cite{CSharp}. Besides being my personal preference, this decision was made because the Unity game engine is scripted in the language $C\#$. The PARRHI library itself is a \textit{Class Library} project~\cite{ClassLibrary} and has three main tasks.
 
 \begin{enumerate}
 	\item Import the Parametrised Program and perform some operations on it. The Parametrised Program is a XML~\cite{xmlW3C} based document. After importing, it is validated using an XSD~\cite{xsdW3C} document. Finally the PARRHI library has to extract useable $C\#$ objects from the deserialized XML document and setup references to resolve parameters.
 	\item The Real World Model and the logic behind it is a subcomponent of this library. In my specific case, this means, that the PARRHI library contains the Robot's forward kinematics model and the required information to convert the HoloLens' internal coordinates, into the robot's coordinate system.
 	\item The Core Routine is located in the PARRHI library, meaning, that on every iteration the PARRHI system calls into the PARRHI library to perform its task.
 \end{enumerate}
+
+This libraries main interface to the hosting environment or the caller is a container object, that contains all Parametrised Program object references like Holograms, Points etc., but also manages the importing of the Parametrised Program document itself. Fig.~\ref{Fig:ImplementationContainer} is a class diagram of the \code{Container} object. As it can be seen, it basically holds references to all objects of all types, and provides some update methods, that will be called from the library's host.
+
+It is important to note, that all objects inherit from the \code{PProgramObject} class, which gives them the id property that allows the object to be identified. This is needed to resolve parameters in the Parametrised Program. As soon as an object is instantiated, it calls back to a list of id's which checks all ids for duplicates. In the case of duplicate ids, an error is thrown and displayed to the developer. Whenever an object is used as a parameter in the Parametrised Program, this id is used to find the reference to the target object.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\linewidth]{Figures/Implementation_Container}
+	\caption[Container Class Diagram]{Container Class Diagram}
+	\label{Fig:ImplementationContainer}
+\end{figure}
+
+All compositions besides the \code{State} class simply represent the Parametrised Program objects presented in section~\ref{Section:ParametrisedProgram}. The \code{State} itself is an object, that holds the Real Worlds state data at all times, so that the PARRHI library has access to it. Fig.~\ref{Fig:ImplementationState} shows that the State object is composed of two other objects - each serving a specific purpose. The \code{Robot} class handles all operations that have anything to do with the robot. For example the Forward Kinematics. It also contains two delegates. Instead of letting the Robot class have an instance of the robot library (section~\ref{Section:RobotLibrary}), I chose to let this class have two delegates. The PARRHI library invokes these two delegates, which will be configured from the hosting environment. This creates some independence from the Robot Library, and may allow the PARRHI library to be used with absolutely any robot as long as there is a .NET framework controller for it.
+
+This is not the only advantage of abstracting the controlling of the robot. During the development of the PARRHI system, I wanted to simulate as much as possible since I did not always have access to the robot. So I created an Interface between the PARRHI system and the real world, that was able to simulate all values instead of retrieving them from the real world. In the case of a simulation, I can then simply set this delegate to send the commands into the simulation, and not to the real robot.  
+
+The \code{World} class has attributes that represent the state of the real world and discloses them to the PARRHI library. The \code{SetUIText} delegate similarly to the \code{MoveDelta} method from the \code{Robot} class, is a function pointer that can be configured from the library's host. This was done for the exact same reasons as with the \code{Robot} class - to create independence from the host.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Figures/Implementation_State}
+	\caption[UML Class Diagram of State class]{UML Class Diagram of State class}
+	\label{Fig:ImplementationState}
+\end{figure}
+
+These two classes are the main interface to the library's host. They contain multiple sub classes which will be explained in the following section.
+
+\subsection{Parametrised Program objects}
+The Parametrised Program contains five different objects: Variables, Points, Holograms, Triggers and Actions. During the implementation, I first created abstract classes of each object type, and then created concrete implementations for each sub-type. The PARRHI interpreter only utilises the public methods that are disclosed in the abstract classes. I chose this approach, because this way it is not important how the abstract class was instantiated, but only what values they hold.
+
+This approach also allows the PARRHI system, to (for example) use any type of Point for the definition of a Hologram. The abstract Point class provides all data that is needed for the Hologram's definition. It is not important which concrete implementation the given instance is. This section will explain how these objects were implemented and how the inheritance tree is setup.
+
+The Variable class is very straight forward and literally only contains an integer value, hence, it would be too much to draw a class diagram for it. There is also only one type of it, which makes it even simpler. 
+
+The Point class on the other hand is a bit more interesting. The abstract Point class contains the 3 dimensional position vector, and some read-only properties, but the inheriting classes define how the position is set. For example the PointRobot class takes two joint indexes for its definition as it was described in section~\ref{Section:Points}. In each cycle, the public method UpdatePoint is invoked, which allows the PointRobot to calculate its new position. The \code{PointCamera} and \code{PointFix} do not add or overwrite any methods, since the \code{Point} class contains all needed functionalities.
+
+
+\begin{figure}[!h]
+	\begin{minipage}{0.65\textwidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{Figures/Implementation_Points}
+		\caption{UML Class Diagram of the Point class}
+		\label{Ffig:ImplementationPoints}
+	\end{minipage}\hfill
+	\begin{minipage}{0.35\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/Implementation_Holograms}
+		\caption{UML Class Diagram of\\the Hologram class}
+		\label{Fig:ImplementationHolograms}
+	\end{minipage}
+\end{figure}
+
+The same principle was applied to the \code{Hologram} class~(see Fig.~\ref{Fig:ImplementationHolograms}). The two inheriting classes \code{Sphere} and \code{Cylinder} provide their specific constructors and hold their values. Since the \code{Point} instances in the two different Holograms are references to the real \code{Point} object, and the way references work, they do not have to be updated each cycle specifically. Only the hosting environment (in this specific case the Unity Game Engine) has to update the 3D objects it generates. 
+
+The \code{Trigger} class~(Fig.~\ref{Fig:ImplementationTriggers}) is structured in a similar way.  The abstract class \code{Trigger} has a virtual method called \code{CheckTrigger}, which evaluates the trigger expression. Since every inheriting class triggers on different data, this method cannot be implemented in the parent class. As it was with the \code{Point} class, the different inheriting classes have different constructors, and store different data to evaluate their triggers. The \code{DistanceTrigger} for example takes two references to \code{Point} objects. It is important to note, that the Point object can be any object, that inherits from the \code{Point} class. This means, that the \code{DistanceTrigger} can be constructed with \code{PointCamera}, \code{PointRobot} or \code{PointFix}. Each inheriting class provides the \code{CheckTrigger} implementation, which corresponds to the defined boolean expression in section~\ref{Section:Events}.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Figures/Implementation_Triggers}
+	\caption{UML Class Diagram of the Trigger class}
+	\label{Fig:ImplementationTriggers}
+\end{figure}
+
+The last Parametrised Program object is the \code{Action} class. In this case, the abstract parent class is not as powerful as in the previous classes. The reason simply is, that all action types are fundamentally different and do not have anything in common, besides one method called \code{Action}. Figure~\ref{Fig:ImplementationAction} depicts the class structure here. Each inheriting class has to implement the virtual \code{Action()} method itself, since the parent object does not have the necessary data.
+
+There are some interesting aspects to this implementation. As described, the \code{World} objects holds a function pointer (delegate) to a method, which prints a given string to the corresponding AR output. The \code{ChangeUITextAction} takes a reference to the \code{World::SetUIText(...)} delegate. This way, the hosting environment has to configure the UI delegate only once and it will be applied everywhere in the PARRHI library.
+
+Similarly to the \code{ChangeUITextAction}, the \code{MoveRobotAction} holds a reference to the \code{Robot::MoveDelta(...)} delegate. In this specific case, the class has two different private attributes, which both save the position that should be sent to the robot. This is the case, because there are two different modes this Action can be used. In one case, the input can be a reference to a \code{Point} object and in the other case a six dimensional \code{Vector6} object. Remember, that the used Fanuc Robot is six dimensional. Since \code{Point} objects are only three dimensional, the robot will then approach the coordinates of the \code{Point} object from above, with the gripper facing downwards. The predefined orientation provides the last needed three coordinates, which completes the command and makes it executable. If a \code{Vector6} object is given, then the command can be sent without adjustments.
+
+\begin{figure}[!th]
+	\centering
+	\includegraphics[width=0.7\linewidth]{Figures/Implementation_Action}
+	\caption{UML Class Diagram of the Action class}
+	\label{Fig:ImplementationAction}
+\end{figure}
+
+\subsection{Importing and interpretation of the Parametrised Program}
+[This small subsection will describe how the xml is imported, how the needed information is extracted and how the described classes are instantiated - not yet finished, but will be quite short.]
 
 Importing and validating the XML document is very easy, since the used .NET framework natively supports that. The implementation of the PARRHI Core Routine is also quite straight forward, which is why I will not talk about it too much. More interesting is the Robot's forwards kinematics, which will be presented now.
 
@@ -104,7 +182,9 @@ Interacting with Augmented Reality objects is an essential part of AR environmen
 %- Strucutre, languages, problems, solutions
 Next to the PARRHI library and Unity, the Robot library is the big third component in the PARRHI implementation. The following chapter will explain how we accessed the controller's data, transferred the data to the HoloLens and generally communicated with the robot. The whole Robot library was built together with Florian Leitner, who is currently writing his bachelor's thesis about a virtual programming environment of industrial robots at the same chair as I am. Since his thesis is being written at this very moment, I cannot reference to any source of his.
 
-The Robot Library is responsible for the communication between any system that is capable of executing .NET framework applications, and the robot's controller R-30iB~(see section~\ref{Section:PARRHIHardware}). It is important to know, that Fanuc's controllers are not easily controllable by non-Fanuc components. Our goal was, to wirelessly control the robot from external devices that run .NET framework applications. Since there where no "plug and play" solutions available, we came up with the system, that will be explained in the rest of this chapter. As it has been done in the concept chapter, I will first shortly explain each component before elaborating on the information flow between them. Finally, I will give some details about the implemented, custom protocol we use. Fig.~\ref{Fig:RobotArchitecture} depicts how the system is actually setup.
+The Robot Library is responsible for the communication between any system that is capable of executing .NET framework applications, and the robot's controller R-30iB~(see section~\ref{Section:PARRHIHardware}). It is important to know, that Fanuc's controllers are not easily controllable by non-Fanuc components. Our goal was, to wirelessly control the robot from external devices that run .NET framework applications. Since there where no "plug and play" solutions available, we came up with the system, that will be explained in the rest of this chapter. As it has been done in the concept chapter, I will first shortly explain each component before elaborating the information flow between them. Finally, I will give some details about the implemented, custom protocol we use. Fig.~\ref{Fig:RobotArchitecture} depicts how the system is actually setup.
+
+\subsection{Robot Communication Architecture}
 
 \begin{figure}
 	\centering
@@ -124,11 +204,42 @@ The Robot Library is responsible for the communication between any system that i
 	\item TP Loop: A program written in TP that scans the Register (7) each cycle, and controls the robot accordingly.
 \end{enumerate}
 
-Since researching the difference between KAREL and TP programmes on the internet is rather hard, because one simply does not find a lot of information about it, I would like to summarise our current knowledge about that. KAREL is a programming language, that is similar to Fortran. It was developed by Fanuc itself, and is used internally for alot of components in the controller. Nowadays, KAREL is most often used for managing tasks like communication, synchronisation, data handling and so on. Teach pendant programmes on the other hand, are specialised on actually commanding the robot's movement and behaviour. TP supports numerous methods to control a robot, that the KAREL language simply does not offer. This is why, we chose to split up the controller-side software in these two programming components.
 
-Now the information flow happens as follows: First, the Application (1), which wants to send a command to the robot has to call into the Robot Library (2). Besides managing the Network Socket Connection (3), this library offers about 10 commands to the Application. A command could be the wish to fetch the robot's joint position, or to move the robot into a certain position. The Robot Library (2) then sends the command to the Network Socket (3), which is connected to the controllers server-endpoint. It is important, that the communication between the HoloLens (or a Laptop for instance) is wireless in order to stay mobile. The controller is connected to the WLAN Router (4) via a cable using the Ethernet protocol. There, the Network Socket Server (5) receives the command, and passes it on to the KAREL Host (6). 
+Since researching the difference between KAREL and TP programmes on the internet is rather hard, because one simply does not find a lot of information about it, I would like to summarise our current knowledge about that. KAREL is a programming language, that is similar to Fortran. It was developed by Fanuc itself, and is used internally for a lot of components in the controller. Nowadays, KAREL is most often used for managing tasks like communication, synchronisation, data handling and so on. Teach pendant programmes on the other hand, are specialised on actually commanding the robot's movement and behaviour. TP supports numerous methods to control a robot, that the KAREL language simply does not offer. This is why, we chose to split up the controller-side software in these two programming components.
 
-At this point the command is only a string following a very specific syntax that we defined. The Karel Host (6) then parses the command and acts on its instructions. If the command is a simple "Fetch Command", the Karel Host (6) collects the needed data, constructs the message and sends it back via the network. If the command is targeted at the robot itself, the Karel Host (6) fills the Register (7) with all necessary data that the TP Loop (8) needs to execute the movement command. This data is a six dimensional vector (TCP coordinates in task space) and the mode whether the vector should be interpreted absolute or relatively to the momentary position.
+
+Now the information flow is as follows: First, the Application (1), which wants to send a command to the robot has to call into the Robot Library (2). Besides managing the Network Socket Connection (3), this library offers about 10 commands to the Application. A command could be the wish to fetch the robot's joint position, or to move the robot into a certain position. The Robot Library (2) then sends the command to the Network Socket (3), which is connected to the controllers server-endpoint. It is important, that the communication between the HoloLens (or a Laptop for instance) is wireless in order to stay mobile. The controller is connected to the WLAN Router (4) via a cable using the Ethernet protocol. There, the Network Socket Server (5) receives the command, and passes it on to the KAREL Host (6). 
+
+\subsection{Robot Communication KAREL Host}
+
+At the point of reception, the command is only a string following a very specific syntax that we defined. The KAREL Host (6) then parses the command and acts on its instructions. If the command is a simple "Fetch Command", the KAREL Host (6) collects the needed data, constructs the message and sends it back via the network. If the command is targeted at the robot itself, the KAREL Host (6) fills the Register (7) with all necessary data that the TP Loop (8) needs to execute the movement command. This data is a six dimensional vector (coordinates in task or joint space), the mode whether the vector should be interpreted absolute or relatively to the momentary position, the coordinate system which should be used to interpret the six dimensional data and some internal flags.
+
+The KAREL code consists of four main parts. There is the network communication, the command parsing, the data collection/register writing and lastly the response sending. The KAREL language makes it relatively easy to parse strings and write the logic components that are needed for the communication system. We tried to achieve as much as possible within the KAREL Host, and limit the parallel running TP Program to its speciality, which is controlling the robot physically.
+
+\subsection{Robot Communication TP Program}
+
+The TP Loop (8) itself is written in Fanuc's TP-Language. It basically is one large loop, that reads the Register (7) and acts on its instructions. There are some problems that had to be overcome though. For example switching between the relative and absolute movement mode has one very critical aspect: During absolute movements, the values in the Register (7) might be relatively high, since the task space coordinates are defined in millimetres. Values here are in a range from -700 to +700 mm. When interpreting these coordinates absolutely, that is not a problem since they are in the robot's range of motion. But after switching to the relative mode, these values are added to the current robot position, resulting in a huge step, which most probably is not within the range of motion any more.
+
+Another example here is the switching of coordinate systems. When the current data in the register was written there as  Cases like these have to be thought of and handled. 
+
+Fig. \ref{Fig:TPLoopFlowChart} shows the TP Loop's (7) Activity Diagram. Of course this is a rather simplified version, since almost every action depends on two register values, which represent the coordinate system and the relative/absolute mode. 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\linewidth]{Figures/TPLoopFlowChart.jpg}
+	\caption{}
+	\label{Fig:TPLoopFlowChart}
+\end{figure}
+
+Resetting the register's state at the very beginning (\code{Init()}) is crucial, since the data registers are persistent stores, which means, that their value is saved even when the controller is shut down. The Initialisation defines a clear behaviour at each launch of the program.
+
+The \textit{Launch ARobot\_Server} action starts the KAREL program (6), which communicates with any potential client via the network socket. After starting the KAREL Host, the program has to check if the relative/absolute mode has changed. If so, it handles this change to avoid unexpected behaviour due to old data in the registers. This is done via an edge detection, which needs an additional variable to store the previous mode. 
+
+The action \textit{Store Current Pos to PR} fetches the current coordinate vector in the corresponding system (joint space or task space), which is then fed into the next action, which calculates the new target position vector. This action differentiates between the relative and absolute mode. 
+
+After the hand gripper state change is set, the new target position is written to the robot - again within the corresponding coordinate system. At the very end there is an \textit{exit} flag, which can be set to \textit{'1'} by the KAREL Host. This quits the KAREL and TP Programm and allows the client (.NET library) to send an exit command to the robot. This allows the controller to safely shutdown the network socket and the TP Loop. 
+
+\subsection{Robot Communication Outcome}
 
 Basically, the presented architecture allows us to execute any pre-defined function in a fraction of a second. The whole process is actually so fast, that the PARRHI system fetches the robot's joint position in each iteration.
 

@@ -272,6 +272,10 @@ When using \textit{PARRHI} the user is presented a GUI that shows text and some 
 
 To create meaningful and longer applications, enabling and disabling triggers is an essential tool. This is what the \textbf{Set-Trigger-State action} is for. Triggers can only invoke their payload actions, if their attribute \textit{canTrigger} is true. Triggers can either be defined as disabled from the beginning on, or get disabled by triggering as described above. The Set-Trigger-State action has the ability to (re)activate disabled triggers. There is a speciality in the case of \textit{Time triggers}. Their inner timer starts ticking, whenever they get enabled. This allows for timers to be used in the middle of applications, relative to other events.\\Definition Parameters: \textit{name:string, triggerName:Trigger, canTrigger:bool}
 
+The last two actions are designed to take active control over the robot. The \textbf{Move-Robot action} moves the robot to the specified coordinates. It is important to note, that this action has two different modes defined by a \code{mode} parameter. If \textit{mode} is \textit{'t'}, then the coordinates will be interpreted as absolute euclidean task space coordinates, and if \textit{mode} equals \textit{'j'} then PARRHI will assume that the coordinates are defined in joint-space and will act accordingly.\\Definition Parameters: \textit{name:string, target:Vector6, mode:char}
+
+The \textbf{Set-Robot-Hand-State action} behaves as one would expect and simply open or close the robot's gripper according to its parameters \textit{state}.\\Definition Parameters: \textit{name:string, state:bool}
+
 \subsubsection{Program example}
 To further explain the parametrised program, I want to give a short example of how such a small program might be set up. The following program will wait for the user to move the robot's tool centre point (\textit{TCP\_Point}, line 3) to the \textit{Target\_Point} (line 2) at some static coordinates and visualise both points with Sphere holograms (lines 6,7). Upon reaching the target with a certain tolerance (line 10), it will display a success message to the user (line 14).
 

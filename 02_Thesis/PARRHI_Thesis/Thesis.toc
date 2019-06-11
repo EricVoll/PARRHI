@@ -25,22 +25,31 @@
 \contentsline {subsubsection}{\numberline {3.2.2.4}Events}{19}{subsubsection.3.2.2.4}% 
 \contentsline {subsubsection}{\numberline {3.2.2.5}Program example}{22}{subsubsection.3.2.2.5}% 
 \contentsline {subsection}{\numberline {3.2.3}Core Routine}{23}{subsection.3.2.3}% 
-\contentsline {subsection}{\numberline {3.2.4}I/O Modules}{23}{subsection.3.2.4}% 
+\contentsline {subsection}{\numberline {3.2.4}I/O Modules}{24}{subsection.3.2.4}% 
 \contentsline {chapter}{\numberline {4}Implementation}{25}{chapter.4}% 
 \contentsline {section}{\numberline {4.1}PARRHI Hardware}{25}{section.4.1}% 
 \contentsline {section}{\numberline {4.2}PARRHI Software}{26}{section.4.2}% 
 \contentsline {section}{\numberline {4.3}PARRHI Library}{26}{section.4.3}% 
-\contentsline {subsection}{\numberline {4.3.1}CR-i7A Forward Kinematics}{27}{subsection.4.3.1}% 
-\contentsline {section}{\numberline {4.4}Unity}{29}{section.4.4}% 
-\contentsline {subsection}{\numberline {4.4.1}Image Tracking}{29}{subsection.4.4.1}% 
-\contentsline {subsection}{\numberline {4.4.2}AR-Toolkit}{30}{subsection.4.4.2}% 
-\contentsline {section}{\numberline {4.5}Robot Library}{30}{section.4.5}% 
-\contentsline {section}{\numberline {4.6}Parametrised Program Implementation and Validation}{33}{section.4.6}% 
-\contentsline {subsection}{\numberline {4.6.1}Parametrised Program XML Structure}{33}{subsection.4.6.1}% 
-\contentsline {subsection}{\numberline {4.6.2}XSD generation and validation}{35}{subsection.4.6.2}% 
-\contentsline {chapter}{\numberline {5}Evaluation}{37}{chapter.5}% 
-\contentsline {section}{\numberline {5.1}Evaluation Use Case Definition}{37}{section.5.1}% 
-\contentsline {section}{\numberline {5.2}Evaluation Manual Attempt}{38}{section.5.2}% 
-\contentsline {section}{\numberline {5.3}Evaluation PARRHI Attempt}{39}{section.5.3}% 
-\contentsline {section}{\numberline {5.4}Conclusion}{39}{section.5.4}% 
-\contentsline {chapter}{\numberline {6}Bibliography}{41}{chapter.6}% 
+\contentsline {subsection}{\numberline {4.3.1}Parametrised Program objects}{28}{subsection.4.3.1}% 
+\contentsline {subsection}{\numberline {4.3.2}Importing and interpretation of the Parametrised Program}{32}{subsection.4.3.2}% 
+\contentsline {subsection}{\numberline {4.3.3}CR-i7A Forward Kinematics}{32}{subsection.4.3.3}% 
+\contentsline {section}{\numberline {4.4}Unity}{34}{section.4.4}% 
+\contentsline {subsection}{\numberline {4.4.1}Image Tracking}{34}{subsection.4.4.1}% 
+\contentsline {subsection}{\numberline {4.4.2}AR-Toolkit}{35}{subsection.4.4.2}% 
+\contentsline {section}{\numberline {4.5}Robot Library}{35}{section.4.5}% 
+\contentsline {subsection}{\numberline {4.5.1}Robot Communication Architecture}{35}{subsection.4.5.1}% 
+\contentsline {subsection}{\numberline {4.5.2}Robot Communication KAREL Host}{37}{subsection.4.5.2}% 
+\contentsline {subsection}{\numberline {4.5.3}Robot Communication TP Program}{38}{subsection.4.5.3}% 
+\contentsline {subsection}{\numberline {4.5.4}Robot Communication Outcome}{39}{subsection.4.5.4}% 
+\contentsline {section}{\numberline {4.6}Parametrised Program Implementation and Validation}{39}{section.4.6}% 
+\contentsline {subsection}{\numberline {4.6.1}Parametrised Program XML Structure}{40}{subsection.4.6.1}% 
+\contentsline {subsection}{\numberline {4.6.2}XSD generation and validation}{41}{subsection.4.6.2}% 
+\contentsline {chapter}{\numberline {5}Evaluation}{43}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}Evaluation 1: Comparing PARRHI with traditional methods}{43}{section.5.1}% 
+\contentsline {subsection}{\numberline {5.1.1}Evaluation 1: Use Case Definition}{43}{subsection.5.1.1}% 
+\contentsline {subsection}{\numberline {5.1.2}Evaluation Manual Attempt}{44}{subsection.5.1.2}% 
+\contentsline {subsection}{\numberline {5.1.3}Evaluation PARRHI Attempt}{45}{subsection.5.1.3}% 
+\contentsline {subsection}{\numberline {5.1.4}Conclusion Evaluation 1}{45}{subsection.5.1.4}% 
+\contentsline {section}{\numberline {5.2}Evaluation 2: New Developers}{46}{section.5.2}% 
+\contentsline {subsection}{\numberline {5.2.1}Evaluation 2: Use Case Definition}{46}{subsection.5.2.1}% 
+\contentsline {chapter}{\numberline {6}Bibliography}{49}{chapter.6}% 

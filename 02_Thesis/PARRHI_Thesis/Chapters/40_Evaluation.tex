@@ -2,16 +2,20 @@
 
 Having developed the PARRHI system it is now time to ask, whether or not the end goal was actually achieved. For that, I will shortly summarize the requirements collected in section~\ref{Section:SystemRequirements}. The Developer (the person that uses the PARRHI system to create applications) has no to little software engineering skills but some knowledge about the robot industry. The person would like to reuse their previous work and create Augmented Reality Applications for other people to use. The application should transfer some knowledge, or give instructions on how to achieve a certain task.
 
+This evaluation will contain two different parts. First I will try to compare traditional AR programming methods with the PARRHI system, and then I will let other people try to succeed in a specific task that was given to them. 
+
+\section{Evaluation 1: Comparing PARRHI with traditional methods}
+
 I will first define a use case for the evaluation, then pose as the "Developer" and actually develop such a AR application. First, I will code it without the PARRHI system, programming everything manually. For future reference, this run will be called the "\textit{manual attempt}". Then, I will attempt to achieve the same goal by using the PARRHI system. This run will be called the "\textit{PARRHI attempt}". Both attempts will be timed and afterwards I will compare the Pros and Cons of each approach.
 
-\section{Evaluation Use Case Definition}
+\subsection{Evaluation 1: Use Case Definition}
 The following use case will be the base of my thesis' evaluation. As a context, I will use the same factory as explained in section~\ref{Section:UseCaseDefinition}. 
 
 The task, which will be supported by an Augmented Reality Robot Human Interface is the following. First, the employee using the PARRHI system approaches the robot work cell within a range of about 15 meters and will then be commanded to walk over to a specific point, that is in a safe distance from the robot. After that, the person has to move the robot's TCP close to his position, so that they can touch the robot's tip. The user will be asked to remove the item in the robot's gripper and jog the robot back into its starting position. Having reached this position, the user will be told to move away into a marked area. The robot will then drive into his "zero" position, where all joint angles are 0 degrees. 
 
 This task involves multiple objects in the robot factory, including the robot itself, the user's position, jogging the robot and walking round. To keep the scope of this evaluation at a reasonable level, I will allow myself to reuse the Robot-Library and the image recognition parts for the \textit{Manual attempt}. 
 
-\section{Evaluation Manual Attempt}
+\subsection{Evaluation Manual Attempt}
 
 The manual attempt is defined by programming the task described above manually. I used the same programming language and game engine as I did during the development of the PARRHI system, which means, that I could reuse the complete project setup including libraries and tools. It took about 2.5 hours to develop a reasonably good framework that allows for an easy implementation of the task. For that, I reused the Robot forward kinematics model and the robot library that handles the communication between any .NET Framework application and the robot controller. 
 
@@ -23,10 +27,43 @@ The upside of course is, that any non-trivial task can be achieved relatively ea
 
 Depending on the project's architecture, one could get into trouble if some task requirements change. Reusing the accomplished work is possible, but it involves a number of steps, where each and every one can cause errors. In order to go into more detail here, I would have to explain how Unity works, which is not within the scope of this thesis. 
 
-\section{Evaluation PARRHI Attempt}
-The PARRHI attempt clearly means, that the same Use Case as above was be implemented using the PARRHI system.
+\subsection{Evaluation PARRHI Attempt}
+The PARRHI attempt means, that the same Use Case as above was be implemented using the PARRHI system. Based on the default template of the Parametrised Program, which contains the basic XML structure and defines the needed objects to animate the robot, it took about 15 minutes to complete the given use case.
 
-\section{Conclusion}
+The Parametrised Program for this task contains four Point definitions, eight triggers for the individual steps and 21 actions that are executed by the triggers. This use case was easily achievable with the PARRHI system, because all needed actions are supported. 
+
+The structure is very easy. There are eight steps that represent eight individual phases in the task. Each step has one trigger, that marks its end and invokes the needed actions to transition into the next step. 
+
+\subsection{Conclusion Evaluation 1}
 Comparing the two methods described above, I come to the conclusion, that using the PARRHI system definitely speeds up the development process but at the same time might limit the developer's possibilities. 
+
+For trivial tasks, the PARRHI system greatly speeds up and simplifies the development process of these applications. A potential developer needs much less time to get used to the programming environment than it would be the case with traditional programming and most importantly does not have to be a software engineer to do so.
+
+But PARRHI's strengths are its biggest weaknesses. As soon as a developer needs a feature that is not supported by the PARRHI system, other solutions have to be found. There is currently no way of extending the trigger/action system with custom objects. This is due to the big simplification that had to be undertaken in the concept of the Parametrised Program, so that non software engineers are able to develop Augmented Reality Robot Human Interfaces. 
+
+This limitation really only applies to specific features that are not supported - not to e.g. a high complexity in the applications workflow. Parallelisation for example is not a problem in the PARRHI system. It would be perfectly fine to have two workflow branches running at the same time. 
+
+\section{Evaluation 2: New Developers}
+As shorty described in this chapter's introduction, this section will evaluate the systems usability by letting other people try to achieve a certain task. First, I will again define a Use Case for them to achieve and then summarise their findings and feedback.
+
+\subsection{Evaluation 2: Use Case Definition}
+The task for the experimentees will be to create an AR HR Interface with the Parametrised Program that helps the User to do the following task:
+\begin{enumerate}
+	\item Approach the robot safely
+	\item Jog the robot into a given position in under 1 minute
+	\item Display a success or failure message according to step 2
+	\item Move away from the robot into a given target area
+\end{enumerate} 
+
+Each experimentee will be given a 15 minute explanation into the PARRHI system, before attempting to succeed at developing the requested application. I will provide them with a cheat sheet, that shortly summarises all commands and object definitions. After they completed their task, they will be asked to fill out a short questionnaire. I will time their work, evaluate whether or not they actually achieved the goal and collect some meta information like how long the written program was, how long it took them and how precise they achieved the goal. 
+
+
+
+
+
+
+
+
+
 
 
