@@ -326,9 +326,9 @@ namespace PARRHI.HelperClasses
                     vector[4] = 0;
                     vector[5] = 0;
                 }
-                if (item.mode != 0 && item.mode != 1)
+                if (item.mode != "t" && item.mode != "j")
                 {
-                    Result.AddConversionError(new XMLValidationError($"{item.name}: Mode ({item.mode}) is not a valid number. Either 0 or 1.", System.Xml.Schema.XmlSeverityType.Error, null));
+                    Result.AddConversionError(new XMLValidationError($"{item.name}: Mode ({item.mode}) is not a valid character. Either 't' or 'j' for task space and joint space respectivley.", System.Xml.Schema.XmlSeverityType.Error, null));
                     return null;
                 }
 

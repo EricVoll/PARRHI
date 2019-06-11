@@ -20,7 +20,7 @@ namespace PARRHI.Objects.TriggerActions
         public MoveRobotAction(string id, Container container, Point targetCoordinates) : this(id, container)
         {
             TargetTCPPoint = targetCoordinates;
-            Mode = 0;
+            Mode = "t";
         }
         /// <summary>
         /// target the given coordinates either in joint or in task space
@@ -29,7 +29,7 @@ namespace PARRHI.Objects.TriggerActions
         /// <param name="MoveDelta"></param>
         /// <param name="targetCoordinates"></param>
         /// <param name="mode">0 = taskSpace, 1 = joint space</param>
-        public MoveRobotAction(string id, Container container, Vector6 targetCoordinates, int mode) : this(id, container)
+        public MoveRobotAction(string id, Container container, Vector6 targetCoordinates, string mode) : this(id, container)
         {
             TargetTCPCoordinates = targetCoordinates;
             Mode = mode;
@@ -41,7 +41,7 @@ namespace PARRHI.Objects.TriggerActions
 
         Vector6 TargetTCPCoordinates;
         Point TargetTCPPoint;
-        int Mode;
+        string Mode;
 
 
         private Container Container;

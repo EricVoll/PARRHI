@@ -456,11 +456,7 @@ namespace PARRHI.Objects
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public byte mode;
-
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool modeSpecified;
+        public string mode;
     }
 
     /// <remarks/>
@@ -524,5 +520,6 @@ namespace PARRHI.Objects
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public bool canTrigger;
     }
+
 
 }

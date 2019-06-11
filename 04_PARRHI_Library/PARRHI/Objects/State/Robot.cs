@@ -50,9 +50,9 @@ namespace PARRHI.Objects
 
 
 
-        private Action<Vector6, int> moveDelta;
+        private Action<Vector6, string> moveDelta;
 
-        public Action<Vector6, int> MoveDelta
+        public Action<Vector6, string> MoveDelta
         {
             get { return moveDelta; }
             set { moveDelta = value; Output.Instance.Log("Move Delta Set!"); }

@@ -24,7 +24,7 @@ namespace PARRHI.Objects.Triggers
         /// <summary>
         /// Triggertime in ms after activation
         /// </summary>
-        public long TriggerTime { get; set; } = 0;
+        private long TriggerTime { get; set; } = 0;
 
         private long TriggerTimeSinceReset { get; set; } = 0;
 
