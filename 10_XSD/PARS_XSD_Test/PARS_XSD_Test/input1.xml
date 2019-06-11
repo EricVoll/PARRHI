@@ -37,8 +37,9 @@
 			<SetTriggerStateAction name="Handler2" triggerName="Trigger1" canTrigger='true'/>
 			<ChangeUITextAction name="Hanlder3" text="Tutorial step nr. 4"/>
 			<SetTriggerStateAction name="Handler4" triggerName="Trigger1" canTrigger='true'/>
-			<MoveRobotAction name="Handler5" target="1 2 3 1 2 3" mode="1"/>
+			<MoveRobotAction name="Handler5" target="1 2 3 1 2 3" mode="j"/>
 			<MoveRobotAction name="Handler5" target="1 2 3 1 2 3"/>
+			<MoveRobotAction name="Handler5" target="1 2 3 1 2 3" mode="t"/>
 			<SetRobotHandStateAction name="Handler6" state="open" />
 			<SetRobotHandStateAction name="Handler7" state="close" />
 			<SetHologramStateAction name="Handler8" onHolograms="Sphere1 Zyl1"/>

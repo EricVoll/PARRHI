@@ -428,11 +428,7 @@ public partial class PProgramEventsActionsMoveRobotAction {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public byte mode;
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool modeSpecified;
+    public string mode;
 }
 
 /// <remarks/>
