@@ -148,10 +148,10 @@ public class PARRHIRuntime : MonoBehaviour
 
         //Set all output delegates
         PARRHI.Output.Instance.SetOutputDelegate(UnityOutputDelegate);
-        PARRHI.Output.Instance.SetLogDelegate(UnityOutputDelegate);
+        //PARRHI.Output.Instance.SetLogDelegate(UnityOutputDelegate);
         PARRHI.Output.Instance.SetErrorDelegate(UnityErrorDelegate);
         FanucControllerLibrary.Output.Instance.SetOutputDelegate(UnityOutputDelegate);
-        FanucControllerLibrary.Output.Instance.SetLogDelegate(UnityOutputDelegate);
+        //FanucControllerLibrary.Output.Instance.SetLogDelegate(UnityOutputDelegate);
         FanucControllerLibrary.Output.Instance.SetErrorDelegate(UnityErrorDelegate);
 
         //Setup all components needed
@@ -164,10 +164,10 @@ public class PARRHIRuntime : MonoBehaviour
     /// </summary>
     private void InitializeSystem()
     {
-        DataImport importer = new DataImport(); 
+        DataImport importer = new DataImport();
 
-        //Container = importer.Import(xmlFile.text);
-        Container = importer.Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\ParametrisedProgam_Evaluation.xml", @"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\parrhiScheme.xsd");
+        Container = importer.Import(xmlFile.text);
+        //Container = importer.Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\ParametrisedProgam_Evaluation.xml", @"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\parrhiScheme.xsd");
 
         if (Container != null)
         {
@@ -404,19 +404,22 @@ public class PARRHIRuntime : MonoBehaviour
     #endregion
 
     #region Robot Controller
-    private void MoveDelta(Vector6 targetCoordinates, int mode)
+    private void MoveDelta(Vector6 targetCoordinates, string mode)
     {
         if (Connected)
         {
-            RobotController.Commander.MoveAbsolute(targetCoordinates);
+            if (mode == "t")
+                RobotController.Commander.MoveAbsolute(targetCoordinates);
+            else if (mode == "j")
+                RobotController.Commander.MoveJointAbsolute(targetCoordinates);
         }
         else
         {
-            if (mode != 1)
+            if (mode == "t")
             {
                 AddMsgToDevConsole("Cannot execute tcp move absolute in simulation.");
             }
-            else
+            else if (mode == "j")
             {
                 Animate = true;
                 q1t = targetCoordinates[0];
@@ -431,7 +434,7 @@ public class PARRHIRuntime : MonoBehaviour
 
     private void SetHand(bool state)
     {
-
+        RobotController.Commander.SetHand(state);
     }
 
     #endregion

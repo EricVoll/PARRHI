@@ -146,7 +146,7 @@
                         <xs:complexType>
                           <xs:attribute name="name" type="xs:string" use="required" />
                           <xs:attribute name="target" type="xs:string" use="required" />
-                          <xs:attribute name="mode" type="xs:unsignedByte" use="optional" />
+                          <xs:attribute name="mode" type="xs:string" use="optional" />
                         </xs:complexType>
                       </xs:element>
                       <xs:element name="SetRobotHandStateAction">
