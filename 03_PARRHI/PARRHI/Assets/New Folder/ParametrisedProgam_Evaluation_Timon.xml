@@ -11,6 +11,11 @@
 		<PointRobot name="Point4" J1="3" J2="4" Scale="0" />
 		<PointRobot name="Point5" J1="4" J2="5" Scale="0" />
 		<PointRobot name="RobotTCP" J1="5" J2="5" Scale="0" />
+		
+		
+		<PointFix name="Step1_userTargetPoint" X="-897" Y="1300" Z = "1120" />
+		<PointFix name="Step2_targetPoint" X="-492" Y="713" Z="590"/>
+		<PointFix name="Step3_userTargetPoint" X="897" Y="1300" Z = "1120"/>
 
 		<!--Fence points-->
 		<!--<PointFix name="Point7" X="700" Y="0" Z = "700"/>
@@ -25,12 +30,6 @@
 		<!-- Fence Points Finished -->
 		
 		<!-- Task Points -->
-		<PointFix name="Step1_UserTarget" X="-897" Y="1300" Z = "1120"/>
-		<PointFix name="Step2_TCPTarget" X="-492" Y="713" Z="590"/>
-		<PointFix name="Step3_TCPTarget" X="-492" Y="713" Z="-590"/>
-		<PointFix name="Step4_UserTarget" X="-1192" Y="1193" Z = "1309"/>
-		
-		<PointFix name="Step6_TCPTarget" X="0" Y="805" Z="550"/>
 		
 		<PointCamera name="Camera"/>
 	</Points>
@@ -42,6 +41,10 @@
 		<Sphere name="Sphere4" point="Point4" radius="40"/>
 		<Sphere name="Sphere5" point="Point5" radius="20"/>
 		<Sphere name="Sphere6" point="RobotTCP" radius="20"/>
+		
+		<Sphere name="Sphere7" point="Step1_userTargetPoint" radius="255"/>
+		<Sphere name="Sphere8" point="Step2_targetPoint" radius="255" visibility="hidden"/>
+		<Sphere name="Sphere9" point="Step3_userTargetPoint" radius="255" visibility ="hidden"/>
 		
 		<Zylinder name="Zylinder1" point1="Point1" point2="Point2" radius="90"/>
 		<Zylinder name="Zylinder2" point1="Point2" point2="Point3" radius="70"/>
@@ -68,61 +71,72 @@
 		<!--Cylinder Placement finished-->
 		
 		
-		<Sphere name="Step1_UserTarget_H" point="Step1_UserTarget" radius="255" visibility="hidden" renderMode="transparent"/>
+		<!--<Sphere name="Step1_UserTarget_H" point="Step1_UserTarget" radius="255" visibility="hidden" renderMode="transparent"/>
 		<Sphere name="Step2_TCPTarget_H" point="Step2_TCPTarget" radius="100" visibility="hidden" renderMode="transparent"/>
 		<Sphere name="Step3_TCPTarget_H" point="Step3_TCPTarget" radius="100" visibility="hidden" renderMode="transparent"/>
-		<Sphere name="Step4_UserTarget_H" point="Step4_UserTarget" radius="255" visibility="hidden" renderMode="transparent"/>
+		<Sphere name="Step4_UserTarget_H" point="Step4_UserTarget" radius="255" visibility="hidden" renderMode="transparent"/>-->
 		
 		
 	</Holograms>
 	<Events>
-		<Triggers>			
-			<TimeTrigger 		name="Step0_Trigger" canTrigger='true' 	timeSinceActivation="1"											actions="Step1_Action Step1_Action_H"/>
+		<Triggers>	
+		<TimeTrigger name="Step0_Trigger" canTrigger="true" timeSinceActivation="0" actions="Step0_Message"/>
+		<DistanceTrigger 	name="Step1_Trigger" canTrigger='true' 	point1="Step1_userTargetPoint" 	point2="Camera" 	distance="255" 	actions="Step1_TargetPointReachedAction Step1_enableTimeTrigger Step2_activatePositionTrigger Step1_hideSphere"/>
+		<TimeTrigger name ="Step2_TimeTrigger" canTrigger="false" timeSinceActivation="60" actions="Step2_displayTooSlowMessage Step2_deactivatePositionTrigger"/><!---->		
+		<DistanceTrigger name="Step2_positionTrigger" canTrigger="false" point1="Step2_targetPoint" point2="RobotTCP" distance ="255" actions="Step2_inTimeMessage Step2_hideSphere8 Step1_disableTimeTrigger Step3_enablePositionTrigger"	/>
+		<DistanceTrigger name="Step3_positionTrigger" canTrigger="false" distance ="255" point1 = "Step3_userTargetPoint" point2="Camera" actions="Step3_message Step3_hideSphere9"/>
+		<!--<TimeTrigger 		name="Step0_Trigger" canTrigger='true' 	timeSinceActivation="1"											actions="Step1_Action Step1_Action_H"/>
 			<DistanceTrigger 	name="Step1_Trigger" canTrigger='true' 	point1="Step1_UserTarget" 	point2="Camera" 	distance="300" 	actions="Step2_Action Step2_Action_H"/>
 			<DistanceTrigger 	name="Step2_Trigger" canTrigger='true' 	point1="Step2_TCPTarget" 	point2="RobotTCP" 	distance="100" 	actions="Step3_Action Step3_Action_H Step3_ActivateTriggerStep3"/>
 			<DistanceTrigger 	name="Step3_Trigger" canTrigger='false' point1="Step3_TCPTarget" 	point2="RobotTCP" 	distance="100" 	actions="Step4_Action Step4_Action_H Step4_ActivateTriggerStep4"/>
 			<DistanceTrigger	name="Step4_Trigger" canTrigger='false' point1="Step4_UserTarget" 	point2="Camera" 	distance="300" 	actions="Step5_Action Step5_Action_H Step5_ActivateTriggerStep5"/>
 			<TimeTrigger 		name="Step5_Trigger" canTrigger='false' timeSinceActivation="7" 										actions="Step6_Action Step6_MoveRobotAction Step6_ActivateTriggerStep6"/>
 			<DistanceTrigger	name="Step6_Trigger" canTrigger='false' point1="Step6_TCPTarget" 	point2="RobotTCP" 	distance="100" 	actions="Step7_Action Step7_ActivateTriggerStep7"/>
-			<TimeTrigger 		name="Step7_Trigger" canTrigger='false' timeSinceActivation="7" 										actions="Step8_Action"/>
+			<TimeTrigger 		name="Step7_Trigger" canTrigger='false' timeSinceActivation="7" 										actions="Step8_Action"/>-->
+			
+			
 		</Triggers>
 		<Actions>
-			<!-- Step 0 -->
-			
-			<!-- Step 1 -->
+			<ChangeUITextAction name="Step0_Message" text="Step 0:\nBewege dich zur blauen Kugel"/>
+			<ChangeUITextAction name="Step1_TargetPointReachedAction" text="Step 1:\nGut gemacht und jetzt verfahre den Roboter innerhalb von 60 Sekunden zur blauen Kugel"/>
+			<SetTriggerStateAction name="Step1_enableTimeTrigger" triggerName="Step2_TimeTrigger" canTrigger="true"/>
+			<SetTriggerStateAction name="Step1_disableTimeTrigger" triggerName="Step2_TimeTrigger" canTrigger="false"/>
+			<ChangeUITextAction name="Step2_displayTooSlowMessage" text="Step 2:\nDas war zu langsam."/>
+			<ChangeUITextAction name="Step2_inTimeMessage" text="Step 2:\nPosition wurde rechtzeitig erreicht. Gehe nun zur blauen Kugel"/>
+			<SetTriggerStateAction name="Step2_activatePositionTrigger" triggerName="Step2_positionTrigger" canTrigger="true"/>
+			<SetTriggerStateAction name="Step2_deactivatePositionTrigger" triggerName="Step2_positionTrigger" canTrigger="false"/>
+			<SetHologramStateAction name="Step1_hideSphere" onHolograms="Sphere8" offHolograms="Sphere7"/>
+			<SetHologramStateAction name="Step2_hideSphere8" onHolograms="Sphere9" offHolograms="Sphere8"/>
+			<SetTriggerStateAction name="Step3_enablePositionTrigger" triggerName="Step3_positionTrigger" canTrigger = "true" />
+			<ChangeUITextAction name="Step3_message" text ="Step3:\n Position erreicht, Programm beendet" />
+			<SetHologramStateAction name="Step3_hideSphere9" offHolograms="Sphere9" />
+			<!--
 			<ChangeUITextAction name="Step1_Action" text="Step 1:\nMove to the marked safety area marked in by the big sphere"/>
 			<SetHologramStateAction name="Step1_Action_H" onHolograms="Step1_UserTarget_H"/>
 		
-			<!-- Step 2 -->
 			<ChangeUITextAction name="Step2_Action" text="Step 2:\nGood!\nNow Switch on the robot, and hit the connect button.\nWhen you are done, jog the robot to the area marked by the blue sphere"/>
 			<SetHologramStateAction name="Step2_Action_H" onHolograms="Step2_TCPTarget_H" offHolograms="Step1_UserTarget_H"/>
 			
-			<!-- Step 3 -->
 			<ChangeUITextAction name="Step3_Action" text="Step 3:\nGood!\nNow carefully take out the part that is gripped by the robot and then jog it into the far away area marked by the green sphere"/>
 			<SetTriggerStateAction name="Step3_ActivateTriggerStep3" triggerName="Step3_Trigger" canTrigger='true'/>
 			<SetHologramStateAction name="Step3_Action_H" onHolograms="Step3_TCPTarget_H" offHolograms="Step2_TCPTarget_H"/>
 			
-			<!-- Step 4 -->
 			<ChangeUITextAction name="Step4_Action" text="Step 4:\nOk.\nNow move away into the area marked with the blue sphere. We will then move the robot via the Robot Library!"/>
 			<SetTriggerStateAction name="Step4_ActivateTriggerStep4" triggerName="Step4_Trigger" canTrigger='true'/>
 			<SetHologramStateAction name="Step4_Action_H" onHolograms="Step4_UserTarget_H" offHolograms="Step3_TCPTarget_H"/>
 			
-			<!-- Step 5 -->
 			<ChangeUITextAction name="Step5_Action" text="Step 5:\nSince you are here now, we will wait for you to turn around and in a few seconds the library will take over the robot :) "/>
 			<SetTriggerStateAction name="Step5_ActivateTriggerStep5" triggerName="Step5_Trigger" canTrigger='true'/>
 			<SetHologramStateAction name="Step5_Action_H" 			 offHolograms="Step4_UserTarget_H"/>
 			
-			<!-- Step 6 -->
 			<ChangeUITextAction name="Step6_Action" text="Step 6:\nHere we go! Lets move the robot back into his zero-position"/>
 			<SetTriggerStateAction name="Step6_ActivateTriggerStep6" triggerName="Step6_Trigger" canTrigger='true'/>
 			<MoveRobotAction name="Step6_MoveRobotAction" target="0 0 0 0 0 0" mode="j"/>
 			
-			<!-- Step 7 -->
 			<ChangeUITextAction name="Step7_Action" text="Step 7:\nOk cool. Robot is in its home position."/>
 			<SetTriggerStateAction name="Step7_ActivateTriggerStep7" triggerName="Step7_Trigger" canTrigger='true'/>
 			
-			<!-- Step 8 -->
-			<ChangeUITextAction name="Step8_Action" text="Step 8:\nVery well done. You may now close the HoloLens application!"/>
+			<ChangeUITextAction name="Step8_Action" text="Step 8:\nVery well done. You may now close the HoloLens application!"/>-->
 		</Actions>
 	</Events>
 </PProgram>

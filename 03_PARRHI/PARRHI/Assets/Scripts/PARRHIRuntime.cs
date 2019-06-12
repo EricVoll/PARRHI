@@ -167,7 +167,7 @@ public class PARRHIRuntime : MonoBehaviour
         DataImport importer = new DataImport();
 
         Container = importer.Import(xmlFile.text);
-        //Container = importer.Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\ParametrisedProgam_Evaluation.xml", @"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\parrhiScheme.xsd");
+        //Container = importer.Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\ParametrisedProgam_Evaluation_Timon.xml", @"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\parrhiScheme.xsd");
 
         if (Container != null)
         {
@@ -325,6 +325,7 @@ public class PARRHIRuntime : MonoBehaviour
             else
             {
                 Connected = true;
+                RobotController.Commander.SetControlModeConfig(FanucControllerLibrary.ControllCommanderClasses.ControlMode.AutoClaimReleaseMotionControl);
 
                 UnityOutputDelegate("Connected Successfully");
                 AddMsgToDevConsole($"Connected Successfully");
@@ -409,9 +410,13 @@ public class PARRHIRuntime : MonoBehaviour
         if (Connected)
         {
             if (mode == "t")
+            {
                 RobotController.Commander.MoveAbsolute(targetCoordinates);
+            }
             else if (mode == "j")
+            {
                 RobotController.Commander.MoveJointAbsolute(targetCoordinates);
+            }
         }
         else
         {
