@@ -58,6 +58,19 @@ namespace PARRHI.Objects
             set { moveDelta = value; Output.Instance.Log("Move Delta Set!"); }
         }
         
-        public Action<bool> SetHand;
+        private Action<bool> setHand;
+        public Action<bool> SetHand
+        {
+            get
+            {
+                return setHand;
+            }
+            set
+            {
+                setHand = value;
+                Output.Instance.Log("SetHandDelegateSet");
+            }
+
+        }
     }
 }

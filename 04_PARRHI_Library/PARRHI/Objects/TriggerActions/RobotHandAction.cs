@@ -8,24 +8,24 @@ namespace PARRHI.Objects.TriggerActions
 {
     public class RobotHandAction : TriggerAction
     {
-        public RobotHandAction(string id, string stateToSet, Action<bool> SetHand) : base(id)
+        public RobotHandAction(string id, string stateToSet, Container container) : base(id)
         {
-            this.SetHand = SetHand;
+            this.Container = container;
             StateToSet = stateToSet;
         }
 
-        Action<bool> SetHand;
+        Container Container { get; set; }
         public string StateToSet { get; set; }
 
         public override void Trigger()
         {
             base.Trigger();
-            SetHand(StateToSet == "open");
+            Container.State.Robot.SetHand(StateToSet == "open");
         }
         protected override void Trigger(object param)
         {
             base.Trigger(param);
-            SetHand(StateToSet == "open");
+            Container.State.Robot.SetHand(StateToSet == "open");
         }
 
     }

@@ -145,6 +145,8 @@ namespace PARRHI.HelperClasses
         {
             List<Trigger> triggers = new List<Trigger>();
 
+            if (PProgram.Events.Triggers.Items == null) return triggers;
+
             foreach (var item in PProgram.Events.Triggers.Items.Where(x => x is PProgramEventsTriggersDistanceTrigger).Cast<PProgramEventsTriggersDistanceTrigger>())
             {
                 Point p1 = container.Points.Find(x => x.id == item.point1);
@@ -188,6 +190,9 @@ namespace PARRHI.HelperClasses
         private List<TriggerAction> ExtractTriggerActions(PProgram PProgram, Container container)
         {
             List<TriggerAction> actions = new List<TriggerAction>();
+
+            if (PProgram.Events.Actions.Items == null) return actions;
+
             foreach (var item in PProgram.Events.Actions.Items)
             {
                 TriggerAction t = null;
@@ -214,7 +219,7 @@ namespace PARRHI.HelperClasses
                 }
                 else if (setAc != null)
                 {
-                    t = new RobotHandAction(setAc.name, setAc.state, container.State.Robot.SetHand);
+                    t = new RobotHandAction(setAc.name, setAc.state, container);
                 }
                 else if (triAc != null)
                 {

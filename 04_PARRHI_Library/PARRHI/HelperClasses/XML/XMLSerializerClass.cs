@@ -74,11 +74,11 @@ namespace PARRHI.HelperClasses.XML
             }
             finally
             {
-                booksSettings.Reset();
                 if (books != null)
                 {
                     books.Close();
                     books.Dispose();
+                    books = null;
                 }
             }
 
