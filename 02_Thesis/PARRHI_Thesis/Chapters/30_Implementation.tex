@@ -1,6 +1,6 @@
 \chapter{Implementation}\label{Chap:Implementation}
 
-In this chapter I will write about some implementation aspects that were interesting or problematic during the development of the PARRHI system. For that, I will use a bottom down strategy, meaning, that I will talk about the general setup of the implemented system, and then drill down into the components. I will explain what software was used, why I made these decisions and whether or not they where good or bad in hindsight.
+In this chapter I will write about some implementation aspects that were interesting or problematic during the development of the PARRHI system. For that, I will use a top down strategy, meaning, that I will talk about the general setup of the implemented system, and then drill down into the components. I will explain what software was used, why I made these decisions and whether or not they where good or bad in hindsight.
 
 \section{PARRHI Hardware}
 For the Augmented Reality purposes, I decided to use the first version of Microsoft's Augmented Reality glass called HoloLens~\cite{HoloLens}. The HoloLans has all needed capabilities like cameras for image and environment tracking, simple hand gesture recognition, a reasonably good field of view and was programmable with the 3D game engine Unity. Thankfully, the TUM chair of "Automation and Information Systems (AIS)" supplied me with this product.
@@ -30,7 +30,7 @@ Software Implementation wise, the PARRHI system is split up in three big compone
 %4.2) PARRHI Library
 \section{PARRHI Library}
 %- Build up, workflow, interesting things
-The PARRHI system was programmed in Microsoft's .NET framework version 4.6.1~\cite{NETFramework} using $C\#$ \cite{CSharp}. Besides being my personal preference, this decision was made because the Unity game engine is scripted in the language $C\#$. The PARRHI library itself is a \textit{Class Library} project~\cite{ClassLibrary} and has three main tasks.
+The PARRHI system was programmed in Microsoft's .NET framework version 4.6.1~\cite{NETFramework} using $C\#$ \cite{CSharp}. This decision was made because the Unity game engine is scripted in the language $C\#$. The PARRHI library itself is a \textit{Class Library} project~\cite{ClassLibrary} and has three main tasks.
 
 \begin{enumerate}
 	\item Import the Parametrised Program and perform some operations on it. The Parametrised Program is a XML~\cite{xmlW3C} based document. After importing, it is validated using an XSD~\cite{xsdW3C} document. Finally the PARRHI library has to extract useable $C\#$ objects from the deserialized XML document and setup references to resolve parameters.
@@ -154,7 +154,7 @@ For further reading into this topic see~\cite{murray2017mathematical}.
 %4.3) Unity structure
 \section{Unity}
 %- What is unity?
-Unity is the host of the PARRHI and Robot libraries. Originally, Unity itself is a game engine that helps developers to develop, publish, maintain and market their games~\cite{Unity}. Within recent years the company behind Unity, called Unity Technologies, made efforts to become a de facto standard for AR and VR development. Although there are other engines that have similar capabilities, I chose Unity, since I already had two years of experience while working at the chair of Automation and Information Systems at TUM, and because it is scripted in $C\#$. 
+Unity is the host of the PARRHI and Robot libraries. Originally, Unity itself is a game engine that helps developers to develop, publish, maintain and market their games~\cite{Unity}. Within recent years the company behind Unity, called Unity Technologies, made efforts to become a de facto standard for AR and VR development.
 
 There are a lot of third party products for Unity that help the developer with image tracking and general AR interaction. The next paragraphs explain what libraries, and tools where used to handle hand gesture recognition and image tracking.
 
@@ -182,9 +182,11 @@ Interacting with Augmented Reality objects is an essential part of AR environmen
 %- Strucutre, languages, problems, solutions
 Next to the PARRHI library and Unity, the Robot library is the big third component in the PARRHI implementation. The following chapter will explain how we accessed the controller's data, transferred the data to the HoloLens and generally communicated with the robot. The whole Robot library was built together with Florian Leitner, who is currently writing his bachelor's thesis about a virtual programming environment of industrial robots at the same chair as I am. Since his thesis is being written at this very moment, I cannot reference to any source of his.
 
-The Robot Library is responsible for the communication between any system that is capable of executing .NET framework applications, and the robot's controller R-30iB~(see section~\ref{Section:PARRHIHardware}). It is important to know, that Fanuc's controllers are not easily controllable by non-Fanuc components. Our goal was, to wirelessly control the robot from external devices that run .NET framework applications. Since there where no "plug and play" solutions available, we came up with the system, that will be explained in the rest of this chapter. As it has been done in the concept chapter, I will first shortly explain each component before elaborating the information flow between them. Finally, I will give some details about the implemented, custom protocol we use. Fig.~\ref{Fig:RobotArchitecture} depicts how the system is actually setup.
+The Robot Library is responsible for the communication between any system that is capable of executing .NET framework applications, and the robot's controller R-30iB~(see section~\ref{Section:PARRHIHardware}). It is important to know, that Fanuc's controllers are not easily controllable by non-Fanuc components. Our goal was, to wirelessly control the robot from external devices that run .NET framework applications. Since there where no "plug and play" solutions available, we came up with the system, that will be explained in the rest of this chapter. As it has been done in the concept chapter, I will first shortly explain each component before elaborating on the information flow between them. Finally, I will give some details about the implemented, custom protocol we use. Fig.~\ref{Fig:RobotArchitecture} depicts how the system is actually setup.
 
 \subsection{Robot Communication Architecture}
+
+The architecture can be split up into nine individual components, ranging from the actual commanding application to the robot itself. This architecture is tightly linked with the concept of the PARRHI system, thus many components can be recognised.
 
 \begin{figure}
 	\centering
@@ -193,26 +195,30 @@ The Robot Library is responsible for the communication between any system that i
 	\label{Fig:RobotArchitecture}
 \end{figure}
 
+
+
 \begin{enumerate}
 	\item Application Logic: This is any application that wants to communicate with the robot. In my case the PARRHI system.
-	\item Robot Library: A custom library written in $C\#$ that offers some wrappers around our custom protocol, which simply is a syntax we defined to transfer commands and data over the Network Socket, that follows certain rules, so that both the KAREL Host and the $C\#$ Library can parse them for the important information.
+	\item Robot Library: A custom library written in $C\#$ that offers some wrappers around our custom protocol, which simply is a syntax we defined to transfer commands and data over the Network Socket. This protocol follows certain rules, so that both the KAREL Host and the $C\#$ Library can parse them to extract the important information in a standardised way.
 	\item Network Socket Client: Standard Network Socket, where the PARRHI library represents the client.
-	\item WLAN Router: Standard WLan Router, which is connected to the controller via a CAT cable.
-	\item Network Socket Server: Standard Network Socket, where the Controller represents the server.
+	\item WLAN Router: Standard WLAN Router, which is connected to the controller via a standard patch cord.
+	\item Network Socket Server: Standard Network Socket, where the R30iB controller represents the server.
 	\item KAREL Host: A programm written in KAREL~\cite{FanucKarel} that receives commands from the network socket, parses them according to the defined protocol and returns the requested data or executes the requested commands.
-	\item Register: A storage that is used to command the Teach Pendant (TP) Loop, which also has access to this storage location. Some registers are used to set different modes like coordinate systems, absolute versus relative and so on, and six registers are used to transfer vectors, that the TP program should process according to the set mode.
-	\item TP Loop: A program written in TP that scans the Register (7) each cycle, and controls the robot accordingly.
+	\item Register: A storage that is used to command the Teach Pendant (TP) Loop (8), which also has access to this storage location. Some registers are used to set different modes like coordinate systems, absolute versus relative and so on, and six registers are used to transfer vectors, that the TP program should process according to the set mode.
+	\item TP Loop: A program written in TP that scans the Register (7) every cycle, and controls the robot accordingly.
 \end{enumerate}
+
+One can now see, that Application Logic (1) is the PARRHI itself. The network socket client(3) is the concrete implementation PARRHI's the in and output module and the complete Robot Controller is the "real world" excluding the end user.
 
 
 Since researching the difference between KAREL and TP programmes on the internet is rather hard, because one simply does not find a lot of information about it, I would like to summarise our current knowledge about that. KAREL is a programming language, that is similar to Fortran. It was developed by Fanuc itself, and is used internally for a lot of components in the controller. Nowadays, KAREL is most often used for managing tasks like communication, synchronisation, data handling and so on. Teach pendant programmes on the other hand, are specialised on actually commanding the robot's movement and behaviour. TP supports numerous methods to control a robot, that the KAREL language simply does not offer. This is why, we chose to split up the controller-side software in these two programming components.
 
 
-Now the information flow is as follows: First, the Application (1), which wants to send a command to the robot has to call into the Robot Library (2). Besides managing the Network Socket Connection (3), this library offers about 10 commands to the Application. A command could be the wish to fetch the robot's joint position, or to move the robot into a certain position. The Robot Library (2) then sends the command to the Network Socket (3), which is connected to the controllers server-endpoint. It is important, that the communication between the HoloLens (or a Laptop for instance) is wireless in order to stay mobile. The controller is connected to the WLAN Router (4) via a cable using the Ethernet protocol. There, the Network Socket Server (5) receives the command, and passes it on to the KAREL Host (6). 
+Now the information flow is as follows: First, the application (1), which wants to send a command to the robot has to call into the Robot Library (2). Besides managing the network socket connection (3), this library offers about 12 commands to the Application. A command could be the wish to fetch the robot's joint position, or to move the robot into a certain position. The Robot Library (2) then sends the command to the network socket (3), which is connected to the controllers server-endpoint. It is important, that the communication between the HoloLens (or a Laptop for instance) is wireless in order to stay mobile. The controller is connected to the WLAN Router (4) via a cable using the Ethernet protocol. There, the network socket server (5) receives the command, and passes it on to the KAREL Host (6). The latter then processes the command, which is described in the following section.
 
 \subsection{Robot Communication KAREL Host}
 
-At the point of reception, the command is only a string following a very specific syntax that we defined. The KAREL Host (6) then parses the command and acts on its instructions. If the command is a simple "Fetch Command", the KAREL Host (6) collects the needed data, constructs the message and sends it back via the network. If the command is targeted at the robot itself, the KAREL Host (6) fills the Register (7) with all necessary data that the TP Loop (8) needs to execute the movement command. This data is a six dimensional vector (coordinates in task or joint space), the mode whether the vector should be interpreted absolute or relatively to the momentary position, the coordinate system which should be used to interpret the six dimensional data and some internal flags.
+At the point of reception, the command is only a string following a very specific syntax that we defined. The KAREL Host (6) then parses the command and acts on its instructions. If the command is a simple "Fetch Command", the KAREL Host (6) collects the needed data, constructs the message and sends it back via the network. If the command is targeted at the robot itself, the KAREL Host (6) fills the Register (7) with all necessary data that the TP Loop (8) needs to execute the movement command. This data is a six dimensional vector (coordinates in task or joint space), the mode whether the vector should be interpreted absolutely or relatively to the current position, the coordinate system which should be used to interpret the six dimensional data and some internal flags.
 
 The KAREL code consists of four main parts. There is the network communication, the command parsing, the data collection/register writing and lastly the response sending. The KAREL language makes it relatively easy to parse strings and write the logic components that are needed for the communication system. We tried to achieve as much as possible within the KAREL Host, and limit the parallel running TP Program to its speciality, which is controlling the robot physically.
 
@@ -220,9 +226,9 @@ The KAREL code consists of four main parts. There is the network communication, 
 
 The TP Loop (8) itself is written in Fanuc's TP-Language. It basically is one large loop, that reads the Register (7) and acts on its instructions. There are some problems that had to be overcome though. For example switching between the relative and absolute movement mode has one very critical aspect: During absolute movements, the values in the Register (7) might be relatively high, since the task space coordinates are defined in millimetres. Values here are in a range from -700 to +700 mm. When interpreting these coordinates absolutely, that is not a problem since they are in the robot's range of motion. But after switching to the relative mode, these values are added to the current robot position, resulting in a huge step, which most probably is not within the range of motion any more.
 
-Another example here is the switching of coordinate systems. When the current data in the register was written there as  Cases like these have to be thought of and handled. 
+Another example here is the switching of coordinate systems. When the current data in the register was inserted to be interpreted as joint coordinates, the individual values are in the range from about -360° to +360° (varying for each joint). This range includes values close to zero. A limit error would occur, if these were to be interpreted as task space coordinates suddenly, since Cartesian positions close to zero are not possible in the task space. Cases like these have to be thought of and handled. 
 
-Fig. \ref{Fig:TPLoopFlowChart} shows the TP Loop's (7) Activity Diagram. Of course this is a rather simplified version, since almost every action depends on two register values, which represent the coordinate system and the relative/absolute mode. 
+Fig. \ref{Fig:TPLoopFlowChart} shows the TP Loop's Activity Diagram. Of course this is a rather simplified version, since almost every action depends on two register values, which represent the coordinate system and the relative/absolute mode. 
 
 \begin{figure}
 	\centering
@@ -231,26 +237,35 @@ Fig. \ref{Fig:TPLoopFlowChart} shows the TP Loop's (7) Activity Diagram. Of cour
 	\label{Fig:TPLoopFlowChart}
 \end{figure}
 
-Resetting the register's state at the very beginning (\code{Init()}) is crucial, since the data registers are persistent stores, which means, that their value is saved even when the controller is shut down. The Initialisation defines a clear behaviour at each launch of the program.
+Resetting the register's state at the very beginning is crucial, since the data registers are persistent stores, which means, that their value is saved even when the controller is shut down. The initialisation defines a clear behaviour at each launch of the program.
 
-The \textit{Launch ARobot\_Server} action starts the KAREL program (6), which communicates with any potential client via the network socket. After starting the KAREL Host, the program has to check if the relative/absolute mode has changed. If so, it handles this change to avoid unexpected behaviour due to old data in the registers. This is done via an edge detection, which needs an additional variable to store the previous mode. 
+The \textit{Launch ARobot\_Server} action starts the KAREL Host, which communicates with any potential client via the network socket. After starting the KAREL Host, the program has to check if the relative/absolute mode has changed. If so, it handles this change to avoid unexpected behaviour due to old data in the registers. This is done via an edge detection, which needs an additional variable to store the previous mode. 
 
 The action \textit{Store Current Pos to PR} fetches the current coordinate vector in the corresponding system (joint space or task space), which is then fed into the next action, which calculates the new target position vector. This action differentiates between the relative and absolute mode. 
 
-After the hand gripper state change is set, the new target position is written to the robot - again within the corresponding coordinate system. At the very end there is an \textit{exit} flag, which can be set to \textit{'1'} by the KAREL Host. This quits the KAREL and TP Programm and allows the client (.NET library) to send an exit command to the robot. This allows the controller to safely shutdown the network socket and the TP Loop. 
+After the hand gripper state change is set, the new target position is written to the robot - again within the corresponding coordinate system. At the very end there is an \textit{exit} flag, which can be set to \textit{'1'} by the KAREL Host. This quits the KAREL and TP Programm and thus allows the client (.NET library) to send an exit command to the robot. This gives the controller an opportunity to safely shutdown the network socket and the TP Loop. 
+
+\subsection{Robot Motion Group Management}
+
+One important aspect to mention is the motion control system, which all FANUC robots are subject to. Within the FANUC environment, the robot can be separated into motion groups, which are groups of moveable elements within a FANUC robot. One motion group may for example contain the first three joints, and another motion group could own the second three joints. Or, one group can also contain all joints. At runtime, a motion group can be physically controlled by only one instance at at time. TP programmes, KAREL programmes and also the Teach Pendant are viewed as instances here. The reason for this is, to avoid cases, where undefined behaviour through double commanding might occur. 
+
+Since applications, which were developed in the PARRHI system, should both allow the user to jog the robot and then take over control programmatically through actions, the right to move the robot has to be managed. In this case there are two involved instances: The Teach Pendant and the TP Loop program.
+
+The solution to this problem was, to implement a motion group control ownership management system. By default, the TP Loop would release the motion group control and not be able to move the robot, unless it really needs to execute a corresponding command. This means, that unless the TP Loop actively controls the robot, the Teach Pendant has the ownership over the motion group, so that the user can jog the robot.
+
+Implementation wise, this was achieved by a "pause" flag in the data register. As soon as the KAREL program sets this pause flag to "1", the TP loop starts a second TP program called \textit{"Waiter"}, which does not have any motion control rights and then aborts its own execution - this actually releases the motion control. This waiter program simply waits until the pause flag gets reset to "0" by the KAREL program, and then restarts the TP loop. While the waiter program waits, the motion control rights are owned by the Teach Pendant, and thereby the user can take control over the robot. As soon as the PARRHI system has to control the robot, it activates the TP loop by setting the pause flag to "0", executes its movement command and then releases the motion control by setting the pause flag to "1".
 
 \subsection{Robot Communication Outcome}
 
 Basically, the presented architecture allows us to execute any pre-defined function in a fraction of a second. The whole process is actually so fast, that the PARRHI system fetches the robot's joint position in each iteration.
 
-To finish this chapter off, I would like to shortly explain what the system is capable of doing. The Robot Library can get the robot's joint angles, TCP position and six dimensional force/torque sensor data. It can command the robot to drive to an absolute or relative task or joint space position and set a speed vector for the TCP. Generally, this system could be extended quite easily.
+To finish this chapter off, I would like to shortly explain what the system is capable of doing. The Robot Library can get the robot's joint angles, TCP position and six dimensional force/torque sensor data. It can command the robot to drive to an absolute or relative task or joint space position and set a speed vector for the TCP and joint vector. Finally, there are commands that are mainly used internally at the moment, which release and claim the motion control. Generally, this system could be extended quite easily, by defining new commands in the robot library and the KAREL host.
 
 %4.5) Parametrised Program Validation and Definition
 \section{Parametrised Program Implementation and Validation}
-%- XML leads to C# classes etc.
-One last interesting component in the PARRHI implementation is the Parametrised Program. It was clear quite early on, that the document needs a hierarchical structure and must be validated, since the PARRHI system has some presupposed assumptions about the document.  
+One core component of the PARRHI implementation is the Parametrised Program. The document needs a hierarchical or at least well defined structure, since the content has to be imported (de-serialised). This automatic process only works seamlessly, if certain rules are kept perfectly. This is also why, it makes sense to validate the document before de-serialising it, since the PARRHI system has some presupposed assumptions about the document.  
 
-XML~\cite{xmlW3C} immediately comes into mind here. XML documents are strictly hierarchically and have the big benefit of being human and machine readable. In PARRHI's case this is exactly what the document in question should be. Written by a human with limited software engineering skills, but interpreted by a machine.
+XML~\cite{xmlW3C} seems to fulfil these requirements. XML documents are strictly hierarchically and have the big benefit of being human and machine readable. In PARRHI's case this is exactly what the document in question should be. Written by a human with possibly limited software engineering skills, but interpreted by a machine.
 
 
 %4.4.1) XML Structure
@@ -258,7 +273,7 @@ XML~\cite{xmlW3C} immediately comes into mind here. XML documents are strictly h
 %%- Give XML Tags
 The content of the Parametrised Program was thoroughly discussed in section~\ref{Section:ParametrisedProgram}. In this section, I would like to present the actual implementation and how a Parametrised Program written in XML would look like.
 
-XML documents must have one root element. In PARRHI's case this is the "<PProgram/>" tag. Similarly to the conceptual train of thought, the actual implementation contains four sub elements.
+XML documents must have one root element. In PARRHI's case this is the "<PProgram/>" tag. Similarly to the conceptual train of thought, the actual implementation contains four children.
 
 \begin{lstlisting}
 <?xml version="1.0"?>
@@ -289,21 +304,21 @@ The following block of code exemplary defines each object once. Please note, tha
 		<PointRobot name="RobotPoint0" J1="1" J2="2" Scale="0.6" />
 	</Points>
 	<Holograms>
-		<Cylinder name="Cyl0" point1="CamPoint" point2="FixPoint0" radius="10" active='false'/>
-		<Sphere name="Sphere0" point="RobotPoint0" radius="25" renderMode="transparent" active='true'/>
+		<Cylinder name="Cyl0" point1="CamPoint" point2="FixPoint0" radius="10" visibility="hidden"/>
+		<Sphere name="Sphere0" point="RobotPoint0" radius="25" renderMode="transparent" visibility="visible"/>
 	</Holograms>
 	<Events>
 		<Trigger>
-			<DistanceTrigger name="DistanceTrigger0" canTrigger='true' point1="CamPoint" point2="RobotPoint0" distance="15.5" action1="HoloStateAction0"/>
-			<VarTrigger name="VariableTrigger0" canTrigger='true' varName="Variable0" triggerValue="2" action1="IncrVarAction0"/>
-			<TimeTrigger name="TimeTrigger0" canTrigger='true' timeSinceActivation="120" action1="TriggerStateAction0" action2="ChangeUITextAction0"/>
+			<DistanceTrigger name="DistanceTrigger0" canTrigger='true' point1="CamPoint" point2="RobotPoint0" distance="15.5" actions="HoloStateAction0"/>
+			<VarTrigger name="VariableTrigger0" canTrigger='true' varName="Variable0" triggerValue="2" actions="IncrVarAction0"/>
+			<TimeTrigger name="TimeTrigger0" canTrigger='true' timeSinceActivation="120" actions="TriggerStateAction ChangeUITextAction0"/>
 		</Trigger>
 		<Actions>
 			<IncrementCounterAction name="IncrVarAction0" intVar="Variable0"/>
-			<SetHologramStateAction name="HoloStateAction0" state='true' holograms="Zyl1 Sphere1 Sphere2 Zyl2"/>
+			<SetHologramStateAction name="HoloStateAction0" onHolograms="Sphere1 Sphere2 Zyl2" offHolograms="Zyl1"/>
 			<SetTriggerStateAction name="TriggerStateAction0" triggerName="Trigger1" canTrigger='true'/>
 			<ChangeUITextAction name="ChangeUITextAction0" text="Tutorial step nr. 4"/>
-			<MoveRobotAction name="MoveRobotAction0" pointTCP="FixPoint0" />
+			<MoveRobotAction name="MoveRobotAction0" target="100 100 100 45 15 0/>
 			<SetRobotHandStateAction name="SetRobotHandAction0" state="open" />
 		</Actions>
 	</Events>
@@ -321,7 +336,7 @@ Hence, an XSD document is an essential part in the importing / validation proces
 
 Another application developed by Microsoft called "xsd.exe"~\cite{xsdExe} allows to convert XSD documents into $C\#$ class definitions. During the development of this bachelor's thesis, I automated the process of generating the XSD file and from that the $C\#$ class definition, using the programming language Perl~\cite{perl}.
 
-This means, that whenever I wanted to add an attribute to some xml element in the Parametrised Program, I only had to add these attributes in one of my example input xml documents and execute the Perl script, which would then output new XSD documents and a $C\#$ class to deserialise the Parametrised Program. 
+This means, that whenever an attribute had to be added to some xml element in the Parametrised Program, this attribute had to be added in one of the example input xml documents and the execution of the Perl script would then output new XSD documents and a $C\#$ class to deserialise the Parametrised Program. 
 
 One huge advantage of XSD documents and their validator is, that the latter can output exact error messages with what went wrong in the input xml document. This includes the type of error, line and column numbers, and (depending on the error type) suggests how to fix it. For the PARRHI system this means, that very exact feedback can be printed to the user if any errors occur. This makes it easier for non software engineers to accomplish their task.
 

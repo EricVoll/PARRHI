@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.6960 64-bit) (preloaded format=pdflatex 2019.3.13)  11 JUN 2019 13:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.6960 64-bit) (preloaded format=pdflatex 2019.3.13)  17 JUN 2019 00:06
 entering extended mode
 **./Thesis.tex
 (Thesis.tex
@@ -2195,7 +2195,7 @@ UM_Logo_cmyk.pdf>]) [2
 page.A}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.32 ...line {4.3}PARRHI Library}{26}{section.4.3}
+l.33 ...arametrised Program}{36}{subsection.4.3.2}
                                                   % [1
 
 
@@ -2234,111 +2234,106 @@ Class scrbook Warning: \float@addtolists detected!
 
 
 
-]) [2]
+]) [2] [3] [4
+
+
+
+]
 \openout2 = `Chapters/15_StateOfTheArt.aux'.
 
  (Chapters/15_StateOfTheArt.tex
 chapter 2.
-[3
+[5
 
 
 
-
-
-
-] [4] [5] [6]) [7]
+] [6] [7] [8] [9]) [10]
 \openout2 = `Chapters/20_Concept.aux'.
 
- (Chapters/20_Concept.tex [8
+ (Chapters/20_Concept.tex
+chapter 3.
+[11
 
 
 
 
 ]
-chapter 3.
-LaTeX Font Info:    Try loading font information for TS1+aer on input line 14.
-LaTeX Font Info:    No file TS1aer.fd. on input line 14.
+Overfull \hbox (2.1725pt too wide) in paragraph at lines 21--22
+[]\T1/aer/m/n/10.95 Build ap-pli-ca-tions for mul-ti-ple plat-forms (Desk-top, 
+mo-bile de-vices, ta-bles, head mounted
+ []
 
-LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
-(Font)              using `TS1/cmr/m/n' instead
-(Font)              for symbol `textbullet' on input line 14.
-
-[9] [10] [11]
-<Figures/PARRHIConcept03.jpg, id=272, 1014.79124pt x 374.90062pt>
+[12] [13]
+<Figures/PARRHIConcept03.jpg, id=287, 1014.79124pt x 374.90062pt>
 File: Figures/PARRHIConcept03.jpg Graphic file (type jpg)
 <use Figures/PARRHIConcept03.jpg>
-Package pdftex.def Info: Figures/PARRHIConcept03.jpg  used on input line 61.
+Package pdftex.def Info: Figures/PARRHIConcept03.jpg  used on input line 66.
 (pdftex.def)             Requested size: 441.01772pt x 162.926pt.
-
-
-LaTeX Warning: Reference `Chap:ParametrisedProgram' on page 12 undefined on inp
-ut line 73.
-
-[12
-
- <./Figures/PARRHIConcept03.jpg>] [13] [14] [15] [16]
+ [14] [15 <./Figures/PARRHIConcept03.jpg>] [16] [17] [18] [19]
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 153.
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 158.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
-(Font)              Font shape `U/lasy/m/n' tried instead on input line 153.
- [17]
-(Figures/PointFix.tex)
-Overfull \hbox (68.07455pt too wide) in paragraph at lines 165--165
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 158.
+
+[20] (Figures/PointFix.tex)
+Overfull \hbox (68.07455pt too wide) in paragraph at lines 170--170
 [] [] 
  []
 
 (Figures/PointRobot.tex)
-Overfull \hbox (68.07455pt too wide) in paragraph at lines 171--171
+Overfull \hbox (68.07455pt too wide) in paragraph at lines 176--176
 [] [] 
  []
 
 
-Overfull \hbox (61.59492pt too wide) in paragraph at lines 185--197
+Overfull \hbox (61.59492pt too wide) in paragraph at lines 190--202
  [][] 
  []
 
-[18] [19]
-Overfull \hbox (7.33823pt too wide) in paragraph at lines 241--242
+[21] [22]
+Overfull \hbox (7.33823pt too wide) in paragraph at lines 246--247
 \T1/aer/m/n/10.95 Definition Pa-ram-e-ters: \T1/aer/m/it/10.95 name:string, can
 Trig-ger:bool, point1:Point, point2:Point, dis-tance:float,
  []
 
 
-Overfull \hbox (16.38907pt too wide) in paragraph at lines 245--246
+Overfull \hbox (16.38907pt too wide) in paragraph at lines 250--251
 \T1/aer/m/n/10.95 Definition Pa-ram-e-ters: \T1/aer/m/it/10.95 name:string, can
 Trig-ger:bool, timeSince-Ac-ti-va-tion:int, ac-tions:[Action] 
  []
 
-[20]
-Overfull \hbox (29.264pt too wide) in paragraph at lines 253--265
+[23]
+Overfull \hbox (29.264pt too wide) in paragraph at lines 258--270
  [][] 
  []
 
-[21]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 275.
+[24]
+LaTeX Font Info:    Try loading font information for T1+aett on input line 280.
 
  ("C:\Users\ericv\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ae\t1aett.fd"
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
-) [22]
-<Figures/CoreRoutine.jpg, id=376, 901.86937pt x 166.37157pt>
+) [25]
+<Figures/CoreRoutine.jpg, id=397, 901.86937pt x 166.37157pt>
 File: Figures/CoreRoutine.jpg Graphic file (type jpg)
 <use Figures/CoreRoutine.jpg>
-Package pdftex.def Info: Figures/CoreRoutine.jpg  used on input line 308.
+Package pdftex.def Info: Figures/CoreRoutine.jpg  used on input line 313.
 (pdftex.def)             Requested size: 374.86774pt x 69.1546pt.
- [23 <./Figures/CoreRoutine.jpg>]) [24]
-\openout2 = `Chapters/30_Implementation.aux'.
-
- (Chapters/30_Implementation.tex
-chapter 4.
-[25
-
-
-
+ [26 <./Figures/CoreRoutine.jpg>]) [27] [28
 
 
 
 ]
-<Figures/Implementation_SystemSetup.jpg, id=412, 435.12563pt x 141.52875pt>
+\openout2 = `Chapters/30_Implementation.aux'.
+
+
+(Chapters/30_Implementation.tex
+chapter 4.
+[29
+
+
+
+]
+<Figures/Implementation_SystemSetup.jpg, id=438, 435.12563pt x 141.52875pt>
 File: Figures/Implementation_SystemSetup.jpg Graphic file (type jpg)
 <use Figures/Implementation_SystemSetup.jpg>
 Package pdftex.def Info: Figures/Implementation_SystemSetup.jpg  used on input 
@@ -2350,22 +2345,22 @@ Overfull \hbox (1.13751pt too wide) in paragraph at lines 36--37
 tions on it. The Parametrised
  []
 
-[26 <./Figures/Implementation_SystemSetup.jpg>]
-<Figures/Implementation_Container.png, id=432, 548.80031pt x 301.125pt>
+[30 <./Figures/Implementation_SystemSetup.jpg>]
+<Figures/Implementation_Container.png, id=458, 548.80031pt x 301.125pt>
 File: Figures/Implementation_Container.png Graphic file (type png)
 <use Figures/Implementation_Container.png>
 Package pdftex.def Info: Figures/Implementation_Container.png  used on input li
 ne 47.
 (pdftex.def)             Requested size: 441.01772pt x 241.98927pt.
- [27 <./Figures/Implementation_Container.png (PNG copy)>]
-<Figures/Implementation_State.png, id=443, 437.38406pt x 203.25937pt>
+ [31 <./Figures/Implementation_Container.png (PNG copy)>]
+<Figures/Implementation_State.png, id=468, 437.38406pt x 203.25937pt>
 File: Figures/Implementation_State.png Graphic file (type png)
 <use Figures/Implementation_State.png>
 Package pdftex.def Info: Figures/Implementation_State.png  used on input line 6
 0.
 (pdftex.def)             Requested size: 308.71104pt x 143.46535pt.
- [28 <./Figures/Implementation_State.png (PNG copy)>]
-<Figures/Implementation_Points.png, id=449, 286.06876pt x 276.28218pt>
+ [32 <./Figures/Implementation_State.png (PNG copy)>]
+<Figures/Implementation_Points.png, id=474, 286.06876pt x 276.28218pt>
 File: Figures/Implementation_Points.png Graphic file (type png)
 <use Figures/Implementation_Points.png>
 Package pdftex.def Info: Figures/Implementation_Points.png  used on input line 
@@ -2376,7 +2371,7 @@ Overfull \hbox (23.97345pt too wide) in paragraph at lines 81--81
 [] [] 
  []
 
-<Figures/Implementation_Holograms.png, id=450, 213.04594pt x 170.88844pt>
+<Figures/Implementation_Holograms.png, id=475, 213.04594pt x 170.88844pt>
 File: Figures/Implementation_Holograms.png Graphic file (type png)
 <use Figures/Implementation_Holograms.png>
 Package pdftex.def Info: Figures/Implementation_Holograms.png  used on input li
@@ -2387,53 +2382,68 @@ Overfull \hbox (90.12341pt too wide) in paragraph at lines 87--87
 [] [] 
  []
 
-[29 <./Figures/Implementation_Points.png (PNG copy)> <./Figures/Implementation_
+[33 <./Figures/Implementation_Points.png (PNG copy)> <./Figures/Implementation_
 Holograms.png (PNG copy)>]
-<Figures/Implementation_Triggers.png, id=459, 513.41812pt x 211.54031pt>
+<Figures/Implementation_Triggers.png, id=485, 513.41812pt x 211.54031pt>
 File: Figures/Implementation_Triggers.png Graphic file (type png)
 <use Figures/Implementation_Triggers.png>
 Package pdftex.def Info: Figures/Implementation_Triggers.png  used on input lin
 e 98.
 (pdftex.def)             Requested size: 308.71104pt x 127.19629pt.
- [30 <./Figures/Implementation_Triggers.png (PNG copy)>]
-<Figures/Implementation_Action.png, id=467, 436.63126pt x 495.35063pt>
+ [34 <./Figures/Implementation_Triggers.png (PNG copy)>]
+<Figures/Implementation_Action.png, id=493, 436.63126pt x 495.35063pt>
 File: Figures/Implementation_Action.png Graphic file (type png)
 <use Figures/Implementation_Action.png>
 Package pdftex.def Info: Figures/Implementation_Action.png  used on input line 
 111.
 (pdftex.def)             Requested size: 308.71104pt x 350.22752pt.
- [31 <./Figures/Implementation_Action.png (PNG copy)>] [32]
+ [35 <./Figures/Implementation_Action.png (PNG copy)>] [36]
 (Figures/RobotForwardKinematics.tex)
 Overfull \hbox (68.07455pt too wide) in paragraph at lines 135--135
 [] [] 
  []
 
-[33] [34]
-<Figures/RobotArchitecture.jpg, id=499, 837.88031pt x 255.20343pt>
+[37] [38]
+<Figures/RobotArchitecture.jpg, id=524, 837.88031pt x 255.20343pt>
 File: Figures/RobotArchitecture.jpg Graphic file (type jpg)
 <use Figures/RobotArchitecture.jpg>
-Package pdftex.def Info: Figures/RobotArchitecture.jpg  used on input line 191.
+Package pdftex.def Info: Figures/RobotArchitecture.jpg  used on input line 193.
 
 (pdftex.def)             Requested size: 441.01772pt x 134.32648pt.
- [35] [36 <./Figures/RobotArchitecture.jpg>] [37]
-<Figures/TPLoopFlowChart.jpg, id=525, 731.73375pt x 292.84406pt>
+ [39] [40 <./Figures/RobotArchitecture.jpg>] [41]
+LaTeX Font Info:    Try loading font information for TS1+aer on input line 229.
+
+LaTeX Font Info:    No file TS1aer.fd. on input line 229.
+
+
+LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
+(Font)              using `TS1/cmr/m/n' instead
+(Font)              for symbol `textdegree' on input line 229.
+
+<Figures/TPLoopFlowChart.jpg, id=551, 731.73375pt x 292.84406pt>
 File: Figures/TPLoopFlowChart.jpg Graphic file (type jpg)
 <use Figures/TPLoopFlowChart.jpg>
-Package pdftex.def Info: Figures/TPLoopFlowChart.jpg  used on input line 227.
+Package pdftex.def Info: Figures/TPLoopFlowChart.jpg  used on input line 235.
 (pdftex.def)             Requested size: 396.91324pt x 158.84837pt.
- [38] [39 <./Figures/TPLoopFlowChart.jpg>] [40] [41]) [42]
+[42] [43 <./Figures/TPLoopFlowChart.jpg>] [44] [45] [46]) [47] [48
+
+
+
+]
 \openout2 = `Chapters/40_Evaluation.aux'.
 
- (Chapters/40_Evaluation.tex
+
+(Chapters/40_Evaluation.tex
 chapter 5.
-[43
+
+LaTeX Warning: Reference `Section:SystemRequirements' on page 49 undefined on i
+nput line 3.
+
+[49
 
 
 
-
-
-
-] [44] [45]) [46] [47] [48
+] [50] [51] [52]) [53] [54
 
 
 
@@ -2448,20 +2458,20 @@ Overfull \hbox (2.06834pt too wide) in paragraph at lines 2--2
 reality -[] hardware -[] endgeraete/$[]
  []
 
-[49
+[55
 
 
 
-] [50]
+] [56]
 Overfull \hbox (4.18915pt too wide) in paragraph at lines 2--2
 []\T1/aer/m/n/10.95 , (2019). Mi-crosoft .net class li-brary, [On-line]. Avai
 l-able: []$\T1/aett/m/n/10.95 https : / / docs . microsoft .
  []
 
-[51]) [52] [53
+[57]) [58] [59
 
 
-] [54
+] [60
 
 
 
@@ -2473,7 +2483,7 @@ Overfull \hbox (3.61714pt too wide) in paragraph at lines 25--103
 []|  \T1/aer/m/n/10.95 Mu-nich, De-cem-ber 1, 2016 | [] |  
  []
 
-[55
+[61
 
 
 
@@ -2501,13 +2511,13 @@ Package logreq Info: Writing requests to 'Thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 58723 strings out of 492946
- 1334377 string characters out of 3126266
- 1888502 words of memory out of 3000000
- 61373 multiletter control sequences out of 15000+200000
+ 58735 strings out of 492946
+ 1334441 string characters out of 3126266
+ 1898462 words of memory out of 3000000
+ 61371 multiletter control sequences out of 15000+200000
  584617 words of font info for 139 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,21n,136p,9102b,3648s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 80i,21n,136p,9102b,3645s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\ericv\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 tcrm1095.pk><C:/Users/ericv/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
 c/amsfonts/cm/cmbx10.pfb><C:/Users/ericv/AppData/Local/Programs/MiKTeX 2.9/font
@@ -2534,9 +2544,9 @@ al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/ericv
 cmti9.pfb><C:/Users/ericv/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
 amsfonts/cm/cmtt10.pfb><C:/Users/ericv/AppData/Local/Programs/MiKTeX 2.9/fonts/
 type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Thesis.pdf (59 pages, 1822104 bytes).
+Output written on Thesis.pdf (65 pages, 1836182 bytes).
 PDF statistics:
- 999 PDF objects out of 1000 (max. 8388607)
- 267 named destinations out of 1000 (max. 500000)
+ 1038 PDF objects out of 1200 (max. 8388607)
+ 284 named destinations out of 1000 (max. 500000)
  609 words of extra memory for PDF output out of 10000 (max. 10000000)
 
