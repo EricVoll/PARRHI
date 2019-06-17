@@ -75,11 +75,11 @@
           </xs:complexType>
         </xs:element>
         <xs:element name="Events">
-          <xs:complexType mixed="true">
-            <xs:sequence minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
               <xs:element name="Triggers">
                 <xs:complexType>
-                  <xs:sequence>
+                  <xs:sequence minOccurs="0">
                     <xs:choice maxOccurs="unbounded">
                       <xs:element name="DistanceTrigger">
                         <xs:complexType>
@@ -114,7 +114,7 @@
               </xs:element>
               <xs:element name="Actions">
                 <xs:complexType>
-                  <xs:sequence>
+                  <xs:sequence minOccurs="0">
                     <xs:choice maxOccurs="unbounded">
                       <xs:element name="SetHologramStateAction">
                         <xs:complexType>

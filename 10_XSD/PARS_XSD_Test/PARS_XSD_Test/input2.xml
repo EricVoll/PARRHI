@@ -8,5 +8,7 @@
 	<Holograms>
 	</Holograms>
 	<Events>
+	 <Triggers></Triggers>
+	 <Actions></Actions>
 	</Events>
 </PProgram>

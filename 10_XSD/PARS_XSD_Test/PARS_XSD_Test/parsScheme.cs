@@ -250,10 +250,6 @@ public partial class PProgramEvents {
     
     /// <remarks/>
     public PProgramEventsActions Actions;
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlTextAttribute()]
-    public string[] Text;
 }
 
 /// <remarks/>
