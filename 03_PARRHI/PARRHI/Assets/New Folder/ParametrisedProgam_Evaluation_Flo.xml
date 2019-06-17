@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<PProgram xmlns="PARRHI">
+	<Variables>
+		<Int name="var1">0</Int>
+	</Variables>
+	
+	<Points>
+		<!--Robot points to show the actual robot-->
+		<PointRobot name="Joint1" J1="0" J2="1" Scale="0" />
+		<PointRobot name="Joint2" J1="1" J2="2" Scale="0" />
+		<PointRobot name="Joint3" J1="2" J2="3" Scale="0" />
+		<PointRobot name="Joint4" J1="3" J2="4" Scale="0" />
+		<PointRobot name="Joint5" J1="4" J2="5" Scale="0" />
+		<PointRobot name="RobotTCP" J1="5" J2="5" Scale="0" />
+
+		
+		<!-- Task Points -->
+		
+		<PointFix name="UserPoint1" X="-897" Y="1300" Z = "1120"/>
+		<PointFix name="RoboPoint1" X="-492" Y="713" Z="590"/>
+		
+		<PointCamera name="Camera"/>
+	</Points>
+	<Holograms>
+		<!-- Robot Start -->
+		<!-- These Holograms draw the robot -->
+		<Sphere name="Joint1Sphere" point="Joint1" radius="90"/>
+		<Sphere name="Joint2Sphere" point="Joint2" radius="80"/>
+		<Sphere name="Joint3Sphere" point="Joint3" radius="70"/>
+		<Sphere name="Joint4Sphere" point="Joint4" radius="40"/>
+		<Sphere name="Joint5Sphere" point="Joint5" radius="20"/>
+		<Sphere name="Joint6Sphere" point="RobotTCP" radius="20"/>
+		
+		<Zylinder name="Axe1" point1="Joint1" point2="Joint2" radius="90"/>
+		<Zylinder name="Axe2" point1="Joint2" point2="Joint3" radius="70"/>
+		<Zylinder name="Axe3" point1="Joint3" point2="Joint4" radius="70"/>
+		<Zylinder name="Axe4" point1="Joint4" point2="Joint5" radius="40"/>
+		<Zylinder name="Axe5" point1="Joint5" point2="RobotTCP" radius="20"/>
+		<!-- Robot End -->
+		
+		<Sphere name="UserSphere1" point="UserPoint1" radius="255"/>
+		<Sphere name="RoboSpere1" point="RoboPoint1" radius="100" visibility="hidden"/>
+		<!--
+		Human Target
+		X="-897" Y="1300" Z = "1120"
+		
+		Robot Target
+		X="-492" Y="713" Z="590"
+		-->
+		
+	</Holograms>
+	<Events>
+		<Triggers>		
+			<!-- Step 0 -->
+			<TimeTrigger name="Trigger1" canTrigger='true' timeSinceActivation="0" actions="UI1 Holo1"/>
+			
+			<!-- Step 1 -->
+			<DistanceTrigger name="Trigger2" canTrigger='true' point1="UserPoint1" point2="Camera" distance="255" actions="Holo2 UI2 Dings0 Dings-1"/>
+			<!-- Step 2 -->
+			<DistanceTrigger name="Trigger3" canTrigger='false' point1="RobotTCP" point2="RoboPoint1" distance="100" actions="UI3 Dings2 Holo3 Distance5 Holo1"/>
+			<!-- Step 3 -->
+			<TimeTrigger name="Trigger4" canTrigger='false' timeSinceActivation="60" actions="UI4 Dings1 Holo3 Distance5 Holo1"	 	/>
+			<!-- Step 4 -->
+			<DistanceTrigger name="Trigger5" canTrigger='false' point1="UserPoint1" point2="Camera" distance="100" actions="UI5 Holo4 MoveRobot"/>
+			<!-- Step 5 -->
+		</Triggers>
+		<Actions>
+			<!-- Step 0 -->
+			<ChangeUITextAction name="UI1" text="Junge, ge amoi weg!"/>
+			<SetHologramStateAction name="Holo1" onHolograms="UserSphere1"/>
+			<!-- Step 1 -->
+			<SetHologramStateAction name="Holo2" onHolograms="RoboSpere1" offHolograms="UserSphere1"/>
+			<ChangeUITextAction name="UI2" text="Guat, jetz foa do eini. Oa minutn host Zeit!"/>
+			<!-- Step 2 -->
+			<ChangeUITextAction name="UI3" text="tiptop, gschofft! geh weg"/>
+			<!-- Step 3 -->
+			<ChangeUITextAction name="UI4" text="gott, bist du laungsam! geh weg"/>
+			<SetTriggerStateAction name="Dings0" triggerName="Trigger3" canTrigger='true'/>
+			<SetTriggerStateAction name="Dings-1" triggerName="Trigger4" canTrigger='true'/>
+			<SetTriggerStateAction name="Dings1" triggerName="Trigger3" canTrigger='false'/>
+			<SetTriggerStateAction name="Dings2" triggerName="Trigger4" canTrigger='false'/>
+			<SetHologramStateAction name="Holo3" offHolograms="RoboSpere1"/>
+			<!-- Step 4 -->
+			<SetTriggerStateAction name="Distance5" triggerName="Trigger5" canTrigger='true'/>
+			<!-- Step 5 -->
+			<ChangeUITextAction name="UI5" text="fertisch"/>
+			<SetHologramStateAction name="Holo4" offHolograms="UserSphere1"/>
+			<MoveRobotAction name="MoveRobot" target="0 0 0 0 0 0" mode="j"/>
+		</Actions>
+	</Events>
+	<!--
+		These elements act as syntax examples for the notepad++ engine
+	
+		<PointFix name="" X="700" Y="0" Z = "-700"/>
+		<PointRobot name="" J1="0" J2="1" Scale="0" />
+		<PointCamera name="Camera"/>
+		
+		<Sphere name="Sphere1" point="Point1" radius="90" visibility="hidden"/>
+		<Sphere name="Sphere1" point="Point1" radius="90" visibility="visible"/>
+		<Zylinder name="Zylinder1" point1="Point1" point2="Point2" radius="90" visibility="hidden" renderMode="transparent"/>
+		
+		<DistanceTrigger name="Trigger4" canTrigger='true' point1="Point1" point2="Point2" distance="12.2" actions="Handler1 Handler2"						/>
+		<VarTrigger name="Trigger6" canTrigger='true' varName="var1" triggerValue="2" actions="Handler1 Handler2"						 	 />
+		<TimeTrigger name="Trigger1" canTrigger='true' timeSinceActivation="123" actions="Handler1 Handler2"	 	/>
+		
+		
+		<SetHologramStateAction name="Handler0" onHolograms="Sphere1 Zyl1" offHolograms="Zyl2"/>
+		<IncrementCounterAction name="Hanlder1" intVar="var1"/>
+		<SetTriggerStateAction name="Handler2" triggerName="Trigger1" canTrigger='true'/>
+		<ChangeUITextAction name="Hanlder3" text="Tutorial step nr. 4"/>
+		<MoveRobotAction name="Handler5" target="1 2 3 1 2 3" mode="j"/>
+		<SetRobotHandStateAction name="Handler6" state="open" />
+		<SetRobotHandStateAction name="Handler7" state="close" />
+		
+	-->
+</PProgram>

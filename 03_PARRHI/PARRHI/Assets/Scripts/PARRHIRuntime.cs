@@ -148,10 +148,10 @@ public class PARRHIRuntime : MonoBehaviour
 
         //Set all output delegates
         PARRHI.Output.Instance.SetOutputDelegate(UnityOutputDelegate);
-        //PARRHI.Output.Instance.SetLogDelegate(UnityOutputDelegate);
+        PARRHI.Output.Instance.SetLogDelegate(UnityOutputDelegate);
         PARRHI.Output.Instance.SetErrorDelegate(UnityErrorDelegate);
         FanucControllerLibrary.Output.Instance.SetOutputDelegate(UnityOutputDelegate);
-        //FanucControllerLibrary.Output.Instance.SetLogDelegate(UnityOutputDelegate);
+        FanucControllerLibrary.Output.Instance.SetLogDelegate(UnityOutputDelegate);
         FanucControllerLibrary.Output.Instance.SetErrorDelegate(UnityErrorDelegate);
 
         //Setup all components needed
@@ -166,8 +166,10 @@ public class PARRHIRuntime : MonoBehaviour
     {
         DataImport importer = new DataImport();
 
-        Container = importer.Import(xmlFile.text);
-        //Container = importer.Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\ParametrisedProgam_Evaluation_Timon.xml", @"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\parrhiScheme.xsd");
+        if (xmlFile != null)
+            Container = importer.Import(xmlFile.text);
+        else
+            Container = importer.Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\ParametrisedProgam_MoveRobotDemonstrator.xml", @"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\parrhiScheme.xsd");
 
         if (Container != null)
         {
@@ -360,7 +362,6 @@ public class PARRHIRuntime : MonoBehaviour
     }
     #endregion
 
-
     #region Output Delegates
 
 
@@ -427,19 +428,24 @@ public class PARRHIRuntime : MonoBehaviour
             else if (mode == "j")
             {
                 Animate = true;
-                q1t = targetCoordinates[0];
-                q2t = targetCoordinates[1];
-                q3t = targetCoordinates[2];
-                q4t = targetCoordinates[3];
-                q5t = targetCoordinates[4];
-                q6t = targetCoordinates[5];
+                q1t = Mathf.Deg2Rad * targetCoordinates[0];
+                q2t = Mathf.Deg2Rad * targetCoordinates[1];
+                q3t = Mathf.Deg2Rad * targetCoordinates[2];
+                q4t = Mathf.Deg2Rad * targetCoordinates[3];
+                q5t = Mathf.Deg2Rad * targetCoordinates[4];
+                q6t = Mathf.Deg2Rad * targetCoordinates[5];
             }
         }
     }
 
+
+
     private void SetHand(bool state)
     {
-        RobotController.Commander.SetHand(state);
+        if (Connected)
+        {
+            RobotController.Commander.SetHand(state);
+        }
     }
 
     #endregion

@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<PProgram xmlns="PARRHI">
+	<Variables>
+		<Int name="var1">0</Int>
+	</Variables>
+	<!-- Steven, 30 min, 
+	
+	hatte Probleme mit Chronologischem Ablauf der Application,
+	
+	evtl. simple actions direct "inline" definierbar machen.
+	
+	Evaluations Ziel erreicht!
+	
+	
+	-->
+	<Points>
+		<!--Robot points to show the actual robot-->
+		<PointRobot name="Joint1" J1="0" J2="1" Scale="0" />
+		<PointRobot name="Joint2" J1="1" J2="2" Scale="0" />
+		<PointRobot name="Joint3" J1="2" J2="3" Scale="0" />
+		<PointRobot name="Joint4" J1="3" J2="4" Scale="0" />
+		<PointRobot name="Joint5" J1="4" J2="5" Scale="0" />
+		<PointRobot name="RobotTCP" J1="5" J2="5" Scale="0" />
+
+		
+		<!-- Task Points --> 
+		
+		<PointFix name="Step1_UserTarget" X="-897" Y="1300" Z = "1120"/>
+		
+		<PointFix name="Step2_RobotTarget" X="-492" Y="713" Z="590"/>
+		
+		<PointFix name="Step3_UserTarget" X="897" Y="1300" Z = "1120"/>
+		
+		<PointCamera name="Camera"/>
+		
+				<!--
+		Human Target
+		X="-897" Y="1300" Z = "1120"
+		
+		Robot Target
+		X="-492" Y="713" Z="590"
+		-->
+	</Points>
+	<Holograms>
+		<!-- Robot Start -->
+		<!-- These Holograms draw the robot -->
+		<Sphere name="Joint1Sphere" point="Joint1" radius="90"/>
+		<Sphere name="Joint2Sphere" point="Joint2" radius="80"/>
+		<Sphere name="Joint3Sphere" point="Joint3" radius="70"/>
+		<Sphere name="Joint4Sphere" point="Joint4" radius="40"/>
+		<Sphere name="Joint5Sphere" point="Joint5" radius="20"/>
+		<Sphere name="Joint6Sphere" point="RobotTCP" radius="20"/>
+		
+		<Zylinder name="Axe1" point1="Joint1" point2="Joint2" radius="90"/>
+		<Zylinder name="Axe2" point1="Joint2" point2="Joint3" radius="70"/>
+		<Zylinder name="Axe3" point1="Joint3" point2="Joint4" radius="70"/>
+		<Zylinder name="Axe4" point1="Joint4" point2="Joint5" radius="40"/>
+		<Zylinder name="Axe5" point1="Joint5" point2="RobotTCP" radius="20"/>
+		<!-- Robot End -->
+		
+		
+		<Sphere name="Step1_UserTarget_Hologram" point="Step1_UserTarget" radius="100" />
+		<Sphere name="Step2_RobotTarget_Hologram" point="Step2_RobotTarget" radius="100" visibility="hidden" />
+		<Sphere name="Step3_UserTarget_Hologram" point="Step3_UserTarget" radius="100"  visibility="hidden"/>
+		
+		
+	</Holograms>
+	<Events>
+		<Triggers>		
+		
+			<TimeTrigger name="asf" canTrigger="true" actions="Step0_Initial" timeSinceActivation="0"/>
+		
+			<DistanceTrigger name="Step1_Trigger" canTrigger="true" point1="Camera" point2="Step1_UserTarget" distance="200" actions="Step1_SuccessMessage Step1_HandleSpheres Activate_Distance2 Activate_Timer" />
+			<DistanceTrigger name="Step2_Trigger" canTrigger="false" point1="Step2_RobotTarget" point2="RobotTCP" distance="200" actions="Step2_SuccessMessage Step2_HideSphere Activate_Distance3 Stop_Timer"/>
+			<DistanceTrigger name="Step3_Trigger" canTrigger="false" point1="Camera" point2="Step3_UserTarget" distance="200" actions="Step3_SuccessMessage"/>
+			
+			
+			
+			
+			<TimeTrigger name="Timer" canTrigger='false' timeSinceActivation="10" actions="Activate_Distance3 Step2_FailureMessage Stop_Distance_Trigger Step2_HideSphere"	 	/>
+		
+		</Triggers>
+		<Actions>
+		
+			<ChangeUITextAction name="Step0_Initial" text="Move into the blue sphere"/>
+			<ChangeUITextAction name="Step1_SuccessMessage" text="Juhu. Good work"/>
+			<ChangeUITextAction name="Step2_SuccessMessage" text="Robot was jogged"/>
+			<ChangeUITextAction name="Step2_FailureMessage" text="One minute has passed"/>
+			<ChangeUITextAction name="Step3_SuccessMessage" text="Finished"/>
+			<SetHologramStateAction name="Step1_HandleSpheres" offHolograms="Step1_UserTarget_Hologram" onHolograms="Step2_RobotTarget_Hologram"/>
+			<SetHologramStateAction name="Step2_HideSphere" offHolograms="Step2_RobotTarget_Hologram" onHolograms="Step3_UserTarget_Hologram"/>
+			<SetTriggerStateAction name="Activate_Distance2" triggerName="Step2_Trigger" canTrigger='true'/>
+			<SetTriggerStateAction name="Activate_Timer" triggerName="Timer" canTrigger='true'/>
+			<SetTriggerStateAction name="Activate_Distance3" triggerName="Step3_Trigger" canTrigger='true'/>
+			<SetTriggerStateAction name="Stop_Timer" triggerName="Timer" canTrigger='false'/>
+			<SetTriggerStateAction name="Stop_Distance_Trigger" triggerName="Step2_Trigger" canTrigger='false'/>
+			
+		</Actions>
+	</Events>
+	<!--
+		These elements act as syntax examples for the notepad++ engine
+	
+		<PointFix name="" X="700" Y="0" Z = "-700"/>
+		<PointRobot name="" J1="0" J2="1" Scale="0" />
+		<PointCamera name="Camera"/>
+		
+		<Sphere name="Sphere1" point="Point1" radius="90" visibility="hidden"/>
+		<Sphere name="Sphere1" point="Point1" radius="90" visibility="visible"/>
+		<Zylinder name="Zylinder1" point1="Point1" point2="Point2" radius="90" visibility="hidden" renderMode="transparent"/>
+		
+		<DistanceTrigger name="Trigger4" canTrigger='true' point1="Point1" point2="Point2" distance="12.2" actions="Handler1 Handler2"						/>
+		<VarTrigger name="Trigger6" canTrigger='true' varName="var1" triggerValue="2" actions="Handler1 Handler2"						 	 />
+		<TimeTrigger name="Trigger1" canTrigger='true' timeSinceActivation="123" actions="Handler1 Handler2"	 	/>
+		
+		
+		<SetHologramStateAction name="Handler0" onHolograms="Sphere1 Zyl1" offHolograms="Zyl2"/>
+		<IncrementCounterAction name="Hanlder1" intVar="var1"/>
+		<SetTriggerStateAction name="Handler2" triggerName="Trigger1" canTrigger='true'/>
+		<ChangeUITextAction name="Hanlder3" text="Tutorial step nr. 4"/>
+		<MoveRobotAction name="Handler5" target="1 2 3 1 2 3" mode="j"/>
+		<SetRobotHandStateAction name="Handler6" state="open" />
+		<SetRobotHandStateAction name="Handler7" state="close" />
+		
+	-->
+</PProgram>

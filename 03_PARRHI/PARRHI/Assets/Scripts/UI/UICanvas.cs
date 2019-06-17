@@ -50,6 +50,8 @@ public class UICanvas : MonoBehaviour
             {
                 GameObject errorGameObject = GameObject.Instantiate(ErrorElementPrefab);
                 errorGameObject.transform.parent = ErrorContentParent.transform;
+                errorGameObject.transform.localScale = Vector3.one;
+                errorGameObject.transform.localRotation = Quaternion.identity;
                 var sc = errorGameObject.GetComponent<ErrorElementScript>();
                 sc.SetText($"Message {Errors.IndexOf(error)}: {error.Severity.ToString()}", error.Message);
             }
