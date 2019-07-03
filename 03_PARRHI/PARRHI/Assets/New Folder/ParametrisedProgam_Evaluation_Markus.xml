@@ -12,6 +12,10 @@
 		<PointRobot name="Joint4" J1="3" J2="4" Scale="0" />
 		<PointRobot name="Joint5" J1="4" J2="5" Scale="0" />
 		<PointRobot name="RobotTip" J1="5" J2="5" Scale="0" />
+		
+		<PointFix name="StartPos" X="-897" Y="713" Z = "1120"/>
+		<PointFix name="StartRob" X="-492" Y="713" Z="590"/>
+		<PointFix name="EndPos" X="897" Y="713" Z = "1120"/>
 
 		
 		<!-- Task Points -->
@@ -43,16 +47,23 @@
 		<Zylinder name="Axe5" point1="Joint5" point2="RobotTip" radius="20"/>
 		<!-- Robot End -->
 		
+		<Sphere name="SphereStart" point="StartPos" radius="250" />
+		<Sphere name="SphereRobot" point="StartRob" radius="250" visibility="hidden" />
+		<Sphere name="SphereEnd" point="EndPos" radius="250" visibility="hidden" />
+		
+		
 		
 	</Holograms>
 	<Events>
 		<Triggers>				
 			<!-- Step 0 -->
+			<TimeTrigger name="StartTrig" canTrigger='true' timeSinceActivation="0" actions="StartText"/>
+			<DistanceTrigger name="UserReach" canTrigger='true' point1="Camera" point2="StartPos" distance="250" actions="MoveRobText ActivateRobotReachTrigger StartHide"/>
 			
 			<!-- Step 1 -->
-			
+			<DistanceTrigger name="RobotReach" canTrigger='false' point1="StartRob" point2="RobotTip" distance="250" actions="RobPosSuccessText EndPosHologram EndPosRechTrigger"/>
 			<!-- Step 2 -->
-			
+			<DistanceTrigger name="UserReachEndPos" canTrigger='false' point1="Camera" point2="EndPos" distance="250" actions="SuccessMessage"/> 
 			<!-- Step 3 -->
 			
 			<!-- Step 4 -->
@@ -61,13 +72,20 @@
 		</Triggers>
 		<Actions>		
 			<!-- Step 0 -->
+			<ChangeUITextAction name="StartText" text="Bewege dich zur Startposition."/>
+			<ChangeUITextAction name="MoveRobText" text="Bewege die Spitze des Roboters zur blauen Kugel."/>
+			<SetTriggerStateAction name="ActivateRobotReachTrigger" triggerName="RobotReach" canTrigger='true'/>
 			
 			<!-- Step 1 -->
+			<SetHologramStateAction name="StartHide" onHolograms="SphereRobot" offHolograms="SphereStart"/>
+			<ChangeUITextAction name="RobPosSuccessText" text="Sehr gut! Der Roboter befindet sich an der richtigen Position. Bewege dich nun zu der blauen Kugel."/>
 			
 			<!-- Step 2 -->
+			<SetHologramStateAction name="EndPosHologram" onHolograms="SphereEnd" offHolograms="SphereStart SphereRobot"/>
+			<SetTriggerStateAction name="EndPosRechTrigger" triggerName="UserReachEndPos" canTrigger='true'/>
 			
 			<!-- Step 3 -->
-			
+			<ChangeUITextAction name="SuccessMessage" text="Du hast deine Aufgabe erledigt :)"/>
 			<!-- Step 4 -->
 			
 			<!-- Step 5 -->

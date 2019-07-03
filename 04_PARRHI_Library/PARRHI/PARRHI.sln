@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PARRHI", "PARRHI.csproj", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PARRHITests", "..\PARRHITests\PARRHITests.csproj", "{FEC36177-5AE9-46B3-8B47-A5A5CEF9A2EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PARRHI Validator", "..\PARRHI Validator\PARRHI Validator.csproj", "{BACD0A12-76C7-427E-9B7E-F5716867B57E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PARRHIValidator", "..\PARRHI Validator\PARRHIValidator.csproj", "{BACD0A12-76C7-427E-9B7E-F5716867B57E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -12,19 +12,27 @@
 		<PointRobot name="Joint4" J1="3" J2="4" Scale="0" />
 		<PointRobot name="Joint5" J1="4" J2="5" Scale="0" />
 		<PointRobot name="RobotTip" J1="5" J2="5" Scale="0" />
-
+		
 		
 		<!-- Task Points -->
 		
 		<PointCamera name="Camera"/>
 		
 				<!--
-		Human Target
+		User StartPoint
 		X="-897" Y="1300" Z = "1120"
+		
+		User FinishPoint
+		X="897" Y="1300" Z = "1120"
 		
 		Robot Target
 		X="-492" Y="713" Z="590"
 		-->
+		
+		<PointFix name="StartPoint" X="-897" Y="1300" Z = "1620"/>
+		<PointFix name="RobotTarget" X="-492" Y="713" Z = "590"/>
+		<PointFix name="FinishPoint" X="897" Y="1300" Z = "1620"/>
+		
 	</Points>
 	<Holograms>
 		<!-- Robot Start -->
@@ -42,32 +50,53 @@
 		<Zylinder name="Axe4" point1="Joint4" point2="Joint5" radius="40"/>
 		<Zylinder name="Axe5" point1="Joint5" point2="RobotTip" radius="20"/>
 		<!-- Robot End -->
+		<Sphere name="StartingPointSphere" point="StartPoint" radius="250"/>
+		<Sphere name="RobotTargetSphere" point="RobotTarget" radius="250" visibility="hidden"/>
+		<Sphere name="FinishPointSphere" point="FinishPoint" radius="250" visibility="hidden"/>
 		
 		
 	</Holograms>
 	<Events>
 		<Triggers>				
+			<TimeTrigger name="InitialTextTrigger" canTrigger="true" timeSinceActivation="0" actions="WriteInitialText"/>
 			<!-- Step 0 -->
+			<DistanceTrigger name="TriggerReached" canTrigger='true' point1="StartPoint" point2="Camera" distance="250" actions="ReachedDestination StartingPointSphereDisappear ActivateRobotTip StartTimeTrigger"/>
 			
 			<!-- Step 1 -->
+			<DistanceTrigger name="RobotOnTip" canTrigger='false' point1="RobotTip" point2="RobotTarget" distance="100" actions="RobotTipSphereDisappear RobotOnTipSuccesfull ActivateFinishPoint StopTimeTrigger"/>
 			
 			<!-- Step 2 -->
+			<DistanceTrigger name="TaskFinished" canTrigger='false' point1="FinishPoint" point2="Camera" distance="250" actions="OnFinishPoint FinishPointSphereReached"/>
 			
 			<!-- Step 3 -->
+			<TimeTrigger name="TimeTriggerTask" canTrigger='false' timeSinceActivation="60" actions="TaskFailed RobotTipSphereDisappear DeactivateRobotTip ActivateFinishPoint"/>
 			
 			<!-- Step 4 -->
 			
 			<!-- Step 5 -->
 		</Triggers>
 		<Actions>		
+			<ChangeUITextAction name="WriteInitialText" text="Move to the starting position"/>
+			<SetTriggerStateAction name="ActivateRobotTip" triggerName="RobotOnTip" canTrigger='true'/>
 			<!-- Step 0 -->
+			<ChangeUITextAction name="ReachedDestination" text="Move Robot Tip Point in 60 sec"/>
+			<SetTriggerStateAction name="StartTimeTrigger" triggerName="TimeTriggerTask" canTrigger='true'/>
+			<SetHologramStateAction name="StartingPointSphereDisappear" onHolograms="RobotTargetSphere" offHolograms="StartingPointSphere"/>
+			
 			
 			<!-- Step 1 -->
+			<ChangeUITextAction name="RobotOnTipSuccesfull" text="Robot Tip on Target, move to the finish point"/>
+			<SetHologramStateAction name="RobotTipSphereDisappear" onHolograms="FinishPointSphere" offHolograms="RobotTargetSphere"/>
+			<SetTriggerStateAction name="ActivateFinishPoint" triggerName="TaskFinished" canTrigger='true'/>
+			<SetTriggerStateAction name="StopTimeTrigger" triggerName="TimeTriggerTask" canTrigger='false'/>
 			
 			<!-- Step 2 -->
+			<ChangeUITextAction name="OnFinishPoint" text="Task Finished"/>
+			<SetHologramStateAction name="FinishPointSphereReached" offHolograms="FinishPointSphere"/>
+			<SetTriggerStateAction name="DeactivateRobotTip" triggerName="RobotOnTip" canTrigger='false'/>
 			
 			<!-- Step 3 -->
-			
+			<ChangeUITextAction name="TaskFailed" text="Task Failed move to finish point"/>
 			<!-- Step 4 -->
 			
 			<!-- Step 5 -->

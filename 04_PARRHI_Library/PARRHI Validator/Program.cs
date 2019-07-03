@@ -18,7 +18,7 @@ namespace PARRHI_Validator
             Output.Instance.SetOutputDelegate(Write);
 
             DataImport import = new DataImport();
-            var Container = import.Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\ParametrisedProgam_MoveRobotDemonstrator.xml", @"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\parrhiScheme.xsd");
+            var Container = import.Import(@"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\ParametrisedProgam_Evaluation_Elene.xml", @"C:\Users\ericv\Documents\TUM\BA\PARRHI\03_PARRHI\PARRHI\Assets\New Folder\parrhiScheme.xsd");
 
             foreach (var item in import.XMLValidationResult.GetAllErrors())
             {

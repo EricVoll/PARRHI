@@ -46,12 +46,9 @@
 	<Events>
 		<Triggers>			
 			<DistanceTrigger name="Activator" canTrigger="true" point1="Camera" point2="Step1_UserTarget" distance="300" actions="StartTimer GoToPoint2Delayed WritePoint2"/>
-			
 			<DistanceTrigger name="Point1Trigger" canTrigger="false" point1="RobotTCP" point2="TCPTarget1" distance="100" actions="StartTimer GoToPoint2Delayed CloseHand ReachedPoint1"/>
 			<DistanceTrigger name="Point2Trigger" canTrigger="false" point1="RobotTCP" point2="TCPTarget2" distance="100" actions="StartTimer GoToPoint1Delayed OpenHand ReachedPoint2"/>
-			
 			<TimeTrigger name="Timer" canTrigger="false" timeSinceActivation="3" actions="ActivateDistanceTrigger1 ActivateDistanceTrigger2"/>
-			
 			<TimeTrigger name="DelayAction1" canTrigger="false" timeSinceActivation="3" actions="GoToPoint1 WritePoint1"/>
 			<TimeTrigger name="DelayAction2" canTrigger="false" timeSinceActivation="3" actions="GoToPoint2 WritePoint2"/>
 			
@@ -61,15 +58,12 @@
 			<SetTriggerStateAction name="StartTimer" triggerName="Timer" canTrigger="true"/>
 			<SetTriggerStateAction name="ActivateDistanceTrigger1" triggerName="Point1Trigger" canTrigger="true"/>
 			<SetTriggerStateAction name="ActivateDistanceTrigger2" triggerName="Point2Trigger" canTrigger="true"/> 
-			
-			
 			<SetTriggerStateAction name="GoToPoint1Delayed" triggerName="DelayAction1" canTrigger="true"/>
 			<SetTriggerStateAction name="GoToPoint2Delayed" triggerName="DelayAction2" canTrigger="true"/>
 			<MoveRobotAction name="GoToPoint1" target="42 5 1 4 53 6" mode="j"/>
 			<MoveRobotAction name="GoToPoint2" target="7 12 0 5 -28 6" mode="j"/>
 			<SetRobotHandStateAction name="OpenHand" state="open"/>
 			<SetRobotHandStateAction name="CloseHand" state="close"/>
-			
 			<ChangeUITextAction name="WritePoint1" text="Going to Point 1"/>
 			<ChangeUITextAction name="WritePoint2" text="Going to Point 2"/>
 			<ChangeUITextAction name="ReachedPoint1" text="Reached Point 1"/>
