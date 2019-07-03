@@ -118,7 +118,7 @@ Similarly to the \code{ChangeUITextAction}, the \code{MoveRobotAction} holds a r
 
 Importing and validating the XML document is very easy, since the used .NET framework natively supports that. The implementation of the PARRHI Core Routine is also quite straight forward, which is why I will not talk about it too much. More interesting is the Robot's forwards kinematics, which will be presented now.
 
-\subsection{CR-i7A Forward Kinematics}
+\subsection{CR-i7A Forward Kinematics}\label{Section:ForwardKinematics}
 In robotics, a robot can be described in two different spaces. On one hand there is the joint space, meaning that all vectors and matrices depend on the joint positions, velocities or accelerations. Since the robot has six joints, the joint space is six dimensional. In the joint space the position vector is often represented as $ \vec{q} $.
 
 On the other hand there is the task-space. In this space, all vectors and matrices depend on the Cartesian position and orientation (and their first two derivations) $ \vec{x}, \dot{\vec{x}}, \ddot{\vec{x}} $ of the robot's TCP. If the joint space is six dimensional, then generally speaking (ignoring cases like singularities) the task space is also six dimensional and represented as follows, with $x,y,z$ being the 3D coordinates, and $\alpha, \beta, \gamma $ being the orientation of the tip.
@@ -164,7 +164,7 @@ There are a lot of third party products for Unity that help the developer with i
 
 
 %4.3.2) Image Tracking
-\subsection{Image Tracking}
+\subsection{Image Tracking}\label{Section:ImageTracking}
 %- Vuforia Engine
 For Image Tacking I used the Vuforia Engine~\cite{Vuforia}. This engine had a rather simple setup in Unity and worked relatively seamlessly in Unity. Compared to other engines and libraries the Vuforia Engine first of all worked, had a good documentation and a user friendly configuration. An important aspect is, that for non-commercial use it is free of charge. 
 

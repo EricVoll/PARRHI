@@ -21,7 +21,7 @@ This person requires the PARRHI system to fulfil the following aspects:
 	\item Build applications for multiple platforms (Desktop, mobile devices, tables, head mounted AR devices) 
 	\item Have the tools necessary to create medium complex applications for use cases such as tutorials, maintenance instructions or similar tasks.
 	\item Have the possibility to control the robot, but also to let the operator take over the controlling at runtime.
-	\item Be able to simulate the complete real world and virtual world environment for a better development experience
+	\item Be able to simulate the real and virtual world, to allow development without any hardware being present. 
 \end{enumerate}
 
 Deriving from these user requirements, one can define what the PARRHI system itself should fulfil. The system should:
@@ -29,37 +29,43 @@ Deriving from these user requirements, one can define what the PARRHI system its
 \begin{enumerate}
 	\setlength\itemsep{-1em}
 	\item handle all Augmented Reality aspects without any developer input. This includes position recognition of the AR end user and the robot, the corresponding image and motion tracking and the build process for different hardware platforms.
-	\item allow programming and parametrisation in a simple and intuitive, text based document, which allows the developer to reuse code from other projects.
+	\item allow programming and parametrisation in a simple and intuitive, which allows the developer to reuse code from other projects.
 	\item allow the definition of 3D objects including the utilisation of the robot's position via simple parameters.
-	\item deliver human readable and intuitive feedback on the written program.
+	\item deliver human readable and intuitive feedback on the written program, comparable to compiler error messages.
 	\item support building for multiple platforms such as hand held mobile devices and head mounted Augmented Reality glasses.
-	\item make applications with medium complex workflows possible. Event based systems, conditions and actions should be offered.
-	\item allow the combination of simulated and real world data to be used for the application's workflow.
+	\item make applications with medium complex workflows (Values in the range of 1-15 following the McCabe Metric~\cite{mccabe1976complexity}) possible. Event based systems, conditions and actions should be offered.
+	\item allow the combination of simulated and real world data to be used for the application's workflow and its logical operators.
 	\item allow the sensing and commanding of the robot's position both relatively and absolutely in joint and task space.
 	\item allow documentation of the application's workflow via comments
 \end{enumerate}
 
 These basic requirements should be a guideline for further conceptualisation and therefore for the implementation. The next section will visualise one possible use case of the PARRHI System and why it might be interesting to utilise it here.
 
-\subsection{Use-Case example: Factory Maintenance}\label{Section:UseCaseDefinition}
+\subsection{Use-Case example: Factory Maintenance} \label{Section:UseCaseDefinition}
 
-I will now give an example use case, where the PARRHI system might come into play. Bear in mind, that theoretically one could find many more use cases, since the PARRHI system is a development environment, which allows a wide variety of workflows and content. 
+I will now give an example use case, where the PARRHI system might come into play. Bear in mind, that one could find more use cases, since the PARRHI system is a development environment, which allows a wide variety of workflows and content. Examples could be AR applications for educational/training purposes, factory workflow processes, investigation and analysis tasks and process profiling.
 
-The Use Case will be explained on the example of an automotive company, which produces its personalised car-bodies in an agile factory. This factory is highly automated with different machines and robots. One of their assembly lines contains a robot, which is tasked to prepare the customised seats of the car. Every car might have a different type of seat built into it. The process of mounting these seats is not fully automated and still needs employees to be completed.
+The Use Case will be explained on the example of an automotive company, which produces its personalised car-bodies in an agile factory. The factory wants to increase the safety and efficiency of different steps during the assembly, and decides to use AR supported applications for that. These applications should then be distributed to the corresponding employees.
 
-An application engineer is now tasked with developing an Augmented Reality application, that supports the collaborative process of humans and robots during this assembly step, to increase the safety and efficiency. The engineer has never built an AR application before, but has a substantial amount of experience with robot assembly lines and corresponding surveillance applications. The engineer needs this application to communicate the intent of the robot to the surrounding humans, control the robot to perform its next movement and also make sure, that the collaboration between all parties stays safe, so that neither the human nor robot get damaged. 
+The factory is highly automated with different machines and robots. One of their assembly lines contains a robot, which is tasked to prepare the customised seats of the car. Every car might have a different type of seat built into it. The process of mounting these seats is not fully automated and still needs employees to be completed.
+
+An application engineer is now tasked with developing an Augmented Reality application, that supports the collaborative process of humans and robots during this assembly step, to increase the safety and efficiency. The engineer has never built an AR application before, but has a substantial amount of experience with robot assembly lines and corresponding surveillance applications. The engineer needs this application to communicate the intent of the robot to the surrounding humans, control the robot to perform its next movement and also make sure, that the collaboration between all parties stays safe, so that neither the human nor robot get damaged. This should be achieved by visually augmenting real world objects, but also by directly taking over the control of the robot.
 
 This engineer now uses the PARRHI system to setup an AR application, which has multiple tasks. The application constantly monitors the human's distance to the robot's moving parts and warns the employee visually if they gets to close. At the same time, it always visualises the robot's range of motion and a danger perimeter around its axes, so that the employee has more contextual information to work with. In the case of the employee getting too close to the robot, the application immediately stops the robot and commands the user to move away.
 
-This use case is a realistic depiction of what is possible with the PARRHI system. This specific application would not even take that long to develop, since the engineer does not have to care about the Augmented Reality aspects of it. The engineer can focus on their specific domain knowledge and fill the application with important information, without spending a substantial amount of time with any system setups or framework installations.
+This use case is a realistic depiction of what is possible with the PARRHI system. This specific application would not even take that long to develop (in the range of one hour), since the engineer does not have to care about the Augmented Reality aspects of it. The engineer can focus on their specific domain knowledge and fill the application with important information, without spending a substantial amount of time with any system setups or framework installations.
 
-There are numerous other use cases that one could think of. Of course, an application like this could easily be developed for any other machine in the same factory, by simply expanding the PARRHI system to be able to communicate with it. Theoretically, the automotive company could also use PARRHI applications to perform lectures and training on new employees. It is important to notice, that for these use cases no AR specialist was needed, since the system takes care of these components. Also reproducing an application for a similar workflow would be easy, since the text based program could simply be copied over.
+There are numerous other use cases that one could think of. Of course, an application like this could easily be developed for any other machine in the same factory, by simply expanding the PARRHI system to be able to communicate with it. Certain modules would have to be expanded or adapted for PARRHI to be able to communicate with other machines. A precise explanation of possible technology transfers can be found in section~\ref{Section:TechnologyTransfer}.
+
+Theoretically, the automotive company could also use PARRHI applications to perform lectures and training on new employees. It is important to notice, that for these use cases no AR specialist was needed, since the system takes care of these components. Also reproducing an application for a similar workflow would be easy, since the text based program could simply be copied over.
 
 \section{PARRHI Concept}
 
 The following chapter will now explain the concept of the PARRHI system. I will first start with a general overview of the concept and how each requirement can be addressed, before shortly explaining each component. After that, the information flow in the system will be clarified.
 
 Relieving the developer from AR efforts (Reqmt. (1)) means, that the system needs to have all the AR logic implemented on its own, without the need of any developer input. Thus, the architecture has an input and output module, which handle the Augmented Reality aspects. The input module will have to use the AR device's camera to perform the image and motion tracking, and the output module will have to generate the corresponding holograms. The developer's input into the system has to be a text document (Reqmt. (2)), which allows the definition of parametrised 3D objects (Reqmt. (3)) and logic components (Reqmt. (6)). Since the developer needs feedback on their work (Reqmt. (4)), the input document has to be validated. Combining real and simulated world data (Reqmt. (7)) demands the input module to intercept the data stream of the real world, and feed the simulated data into the stream before passing it on. Finally, the in and output modules have to communicate with the robot (Reqmt. (8)).
+
+Fig. \ref{Fig:PARRHIConcept} depicts PARRHI's concept, which attempts to fulfil the given requirements and consists of three main parts. The left hand side shows the developer, the grey box in the middle is the PARRHI system itself and the right side visualises the environment that surrounds the PARRHI system in both virtual and real space. I will now go into detail and systematically explain each component from (0) to (8), before describing the information flow between them.
 
 \begin{figure}[h]
 	\centering
@@ -68,13 +74,11 @@ Relieving the developer from AR efforts (Reqmt. (1)) means, that the system need
 	\label{Fig:PARRHIConcept}
 \end{figure}
 
-Fig. \ref{Fig:PARRHIConcept} depicts PARRHI's concept, which attempts to fulfil the given requirements and consists of three main parts. The left hand side shows the developer and his workflow. The grey box in the middle is the PARRHI system itself. Lastly, the right side visualises the environment that surrounds the PARRHI system in both virtual and real space. I will now go into detail and systematically explain each component from (0) to (8), before describing the information flow between them.
-
 \begin{enumerate}
 	\addtocounter{enumi}{-1}
 	\setlength\itemsep{-1em}
 	\item Input Module: The Input Module (0) is responsible for collecting data needed from the real world. In this specific case, it  receives the robot's (6) joint angles and the user's (7) position.
-	\item Real World Model: In order to utilize data from the Input Module (0) it has to be processed. The Real World Model (1) has a deeper understanding about the real world and helps to extract useful information from the data inflow. In this specific case, its outputs are the robot's (6) joint positions and the user's (7) location represented as parameters that are available for the Parametrised Program (2).
+	\item Real World Model: Since the data from the Input Module (0) might not be in a usable format straight away, it has to be processed first. The Real World Model (1) has a deeper understanding about the real world and helps to extract useful information from the data inflow. In this specific case, its outputs are the robot's (6) joint positions and the user's (7) location represented as parameters that are available for the Parametrised Program (2).
 	\item Parametrised Program: This is a document that defines the AR application's behaviour and workflow. Its syntax is parametrised, meaning, that it makes use of placeholders (parameters) whose actual value is managed by PARRHI itself at runtime. There are two types of parameters. First, there are the ones that are provided by the Real World Model (1) (for example the discussed robot's (6) joint positions) and secondly any object defined in the Parametrised Program itself (2) can act as a parameter for other objects in the program. These objects can be 3D AR-Hologram definitions, logical instructions or a variety of events and actions. For a more thorough explanation of the Parametrised Program see section \ref{Section:ParametrisedProgram}.
 	\item Core Routine: The Core Routine (3) is an interpreter for the Parametrised Program (2), and acts on its instructions. It generates the output of the application, which can either be commands to the robot (6) and thus real world, or instructions for the AR-World~(5).
 	\item Output Module: This component manages the outgoing communication with PARRHI's environment. 
@@ -153,7 +157,7 @@ Points are probably the best example of parametrised information in the \textit{
 
 The \textbf{Fix-Point} has static coordinates and thus fixed values are used to define their coordinate parameters (see figure \ref{InputData:PointFix}). It could be used to setup holograms that visualize certain spacial environmental constraints that do not move.\\Definition Parameters: \textit{name : string, X : float, Y : float, Z : float}.
 
-\textbf{Robot-Points} are defined by two indexes of the robot's joints and one scalar value that will be explained later (see figure~\ref{InputData:PointRobot}). The application's developer does not have to understand the robot's kinematics and simply uses the joint-indexes as parameters. At runtime, the \textit{PARRHI} system retrieves the robot's joint position, uses the Real World Model to calculate each joint's position ($J_0 - J_5$) and then feeds this data into the Robot-Points. The final point's position is calculated as follows (with s being the scalar value and $J_n$ the position vector of Joint $n$):
+\textbf{Robot-Points} are defined by two indexes of the robot's joints and one scalar value that will be explained later (see figure~\ref{InputData:PointRobot}). The application's developer does not have to understand the robot's kinematics and simply uses the joint-indexes as parameters. At runtime, the \textit{PARRHI} system retrieves the robot's joint position, uses the Real World Model to calculate each joint's position ($J_0 - J_5$) and then feeds this data into the Robot-Points. The final point's position $P$ is calculated as follows (with s being the scalar value and $J_n$ the position vector of Joint $n$):
 \begin{equation}
 \boldsymbol{P} = \boldsymbol{J_1} + (\boldsymbol{J_2}-\boldsymbol{J_1}) * s
 \end{equation}
@@ -321,7 +325,7 @@ The last step in the PARRHI runtime cycle is to send all generated commands to t
 
 The AR-World is \textit{only} software that runs on the same device, that hosts the complete PARRHI system. That means, that sending commands to the AR-World is as simple as actually calling some methods in the Back-End. Real World commands on the other hand, are much more complex because they have to be sent to other hardware devices, with possibly different operating systems (OS) that run on different programming languages. This is why, some network protocols have to be defined to communicate with these Real World objects. 
 
-In my case, the Robot (see (6) in fig.~\ref{Fig:PARRHIConcept}) is the only Real World object, that does not run on the same OS as the AR-Device. This means, that a OS neutral protocol has to be defined for this type of communication. In addition to that, operating systems on Robots tend to be sealed towards the outer world making at safe against unwanted access but at the same time hard to interconnect to other systems. This is why, Florian Leitner (a colleague at TUM) and I defined a custom protocol for the bidirectional communication between the PARRHI system and the Real World Robot. To get more information about the implemented protocol and system to communicate between PARRHI and the Robot, refer to section~\ref{Section:RobotLibrary}.
+In my case, the Robot (see (6) in fig.~\ref{Fig:PARRHIConcept}) is the only Real World object, that does not run on the same OS as the AR-Device. This means, that a OS neutral protocol has to be defined for this type of communication. In addition to that, operating systems on Robots tend to be sealed towards the outer world making at safe against unwanted access but at the same time hard to interconnect to other systems. This is why, Florian Leitner (AIS at TUM) and I defined a custom protocol for the bidirectional communication between the PARRHI system and the Real World Robot. To get more information about the implemented protocol and system to communicate between PARRHI and the Robot, refer to section~\ref{Section:RobotLibrary}.
 
 
 

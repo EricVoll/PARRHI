@@ -210,29 +210,6 @@
     \field{urlyear}{2019}
   \endentry
 
-  \entry{MSHoloLens}{online}{}
-    \name{author}{1}{}{%
-      {{hash=IM}{%
-         family={Inc.},
-         familyi={I\bibinitperiod},
-         given={Microsoft},
-         giveni={M\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{IM1}
-    \strng{fullhash}{IM1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{title}{Microsoft HoloLens}
-    \verb{url}
-    \verb https://www.microsoft.com/de-de/hololens
-    \endverb
-    \field{year}{2019}
-    \field{urlday}{25}
-    \field{urlmonth}{04}
-    \field{urlyear}{2019}
-  \endentry
-
   \entry{perey2011current}{incollection}{}
     \name{author}{3}{}{%
       {{hash=PC}{%
@@ -805,34 +782,27 @@
     \field{year}{2011}
   \endentry
 
-  \entry{vmodell}{article}{}
-    \name{author}{2}{}{%
-      {{hash=BM}{%
-         family={Broy},
-         familyi={B\bibinitperiod},
-         given={Manfred},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=RA}{%
-         family={Rausch},
-         familyi={R\bibinitperiod},
-         given={Andreas},
-         giveni={A\bibinitperiod},
+  \entry{mccabe1976complexity}{article}{}
+    \name{author}{1}{}{%
+      {{hash=MTJ}{%
+         family={McCabe},
+         familyi={M\bibinitperiod},
+         given={Thomas\bibnamedelima J},
+         giveni={T\bibinitperiod\bibinitdelim J\bibinitperiod},
       }}%
     }
     \list{publisher}{1}{%
-      {Springer}%
+      {IEEE}%
     }
-    \strng{namehash}{BMRA1}
-    \strng{fullhash}{BMRA1}
+    \strng{namehash}{MTJ1}
+    \strng{fullhash}{MTJ1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{number}{3}
-    \field{pages}{220\bibrangedash 229}
-    \field{title}{Das neue v-modell{\textregistered} xt}
-    \field{volume}{28}
-    \field{journaltitle}{Informatik-Spektrum}
-    \field{year}{2005}
+    \field{number}{4}
+    \field{pages}{308\bibrangedash 320}
+    \field{title}{A complexity measure}
+    \field{journaltitle}{IEEE Transactions on software Engineering}
+    \field{year}{1976}
   \endentry
 
   \entry{HoloLens}{online}{}
@@ -1216,6 +1186,50 @@
     \field{year}{2019}
     \field{urlday}{20}
     \field{urlmonth}{05}
+    \field{urlyear}{2019}
+  \endentry
+
+  \entry{unrealEngine}{online}{}
+    \name{author}{1}{}{%
+      {{hash=E}{%
+         family={Epic},
+         familyi={E\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{E1}
+    \strng{fullhash}{E1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Unreal Engine 4}
+    \verb{url}
+    \verb https://www.unrealengine.com/en-US/
+    \endverb
+    \field{year}{2019}
+    \field{urlday}{27}
+    \field{urlmonth}{06}
+    \field{urlyear}{2019}
+  \endentry
+
+  \entry{UnityPlatforms}{online}{}
+    \name{author}{1}{}{%
+      {{hash=TU}{%
+         family={Technologies},
+         familyi={T\bibinitperiod},
+         given={Unity},
+         giveni={U\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{TU1}
+    \strng{fullhash}{TU1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Unity Multiplatform support}
+    \verb{url}
+    \verb https://unity3d.com/de/unity/features/multiplatform
+    \endverb
+    \field{year}{2019}
+    \field{urlday}{27}
+    \field{urlmonth}{06}
     \field{urlyear}{2019}
   \endentry
 \enddatalist
