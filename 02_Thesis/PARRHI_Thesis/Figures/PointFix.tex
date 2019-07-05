@@ -32,10 +32,6 @@ vector guide/.style={dashed,gray,thin}]
 \draw[vector guide] (\ax,\ay,0) -- (0,\ay,0);
 \draw[vector guide] (\ax,\ay,0) -- (0,\ay,0);
 \draw[vector guide] (\ax,\ay,0) -- (\ax,0,0);
-\node[tdplot_main_coords,anchor=north]
-at (\ax+100,0,-60){(\ax, 0, 0)};
 \node[tdplot_main_coords,anchor=west]
-at (0,\ay,50){(0, \ay, 0)};
-\node[tdplot_main_coords,anchor=south]
-at (0,0,\az+50){(0, 0, \az)};
+at (\ax,\ay,\az){(\ax, \ay, \az)};
 \end{tikzpicture}

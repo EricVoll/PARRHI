@@ -2,65 +2,64 @@
 \babel@toc {english}{}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}% 
 \contentsline {section}{\numberline {1.1}Reasons for- and challenges with Human-Robot collaboration}{1}{section.1.1}% 
-\contentsline {section}{\numberline {1.2}Parametrised development to solve AR-development challenges}{2}{section.1.2}% 
-\contentsline {chapter}{\numberline {2}State of the Art}{5}{chapter.2}% 
-\contentsline {section}{\numberline {2.1}Augmented Reality and its standardisations}{5}{section.2.1}% 
-\contentsline {section}{\numberline {2.2}AR in Robotic applications}{6}{section.2.2}% 
-\contentsline {subsection}{\numberline {2.2.1}AR during development and testing}{6}{subsection.2.2.1}% 
-\contentsline {subsection}{\numberline {2.2.2}Operating robotic systems with AR support}{7}{subsection.2.2.2}% 
-\contentsline {section}{\numberline {2.3}Parametrised Development}{8}{section.2.3}% 
-\contentsline {section}{\numberline {2.4}Current methods programming industrial robots}{9}{section.2.4}% 
-\contentsline {section}{\numberline {2.5}Combining Technologies to mitigate AR Development Challenges}{10}{section.2.5}% 
-\contentsline {chapter}{\numberline {3}Concept}{11}{chapter.3}% 
-\contentsline {section}{\numberline {3.1}Goal, Requirements and Use Cases}{11}{section.3.1}% 
-\contentsline {subsection}{\numberline {3.1.1}Requirements}{11}{subsection.3.1.1}% 
-\contentsline {subsection}{\numberline {3.1.2}Use-Case example: Factory Maintenance}{13}{subsection.3.1.2}% 
-\contentsline {section}{\numberline {3.2}PARRHI Concept}{14}{section.3.2}% 
-\contentsline {subsection}{\numberline {3.2.1}Preparation of Parameters}{18}{subsection.3.2.1}% 
-\contentsline {subsection}{\numberline {3.2.2}Parametrised Program}{19}{subsection.3.2.2}% 
-\contentsline {subsubsection}{\numberline {3.2.2.1}Variables}{20}{subsubsection.3.2.2.1}% 
-\contentsline {subsubsection}{\numberline {3.2.2.2}Points}{20}{subsubsection.3.2.2.2}% 
-\contentsline {subsubsection}{\numberline {3.2.2.3}Holograms}{22}{subsubsection.3.2.2.3}% 
-\contentsline {subsubsection}{\numberline {3.2.2.4}Events}{23}{subsubsection.3.2.2.4}% 
-\contentsline {subsubsection}{\numberline {3.2.2.5}Program example}{26}{subsubsection.3.2.2.5}% 
-\contentsline {subsection}{\numberline {3.2.3}Core Routine}{26}{subsection.3.2.3}% 
-\contentsline {subsection}{\numberline {3.2.4}I/O Modules}{27}{subsection.3.2.4}% 
-\contentsline {chapter}{\numberline {4}Implementation}{29}{chapter.4}% 
-\contentsline {section}{\numberline {4.1}PARRHI Hardware}{29}{section.4.1}% 
-\contentsline {section}{\numberline {4.2}PARRHI Software}{30}{section.4.2}% 
-\contentsline {section}{\numberline {4.3}PARRHI Library}{30}{section.4.3}% 
-\contentsline {subsection}{\numberline {4.3.1}Parametrised Program objects}{32}{subsection.4.3.1}% 
-\contentsline {subsection}{\numberline {4.3.2}Importing and interpretation of the Parametrised Program}{36}{subsection.4.3.2}% 
-\contentsline {subsection}{\numberline {4.3.3}CR-i7A Forward Kinematics}{36}{subsection.4.3.3}% 
-\contentsline {section}{\numberline {4.4}Unity}{38}{section.4.4}% 
-\contentsline {subsection}{\numberline {4.4.1}Image Tracking}{38}{subsection.4.4.1}% 
-\contentsline {subsection}{\numberline {4.4.2}AR-Toolkit}{39}{subsection.4.4.2}% 
-\contentsline {section}{\numberline {4.5}Robot Library}{39}{section.4.5}% 
-\contentsline {subsection}{\numberline {4.5.1}Robot Communication Architecture}{39}{subsection.4.5.1}% 
-\contentsline {subsection}{\numberline {4.5.2}Robot Communication KAREL Host}{41}{subsection.4.5.2}% 
-\contentsline {subsection}{\numberline {4.5.3}Robot Communication TP Program}{42}{subsection.4.5.3}% 
-\contentsline {subsection}{\numberline {4.5.4}Robot Motion Group Management}{43}{subsection.4.5.4}% 
-\contentsline {subsection}{\numberline {4.5.5}Robot Communication Outcome}{44}{subsection.4.5.5}% 
-\contentsline {section}{\numberline {4.6}Parametrised Program Implementation and Validation}{45}{section.4.6}% 
-\contentsline {subsection}{\numberline {4.6.1}Parametrised Program XML Structure}{45}{subsection.4.6.1}% 
-\contentsline {subsection}{\numberline {4.6.2}XSD generation and validation}{47}{subsection.4.6.2}% 
-\contentsline {chapter}{\numberline {5}Evaluation}{49}{chapter.5}% 
-\contentsline {section}{\numberline {5.1}Evaluation 1: Comparing PARRHI with traditional methods}{49}{section.5.1}% 
-\contentsline {subsection}{\numberline {5.1.1}Evaluation 1: Use Case Definition}{49}{subsection.5.1.1}% 
-\contentsline {subsection}{\numberline {5.1.2}Evaluation Manual Attempt}{50}{subsection.5.1.2}% 
-\contentsline {subsection}{\numberline {5.1.3}Evaluation PARRHI Attempt}{51}{subsection.5.1.3}% 
-\contentsline {subsection}{\numberline {5.1.4}Conclusion Evaluation 1}{51}{subsection.5.1.4}% 
-\contentsline {section}{\numberline {5.2}Evaluation 2: New Developers}{52}{section.5.2}% 
-\contentsline {subsection}{\numberline {5.2.1}Evaluation 2: Use Case Definition}{52}{subsection.5.2.1}% 
-\contentsline {subsection}{\numberline {5.2.2}Summary Evaluation 2}{53}{subsection.5.2.2}% 
-\contentsline {chapter}{\numberline {6}Conclusion}{55}{chapter.6}% 
-\contentsline {section}{\numberline {6.1}Summary}{55}{section.6.1}% 
-\contentsline {section}{\numberline {6.2}Solution to Problems found in Evaluation}{56}{section.6.2}% 
-\contentsline {subsection}{\numberline {6.2.1}Solution to Problem 1: Overview and Program Complexity}{56}{subsection.6.2.1}% 
-\contentsline {subsection}{\numberline {6.2.2}Solution to Problem 2: PARRHI's Limitations}{57}{subsection.6.2.2}% 
-\contentsline {section}{\numberline {6.3}Technology Transfer}{58}{section.6.3}% 
-\contentsline {subsection}{\numberline {6.3.1}Replacing the Target Machine}{58}{subsection.6.3.1}% 
-\contentsline {subsection}{\numberline {6.3.2}Replacing the AR / 3D Engine}{59}{subsection.6.3.2}% 
-\contentsline {subsection}{\numberline {6.3.3}Replacing AR Device}{60}{subsection.6.3.3}% 
-\contentsline {section}{\numberline {6.4}Future Work - A generalised Concept}{60}{section.6.4}% 
-\contentsline {chapter}{\numberline {7}Bibliography}{63}{chapter.7}% 
+\contentsline {chapter}{\numberline {2}State of the Art}{3}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Augmented Reality and its standardisations}{3}{section.2.1}% 
+\contentsline {section}{\numberline {2.2}AR in Robotic applications}{4}{section.2.2}% 
+\contentsline {subsection}{\numberline {2.2.1}AR during development and testing}{4}{subsection.2.2.1}% 
+\contentsline {subsection}{\numberline {2.2.2}Operating robotic systems with AR support}{5}{subsection.2.2.2}% 
+\contentsline {section}{\numberline {2.3}Parametrised Development}{6}{section.2.3}% 
+\contentsline {section}{\numberline {2.4}Current methods programming industrial robots}{7}{section.2.4}% 
+\contentsline {section}{\numberline {2.5}Combining Technologies to mitigate AR Development Challenges}{8}{section.2.5}% 
+\contentsline {chapter}{\numberline {3}Concept}{9}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Goal, Requirements and Use Cases}{9}{section.3.1}% 
+\contentsline {subsection}{\numberline {3.1.1}Requirements}{9}{subsection.3.1.1}% 
+\contentsline {subsection}{\numberline {3.1.2}Use-Case example: Factory Maintenance}{11}{subsection.3.1.2}% 
+\contentsline {section}{\numberline {3.2}PARRHI Concept}{12}{section.3.2}% 
+\contentsline {subsection}{\numberline {3.2.1}Preparation of Parameters}{16}{subsection.3.2.1}% 
+\contentsline {subsection}{\numberline {3.2.2}Parametrised Program}{17}{subsection.3.2.2}% 
+\contentsline {subsubsection}{\numberline {3.2.2.1}Variables}{18}{subsubsection.3.2.2.1}% 
+\contentsline {subsubsection}{\numberline {3.2.2.2}Points}{18}{subsubsection.3.2.2.2}% 
+\contentsline {subsubsection}{\numberline {3.2.2.3}Holograms}{20}{subsubsection.3.2.2.3}% 
+\contentsline {subsubsection}{\numberline {3.2.2.4}Events}{21}{subsubsection.3.2.2.4}% 
+\contentsline {subsubsection}{\numberline {3.2.2.5}Program example}{24}{subsubsection.3.2.2.5}% 
+\contentsline {subsection}{\numberline {3.2.3}Core Routine}{24}{subsection.3.2.3}% 
+\contentsline {subsection}{\numberline {3.2.4}I/O Modules}{25}{subsection.3.2.4}% 
+\contentsline {chapter}{\numberline {4}Implementation}{27}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}PARRHI Hardware}{27}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}PARRHI Software}{28}{section.4.2}% 
+\contentsline {section}{\numberline {4.3}PARRHI Library}{28}{section.4.3}% 
+\contentsline {subsection}{\numberline {4.3.1}Parametrised Program objects}{30}{subsection.4.3.1}% 
+\contentsline {subsection}{\numberline {4.3.2}Importing and interpretation of the Parametrised Program}{33}{subsection.4.3.2}% 
+\contentsline {subsection}{\numberline {4.3.3}CR-i7A Forward Kinematics}{34}{subsection.4.3.3}% 
+\contentsline {section}{\numberline {4.4}Unity}{36}{section.4.4}% 
+\contentsline {subsection}{\numberline {4.4.1}Image Tracking}{36}{subsection.4.4.1}% 
+\contentsline {subsection}{\numberline {4.4.2}AR-Toolkit}{37}{subsection.4.4.2}% 
+\contentsline {section}{\numberline {4.5}Robot Library}{37}{section.4.5}% 
+\contentsline {subsection}{\numberline {4.5.1}Robot Communication Architecture}{37}{subsection.4.5.1}% 
+\contentsline {subsection}{\numberline {4.5.2}Robot Communication KAREL Host}{39}{subsection.4.5.2}% 
+\contentsline {subsection}{\numberline {4.5.3}Robot Communication TP Program}{40}{subsection.4.5.3}% 
+\contentsline {subsection}{\numberline {4.5.4}Robot Motion Group Management}{41}{subsection.4.5.4}% 
+\contentsline {subsection}{\numberline {4.5.5}Robot Communication Outcome}{42}{subsection.4.5.5}% 
+\contentsline {section}{\numberline {4.6}Parametrised Program Implementation and Validation}{43}{section.4.6}% 
+\contentsline {subsection}{\numberline {4.6.1}Parametrised Program XML Structure}{43}{subsection.4.6.1}% 
+\contentsline {subsection}{\numberline {4.6.2}XSD generation and validation}{45}{subsection.4.6.2}% 
+\contentsline {chapter}{\numberline {5}Evaluation}{47}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}Evaluation 1: Comparing PARRHI with traditional methods}{47}{section.5.1}% 
+\contentsline {subsection}{\numberline {5.1.1}Evaluation 1: Use Case Definition}{47}{subsection.5.1.1}% 
+\contentsline {subsection}{\numberline {5.1.2}Evaluation Manual Attempt}{48}{subsection.5.1.2}% 
+\contentsline {subsection}{\numberline {5.1.3}Evaluation PARRHI Attempt}{49}{subsection.5.1.3}% 
+\contentsline {subsection}{\numberline {5.1.4}Conclusion Evaluation 1}{49}{subsection.5.1.4}% 
+\contentsline {section}{\numberline {5.2}Evaluation 2: New Developers}{50}{section.5.2}% 
+\contentsline {subsection}{\numberline {5.2.1}Evaluation 2: Use Case Definition}{50}{subsection.5.2.1}% 
+\contentsline {subsection}{\numberline {5.2.2}Summary Evaluation 2}{51}{subsection.5.2.2}% 
+\contentsline {chapter}{\numberline {6}Conclusion}{53}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Summary}{53}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}Solution to Problems found in Evaluation}{54}{section.6.2}% 
+\contentsline {subsection}{\numberline {6.2.1}Solution to Problem 1: Overview and Program Complexity}{54}{subsection.6.2.1}% 
+\contentsline {subsection}{\numberline {6.2.2}Solution to Problem 2: PARRHI's Limitations}{55}{subsection.6.2.2}% 
+\contentsline {section}{\numberline {6.3}Technology Transfer}{56}{section.6.3}% 
+\contentsline {subsection}{\numberline {6.3.1}Replacing the Target Machine}{56}{subsection.6.3.1}% 
+\contentsline {subsection}{\numberline {6.3.2}Replacing the AR / 3D Engine}{57}{subsection.6.3.2}% 
+\contentsline {subsection}{\numberline {6.3.3}Replacing AR Device}{58}{subsection.6.3.3}% 
+\contentsline {section}{\numberline {6.4}Future Work - A generalised Concept}{58}{section.6.4}% 
+\contentsline {chapter}{\numberline {7}Bibliography}{61}{chapter.7}% 
