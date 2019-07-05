@@ -4,7 +4,7 @@
 
 This chapter will describe what measurements had to be undertaken, in order to extend the PARRHI system as it is, for a wider variety of use cases and functionalities. The structure of this section will be grouped by technologies or components within the PARRHI implementation.
 
-\subsection{Replacing the Target Machine}
+\section{Replacing the Target Machine}
 In the provided implementation a Fanuc CR-7iA/L robot was chosen as a demonstrator for the PARRHI concept. Of course, there is a big variety of desirable targetable machines, like other robot types from Fanuc or other suppliers, other machines like industry 4.0 machines, etc.
 
 The PARRHI library is written in a very modular manner. This means, that extending or replacing certain parts of it is very easy. To replace the target machine, one would only have to extend the Input/Output modules and the Real World Model, to be able to communicate with the desired machine.
@@ -17,7 +17,7 @@ Case 2 is a bit more tricky since the communication problem has to be solved aga
 
 Case 1 and Case 2 do not require any changes to the PARRHI system itself. The Parametrised Program could be used as it is. In case 3 though, this would likely change, since conceptually another machine is not the same as an industrial robot. The Distance Trigger, for example, would not make any sense if the target machine does not have any moving parts. This means, that in addition to the communication module (Input / Output Modules), one would probably have to define new triggers and actions for the target machine, what requires changes to the PARRHI library itself. Since the PARRHI library is implemented with element base classes and inheritance structures, the implementation of custom triggers and actions is rather easy.
 
-\subsection{Replacing the AR / 3D Engine}
+\section{Replacing the AR / 3D Engine}
 
 The current implementation uses the Unity Game Engine as a host. Since all the application logic (PARRHI Library) and also the Robot Library is implemented in engine independent .NET libraries, one could easily switch to any other 3D engine, which is capable of building for Augmented Reality Devices and is able to include .NET dynamically linked libraries (DLLs). 
 
@@ -25,6 +25,6 @@ The new implementation would have to implement three main aspects: Firstly, the 
 
 For example, the Unreal Engine 4 \cite{unrealEngine} allows $C\#$ DLLs to be imported, and can thus work easily with the PARRHI libraries.
 
-\subsection{Replacing AR Device}
+\section{Replacing AR Device}
 
 Transitioning to another AR device is probably the easiest of all technology transitions. Unity itself supports building for multiple devices including mobile phones, desktop apps, HoloLens, consoles and more~\cite{UnityPlatforms}. Basically, the new device only has to possess an accessible camera, which can be used for AR applications, and there has to be a 3D engine, which supports the device. 

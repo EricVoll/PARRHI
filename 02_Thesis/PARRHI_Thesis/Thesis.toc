@@ -56,9 +56,9 @@
 \contentsline {subsection}{\numberline {5.3.1}Solution to Problem 1: Overview and Program Complexity}{54}{subsection.5.3.1}% 
 \contentsline {subsection}{\numberline {5.3.2}Solution to Problem 2: PARRHI's Limitations}{55}{subsection.5.3.2}% 
 \contentsline {chapter}{\numberline {6}Technology Transfer}{57}{chapter.6}% 
-\contentsline {subsection}{\numberline {6.0.1}Replacing the Target Machine}{57}{subsection.6.0.1}% 
-\contentsline {subsection}{\numberline {6.0.2}Replacing the AR / 3D Engine}{58}{subsection.6.0.2}% 
-\contentsline {subsection}{\numberline {6.0.3}Replacing AR Device}{59}{subsection.6.0.3}% 
+\contentsline {section}{\numberline {6.1}Replacing the Target Machine}{57}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}Replacing the AR / 3D Engine}{58}{section.6.2}% 
+\contentsline {section}{\numberline {6.3}Replacing AR Device}{59}{section.6.3}% 
 \contentsline {chapter}{\numberline {7}Conclusion}{61}{chapter.7}% 
 \contentsline {section}{\numberline {7.1}Summary}{61}{section.7.1}% 
 \contentsline {section}{\numberline {7.2}Future Work}{62}{section.7.2}% 
