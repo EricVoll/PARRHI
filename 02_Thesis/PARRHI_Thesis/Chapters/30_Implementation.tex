@@ -18,7 +18,7 @@ Software Implementation wise, the PARRHI system is split up in three big compone
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{Figures/Implementation_SystemSetup.jpg}
-	\caption{PARRHI implementation setup}
+	\caption{PARRHI software implementation}
 	\label{Fig:Implementation}
 \end{figure}
 
@@ -38,7 +38,7 @@ It is important to note, that all objects inherit from the \code{PProgramObject}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=1\linewidth]{Figures/Implementation_Container}
-	\caption[Container Class Diagram]{Container Class Diagram}
+	\caption[UML class diagram of the Container class]{UML class diagram of the Container class}
 	\label{Fig:ImplementationContainer}
 \end{figure}
 
@@ -51,7 +51,7 @@ The \code{World} class has attributes that represent the state of the real world
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.7\linewidth]{Figures/Implementation_State}
-	\caption[UML Class Diagram of State class]{UML Class Diagram of State class}
+	\caption[UML class diagram of the State class]{UML class diagram of the State class}
 	\label{Fig:ImplementationState}
 \end{figure}
 
@@ -71,13 +71,13 @@ The \code{Point} class, on the other hand, is a bit more interesting. The abstra
 	\begin{minipage}{0.65\textwidth}
 		\centering
 		\includegraphics[width=0.8\linewidth]{Figures/Implementation_Points}
-		\caption{UML Class Diagram of the Point class}
+		\caption{UML class diagram of the Point class}
 		\label{Ffig:ImplementationPoints}
 	\end{minipage}\hfill
 	\begin{minipage}{0.35\textwidth}
 		\centering
 		\includegraphics[width=1\linewidth]{Figures/Implementation_Holograms}
-		\caption{UML Class Diagram of\\the Hologram class}
+		\caption{UML class diagram of\\the Hologram class}
 		\label{Fig:ImplementationHolograms}
 	\end{minipage}
 \end{figure}
@@ -89,7 +89,7 @@ The \code{Trigger} class~(Fig.~\ref{Fig:ImplementationTriggers}) is structured i
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.7\linewidth]{Figures/Implementation_Triggers}
-	\caption{UML Class Diagram of the Trigger class}
+	\caption{UML class diagram of the Trigger class}
 	\label{Fig:ImplementationTriggers}
 \end{figure}
 
@@ -102,7 +102,7 @@ Similarly to the \code{ChangeUITextAction}, the \code{MoveRobotAction} holds a r
 \begin{figure}[!th]
 	\centering
 	\includegraphics[width=0.7\linewidth]{Figures/Implementation_Action}
-	\caption{UML Class Diagram of the Action class}
+	\caption{UML class diagram of the Action class}
 	\label{Fig:ImplementationAction}
 \end{figure}
 
@@ -216,7 +216,7 @@ Fig. \ref{Fig:TPLoopFlowChart} shows the TP Loop's Activity Diagram. Of course, 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.9\linewidth]{Figures/TPLoopFlowChart.jpg}
-	\caption{}
+	\caption{TP loop robot control}
 	\label{Fig:TPLoopFlowChart}
 \end{figure}
 
@@ -228,7 +228,7 @@ The action \textit{Store Current Pos to PR} fetches the current coordinate vecto
 
 After the hand gripper state change is set, the new target position is written to the robot - again within the corresponding coordinate system. At the very end, there is an \textit{exit} flag, which can be set to \textit{'1'} by the KAREL Host. This quits the KAREL and TP Programm and thus allows the client (.NET library) to send an exit command to the robot. This allows controller to safely shutdown the network socket and the TP Loop. 
 
-\subsection{Robot Motion Group Management}
+\subsection{Robot Motion Group Control Management}
 
 One important aspect to mention is the motion control system, which all FANUC robots are subject to. Within the FANUC environment, the robot can be separated into motion groups, which are groups of moveable elements within a FANUC robot. One motion group may, for example, contain the first three joints, and another motion group could own the second three joints. Or, one group can also contain all joints. At runtime, a motion group can be physically controlled by only one instance at a time. TP programmes, KAREL programmes and also the Teach Pendant are viewed as instances here. The reason for this is, to avoid cases, where undefined behaviour through double commanding might occur. 
 
@@ -309,7 +309,7 @@ The following block of code exemplary defines each object once. Please note, tha
 
 It does not matter in which sequence all the elements occur. Only the hierarchically structure has to be kept exactly as the example document above. The PARRHI library will at some point deserialise the Parametrised Program using a standard .NET Framework XML library. A validation should be performed to find flaws beforehand.
 
-\subsection{XSD generation and validation}
+\subsection{XSD Generation and Validation}
 The hierarchy of XML documents can be specified very detailed in XML-scheme documents, which are also called XSD files~\cite{xsdW3C}. These documents define which element can or must occur at witch location in the XML document, which attributes these elements can or must have and so on. The XSD file can even specify minimum and maximum values, data types and much more.
 
 Hence, an XSD document is an essential part of the importing / validation process. Since writing these documents can be work-intensive, Microsoft has developed ways to generate XML schemes from a set of XML documents. Especially, when the underlying XML document may change repeatedly, it can be very exhausting to update the XSD file every time. For that I wrote a small $C\#$ application, that takes multiple .xml documents as an input, and outputs one XSD document that defines rules, which fit all input XML files. 
