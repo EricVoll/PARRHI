@@ -1,7 +1,8 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \babel@toc {english}{}
-\contentsline {chapter}{List of Figures}{E}{section*.2}% 
-\contentsline {chapter}{List of Tables}{G}{section*.4}% 
+\contentsline {chapter}{Abstract}{I}{section*.1}% 
+\contentsline {chapter}{List of Figures}{VII}{section*.4}% 
+\contentsline {chapter}{List of Tables}{IX}{section*.6}% 
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}% 
 \contentsline {section}{\numberline {1.1}Reasons for- and Challenges with Human-Robot Collaboration}{1}{section.1.1}% 
 \contentsline {chapter}{\numberline {2}State of the Art}{5}{chapter.2}% 
