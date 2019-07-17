@@ -1,1 +1,59 @@
-\chapter{Appendix}
+\chapter{Appendix A}
+
+This is a valid solution for the evaluation 2 example use case as mentioned in section~\ref{Section:Evluation2UseCase}.
+
+\begin{lstlisting}
+<?xml version="1.0"?>
+<PProgram xmlns="PARRHI">
+	<Points>
+		<PointFix name="StartPos" X="-897" Y="1300" Z = "1120"/>
+		<PointFix name="RobotTargetPos" X="-492" Y="713" Z="590"/>
+		<PointFix name="EndPos" X="897" Y="1300" Z = "1120"/>
+		<PointCamera name="Camera"/>
+	</Points>
+	<Holograms>
+		<Sphere name="Pos1Sphere" point="StartPos" radius="255"/>
+		<Sphere name="RobotTargetPosSphere" point="RobotTargetPos" radius="150" visibility="hidden"/>
+		<Sphere name="Pos2Sphere" point="EndPos" radius="255" visibility="hidden"/>		
+	</Holograms>
+	<Events>
+		<Triggers>		
+			<!-- Step 0 -->
+			<TimeTrigger name="InitialTrigger" timeSinceActivation="0" canTrigger="true" actions="WriteInitialText"/>
+			
+			<!-- Step 1 -->
+			<DistanceTrigger name="StartPosTrigger" canTrigger='true' point1="StartPos" point2="Camera" distance="255" actions="WriteSecondInstruction DisableStartPos ActivateRobotPosTrigger StartTimer"/>
+			<!-- Step 2 -->
+			<TimeTrigger name="TimeTrigger" canTrigger='false' timeSinceActivation="60" actions="MistakesWereMade ActivateEndPosTrigger DeactivateRobotPosTrigger DisableEndPos" />
+			<DistanceTrigger name="RobotPosTrigger" canTrigger='false' point1="RobotTargetPos" point2="RobotTCP" distance="150" actions="WriteThirdInstruction DisableEndPos ActivateEndPosTrigger EndTimer" />
+			<!--"WriteThirdInstruction DisableEndPos ActivateEndPosTrigger"-->
+			<!-- Step 3 -->
+			<DistanceTrigger name="EndPosTrigger" canTrigger='false' point1="EndPos" point2="Camera" distance="255" actions="WriteFourthInstruction"/>
+		</Triggers>
+		<Actions>
+			<!-- Step 0 -->
+			<ChangeUITextAction name="WriteInitialText" text="Walk to area marked by the blue sphere"/>
+			
+			<!-- Step 1 -->
+			<ChangeUITextAction name="WriteSecondInstruction" text="Move the robot's tip to the point marked by the blue sphere"/>
+			<ChangeUITextAction name="MistakesWereMade" text="You were too slow! Now walk to the end-point."/>
+			
+			<SetHologramStateAction name="DisableStartPos" onHolograms="RobotTargetPosSphere" offHolograms="Pos1Sphere"/>
+			<SetTriggerStateAction name="ActivateRobotPosTrigger" triggerName="RobotPosTrigger" canTrigger='true'/>
+			<SetTriggerStateAction name="StartTimer" triggerName="TimeTrigger" canTrigger='true'/>
+			
+			<!-- Step 2 -->
+			<SetTriggerStateAction name="EndTimer" triggerName="TimeTrigger" canTrigger='false'/>
+			
+			<ChangeUITextAction name="WriteThirdInstruction" text="Great! You were fast enough. Not walk to the end-point"/>
+			<SetHologramStateAction name="DisableEndPos" onHolograms="Pos2Sphere" offHolograms="RobotTargetPosSphere"/>
+			<SetTriggerStateAction name="DeactivateRobotPosTrigger" triggerName="RobotPosTrigger" canTrigger='false'/>
+			<SetTriggerStateAction name="ActivateEndPosTrigger" triggerName="EndPosTrigger" canTrigger='true'/>
+			
+			<!-- Step 3 -->
+			<ChangeUITextAction name="WriteFourthInstruction" text="You are now finished!"/>
+		</Actions>
+	</Events>
+</PProgram>
+
+\end{lstlisting}

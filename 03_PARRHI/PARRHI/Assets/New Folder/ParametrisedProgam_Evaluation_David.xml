@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
 <PProgram xmlns="PARRHI">
 	<Variables>
-		<Int name="var1">0</Int>
-	</Variables>
 	
+	</Variables>
 	<Points>
 		<!--Robot points to show the actual robot-->
 		<PointRobot name="Joint1" J1="0" J2="1" Scale="0" />
@@ -12,14 +11,11 @@
 		<PointRobot name="Joint4" J1="3" J2="4" Scale="0" />
 		<PointRobot name="Joint5" J1="4" J2="5" Scale="0" />
 		<PointRobot name="RobotTCP" J1="5" J2="5" Scale="0" />
-
 		
 		<!-- Task Points -->
 		<PointFix name="StartPos" X="-897" Y="1300" Z = "1120"/>
 		<PointFix name="RobotTargetPos" X="-492" Y="713" Z="590"/>
 		<PointFix name="EndPos" X="897" Y="1300" Z = "1120"/>
-
-
 		<PointCamera name="Camera"/>
 		
 				<!--
@@ -49,10 +45,7 @@
 		
 		<Sphere name="Pos1Sphere" point="StartPos" radius="255"/>
 		<Sphere name="RobotTargetPosSphere" point="RobotTargetPos" radius="150" visibility="hidden"/>
-		<Sphere name="Pos2Sphere" point="EndPos" radius="255" visibility="hidden"/>
-
-		
-		
+		<Sphere name="Pos2Sphere" point="EndPos" radius="255" visibility="hidden"/>		
 	</Holograms>
 	<Events>
 		<Triggers>		
@@ -69,17 +62,14 @@
 			<!--"WriteThirdInstruction DisableEndPos ActivateEndPosTrigger"-->
 			<!-- Step 3 -->
 			<DistanceTrigger name="EndPosTrigger" canTrigger='false' point1="EndPos" point2="Camera" distance="255" actions="WriteFourthInstruction"/>
-			<!-- Step 4 -->
-			
-			<!-- Step 5 -->
 		</Triggers>
 		<Actions>
 			<!-- Step 0 -->
-			<ChangeUITextAction name="WriteInitialText" text="Gehe zur markierten Position"/>
+			<ChangeUITextAction name="WriteInitialText" text="Walk to area marked by the blue sphere"/>
 			
 			<!-- Step 1 -->
-			<ChangeUITextAction name="WriteSecondInstruction" text="Bewege den Roboterarm zur markierten Position"/>
-			<ChangeUITextAction name="MistakesWereMade" text="Du warst zu langsam. Gehe jetzt zum Endpunkt"/>
+			<ChangeUITextAction name="WriteSecondInstruction" text="Move the robot's tip to the point marked by the blue sphere"/>
+			<ChangeUITextAction name="MistakesWereMade" text="You were too slow! Now walk to the end-point."/>
 
 			<SetHologramStateAction name="DisableStartPos" onHolograms="RobotTargetPosSphere" offHolograms="Pos1Sphere"/>
 			<SetTriggerStateAction name="ActivateRobotPosTrigger" triggerName="RobotPosTrigger" canTrigger='true'/>
@@ -88,19 +78,13 @@
 			<!-- Step 2 -->
 			<SetTriggerStateAction name="EndTimer" triggerName="TimeTrigger" canTrigger='false'/>
 
-			<ChangeUITextAction name="WriteThirdInstruction" text="Glückwunsch. Du bist toll \n Gehe zum markierten Punkt"/>
+			<ChangeUITextAction name="WriteThirdInstruction" text="Great! You were fast enough. Not walk to the end-point"/>
 			<SetHologramStateAction name="DisableEndPos" onHolograms="Pos2Sphere" offHolograms="RobotTargetPosSphere"/>
 			<SetTriggerStateAction name="DeactivateRobotPosTrigger" triggerName="RobotPosTrigger" canTrigger='false'/>
 			<SetTriggerStateAction name="ActivateEndPosTrigger" triggerName="EndPosTrigger" canTrigger='true'/>
 
 			<!-- Step 3 -->
-			
-			<ChangeUITextAction name="WriteFourthInstruction" text="Alles erdledigt"/>
-
-			<!-- Step 4 -->
-			
-			<!-- Step 5 -->
-			
+			<ChangeUITextAction name="WriteFourthInstruction" text="You are now finished!"/>
 		</Actions>
 	</Events>
 	<!--

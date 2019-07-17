@@ -1,8 +1,9 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \babel@toc {english}{}
 \contentsline {chapter}{Abstract}{I}{section*.1}% 
-\contentsline {chapter}{List of Figures}{VII}{section*.4}% 
-\contentsline {chapter}{List of Tables}{IX}{section*.6}% 
+\contentsline {chapter}{Kurzzusammenfassung}{III}{section*.3}% 
+\contentsline {chapter}{List of Figures}{IX}{section*.6}% 
+\contentsline {chapter}{List of Tables}{XI}{section*.8}% 
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}% 
 \contentsline {section}{\numberline {1.1}Reasons for- and Challenges with Human-Robot Collaboration}{1}{section.1.1}% 
 \contentsline {chapter}{\numberline {2}State of the Art}{5}{chapter.2}% 
@@ -36,7 +37,7 @@
 \contentsline {subsection}{\numberline {4.3.3}CR-i7A Forward Kinematics}{36}{subsection.4.3.3}% 
 \contentsline {section}{\numberline {4.4}Unity}{38}{section.4.4}% 
 \contentsline {subsection}{\numberline {4.4.1}Image Tracking}{38}{subsection.4.4.1}% 
-\contentsline {subsection}{\numberline {4.4.2}AR-Toolkit}{39}{subsection.4.4.2}% 
+\contentsline {subsection}{\numberline {4.4.2}AR-Toolkit}{38}{subsection.4.4.2}% 
 \contentsline {section}{\numberline {4.5}Robot Library}{39}{section.4.5}% 
 \contentsline {subsection}{\numberline {4.5.1}Robot Communication Architecture}{39}{subsection.4.5.1}% 
 \contentsline {subsection}{\numberline {4.5.2}Robot Communication KAREL Host}{41}{subsection.4.5.2}% 
@@ -48,14 +49,14 @@
 \contentsline {subsection}{\numberline {4.6.2}XSD Generation and Validation}{47}{subsection.4.6.2}% 
 \contentsline {chapter}{\numberline {5}Evaluation}{49}{chapter.5}% 
 \contentsline {section}{\numberline {5.1}Evaluation 1: Comparing PARRHI with traditional methods}{49}{section.5.1}% 
-\contentsline {subsection}{\numberline {5.1.1}Evaluation 1: Use Case Definition}{50}{subsection.5.1.1}% 
+\contentsline {subsection}{\numberline {5.1.1}Evaluation 1: Use Case Definition}{49}{subsection.5.1.1}% 
 \contentsline {subsection}{\numberline {5.1.2}Evaluation Manual Attempt}{50}{subsection.5.1.2}% 
 \contentsline {subsection}{\numberline {5.1.3}Evaluation PARRHI Attempt}{51}{subsection.5.1.3}% 
 \contentsline {subsection}{\numberline {5.1.4}Conclusion Evaluation 1}{52}{subsection.5.1.4}% 
 \contentsline {section}{\numberline {5.2}Evaluation 2: New Developers}{53}{section.5.2}% 
 \contentsline {subsection}{\numberline {5.2.1}Evaluation 2: Use Case Definition}{53}{subsection.5.2.1}% 
 \contentsline {subsection}{\numberline {5.2.2}Summary Evaluation 2}{54}{subsection.5.2.2}% 
-\contentsline {section}{\numberline {5.3}Solution to Problems found in Evaluation}{56}{section.5.3}% 
+\contentsline {section}{\numberline {5.3}Solution to Problems Found in the Evaluation}{56}{section.5.3}% 
 \contentsline {subsection}{\numberline {5.3.1}Solution to Problem 1: Overview and Program Complexity}{56}{subsection.5.3.1}% 
 \contentsline {subsection}{\numberline {5.3.2}Solution to Problem 2: PARRHI's Limitations}{57}{subsection.5.3.2}% 
 \contentsline {chapter}{\numberline {6}Technology Transfer}{59}{chapter.6}% 
@@ -65,4 +66,5 @@
 \contentsline {chapter}{\numberline {7}Conclusion}{63}{chapter.7}% 
 \contentsline {section}{\numberline {7.1}Summary}{63}{section.7.1}% 
 \contentsline {section}{\numberline {7.2}Future Work}{64}{section.7.2}% 
-\contentsline {chapter}{\numberline {8}Bibliography}{65}{chapter.8}% 
+\contentsline {chapter}{\numberline {A}Appendix A}{65}{appendix.A}% 
+\contentsline {chapter}{\numberline {B}Bibliography}{67}{appendix.B}% 

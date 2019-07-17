@@ -1,26 +1,24 @@
 \chapter{Evaluation}\label{Chap:Evaluation}
 
-Having developed the PARRHI system it is now time to ask, whether or not the end goal was actually achieved. For that, I will shortly summarize the requirements collected in section~\ref{Section:Requirements}. The Developer (the person that uses the PARRHI system to create applications) has no to little software engineering skills but some knowledge about the robot industry. The person would like to reuse their previous work and create Augmented Reality Applications for other people to use. The application should transfer some knowledge, or give instructions on how to achieve a certain task.
-
-This evaluation will consist of two different parts. First I will try to compare traditional AR programming methods with the PARRHI system, and then I will let other people try to succeed in a specific task that was given to them. 
+After the PARRHI system's development, it is now time to ask, whether or not the end goal was achieved and the requirements are met. Therefore, two evaluations were performed. First, traditional AR development methods and the PARRHI system were compared, and then other people tried to succeed in a specific task that was given to them. 
 
 \section{Evaluation 1: Comparing PARRHI with traditional methods}
 
-I will first define a use case for the evaluation, then pose as the "Developer" and actually develop such an AR application. First, it will be manually programmed without the PARRHI system. For future reference, this run will be called the "\textit{manual attempt}". Then, I will attempt to achieve the same goal by using the PARRHI system. This run will be called the "\textit{PARRHI attempt}". I will compare the Pros and Cons of each approach and also go into detail on what benefits which approach has.
+First, a Use-Case was defined. The use case required an AR application to be developed. This AR application was then developed in two different ways. Once using Unity and traditional $C\#$ development, and afterwards using the PARRHI system. For future reference, the Unity-approach will be called "\textit{manual attempt}" and the PARRHI approach will be called the "\textit{PARRHI attempt}". After both developments are finished, the Pros and Cons of each approach were summarised and compared.
 
-It is important to mention, that I know the PARRHI syntax very well and do most certainly not need any time to get used to it. But, the same is true for the manual attempt with Unity.
+It is important to mention, that I know the PARRHI syntax very well and do not need any time to get used to it. But, the same is true for the manual attempt with Unity. This evaluation can more be seen as a test rather than an actual evaluation due to its statistical insignificance.
 
 \subsection{Evaluation 1: Use Case Definition}
-The following use case will be the base of my thesis' evaluation. As a context, I will use the same factory as explained in section~\ref{Section:UseCaseDefinition}. 
+The following use case was the base this evaluation. As a context, the same factory as explained in section~\ref{Section:UseCaseDefinition} was used. 
 
-The task, which will be supported by an Augmented Reality Robot-Human Interface is the following. First, the employee using the AR application approaches the robot work cell and will then be commanded to walk over to a specific point, that is in a safe distance from the robot. After that, the person has to move the robot's TCP close to his position, so that they can touch the robot's tip. The user will be asked to remove the item in the robot's gripper and jog the robot back into its starting position. Having reached this position, the user will be told to move away into a marked area. The robot will then drive into his "zero" position, where all joint angles are 0 degrees. 
+The task, which should be supported by an Augmented Reality Robot-Human Interface is the following. First, the employee using the AR application approaches the robot work cell and should then be commanded to walk over to a specific point, that is in a safe distance from the robot. After that, the person has to move the robot's TCP close to their position, so that they can touch the robot's tip. The user will be asked to remove the item in the robot's gripper and jog the robot back into its starting position. Having reached this position, the user will be told to move away into a marked area. The robot will then drive into his "zero" position, where all joint angles are 0 degrees. 
 
-This task involves multiple objects in the robot factory, including the robot itself, the user's position, jogging the robot and walking around. To keep the scope of this evaluation at a reasonable level, I will reuse the Robot-Library for the \textit{Manual attempt}. 
+This task involves multiple components in the factory, including the robot itself, the user, jogging the robot and walking around. To keep the scope of this evaluation at a reasonable level, the Robot-Library was reused for the \textit{Manual attempt}. 
 
 
 \subsection{Evaluation Manual Attempt}
 
-The manual attempt is defined by programming the task described above manually. I used the same programming language and game engine as I did during the development of the PARRHI system, which means, that I could reuse the complete project setup including libraries and tools. I reused the Robot forward kinematics model and the robot library that handles the communication between any .NET Framework application and the robot controller. 
+The manual attempt is defined by programming the task described above manually. The same programming language and game engine as during the development of the PARRHI system was used, which means that the complete project setup including libraries and tools could be copied. I reused the Robot forward kinematics model and the robot library that handles the communication between any .NET Framework application and the robot controller. 
 
 First, the image tracking system had to be set up. There are two image markers. One for the robot and thus the AR world itself, and one for the user's instructions UI. Although I have already done AR setups in Unity, this process took quite some work again, since there is always something, that would not compile or work. After this setup was done, a lot of work went into setting up a framework, which allowed me to implement the actual workflow task. I periodically cycled through a method, which kept track of the current state the application was in and also checked state transition conditions in every cycle. Since this application's workflow contained many states, where either the user or the robot had to move somewhere, I had to implement a three-dimensional \code{IdAboutEqual()} method, which took two vectors and a tolerance value and checked whether or not the two points were close enough. Similarly to that, there were many specific smaller tasks that had to be solved to succeed with the task.
 
@@ -28,9 +26,9 @@ Since the solution to this task involved five points that were targeted in some 
 
 In summary, the manual attempt took about 450 lines of source code to be written, and some configurations in the Unity engine to be made.
 
-I will now summarize the downsides and benefits of the manual attempt, where the developer, unfortunately, must be an experienced programmer, know Unity and $C\#$ development well, and also knows how to handle image tracking and gesture recognition libraries. Although the most complicated tasks like image tracking are done by some third party libraries, the developer has to know how to use them effectively. Also the Unity Engine is not perfectly intuitive.
+The developer, unfortunately, must be an experienced programmer, know Unity and $C\#$ development well, and also know how to handle image tracking and gesture recognition libraries to develop AR applications using Unity. Although the most complicated tasks like image tracking are done by some third party libraries, the developer has to know how to use them effectively. Also the Unity Engine is not perfectly intuitive.
 
-The upside is, that any non-trivial task can be achieved. If one step in the application involves complex logic, the developer can simply add the feature, because they are developing everything in source code anyway. The downside of this is, that also the most trivial processes have to be worked out in source code every time they occur. Furthermore, developing the application in Unity itself means, that the product has to be compiled, built and then transferred to the HoloLens every single time something changes. This process takes about 3-5 minutes and is very error prone.
+The upside is, that any non-trivial task can be achieved. If one step in the application involves complex logic, the developer can simply add the feature, because they are developing everything in source code anyway. The downside of this is that also the most trivial processes have to be implemented every time. Furthermore, developing the application in Unity itself means, that the product has to be compiled, built and then transferred to the HoloLens every single time something changes. This process takes about 3-5 minutes and is very error prone.
 
 \subsection{Evaluation PARRHI Attempt}
 The PARRHI attempt means, that the same use case as above was be implemented using the PARRHI system. This attempt was based on the default template of the Parametrised Program, which contains the basic XML structure and defines the needed objects to animate the robot.
@@ -77,17 +75,17 @@ Since the PARRHI system handles the AR specific challenges, I directly started w
 \subsection{Conclusion Evaluation 1}
 Comparing the two methods described above, I come to the conclusion, that using the PARRHI system definitely lowers the entry barriers for AR development but at the same time might limit the developer's possibilities. 
 
-For trivial tasks, the PARRHI system greatly simplifies the development process of these applications. A potential developer most importantly does not have to be a software engineer to do work with the PARRHI system. The developer can invest more time into the application's workflow using their domain-specific knowledge since all AR and many other aspects are done by the PARRHI system.
+For trivial tasks, the PARRHI system greatly simplifies the development process of these applications. A potential developer most importantly does not have to be a software engineer to do work with the PARRHI system. The developer can invest more time into the application's workflow using their domain-specific knowledge since all AR and many other aspects are handled by the PARRHI system.
 
 But PARRHI's strengths are its biggest weaknesses. As soon as a developer needs a feature that is not supported by the PARRHI system, other solutions have to be found. There is currently no way of extending the trigger/action system with custom objects. This limitation only applies to specific features that are not supported by actions or triggers. The PARRHI system is indeed capable of creating high complexity workflows. Parallelisation and loops, for example, are not a problem.
 
 A solution to the mentioned weaknesses discovered in this evaluation will be proposed in section~\ref{Section:FutureWork}.
 
 \section{Evaluation 2: New Developers}
-As shorty described in this chapter's introduction, the second evaluation will test the system's usability by letting other people try to achieve a certain task. First, I will again define a Use Case for them to achieve and then summarise their findings and feedback.
+As briefly described in this chapter's introduction, the second evaluation tested the system's usability by asking participants to develop an AR Application using the PARRHI system.
 
-\subsection{Evaluation 2: Use Case Definition}
-The task for the experimentees will be to create an AR HR Interface with the Parametrised Program that helps the User to do the following task:
+\subsection{Evaluation 2: Use Case Definition}\label{Section:Evluation2UseCase}
+The task for the experimentees was to write a Parametrised Program for the PARRHI system, which implements the following AR application.
 
 \FloatBarrier
 
@@ -105,19 +103,21 @@ The task for the experimentees will be to create an AR HR Interface with the Par
 			\item The application should then display a success or failure message according to step 2.
 			\item In both cases, the user should be commanded to move away into the finishing position, such that the robot can not inflict any damage.
 		\end{enumerate} 
-		The coordinates of the Start, Finish and Robot-Target Points will be given to the experimentees. Fig.~\ref{Fig:Evaluation2Workflow} depicts one solution to the given task as a workflow diagram. 
+		The coordinates of the Start, Finish and Robot-Target Points were given to the experimentees. Fig.~\ref{Fig:Evaluation2Workflow} depicts one solution to the given task as a workflow diagram. 
 	\end{minipage}
 \end{figure}
 
 \FloatBarrier
 
-Each experimentee will be given an explanation of the PARRHI system and syntax. I will provide them with a cheat sheet, which shortly summarises all commands and object definitions in the PARRHI system. The basis of their work will be the same Parametrised Program template, as I used for the PARRHI attempt in evaluation 1. Their task will be, to develop an AR application according to the Use Case definition above and thus writing the Parametrised Program. After they completed their task, they will be asked three questions, the answers of which will be summarised below. Their work will be timed and evaluated whether or not they actually achieved the goal. I was available for questions during their attempts.
+Each experimentee was given an explanation of the PARRHI system and syntax, and was provided a cheat sheet, which briefly summarised all commands and object definitions in the PARRHI system. The basis of their work was the same Parametrised Program template, as it was used for the PARRHI attempt in evaluation 1. The participants were asked to develop an AR application according to the Use Case definition above using the PARRHI system. After they completed their task, they were asked three questions, the answers of which are summarised below. Their work was timed and evaluated whether or not they successfully achieved the goal. I was available for questions during their attempts, but did not answer any questions regarding the core concept of the PARRHI system. 
+
+A valid solution to the given task can be found in the Appendix A. In total it contains 23 object definitions, which reflect and build the given workflow and had to be written by the experimentees. There are multiple valid solutions to the task.
 
 \subsection{Summary Evaluation 2}
 
-The second evaluation has been completed by six people, five of which are mechanical engineering and one a software engineering bachelor student all aged from 20 to 25. It is important to note, that all students heard about the PARRHI system and the parametrised program syntax the first time, and it was their first attempt of actually developing with it. All students had some minor experiences with different programming languages, and about half of them are very experienced in different programming related technology stacks. None of them had any experience in Augmented Reality development.
+The second evaluation has been completed by six people, five of which are mechanical engineering and one a software engineering bachelor student all aged from 20 to 25. It is important to note that no students knew anything about the PARRHI system and the parametrised program syntax beforehand, and it was their first attempt of developing with it. All students had some minor experiences with different programming languages, and about half of them are very experienced in different programming related technology stacks. None of them had any experience in Augmented Reality development.
 
-Five out of the six students reached their goal, with the average time being 42 minutes, excluding the student who did not succeed, who took about 55 minutes while omitting the time limit during step 2. While two students did not ask any questions and worked completely unassisted, some others did not comprehend the new system as fast and needed some guidance along the way. I tried not to answer questions regarding the core concept of the Parametrised Program. Questions regarding the parametrisation concept (which element names go where) were not answered. Most questions answered regarded the use case's workflow.
+Five out of the six students reached their goal, with the average time being 42 minutes, excluding the student who did not succeed, who took about 55 minutes while omitting the time limit during step 2. While two students did not ask any questions and worked completely unassisted, some others did not comprehend the new system as fast and needed some guidance along the way. I tried not to answer questions regarding the core concept of the Parametrised Program. Most questions answered regarded the use case's workflow.
 
 All but one student took a chronological approach to the task. The only software engineer approaches the challenge completely different. He first counted the number of elements in each category he might need and wrote them down. In the end, he connected all elements by filling out the corresponding parameters. Most realised rather quickly, that they had to define the triggers deactivated and activate them when appropriate. In some but not all cases, the students lost the overview towards the end, since the given names of the parametrised program objects were not optimal. This resulted in confusion regarding the names of objects and occasionally misplacing some parameters.
 
@@ -136,7 +136,7 @@ All students were asked the same questions after they finished their assignment.
 	\\Since their use case was crafted in a way, that it was possible to succeed with the PARRHI system, none of them saw a weakness in the PARRHI system's capabilities. During the discussion, they all agreed, that it is currently impossible to solve very specific problems, which require a different kind of trigger or action, since the developer cannot define any custom object types.\\A solution to both mentioned problems will be proposed in section~\ref{Section:FutureWork}.
 \end{enumerate}
  
-\section{Solution to Problems found in Evaluation}\label{Section:SolutionToEval}
+\section{Solution to Problems Found in the Evaluation}\label{Section:SolutionToEval}
  
 The evaluation found two major flaws in the current concept of the PARRHI system. Firstly, the expermimentees lost the overview of their own parametrised program. Secondly, the possible use cases are limited by PARRHI's predefined capabilities.
 
